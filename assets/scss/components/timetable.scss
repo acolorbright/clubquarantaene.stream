@@ -1,0 +1,19 @@
+.timetable {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1em;
+  width: calc(100vw - 2em);
+  @media screen and (orientation: landscape) {
+    column-count: 2;
+    font-size: 1.9vw;
+  }
+  font-size: 4.25vw;
+  text-align: center;
+  line-height: 1.4;
+  cursor: pointer;
+  mix-blend-mode: difference;
+  .has-ended {
+    text-decoration: line-through;
+  }
+}

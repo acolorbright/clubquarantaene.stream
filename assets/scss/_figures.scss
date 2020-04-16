@@ -1,0 +1,18 @@
+figure {
+  margin: 0;
+  padding: 0;
+}
+img,
+video,
+video[poster] {
+  vertical-align: middle;
+  user-select: none;
+}
+
+img.lazyload {
+  opacity: 0;
+  transition: opacity $baseTransitionSpeed;
+}
+img.lazyload[lazy="loaded"] {
+  opacity: 1;
+}

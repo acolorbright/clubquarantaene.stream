@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'ABCViafont';
+  src: url('../fonts/ABCViafont-Regular.woff2') format('woff2'),
+    url('../fonts/ABCViafont-Regular.woff') format('woff');
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*:not(input) {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+html {
+  background-color: black;
+}
+html,
+body {
+  font-family: 'ABCViafont', monospace;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: white;
+  font-size: 15px;
+}
+
+.large-type {
+  font-size: $largeFontSize;
+}
+
+.small-font {
+  font-size: .8em;
+  letter-spacing: 0.08em;
+}
+
+.allcaps {
+  text-transform: uppercase;
+}
+
+.green-type {
+  color: $colorPrimary;
+}
+
+.black-type {
+  color: black !important;
+}

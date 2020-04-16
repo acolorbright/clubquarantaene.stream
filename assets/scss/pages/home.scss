@@ -1,0 +1,44 @@
+.homepage {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: gradient 15s infinite alternate;
+  animation-fill-mode: backwards;
+  color: black;
+  &.no-bg {
+    color: white;
+    .black-type {
+      color: white !important;
+    }
+  }
+}
+
+.splashpage-text {
+  font-size: 1em;
+  @media (orientation: landscape) {
+    font-size: $mediumFontSize;
+  }
+  margin-top: 2em;
+  text-align: center;
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-size: 100% 100%;
+    background-position: center;
+  }
+  100% {
+    background-size: 500% 500%;
+    background-position: center;
+  }
+}

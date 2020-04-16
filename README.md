@@ -1,4 +1,4 @@
-# :mask: Club Quarantänea
+# :mask: Club Quarantäne
 
 Website for [Club Quarantäne](https://http://clubquarantaene.stream/). No Screenshots on the dancefloor!
 

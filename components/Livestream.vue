@@ -7,56 +7,75 @@
     }"
   >
     <div class="video-foreground">
-      <div id="player" />
+      <youtube
+        id="player"
+        ref="youtube"
+        :height="315"
+        :width="560"
+        :player-vars="playerVars"
+        :video-id="videoId"
+        @buffering="onBuffering"
+        @cued="onCued"
+        @ended="onEnded"
+        @error="onError"
+        @paused="onPaused"
+        @playing="onPlaying"
+        @ready="onReady"
+      />
+      <button @click="playVideo">play</button>
+      <button @click="pauseVideo">pause</button>
     </div>
   </div>
 </template>
-<script>
-const YTPlayer = require('yt-player');
 
+<script>
 export default {
   data() {
     return {
-      player: null,
-      isPlaying: false,
-      options: {
-        height: '315',
-        width: '560',
-        videoId: process.env.YOUTUBE_VIDEO_ID,
+      playerVars: {
+        autoplay: false,
+        captions: false,
         controls: false,
-        autoplay: true,
         fullscreen: false,
         keyboard: false,
         modestBranding: true,
-        captions: false,
         playsInline: true
-      }
+      },
+      videoId: process.env.YOUTUBE_VIDEO_ID
     };
   },
-  watch: {
-    $route(to) {
-      // if (to.name === 'mainfloor') {
-      //   this.player.play();
-      //   this.player.setVolume(100);
-      // } else {
-      //   this.player.play();
-      //   this.player.setVolume(30);
-      // }
+  computed: {
+    player() {
+      return this.$refs.youtube.player;
     }
   },
-  mounted() {
-    this.player = new YTPlayer('#player', this.options);
-    this.player.load(this.options.videoId, true);
-    this.player.play();
-    const vm = this;
-    this.player.on('unstarted', () => {
-      vm.player.play();
-    });
-    this.player.on('paused', () => {
-      vm.player.play();
-    });
-    if (this.$route.name !== 'mainfloor') {
-      this.player.setVolume(10);
+  methods: {
+    playVideo() {
+      this.player.playVideo();
+    },
+    pauseVideo() {
+      this.player.pauseVideo();
+    },
+    onBuffering() {
+      console.log('onBuffering');
+    },
+    onCued() {
+      console.log('onCued');
+    },
+    onEnded() {
+      console.log('onEnded');
+    },
+    onError() {
+      console.log('onError');
+    },
+    onPaused() {
+      console.log('onPaused');
+    },
+    onPlaying() {
+      console.log('onPlaying');
+    },
+    onReady() {
+      console.log('onReady');
     }
   }
 };

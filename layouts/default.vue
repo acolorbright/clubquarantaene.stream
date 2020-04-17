@@ -9,6 +9,7 @@
         <FooterMenu v-if="showFooterMenu" />
       </transition>
       <Livestream v-if="granted" />
+      <Live />
       <nuxt />
       <transition name="fade">
         <Timetable v-if="$store.state.oldState.showTimetable" />
@@ -42,7 +43,7 @@ export default {
   },
   data() {
     return {
-      granted: false,
+      granted: true,
       loaded: false
     };
   },
@@ -65,7 +66,7 @@ export default {
   },
   methods: {
     fetchData() {
-      this.$axios.get(process.env.BACKEND_CMS_URL).then(res => {
+      this.$axios.get(process.env.CMS_URL).then(res => {
         this.$store.commit('setContent', res.data.data);
         this.loaded = true;
         const vm = this;

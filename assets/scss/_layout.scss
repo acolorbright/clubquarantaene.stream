@@ -110,23 +110,7 @@ button {
     opacity: 0;
   }
 }
-html, body {
-  // overflow: hidden;
-}
-// @keyframes horse {
-//   0% {
-//     filter: blur(0);
-//     transform: skewX(0);
-//   }
-//   33% {
-//     transform: skewX(15deg);
-//     filter: blur(10px);
-//   }
-//   66% {
-//     transform: skewX(0);
-//     filter: blur(0);
-//   }
-// }
+
 @keyframes horse {
   0% {
     filter: blur(0);
@@ -146,6 +130,7 @@ html, body {
     transform: scale(1) rotate(0);
   }
 }
+
 @keyframes snowflake {
   0% {
     filter: contrast(1) brightness(1) hue-rotate(0deg);
@@ -164,40 +149,6 @@ html, body {
     transform: scaleY(1);
   }
 }
-// @keyframes snowflake {
-//   0% {
-//     filter: contrast(1);
-//     transform: skewY(1);
-//   }
-//   50% {
-//     transform: skewY(.4);
-//     filter: contrast(2);
-//   }
-//   100% {
-//     transform: skewY(1);
-//     filter: contrast(1);
-//   }
-// }
-// @keyframes lightning {
-//   0% {
-//     transform: scale(1);
-//   }
-//   16% {
-//     transform: scale(1.7);
-//   }
-//   33% {
-//     transform: scale(0.7);
-//   }
-//   50% {
-//     transform: scale(1.7);
-//   }
-//   66% {
-//     transform: scale(0.7);
-//   }
-//   100% {
-//     transform: scale(1);
-//   }
-// }
 
 @keyframes lightning {
   0% {
@@ -257,16 +208,6 @@ html, body {
   animation: lightning 1s 40;
 }
 
-
-
-// .snowflake-animation {
-//   animation: snowflake 5s infinite ;
-// }
-
-// .lightning-animation {
-//   animation: lightning 2s infinite;
-// }
-
 .countdown {
   font-size: $largeFontSize;
 }
@@ -281,16 +222,6 @@ html, body {
   overflow: hidden;
   z-index: -1;
 }
-
-// .fullscreen-bg__video {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: auto;
-//   height: auto;
-//   min-width: 100vw;
-//   min-height: 100vh;
-// }
 
 .fullscreen-bg {
   overflow: hidden;

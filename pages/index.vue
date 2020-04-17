@@ -36,19 +36,19 @@ export default {
       );
     },
     bgStyleObj() {
-      const primaryColor = this.$store.state.content.data.settings.color;
+      // const primaryColor = this.$store.state.content.data.settings.color;
       return {
-        background: `radial-gradient(
-          50% 50% at 50% 50%,
-          ${primaryColor} 0%,
-          #ffffff 18.23%,
-          ${primaryColor} 29.69%,
-          #ffffff 61.98%,
-          #ffffff 66.15%,
-          ${primaryColor} 79.69%,
-          #ffffff 88.54%,
-          ${primaryColor} 95.83%
-        )`
+        // background: `radial-gradient(
+        //   50% 50% at 50% 50%,
+        //   ${primaryColor} 0%,
+        //   #ffffff 18.23%,
+        //   ${primaryColor} 29.69%,
+        //   #ffffff 61.98%,
+        //   #ffffff 66.15%,
+        //   ${primaryColor} 79.69%,
+        //   #ffffff 88.54%,
+        //   ${primaryColor} 95.83%
+        // )`
       };
     }
   }

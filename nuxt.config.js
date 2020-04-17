@@ -55,7 +55,9 @@ export default {
         content: 'https://clubquarantaene.stream/og_image.jpg'
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=2' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=2' }
+    ],
     script: [
       {
         src: 'https://www.youtube.com/iframe_api'
@@ -68,11 +70,22 @@ export default {
       }
     ]
   },
-  loading: { color: '#fff' },
-  css: ['@/assets/scss/main.scss'],
-  plugins: ['~/plugins/components.js'],
-  buildModules: ['@nuxtjs/eslint-module'],
-  modules: ['@nuxtjs/axios', '@nuxtjs/dotenv'],
+  loading: {
+    color: '#fff'
+  },
+  css: [
+    '@/assets/scss/main.scss'
+  ],
+  plugins: [
+    '~/plugins/components.js'
+  ],
+  buildModules: [
+    '@nuxtjs/eslint-module'
+  ],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/dotenv'
+  ],
   axios: {},
   build: {
     extend (config, ctx) { }

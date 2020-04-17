@@ -14,7 +14,11 @@
         <Timetable v-if="$store.state.oldState.showTimetable" />
       </transition>
       <div id="imprint">
-        <nuxt-link to="/imprint" class="allcaps" :class="{ 'black-type': $route.name == 'index' }">
+        <nuxt-link
+          to="/imprint"
+          class="allcaps"
+          :class="{ 'black-type': $route.name == 'index' }"
+        >
           Imprint
         </nuxt-link>
       </div>
@@ -22,13 +26,13 @@
   </transition>
 </template>
 <script>
-import axios from 'axios'
-import moment from 'moment-timezone'
+import axios from 'axios';
+import moment from 'moment-timezone';
 // Components
-import Menu from '../components/Menu.vue'
-import FooterMenu from '../components/FooterMenu.vue'
-import Livestream from '../components/Livestream.vue'
-import Timetable from '../components/Timetable.vue'
+import Menu from '../components/Menu.vue';
+import FooterMenu from '../components/FooterMenu.vue';
+import Livestream from '../components/Livestream.vue';
+import Timetable from '../components/Timetable.vue';
 
 export default {
   components: {
@@ -37,69 +41,73 @@ export default {
     Livestream,
     Timetable
   },
-  data () {
+  data() {
     return {
       granted: true,
       loaded: false
-    }
+    };
   },
   computed: {
-    showMenu () {
+    showMenu() {
       return (
         this.$route.path !== '' &&
         this.$route.path !== '/' &&
         this.$route.path !== '/line' &&
         this.$route.path !== '/bouncer'
-      )
+      );
     },
-    showFooterMenu () {
-      return this.$route.path === '/mainfloor'
+    showFooterMenu() {
+      return this.$route.path === '/mainfloor';
     }
   },
-  mounted () {
-    console.log(this.$route.path)
-    this.fetchData()
+  mounted() {
+    console.log(this.$route.path);
+    this.fetchData();
     // this.accessDeviceMotion()
   },
   methods: {
-    fetchData () {
+    fetchData() {
       // axios.get('http://localhost:8888')
-      axios.get('https://cms.clubquarantaene.stream')
-        .then((res) => {
-          this.$store.commit('setContent', res.data.data)
-          this.loaded = true
-          const vm = this
-          setInterval(() => {
-            vm.checkIfEventIsRunning()
-          }, 1000)
-        })
+      axios.get('https://cms.clubquarantaene.stream').then(res => {
+        this.$store.commit('setContent', res.data.data);
+        this.loaded = true;
+        const vm = this;
+        setInterval(() => {
+          vm.checkIfEventIsRunning();
+        }, 1000);
+      });
     },
-    checkIfEventIsRunning () {
+    checkIfEventIsRunning() {
       // this.$store.dispatch('content/checkIfEventIsRunning')
-      const eventIsRunning = moment().tz('Europe/Berlin').isBetween(this.$store.state.content.data.event.start, this.$store.state.content.data.event.end)
+      const eventIsRunning = moment()
+        .tz('Europe/Berlin')
+        .isBetween(
+          this.$store.state.content.data.event.start,
+          this.$store.state.content.data.event.end
+        );
       if (eventIsRunning !== this.$store.state.content.eventIsRunning) {
-        this.$store.commit('setEventIsRunning', eventIsRunning)
+        this.$store.commit('setEventIsRunning', eventIsRunning);
       }
     },
-    accessDeviceMotion () {
-      const vm = this
+    accessDeviceMotion() {
+      const vm = this;
       DeviceMotionEvent.requestPermission()
-        .then((response) => {
+        .then(response => {
           if (response === 'granted') {
-            vm.granted = true
-            console.log('DeviceMotion granted')
+            vm.granted = true;
+            console.log('DeviceMotion granted');
           }
         })
-        .catch(console.error)
+        .catch(console.error);
     }
   },
   sockets: {
-    userCount (userCount) {
-      this.$store.commit('setUsers', userCount)
+    userCount(userCount) {
+      this.$store.commit('setUsers', userCount);
     },
-    getProgressBars (progressBars) {
-      this.progressBars = progressBars
+    getProgressBars(progressBars) {
+      this.progressBars = progressBars;
     }
   }
-}
+};
 </script>

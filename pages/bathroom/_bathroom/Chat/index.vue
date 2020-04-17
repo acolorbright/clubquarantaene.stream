@@ -1,25 +1,19 @@
 <template>
   <div class="chatroom">
-    <div
-      ref="chatroomMessages"
-      class="chatroom--messages"
-    >
+    <div ref="chatroomMessages" class="chatroom--messages">
       <ul ref="chatHistory">
         <li
           v-for="(message, index) in chatHistory"
           :key="index"
           :class="{
-            'own-message' : message.ownMessage,
-            'good-bye-message' : message.goodByeMessage
+            'own-message': message.ownMessage,
+            'good-bye-message': message.goodByeMessage
           }"
         >
           <span>
             {{ message.message }}
           </span>
-          <div
-            v-if="!message.goodByeMessage"
-            class="sender"
-          >
+          <div v-if="!message.goodByeMessage" class="sender">
             Cubicle {{ message.bathroomNo }}
           </div>
         </li>
@@ -27,19 +21,15 @@
     </div>
     <div class="chatroom--footer">
       <div class="input-area message-look">
-        <input
-          v-model="message"
-          type="text"
-          placeholder="Write a message..."
-        >
+        <input v-model="message" type="text" placeholder="Write a message..." />
         <input
           type="submit"
           value="Send"
           :disabled="locked"
           @click="sendMsg(false)"
-        >
+        />
       </div>
-      <div class="chatroom--footer-emojis" :class="{ 'inactive': emojisClicked }">
+      <div class="chatroom--footer-emojis" :class="{ inactive: emojisClicked }">
         <span @click="handleEmojiClick('horse')">🥑</span>
         <span @click="handleEmojiClick('snowflake')">💵</span>
         <span @click="handleEmojiClick('lightning')">🦠</span>
@@ -48,11 +38,11 @@
   </div>
 </template>
 <script>
-const Filter = require('bad-words')
+const Filter = require('bad-words');
 
 export default {
   name: 'Chat',
-  data () {
+  data() {
     return {
       message: '',
       locked: false,
@@ -74,16 +64,17 @@ export default {
         'joint',
         'spliff'
       ]
-    }
+    };
   },
   watch: {
     chatHistory: {
       deep: true,
-      handler () {
-        const vm = this
+      handler() {
+        const vm = this;
         setTimeout(() => {
-          vm.$refs.chatroomMessages.scrollTop = vm.$refs.chatroomMessages.scrollHeight
-        }, 100)
+          vm.$refs.chatroomMessages.scrollTop =
+            vm.$refs.chatroomMessages.scrollHeight;
+        }, 100);
       }
     }
   },
@@ -92,92 +83,103 @@ export default {
   //     this.$router.push({ path: '/line' })
   //   }
   // },
-  mounted () {
-    document.addEventListener('keypress', this.handleEnter)
-    const vm = this
-    vm.bathroomNo = vm.$route.params.bathroom
-    vm.filter = new Filter()
+  mounted() {
+    document.addEventListener('keypress', this.handleEnter);
+    const vm = this;
+    vm.bathroomNo = vm.$route.params.bathroom;
+    vm.filter = new Filter();
     // vm.filter.addWords(vm.additionalBadWords)
-    this.timeout = setTimeout(() => { vm.kickMeOut() }, 300000) // 5min
+    this.timeout = setTimeout(() => {
+      vm.kickMeOut();
+    }, 300000); // 5min
   },
-  beforeDestroy () {
-    document.removeEventListener('keypress', this.handleEnter)
-    clearTimeout(this.timeout)
+  beforeDestroy() {
+    document.removeEventListener('keypress', this.handleEnter);
+    clearTimeout(this.timeout);
     // this.sendMsg(true)
   },
   methods: {
-    kickMeOut () {
+    kickMeOut() {
       // console.log('kcik me out')
-      this.$router.push({ path: '/bathroom' })
+      this.$router.push({ path: '/bathroom' });
     },
-    resetEmojis () {
-      this.$store.commit('resetEmojis')
-      this.emojisClicked = false
-      this.emojiTimeout = null
+    resetEmojis() {
+      this.$store.commit('resetEmojis');
+      this.emojisClicked = false;
+      this.emojiTimeout = null;
     },
-    handleEmojiClick (emoji) {
-      const vm = this
-      vm.emojisClicked = true
+    handleEmojiClick(emoji) {
+      const vm = this;
+      vm.emojisClicked = true;
       switch (emoji) {
         case 'horse':
-          vm.$store.commit('setHorse')
-          break
+          vm.$store.commit('setHorse');
+          break;
         case 'snowflake':
-          vm.$store.commit('setSnowflake')
-          break
+          vm.$store.commit('setSnowflake');
+          break;
         default:
-          vm.$store.commit('setLightning')
+          vm.$store.commit('setLightning');
       }
       vm.emojiTimeout = setTimeout(() => {
-        vm.resetEmojis()
-      }, 40500)
+        vm.resetEmojis();
+      }, 40500);
       // this.$gtag.event(emoji, {
       //   event_category: 'emoji_click',
       //   event_label: 'linkclick'
       // })
-      vm.$router.push({ path: '/mainfloor' })
+      vm.$router.push({ path: '/mainfloor' });
     },
-    sendMsg (isGoodByeMessage) {
+    sendMsg(isGoodByeMessage) {
       // dont to anything when the message is empty
-      if ((this.message === null || this.message.match(/^ *$/) !== null || this.locked) && !isGoodByeMessage) { return }
-      const vm = this
+      if (
+        (this.message === null ||
+          this.message.match(/^ *$/) !== null ||
+          this.locked) &&
+        !isGoodByeMessage
+      ) {
+        return;
+      }
+      const vm = this;
       // if it is a goodbyemessage
-      const messageString = !isGoodByeMessage ? vm.filter.clean(vm.message) : `Cubicle ${vm.bathroomNo} left`
+      const messageString = !isGoodByeMessage
+        ? vm.filter.clean(vm.message)
+        : `Cubicle ${vm.bathroomNo} left`;
       // const messageString = !isGoodByeMessage ? vm.message : `Cubicle ${vm.bathroomNo} left`
 
-      vm.locked = true
+      vm.locked = true;
       const msgObj = {
         message: messageString,
         ownMessage: true,
         goodByeMessage: isGoodByeMessage,
         bathroomNo: vm.bathroomNo
-      }
-      vm.chatHistory.push(msgObj)
+      };
+      vm.chatHistory.push(msgObj);
       vm.$socket.client.emit('sendMessage', {
         message: messageString,
         ownMessage: false,
         goodByeMessage: isGoodByeMessage,
         bathroomNo: vm.bathroomNo
-      })
-      vm.message = ''
+      });
+      vm.message = '';
       setTimeout(() => {
-        vm.locked = false
-      }, 1000)
+        vm.locked = false;
+      }, 1000);
       // this.$gtag.event('sent_chat_message', {
       //   event_category: 'chat',
       //   event_label: 'chat'
       // })
     },
-    handleEnter (event) {
+    handleEnter(event) {
       if (event.key === 'Enter') {
-        this.sendMsg(false)
+        this.sendMsg(false);
       }
     }
   },
   sockets: {
-    newMessage (msg) {
-      this.chatHistory.push(msg)
+    newMessage(msg) {
+      this.chatHistory.push(msg);
     }
   }
-}
+};
 </script>

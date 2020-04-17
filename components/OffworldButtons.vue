@@ -1,13 +1,9 @@
 <template>
   <div class="offworld-buttons">
     <transition name="fade">
-      <div
-        v-if="showOverlay"
-        class="overlay-info"
-        @click="showOverlay = false"
-      >
+      <div v-if="showOverlay" class="overlay-info" @click="showOverlay = false">
         <div class="overlay-text">
-          Press us for<br>
+          Press us for<br />
           ↙ interactivity on the stream ↘
         </div>
       </div>
@@ -15,13 +11,25 @@
     <FakeLiveInteraction ref="fakeLiveInteraction" />
     <div class="offworld-buttons-wrapper">
       <div class="offworld-button">
-        <img class="offworld-button-image" src="/assets/images/grid.png" @click="sendReaction('grid')">
+        <img
+          class="offworld-button-image"
+          src="/assets/images/grid.png"
+          @click="sendReaction('grid')"
+        />
       </div>
       <div class="offworld-button">
-        <img class="offworld-button-image" src="/assets/images/horizontal.png" @click="sendReaction('horizontal')">
+        <img
+          class="offworld-button-image"
+          src="/assets/images/horizontal.png"
+          @click="sendReaction('horizontal')"
+        />
       </div>
       <div class="offworld-button">
-        <img class="offworld-button-image" src="/assets/images/vertical.png" @click="sendReaction('vertical')">
+        <img
+          class="offworld-button-image"
+          src="/assets/images/vertical.png"
+          @click="sendReaction('vertical')"
+        />
       </div>
       <div class="offworld-button breaker" />
       <div class="offworld-button offworld-button-text">
@@ -34,12 +42,12 @@
   </div>
 </template>
 <script>
-import FakeLiveInteraction from './FakeLiveInteraction.vue'
+import FakeLiveInteraction from './FakeLiveInteraction.vue';
 
 export default {
   name: 'OffworldButtons',
   components: { FakeLiveInteraction },
-  data () {
+  data() {
     return {
       api: null,
       showOverlay: false,
@@ -48,10 +56,10 @@ export default {
       clickThrottle: null,
       apiKey: 'Zeb9JD6ZcNaDmZY2ILJzdIowforpm98Gu3hzUNpr',
       performanceName: 'clubquarantaene'
-    }
+    };
   },
-  mounted () {
-    const vm = this
+  mounted() {
+    const vm = this;
     /* eslint-disable */
     this.api = new OffworldPerformance({
       performanceName: this.performanceName,
@@ -84,26 +92,28 @@ export default {
     /* eslint-enable */
     if (vm.$store.state.showButtonOverlay) {
       setTimeout(() => {
-        vm.showOverlay = true
-      }, 2000)
+        vm.showOverlay = true;
+      }, 2000);
       setTimeout(() => {
-        vm.showOverlay = false
-        vm.$store.commit('setShowButtonOverlay')
-      }, 10000)
+        vm.showOverlay = false;
+        vm.$store.commit('setShowButtonOverlay');
+      }, 10000);
     }
   },
-  beforeDestroy () {
+  beforeDestroy() {
     if (this.connected) {
-      this.api.disconnect()
-      console.log(this.api)
+      this.api.disconnect();
+      console.log(this.api);
     }
   },
   methods: {
-    sendReaction (name) {
-      this.$refs.fakeLiveInteraction.spawnPlusOne()
-      if (!this.connected) { return }
-      this.api.sendReaction(name)
+    sendReaction(name) {
+      this.$refs.fakeLiveInteraction.spawnPlusOne();
+      if (!this.connected) {
+        return;
+      }
+      this.api.sendReaction(name);
     }
   }
-}
+};
 </script>

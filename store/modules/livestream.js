@@ -1,12 +1,8 @@
-const state = () => ({
+const state = () => ({});
 
-})
-
-const mutations = {
-
-}
+const mutations = {};
 
 export default {
   state,
   mutations
-}
+};

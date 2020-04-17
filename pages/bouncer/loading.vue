@@ -1,16 +1,13 @@
 <template>
   <div class="loading-wrapper">
-    <div
-      v-if="isLoading"
-      class="loading-wheel ellipsis-anim"
-    >
+    <div v-if="isLoading" class="loading-wheel ellipsis-anim">
       <span>.</span>
       <span>.</span>
       <span>.</span>
     </div>
     <div v-else>
       <div v-if="accessGranted">
-        Okay, Enjoy.<br>
+        Okay, Enjoy.<br />
         No screenshots!
       </div>
       <div v-else>
@@ -26,38 +23,38 @@
 <script>
 export default {
   name: 'Loading',
-  data () {
+  data() {
     return {
       isLoading: true,
       accessGranted: null
-    }
+    };
   },
   watch: {
-    accessGranted (val) {
+    accessGranted(val) {
       if (val) {
-        const vm = this
-        vm.$store.commit('setAccessGranted')
+        const vm = this;
+        vm.$store.commit('setAccessGranted');
         setTimeout(() => {
-          vm.$router.push({ path: '/mainfloor' })
-        }, 3000)
+          vm.$router.push({ path: '/mainfloor' });
+        }, 3000);
       }
     }
   },
-  mounted () {
-    const vm = this
+  mounted() {
+    const vm = this;
     setTimeout(() => {
-      vm.isLoading = false
-      const randomNum = Math.random()
+      vm.isLoading = false;
+      const randomNum = Math.random();
       if (randomNum >= 0.3) {
-        vm.accessGranted = true
+        vm.accessGranted = true;
       } else {
         vm.$gtag.event('rejection', {
           event_category: 'rejection',
           event_label: 'bouncer'
-        })
-        vm.accessGranted = false
+        });
+        vm.accessGranted = false;
       }
-    }, 3000)
+    }, 3000);
   }
-}
+};
 </script>

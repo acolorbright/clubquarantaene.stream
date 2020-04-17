@@ -13,8 +13,8 @@ export default {
   //     this.$router.push({ path: '/line' })
   //   }
   // },
-  mounted () {
-    this.$gtag.pageview({ page_path: '/mainfloor' })
+  mounted() {
+    this.$gtag.pageview({ page_path: '/mainfloor' });
   }
-}
+};
 </script>

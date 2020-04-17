@@ -3,7 +3,7 @@
     id="livestream"
     class="video-background"
     :class="{
-      'insivible': $route.path != '/mainfloor'
+      insivible: $route.path != '/mainfloor'
     }"
   >
     <div class="video-foreground">
@@ -12,10 +12,10 @@
   </div>
 </template>
 <script>
-const YTPlayer = require('yt-player')
+const YTPlayer = require('yt-player');
 
 export default {
-  data () {
+  data() {
     return {
       player: null,
       isPlaying: false,
@@ -31,33 +31,33 @@ export default {
         captions: false,
         playsInline: true
       }
-    }
+    };
   },
   watch: {
-    $route (to) {
+    $route(to) {
       if (to.name === 'mainfloor') {
-        this.player.play()
-        this.player.setVolume(100)
+        this.player.play();
+        this.player.setVolume(100);
       } else {
-        this.player.play()
-        this.player.setVolume(30)
+        this.player.play();
+        this.player.setVolume(30);
       }
     }
   },
-  mounted () {
-    this.player = new YTPlayer('#player', this.options)
-    this.player.load(this.options.videoId, true)
-    this.player.play()
-    const vm = this
+  mounted() {
+    this.player = new YTPlayer('#player', this.options);
+    this.player.load(this.options.videoId, true);
+    this.player.play();
+    const vm = this;
     this.player.on('unstarted', () => {
-      vm.player.play()
-    })
+      vm.player.play();
+    });
     this.player.on('paused', () => {
-      vm.player.play()
-    })
+      vm.player.play();
+    });
     if (this.$route.name !== 'mainfloor') {
-      this.player.setVolume(10)
+      this.player.setVolume(10);
     }
   }
-}
+};
 </script>

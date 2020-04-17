@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import Countdown from '~/components/Countdown'
-import Logo from '~/components/Logo'
-import Newsletter from '~/components/Newsletter'
+import Countdown from '~/components/Countdown';
+import Logo from '~/components/Logo';
+import Newsletter from '~/components/Newsletter';
 
 export default {
   transition: {
@@ -29,11 +29,14 @@ export default {
     Newsletter
   },
   computed: {
-    showCountdown () {
-      return !this.$store.state.content.eventIsRunning && !this.$store.state.content.eventIsOver
+    showCountdown() {
+      return (
+        !this.$store.state.content.eventIsRunning &&
+        !this.$store.state.content.eventIsOver
+      );
     },
-    bgStyleObj () {
-      const primaryColor = this.$store.state.content.data.settings.color
+    bgStyleObj() {
+      const primaryColor = this.$store.state.content.data.settings.color;
       return {
         background: `radial-gradient(
           50% 50% at 50% 50%,
@@ -46,8 +49,8 @@ export default {
           #ffffff 88.54%,
           ${primaryColor} 95.83%
         )`
-      }
+      };
     }
   }
-}
+};
 </script>

@@ -1,5 +1,8 @@
 <template>
-  <div v-if="index === $store.state.content.currentQuestion" class="question-wrapper">
+  <div
+    v-if="index === $store.state.content.currentQuestion"
+    class="question-wrapper"
+  >
     <div class="question" v-html="question" />
     <div class="buttons">
       <button @click="handleClick(true)">
@@ -20,10 +23,10 @@ export default {
     index: Number
   },
   methods: {
-    handleClick (val) {
-      console.log('clicked')
-      this.$store.commit('nextQuestion')
+    handleClick(val) {
+      console.log('clicked');
+      this.$store.commit('nextQuestion');
     }
   }
-}
+};
 </script>

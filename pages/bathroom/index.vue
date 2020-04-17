@@ -6,20 +6,20 @@
           v-for="(toilet, index) in images"
           :key="index"
           :class="{
-            'occupied': $store.state.oldState.rooms[index]
+            occupied: $store.state.oldState.rooms[index]
           }"
           class="toilet-cuible-item"
           @click="handleClick(index)"
         >
           <span>{{ index + 1 }}</span>
           <figure class="toilet-image">
-            <img :src="toilet">
+            <img :src="toilet" />
           </figure>
         </div>
       </div>
     </div>
     <figure class="background-image">
-      <img src="/assets/images/cubicles.jpg">
+      <img src="/assets/images/cubicles.jpg" />
     </figure>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
     name: 'fade',
     mode: 'out-in'
   },
-  data () {
+  data() {
     return {
       images: [
         'https://www.picclickimg.com/d/w1600/pict/112368217117_/Goldene-Toilette-Exklusiv-Luxus-Gold-WC-Klo-Stand.jpg',
@@ -59,31 +59,33 @@ export default {
         'https://scontent-frx5-1.xx.fbcdn.net/v/t1.0-9/p960x960/44154338_1728383833955394_1039571601063936000_o.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_ohc=7jscC7FVilwAX_6vbCL&_nc_ht=scontent-frx5-1.xx&_nc_tp=6&oh=242d0eac28b6a2a77869cb5228a05f94&oe=5E9E5891',
         'https://www.nzherald.co.nz/resizer/lszki9BeSHmS4xqNI3Le9vEG6SE=/360x384/filters:quality(70)/arc-anglerfish-syd-prod-nzme.s3.amazonaws.com/public/JAOVGXSPMFA77BMTGGGFTAS5TA.jpg'
       ]
-    }
+    };
   },
-  beforeMount () {
+  beforeMount() {
     // if (!this.$store.state.oldState.questions.firstQuestionAnswered && this.$store.state.oldState.lockRooms) {
     //   this.$router.push({ path: '/line' })
     // }
-    this.$socket.client.emit('bathroom-connect')
+    this.$socket.client.emit('bathroom-connect');
   },
-  mounted () {
-    this.$store.commit('setFirstQuestion', true)
-    this.$store.commit('setSecondQuestion', true)
-    this.$store.commit('setThirdQuestion', true)
-    this.$store.commit('setFourthQuestion', true)
-    this.$gtag.pageview({ page_path: '/bathroom' })
+  mounted() {
+    this.$store.commit('setFirstQuestion', true);
+    this.$store.commit('setSecondQuestion', true);
+    this.$store.commit('setThirdQuestion', true);
+    this.$store.commit('setFourthQuestion', true);
+    this.$gtag.pageview({ page_path: '/bathroom' });
   },
   methods: {
-    handleClick (index) {
-      if (this.$store.state.oldState.rooms[index]) { return }
-      this.$router.push({ path: `/bathroom/${index + 1}` })
+    handleClick(index) {
+      if (this.$store.state.oldState.rooms[index]) {
+        return;
+      }
+      this.$router.push({ path: `/bathroom/${index + 1}` });
     }
   },
   sockets: {
-    bathrooms (bathrooms) {
-      this.$store.commit('setRooms', bathrooms)
+    bathrooms(bathrooms) {
+      this.$store.commit('setRooms', bathrooms);
     }
   }
-}
+};
 </script>

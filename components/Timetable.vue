@@ -1,5 +1,10 @@
 <template>
-  <div class="timetable" @click="$store.commit('showTimetable', !$store.state.oldState.showTimetable)">
+  <div
+    class="timetable"
+    @click="
+      $store.commit('showTimetable', !$store.state.oldState.showTimetable)
+    "
+  >
     <ul class="timetable-list">
       <li
         v-for="(dj, index) in timetable"
@@ -9,20 +14,18 @@
           'has-ended': checkIfEnded(dj.end, index)
         }"
       >
-        {{ dj.name }}<span
-          v-for="n in (20 - dj.name.length)"
-          :key="n"
-        >_</span>{{ dj.start }}
+        {{ dj.name }}<span v-for="n in (20 - dj.name.length)" :key="n">_</span
+        >{{ dj.start }}
       </li>
     </ul>
   </div>
 </template>
 <script>
-import moment from 'moment-timezone'
+import moment from 'moment-timezone';
 
 export default {
   name: 'Timetable',
-  data () {
+  data() {
     return {
       timetable: [
         {
@@ -170,14 +173,14 @@ export default {
           end: '2020-03-29 16:30'
         }
       ]
-    }
+    };
   },
   methods: {
-    checkIfEnded (endTime, index) {
-      const now = moment.tz('Europe/Berlin')
-      const formattedEndTime = moment.tz(endTime, 'Europe/Berlin')
-      return now.isAfter(formattedEndTime)
+    checkIfEnded(endTime, index) {
+      const now = moment.tz('Europe/Berlin');
+      const formattedEndTime = moment.tz(endTime, 'Europe/Berlin');
+      return now.isAfter(formattedEndTime);
     }
   }
-}
+};
 </script>

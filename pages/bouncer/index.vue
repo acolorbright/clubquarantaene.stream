@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Question from './question.vue'
-import Loading from './loading.vue'
+import Question from './question.vue';
+import Loading from './loading.vue';
 
 export default {
   transition: {
@@ -23,5 +23,5 @@ export default {
     Question,
     Loading
   }
-}
+};
 </script>

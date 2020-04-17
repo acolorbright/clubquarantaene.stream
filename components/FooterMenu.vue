@@ -1,7 +1,12 @@
 <template>
   <nav class="footer">
     <div class="left-menu">
-      <span @click="$store.commit('showTimetable', !$store.state.oldState.showTimetable)">Timetable</span>
+      <span
+        @click="
+          $store.commit('showTimetable', !$store.state.oldState.showTimetable)
+        "
+        >Timetable</span
+      >
     </div>
     <div class="right-menu">
       <OffworldButtons />
@@ -9,9 +14,9 @@
   </nav>
 </template>
 <script>
-import OffworldButtons from '../components/OffworldButtons.vue'
+import OffworldButtons from '../components/OffworldButtons.vue';
 export default {
   name: 'FooterMenu',
   components: { OffworldButtons }
-}
+};
 </script>

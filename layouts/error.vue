@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Logo from '~/components/Logo.vue';
 
 export default {
   transition: {
@@ -17,11 +17,11 @@ export default {
   components: {
     Logo
   },
-  mounted () {
-    const vm = this
+  mounted() {
+    const vm = this;
     setTimeout(() => {
-      vm.$router.push({ path: '/' })
-    }, 4000)
+      vm.$router.push({ path: '/' });
+    }, 4000);
   }
-}
+};
 </script>

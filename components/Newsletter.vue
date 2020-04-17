@@ -20,31 +20,28 @@
               name="EMAIL"
               placeholder="Email address"
               class="required email"
-            >
+            />
           </div>
           <div id="mce-responses" class="clear">
             <div
               id="mce-error-response"
               class="response"
-              style="display:none"
+              style="display: none;"
             />
             <div
               id="mce-success-response"
               class="response"
-              style="display:none"
+              style="display: none;"
             />
           </div>
           <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-          <div
-            style="position: absolute; left: -5000px;"
-            aria-hidden="true"
-          >
+          <div style="position: absolute; left: -5000px;" aria-hidden="true">
             <input
               type="text"
               name="b_547024c24e91c5909acd0a29f_8a32ddc9bd"
               tabindex="-1"
               value=""
-            >
+            />
           </div>
           <div class="clear">
             <input
@@ -53,7 +50,7 @@
               value="Subscribe"
               name="subscribe"
               class="button"
-            >
+            />
           </div>
         </div>
       </form>
@@ -63,7 +60,7 @@
 </template>
 <script>
 export default {
-  mounted () {
+  mounted() {
     // /* eslint-disable */
     // (function($) {
     //   window.fnames = new Array();
@@ -84,5 +81,5 @@ export default {
     // var $mcj = window.jQuery.noConflict(true);
     // /* eslint-enable */
   }
-}
+};
 </script>

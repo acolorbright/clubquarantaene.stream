@@ -3,9 +3,7 @@
     <div class="allcaps">
       You are in line.
     </div>
-    <div class="countdown">
-      <span>:</span>{{ countdown }}<span>s</span>
-    </div>
+    <div class="countdown"><span>:</span>{{ countdown }}<span>s</span></div>
   </div>
 </template>
 
@@ -15,32 +13,32 @@ export default {
     name: 'fade',
     mode: 'out-in'
   },
-  data () {
+  data() {
     return {
       countdown: 30,
       min: 5,
       max: 30,
       interval: null
-    }
+    };
   },
   watch: {
-    countdown (val) {
+    countdown(val) {
       if (val === 0) {
-        clearInterval(this.interval)
-        this.$router.push({ path: '/bouncer' })
+        clearInterval(this.interval);
+        this.$router.push({ path: '/bouncer' });
       }
     }
   },
-  mounted () {
-    this.startCountdown()
+  mounted() {
+    this.startCountdown();
   },
   methods: {
-    startCountdown () {
-      const vm = this
+    startCountdown() {
+      const vm = this;
       vm.interval = setInterval(() => {
-        vm.countdown -= 1
-      }, 1000)
+        vm.countdown -= 1;
+      }, 1000);
     }
   }
-}
+};
 </script>

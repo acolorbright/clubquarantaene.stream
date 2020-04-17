@@ -5,43 +5,50 @@
 </template>
 
 <script>
-import moment from 'moment-timezone'
+import moment from 'moment-timezone';
 
 export default {
   transition: {
     name: 'fade',
     mode: 'out-in'
   },
-  data () {
+  data() {
     return {
       currentTime: moment().tz('Europe/Berlin')
-    }
+    };
   },
   computed: {
-    duration () {
-      return moment.duration(this.$store.state.content.data.event.start.diff(this.currentTime))
+    duration() {
+      return moment.duration(
+        this.$store.state.content.data.event.start.diff(this.currentTime)
+      );
     },
-    days () {
-      return this.duration.days()
+    days() {
+      return this.duration.days();
     },
-    hours () {
-      return this.duration.hours()
+    hours() {
+      return this.duration.hours();
     },
-    minutes () {
-      return this.duration.minutes()
+    minutes() {
+      return this.duration.minutes();
     },
-    seconds () {
-      return this.duration.seconds()
+    seconds() {
+      return this.duration.seconds();
     },
-    eventHasStarted () {
-      return (this.days <= 0 && this.hours <= 0 && this.minutes <= 0 && this.seconds <= 0)
+    eventHasStarted() {
+      return (
+        this.days <= 0 &&
+        this.hours <= 0 &&
+        this.minutes <= 0 &&
+        this.seconds <= 0
+      );
     }
   },
-  beforeMount () {
-    const vm = this
+  beforeMount() {
+    const vm = this;
     setInterval(() => {
-      vm.currentTime = moment().tz('Europe/Berlin')
-    }, 1000)
+      vm.currentTime = moment().tz('Europe/Berlin');
+    }, 1000);
   }
-}
+};
 </script>

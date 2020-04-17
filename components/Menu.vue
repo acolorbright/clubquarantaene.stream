@@ -8,7 +8,13 @@
     </div>
     -->
     <div class="left-menu">
-      <span class="live-icon">&#xE000;</span> {{ $store.state.oldState.users.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') }} guest<span v-if="$store.state.oldState.users > 1">s</span>
+      <span class="live-icon">&#xE000;</span>
+      {{
+        $store.state.oldState.users
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+      }}
+      guest<span v-if="$store.state.oldState.users > 1">s</span>
     </div>
     <div class="right-menu">
       <nuxt-link to="/mainfloor">
@@ -29,5 +35,5 @@
 <script>
 export default {
   name: 'Menu'
-}
+};
 </script>

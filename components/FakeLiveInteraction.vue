@@ -19,7 +19,7 @@ export default {
     }
   },
   methods: {
-    createDiv () {
+    spawnPlusOne () {
       const newDiv = document.createElement('div')
       newDiv.className = `plus-one item-${Math.round(Math.random() * (5 - 1)) + 1}`
       const newContent = document.createTextNode('+1')
@@ -27,13 +27,13 @@ export default {
       this.$refs.liveInteraction.appendChild(newDiv)
       setTimeout(function () {
         newDiv.parentNode.removeChild(newDiv)
-      }, 1000)
+      }, this.lifespan)
     },
     startLoop () {
       const rand = Math.round(Math.random() * (this.max - this.min)) + this.min
       const vm = this
       setTimeout(function () {
-        vm.createDiv()
+        vm.spawnPlusOne()
         vm.startLoop()
       }, rand)
     }

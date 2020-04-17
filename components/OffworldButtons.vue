@@ -12,7 +12,7 @@
         </div>
       </div>
     </transition>
-    <FakeLiveInteraction />
+    <FakeLiveInteraction ref="fakeLiveInteraction" />
     <div class="offworld-buttons-wrapper">
       <div class="offworld-button">
         <img @click="sendReaction('grid')" class="offworld-button-image" src="/assets/images/grid.png">
@@ -52,6 +52,7 @@ export default {
   },
   methods: {
     sendReaction (name) {
+      this.$refs.fakeLiveInteraction.spawnPlusOne()
       if (!this.connected) { return }
       this.api.sendReaction(name)
     }

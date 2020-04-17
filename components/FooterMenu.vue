@@ -11,7 +11,7 @@
 <script>
 import OffworldButtons from '../components/OffworldButtons.vue'
 export default {
-  components: { OffworldButtons },
-  name: 'FooterMenu'
+  name: 'FooterMenu',
+  components: { OffworldButtons }
 }
 </script>

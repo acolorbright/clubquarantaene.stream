@@ -3,27 +3,27 @@
     <transition name="fade">
       <div
         v-if="showOverlay"
-        @click="showOverlay = false"
         class="overlay-info"
+        @click="showOverlay = false"
       >
         <div class="overlay-text">
           Press us for<br>
-        ↙ interactivity on the stream ↘
+          ↙ interactivity on the stream ↘
         </div>
       </div>
     </transition>
     <FakeLiveInteraction ref="fakeLiveInteraction" />
     <div class="offworld-buttons-wrapper">
       <div class="offworld-button">
-        <img @click="sendReaction('grid')" class="offworld-button-image" src="/assets/images/grid.png">
+        <img class="offworld-button-image" src="/assets/images/grid.png" @click="sendReaction('grid')">
       </div>
       <div class="offworld-button">
-        <img @click="sendReaction('horizontal')" class="offworld-button-image" src="/assets/images/horizontal.png">
+        <img class="offworld-button-image" src="/assets/images/horizontal.png" @click="sendReaction('horizontal')">
       </div>
       <div class="offworld-button">
-        <img @click="sendReaction('vertical')" class="offworld-button-image" src="/assets/images/vertical.png">
+        <img class="offworld-button-image" src="/assets/images/vertical.png" @click="sendReaction('vertical')">
       </div>
-      <div class="offworld-button breaker"></div>
+      <div class="offworld-button breaker" />
       <div class="offworld-button offworld-button-text">
         <span @click="sendReaction('GoToKlinikum')">GoToKlinikum</span>
       </div>
@@ -48,13 +48,6 @@ export default {
       clickThrottle: null,
       apiKey: 'Zeb9JD6ZcNaDmZY2ILJzdIowforpm98Gu3hzUNpr',
       performanceName: 'clubquarantaene'
-    }
-  },
-  methods: {
-    sendReaction (name) {
-      this.$refs.fakeLiveInteraction.spawnPlusOne()
-      if (!this.connected) { return }
-      this.api.sendReaction(name)
     }
   },
   mounted () {
@@ -103,6 +96,13 @@ export default {
     if (this.connected) {
       this.api.disconnect()
       console.log(this.api)
+    }
+  },
+  methods: {
+    sendReaction (name) {
+      this.$refs.fakeLiveInteraction.spawnPlusOne()
+      if (!this.connected) { return }
+      this.api.sendReaction(name)
     }
   }
 }

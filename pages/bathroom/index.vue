@@ -8,8 +8,8 @@
           :class="{
             'occupied': $store.state.oldState.rooms[index]
           }"
-          @click="handleClick(index)"
           class="toilet-cuible-item"
+          @click="handleClick(index)"
         >
           <span>{{ index + 1 }}</span>
           <figure class="toilet-image">
@@ -61,12 +61,6 @@ export default {
       ]
     }
   },
-  methods: {
-    handleClick (index) {
-      if (this.$store.state.oldState.rooms[index]) { return }
-      this.$router.push({ path: `/bathroom/${index + 1}` })
-    }
-  },
   beforeMount () {
     // if (!this.$store.state.oldState.questions.firstQuestionAnswered && this.$store.state.oldState.lockRooms) {
     //   this.$router.push({ path: '/line' })
@@ -79,6 +73,12 @@ export default {
     this.$store.commit('setThirdQuestion', true)
     this.$store.commit('setFourthQuestion', true)
     this.$gtag.pageview({ page_path: '/bathroom' })
+  },
+  methods: {
+    handleClick (index) {
+      if (this.$store.state.oldState.rooms[index]) { return }
+      this.$router.push({ path: `/bathroom/${index + 1}` })
+    }
   },
   sockets: {
     bathrooms (bathrooms) {

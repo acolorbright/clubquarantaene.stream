@@ -27,11 +27,6 @@ export default {
       showOverlay: true
     }
   },
-  methods: {
-    disconnect () {
-      this.$socket.client.emit('room-disconnect', this.room)
-    }
-  },
   beforeMount () {
     // if (!this.$store.state.oldState.questions.firstQuestionAnswered && this.$store.state.oldState.lockRooms) {
     //   this.$router.push({ path: '/line' })
@@ -49,6 +44,11 @@ export default {
   },
   beforeDestroy () {
     this.disconnect()
+  },
+  methods: {
+    disconnect () {
+      this.$socket.client.emit('room-disconnect', this.room)
+    }
   }
 }
 </script>

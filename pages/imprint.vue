@@ -59,8 +59,7 @@
         <a
           href="mailto:handshake@invisiblehand.agency"
           class="underlined-link"
-          >handshake@invisiblehand.agency </a
-        >Where we use the term “data”, we are referring to personal data
+        >handshake@invisiblehand.agency </a>Where we use the term “data”, we are referring to personal data
         within the meaning of the GDPR.
       </p>
       <h4>1. Website Visitors</h4>

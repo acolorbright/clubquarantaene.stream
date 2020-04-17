@@ -1,20 +1,20 @@
 <template>
   <div class="timetable" @click="$store.commit('showTimetable', !$store.state.oldState.showTimetable)">
-  <ul class="timetable-list">
-    <li
-      v-for="(dj, index) in timetable"
-      :key="dj.name"
-      class="timetable-entry"
-      :class="{
-        'has-ended': checkIfEnded(dj.end, index)
-      }"
-    >
-      {{ dj.name }}<span
-        v-for="n in (20 - dj.name.length)"
-        :key="n"
-      >_</span>{{ dj.start }}
-    </li>
-  </ul>
+    <ul class="timetable-list">
+      <li
+        v-for="(dj, index) in timetable"
+        :key="dj.name"
+        class="timetable-entry"
+        :class="{
+          'has-ended': checkIfEnded(dj.end, index)
+        }"
+      >
+        {{ dj.name }}<span
+          v-for="n in (20 - dj.name.length)"
+          :key="n"
+        >_</span>{{ dj.start }}
+      </li>
+    </ul>
   </div>
 </template>
 <script>

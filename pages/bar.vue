@@ -7,12 +7,12 @@
     >
       <div class="donation-header">
         <span class="donation--service">{{ service.name }}</span>
-        <span class="donation--dots"/>
+        <span class="donation--dots" />
         <span class="donation--link">
           <a
-            @click="trackExternalLink(service.name)"
             :href="service.href"
             target="_blank"
+            @click="trackExternalLink(service.name)"
           >↗Donate</a>
         </span>
       </div>
@@ -75,6 +75,13 @@ export default {
       ]
     }
   },
+  mounted () {
+    this.$store.commit('setFirstQuestion', true)
+    this.$store.commit('setSecondQuestion', true)
+    this.$store.commit('setThirdQuestion', true)
+    this.$store.commit('setFourthQuestion', true)
+    this.$gtag.pageview({ page_path: '/bar' })
+  },
   methods: {
     trackExternalLink (name) {
       this.$gtag.event(name, {
@@ -82,13 +89,6 @@ export default {
         event_label: 'linkclick'
       })
     }
-  },
-  mounted () {
-    this.$store.commit('setFirstQuestion', true)
-    this.$store.commit('setSecondQuestion', true)
-    this.$store.commit('setThirdQuestion', true)
-    this.$store.commit('setFourthQuestion', true)
-    this.$gtag.pageview({ page_path: '/bar' })
   }
 }
 </script>

@@ -1,32 +1,34 @@
 <template>
-<transition name="fade" mode="out-in">
-  <div
-    id="quarantaene"
-    :class="classValue"
-    v-if="loaded"
-  >
+  <transition name="fade" mode="out-in">
     <div
-      v-if="$route.path != '/'"
-      id="rotate-screen-message"
+      v-if="loaded"
+      id="quarantaene"
+      :class="classValue"
     >
-      <span>Please rotate<br>your screen!</span>
+      <div
+        v-if="$route.path != '/'"
+        id="rotate-screen-message"
+      >
+        <span>Please rotate<br>your screen!</span>
+      </div>
+      <transition name="fade" mode="out-in">
+        <Menu v-if="showMenu" />
+      </transition>
+      <nuxt />
+      <Livestream v-if="$store.state.questions.firstQuestionAnswered" />
+      <transition name="fade">
+        <Timetable v-if="$store.state.showTimetable" />
+      </transition>
+      <transition name="fade" mode="out-in">
+        <FooterMenu v-if="showMenu && $route.name === 'mainfloor'" />
+      </transition>
+      <div id="imprint">
+        <nuxt-link to="/imprint" class="allcaps" :class="{ 'black-type': $route.name == 'index' }">
+          Imprint
+        </nuxt-link>
+      </div>
     </div>
-    <transition name="fade" mode="out-in">
-      <Menu v-if="showMenu" />
-    </transition>
-    <nuxt />
-    <Livestream v-if="$store.state.questions.firstQuestionAnswered" />
-    <transition name="fade">
-      <Timetable v-if="$store.state.showTimetable" />
-    </transition>
-    <transition name="fade" mode="out-in">
-      <FooterMenu v-if="showMenu && $route.name === 'mainfloor'" />
-    </transition>
-    <div id="imprint">
-      <nuxt-link to="/imprint" class="allcaps" :class="{ 'black-type': $route.name == 'index' }">Imprint</nuxt-link>
-    </div>
-  </div>
-</transition>
+  </transition>
 </template>
 <script>
 import moment from 'moment-timezone'

@@ -17,24 +17,26 @@
             {{ message.message }}
           </span>
           <div
-            class="sender"
             v-if="!message.goodByeMessage"
-          >Cubicle {{ message.bathroomNo }}</div>
+            class="sender"
+          >
+            Cubicle {{ message.bathroomNo }}
+          </div>
         </li>
       </ul>
     </div>
     <div class="chatroom--footer">
       <div class="input-area message-look">
         <input
+          v-model="message"
           type="text"
           placeholder="Write a message..."
-          v-model="message"
         >
         <input
-          @click="sendMsg(false)"
           type="submit"
           value="Send"
           :disabled="locked"
+          @click="sendMsg(false)"
         >
       </div>
       <div class="chatroom--footer-emojis" :class="{ 'inactive': emojisClicked }">
@@ -84,6 +86,24 @@ export default {
         }, 100)
       }
     }
+  },
+  // beforeMount () {
+  //   if (!this.$store.state.oldState.questions.firstQuestionAnswered && this.$store.state.oldState.lockRooms) {
+  //     this.$router.push({ path: '/line' })
+  //   }
+  // },
+  mounted () {
+    document.addEventListener('keypress', this.handleEnter)
+    const vm = this
+    vm.bathroomNo = vm.$route.params.bathroom
+    vm.filter = new Filter()
+    // vm.filter.addWords(vm.additionalBadWords)
+    this.timeout = setTimeout(() => { vm.kickMeOut() }, 300000) // 5min
+  },
+  beforeDestroy () {
+    document.removeEventListener('keypress', this.handleEnter)
+    clearTimeout(this.timeout)
+    // this.sendMsg(true)
   },
   methods: {
     kickMeOut () {
@@ -153,24 +173,6 @@ export default {
         this.sendMsg(false)
       }
     }
-  },
-  // beforeMount () {
-  //   if (!this.$store.state.oldState.questions.firstQuestionAnswered && this.$store.state.oldState.lockRooms) {
-  //     this.$router.push({ path: '/line' })
-  //   }
-  // },
-  mounted () {
-    document.addEventListener('keypress', this.handleEnter)
-    const vm = this
-    vm.bathroomNo = vm.$route.params.bathroom
-    vm.filter = new Filter()
-    // vm.filter.addWords(vm.additionalBadWords)
-    this.timeout = setTimeout(() => { vm.kickMeOut() }, 300000) // 5min
-  },
-  beforeDestroy () {
-    document.removeEventListener('keypress', this.handleEnter)
-    clearTimeout(this.timeout)
-    // this.sendMsg(true)
   },
   sockets: {
     newMessage (msg) {

@@ -1,9 +1,13 @@
 <template>
-  <div class="question-wrapper" v-if="index === $store.state.content.currentQuestion">
-    <div class="question" v-html="question"/>
+  <div v-if="index === $store.state.content.currentQuestion" class="question-wrapper">
+    <div class="question" v-html="question" />
     <div class="buttons">
-      <button @click="handleClick(true)">Yes</button>
-      <button @click="handleClick(false)">No</button>
+      <button @click="handleClick(true)">
+        Yes
+      </button>
+      <button @click="handleClick(false)">
+        No
+      </button>
     </div>
   </div>
 </template>

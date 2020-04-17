@@ -5,8 +5,8 @@
       <Countdown v-if="showCountdown" />
       <Newsletter v-if="$store.state.content.data.settings.showNewsletter" />
       <div
-        class="splashpage-text"
         v-if="$store.state.content.data.content.text"
+        class="splashpage-text"
         v-html="$store.state.content.data.content.text"
       />
     </div>

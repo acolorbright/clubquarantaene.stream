@@ -1,5 +1,5 @@
 <template>
-  <div class="live-interaction" ref="liveInteraction" />
+  <div ref="liveInteraction" class="live-interaction" />
 </template>
 <script>
 export default {
@@ -17,6 +17,9 @@ export default {
     min () {
       return 50000 / this.$store.state.oldState.users
     }
+  },
+  mounted () {
+    this.startLoop()
   },
   methods: {
     spawnPlusOne () {
@@ -37,9 +40,6 @@ export default {
         vm.startLoop()
       }, rand)
     }
-  },
-  mounted () {
-    this.startLoop()
   }
 }
 </script>

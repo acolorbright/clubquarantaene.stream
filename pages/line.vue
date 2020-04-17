@@ -1,7 +1,11 @@
 <template>
   <div class="entry center-layout large-type green-type">
-    <div class="allcaps">You are in line.</div>
-    <div class="countdown"><span>:</span>{{ countdown }}<span>s</span></div>
+    <div class="allcaps">
+      You are in line.
+    </div>
+    <div class="countdown">
+      <span>:</span>{{ countdown }}<span>s</span>
+    </div>
   </div>
 </template>
 
@@ -19,14 +23,6 @@ export default {
       interval: null
     }
   },
-  methods: {
-    startCountdown () {
-      const vm = this
-      vm.interval = setInterval(() => {
-        vm.countdown -= 1
-      }, 1000)
-    }
-  },
   watch: {
     countdown (val) {
       if (val === 0) {
@@ -37,6 +33,14 @@ export default {
   },
   mounted () {
     this.startCountdown()
+  },
+  methods: {
+    startCountdown () {
+      const vm = this
+      vm.interval = setInterval(() => {
+        vm.countdown -= 1
+      }, 1000)
+    }
   }
 }
 </script>

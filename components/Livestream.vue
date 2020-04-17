@@ -33,6 +33,17 @@ export default {
       }
     }
   },
+  watch: {
+    $route (to) {
+      if (to.name === 'mainfloor') {
+        this.player.play()
+        this.player.setVolume(100)
+      } else {
+        this.player.play()
+        this.player.setVolume(30)
+      }
+    }
+  },
   mounted () {
     this.player = new YTPlayer('#player', this.options)
     this.player.load(this.options.videoId, true)
@@ -46,17 +57,6 @@ export default {
     })
     if (this.$route.name !== 'mainfloor') {
       this.player.setVolume(10)
-    }
-  },
-  watch: {
-    $route (to) {
-      if (to.name === 'mainfloor') {
-        this.player.play()
-        this.player.setVolume(100)
-      } else {
-        this.player.play()
-        this.player.setVolume(30)
-      }
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <transition name="fade" mode="out-in">
-    <div id="quarantaene" v-if="loaded">
+    <div v-if="loaded" id="quarantaene">
       <!-- <div @click="accessDeviceMotion" style="position: fixed; top: 0px; left: 0px; padding: 1rem; background: blue; color: white; cursor:pointer;">Enable Device Motion</div> -->
       <transition name="fade" mode="out-in">
         <Menu v-if="showMenu" />
@@ -14,7 +14,9 @@
         <Timetable v-if="$store.state.oldState.showTimetable" />
       </transition>
       <div id="imprint">
-        <nuxt-link to="/imprint" class="allcaps" :class="{ 'black-type': $route.name == 'index' }">Imprint</nuxt-link>
+        <nuxt-link to="/imprint" class="allcaps" :class="{ 'black-type': $route.name == 'index' }">
+          Imprint
+        </nuxt-link>
       </div>
     </div>
   </transition>
@@ -54,6 +56,11 @@ export default {
       return this.$route.path === '/mainfloor'
     }
   },
+  mounted () {
+    console.log(this.$route.path)
+    this.fetchData()
+    // this.accessDeviceMotion()
+  },
   methods: {
     fetchData () {
       // axios.get('http://localhost:8888')
@@ -85,11 +92,6 @@ export default {
         })
         .catch(console.error)
     }
-  },
-  mounted () {
-    console.log(this.$route.path)
-    this.fetchData()
-    // this.accessDeviceMotion()
   },
   sockets: {
     userCount (userCount) {

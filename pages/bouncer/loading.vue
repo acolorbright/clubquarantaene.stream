@@ -15,7 +15,9 @@
       </div>
       <div v-else>
         Sorry, not today.
-        <nuxt-link to="/line" class="button-link">Try again</nuxt-link>
+        <nuxt-link to="/line" class="button-link">
+          Try again
+        </nuxt-link>
       </div>
     </div>
   </div>

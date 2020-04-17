@@ -26,9 +26,8 @@
   </transition>
 </template>
 <script>
-import axios from 'axios';
 import moment from 'moment-timezone';
-// Components
+
 import Menu from '../components/Menu.vue';
 import FooterMenu from '../components/FooterMenu.vue';
 import Livestream from '../components/Livestream.vue';
@@ -67,8 +66,7 @@ export default {
   },
   methods: {
     fetchData() {
-      // axios.get('http://localhost:8888')
-      axios.get('https://cms.clubquarantaene.stream').then(res => {
+      this.$axios.get('https://cms.clubquarantaene.stream').then(res => {
         this.$store.commit('setContent', res.data.data);
         this.loaded = true;
         const vm = this;

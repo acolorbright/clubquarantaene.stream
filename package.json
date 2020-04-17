@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/device": "^1.2.7",
     "@nuxtjs/dotenv": "^1.4.0",
     "bad-words": "^3.0.3",
     "eslint-config-prettier": "^6.10.1",

@@ -75,7 +75,7 @@ export default {
   css: ['@/assets/scss/main.scss'],
   plugins: ['~/plugins/components.js'],
   buildModules: ['@nuxtjs/eslint-module'],
-  modules: ['@nuxtjs/axios', '@nuxtjs/dotenv'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/dotenv', '@nuxtjs/device'],
   axios: {},
   build: {
     extend(config, ctx) {}

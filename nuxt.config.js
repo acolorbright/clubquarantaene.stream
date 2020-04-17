@@ -1,3 +1,9 @@
+const isDev = process.env.NODE_ENV !== 'production';
+const FRONTEND_URL = isDev
+  ? 'http://localhost:3000'
+  : 'https://clubquarantaene.stream';
+const OG_IMAGE_URL = `${FRONTEND_URL}/og_image.jpg`;
+
 export default {
   mode: 'spa',
   server: {
@@ -20,7 +26,7 @@ export default {
       },
       {
         property: 'og:url',
-        content: 'https://clubquarantaene.stream/'
+        content: `${FRONTEND_URL}/`
       },
       {
         property: 'og:title',
@@ -32,7 +38,7 @@ export default {
       },
       {
         property: 'og:image',
-        content: 'https://clubquarantaene.stream/og_image.jpg'
+        content: OG_IMAGE_URL
       },
       {
         property: 'twitter:card',
@@ -40,7 +46,7 @@ export default {
       },
       {
         property: 'twitter:url',
-        content: 'https://clubquarantaene.stream/'
+        content: `${FRONTEND_URL}/`
       },
       {
         property: 'twitter:title',
@@ -52,7 +58,7 @@ export default {
       },
       {
         property: 'twitter:image',
-        content: 'https://clubquarantaene.stream/og_image.jpg'
+        content: OG_IMAGE_URL
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=2' }],

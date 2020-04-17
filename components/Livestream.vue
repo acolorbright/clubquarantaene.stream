@@ -22,7 +22,7 @@ export default {
       options: {
         height: '315',
         width: '560',
-        videoId: '5qXEI79LmTw',
+        videoId: process.env.YOUTUBE_VIDEO_ID,
         controls: false,
         autoplay: true,
         fullscreen: false,
@@ -35,13 +35,13 @@ export default {
   },
   watch: {
     $route(to) {
-      if (to.name === 'mainfloor') {
-        this.player.play();
-        this.player.setVolume(100);
-      } else {
-        this.player.play();
-        this.player.setVolume(30);
-      }
+      // if (to.name === 'mainfloor') {
+      //   this.player.play();
+      //   this.player.setVolume(100);
+      // } else {
+      //   this.player.play();
+      //   this.player.setVolume(30);
+      // }
     }
   },
   mounted() {

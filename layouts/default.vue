@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      granted: true,
+      granted: false,
       loaded: false
     };
   },
@@ -60,13 +60,12 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.path);
     this.fetchData();
     // this.accessDeviceMotion()
   },
   methods: {
     fetchData() {
-      this.$axios.get('https://cms.clubquarantaene.stream').then(res => {
+      this.$axios.get(process.env.BACKEND_CMS_URL).then(res => {
         this.$store.commit('setContent', res.data.data);
         this.loaded = true;
         const vm = this;

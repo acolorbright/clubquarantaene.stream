@@ -22,8 +22,6 @@
         @playing="onPlaying"
         @ready="onReady"
       />
-      <button @click="playVideo">play</button>
-      <button @click="pauseVideo">pause</button>
     </div>
   </div>
 </template>

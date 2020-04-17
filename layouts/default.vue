@@ -9,7 +9,6 @@
         <FooterMenu v-if="showFooterMenu" />
       </transition>
       <Livestream v-if="granted" />
-      <Live />
       <nuxt />
       <transition name="fade">
         <Timetable v-if="$store.state.oldState.showTimetable" />

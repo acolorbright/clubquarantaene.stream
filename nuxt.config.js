@@ -63,9 +63,6 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=2' }],
     script: [
       {
-        src: 'https://www.youtube.com/iframe_api'
-      },
-      {
         src: '//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'
       },
       {

@@ -5207,11 +5207,6 @@ load-json-file@^2.0.0:
     pify "^2.0.0"
     strip-bom "^3.0.0"
 
-load-script2@^2.0.1:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/load-script2/-/load-script2-2.0.4.tgz#b081952e4ccf4db2adddb7889507e2f0465dbfcf"
-  integrity sha512-WzZ2Df8QvWwGdjcJ7BYqcaojHGBC+Dg3oFsBg8gyz/mGyjCduBKdja+HkRo7BHoqt8sV5oil1Bc6Eyq6e40jfg==
-
 load-script@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/load-script/-/load-script-1.0.0.tgz#0491939e0bee5643ee494a7e3da3d2bac70c6ca4"
@@ -9347,10 +9342,3 @@ youtube-player@^5.4.0:
     debug "^2.6.6"
     load-script "^1.0.0"
     sister "^3.0.0"
-
-yt-player@^3.4.3:
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/yt-player/-/yt-player-3.4.3.tgz#88c0f2fb9a5c7b85a75930dee81bf3aa21480393"
-  integrity sha512-Ke5oM+qW8CR6aaK40mTxBff3hS4DXjyfmFkjg3eoaGt8fWQGyKFOFIpZqzNTR5c7Lu+xAG9SIvxCvbBPhCBbPg==
-  dependencies:
-    load-script2 "^2.0.1"

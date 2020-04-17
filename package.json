@@ -32,8 +32,7 @@
     "vue-socket.io": "^3.0.7",
     "vue-socket.io-extended": "^4.0.1",
     "vue-window-size": "^0.2.5",
-    "vue-youtube": "^1.4.0",
-    "yt-player": "^3.4.3"
+    "vue-youtube": "^1.4.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",

@@ -69,6 +69,7 @@ export default {
     // create a callback for when
     // the performance state changes
     this.api.onStateChange((newState) => {
+      // TODO: Move to store
       switch (newState) {
         case OffworldPerformance.PerformanceWaitingForStart:
           // waiting for start

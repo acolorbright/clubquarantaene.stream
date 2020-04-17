@@ -73,8 +73,17 @@ export default {
     color: '#fff'
   },
   css: ['@/assets/scss/main.scss'],
-  plugins: ['~/plugins/components.js'],
-  buildModules: ['@nuxtjs/eslint-module'],
+  plugins: [
+    {
+      src: '~/plugins/vue-gtag.js',
+      mode: 'client'
+    },
+    {
+      src: '~/plugins/vue-socket.js',
+      mode: 'client'
+    }
+  ],
+  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/moment'],
   modules: ['@nuxtjs/axios', '@nuxtjs/dotenv', '@nuxtjs/device'],
   axios: {},
   build: {

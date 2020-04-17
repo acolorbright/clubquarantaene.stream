@@ -23,7 +23,8 @@ export default {
         height: '315',
         width: '560',
         videoId: '5qXEI79LmTw',
-        controls: 0,
+        controls: false,
+        autoplay: true,
         fullscreen: false,
         keyboard: false,
         modestBranding: true,
@@ -33,8 +34,8 @@ export default {
     }
   },
   mounted () {
-    this.player = new YTPlayer('#player')
-    this.player.load(this.options.videoId, this.options)
+    this.player = new YTPlayer('#player', this.options)
+    this.player.load(this.options.videoId, true)
     this.player.play()
     const vm = this
     this.player.on('unstarted', () => {

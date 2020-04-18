@@ -1,33 +1,30 @@
-#livestream {
+.livestream {
   transition: opacity 1000ms ease;
 
-  .video {
-    &-controls {
-      cursor: progress;
-      left: 50%;
-      position: absolute;
-      top: 50%;
+  &-player {}
+  &-controls {
+    button {
+      cursor: pointer;
     }
   }
 
-  .embed-iframe-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    overflow: hidden;
-    padding-top: 56.25%;
-    z-index: 1;
-    display: flex;
-  }
-  .embed-iframe, iframe {
-    position: absolute;
-    top: 4em;
-    right: 1.5em;
-    width: calc(100vw - 3em);
-    height: calc(100vh - 10em);
 
-    // pointer-events: none;
-    border-radius: 15px;
-  }
+  // .embed-iframe-wrapper {
+  //   display: flex;
+  //   left: 0;
+  //   overflow: hidden;
+  //   padding-top: 56.25%;
+  //   position: fixed;
+  //   top: 0;
+  //   width: 100vw;
+  //   z-index: 1;
+  // }
+  // .embed-iframe, iframe {
+  //   border-radius: 15px;
+  //   height: calc(100vh - 10em);
+  //   position: absolute;
+  //   right: 1.5em;
+  //   top: 4em;
+  //   width: calc(100vw - 3em);
+  // }
 }

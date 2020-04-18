@@ -1,6 +1,7 @@
 const state = () => ({
   aspectRatio: '169',
   delay: 0,
+  frameRate: 0,
   is360: true,
   isMoving: false,
   isMuted: false,

@@ -1,6 +1,15 @@
 #livestream {
-  // pointer-events: none;
   transition: opacity 1000ms ease;
+
+  .video {
+    &-controls {
+      cursor: progress;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+    }
+  }
+
   .embed-iframe-wrapper {
     position: fixed;
     top: 0;
@@ -15,63 +24,10 @@
     position: absolute;
     top: 4em;
     right: 1.5em;
-    // min-width: 100%;
-    // min-height: 100%;
     width: calc(100vw - 3em);
     height: calc(100vh - 10em);
-    @media (min-width: 1024px) {
-      height: calc(100vh - 11rem);
-    }
-    @media (min-width: 1280px) {
-      height: calc(100vh - 8.5em);
-    }
+
     // pointer-events: none;
     border-radius: 15px;
   }
 }
-
-* {
-  box-sizing: border-box;
-}
-// .video-background {
-//   background: #000;
-//   position: fixed;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   z-index: -99;
-// }
-// .video-foreground,
-// .video-background iframe {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   // pointer-events: none;
-// }
-
-// @media (min-aspect-ratio: 16/9) {
-//   .video-foreground {
-//     height: 300%;
-//     top: -100%;
-//   }
-// }
-// @media (max-aspect-ratio: 16/9) {
-//   .video-foreground {
-//     width: 300%;
-//     left: -100%;
-//   }
-// }
-// @media all and (max-width: 600px) {
-//   .vid-info {
-//     width: 50%;
-//     padding: 0.5rem;
-//   }
-// }
-// @media all and (max-width: 500px) {
-//   .vid-info .acronym {
-//     display: none;
-//   }
-// }

@@ -30,14 +30,16 @@
 export default {
   data() {
     return {
+      // player parameters: https://developers.google.com/youtube/player_parameters.html?playerVersion=HTML5
       playerVars: {
-        autoplay: false,
-        captions: false,
-        controls: false,
-        fullscreen: false,
-        keyboard: false,
-        modestBranding: true,
-        playsInline: true
+        autoplay: 0,
+        captions: 0,
+        controls: 0,
+        fullscreen: 0,
+        keyboard: 0,
+        modestBranding: 1,
+        playsInline: 1,
+        showinfo: 0
       },
       videoId: process.env.YOUTUBE_VIDEO_ID
     };
@@ -71,9 +73,33 @@ export default {
     },
     onPlaying() {
       console.log('onPlaying');
+      this.player.setVolume(0);
     },
     onReady() {
       console.log('onReady');
+    },
+    async getPlaybackQuality() {
+      const playerQuality = await this.player.getPlaybackQuality();
+      console.log(playerQuality);
+    },
+    async getPlayerState() {
+      // -1 – nicht gestartet
+      // 0 – beendet
+      // 1 – wird wiedergegeben
+      // 2 – pausiert
+      // 3 – wird gepuffert
+      // 5 – Video positioniert
+      const playerState = await this.player.getPlayerState();
+      console.log(playerState);
+    },
+    panVideo() {
+      const yaw = 0;
+      const pitch = 0;
+
+      this.player.setSphericalProperties({
+        yaw,
+        pitch
+      });
     }
   }
 };

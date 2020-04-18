@@ -1,5 +1,5 @@
 <template>
-  <div class="newsletter-signup">
+  <div class="newsletter">
     <!-- Begin Mailchimp Signup Form -->
     <div id="mc_embed_signup">
       <form
@@ -58,28 +58,3 @@
     <!--End mc_embed_signup-->
   </div>
 </template>
-<script>
-export default {
-  mounted() {
-    // /* eslint-disable */
-    // (function($) {
-    //   window.fnames = new Array();
-    //   window.ftypes = new Array();
-    //   fnames[0] = "EMAIL";
-    //   ftypes[0] = "email";
-    //   fnames[1] = "FNAME";
-    //   ftypes[1] = "text";
-    //   fnames[2] = "LNAME";
-    //   ftypes[2] = "text";
-    //   fnames[3] = "ADDRESS";
-    //   ftypes[3] = "address";
-    //   fnames[4] = "PHONE";
-    //   ftypes[4] = "phone";
-    //   fnames[5] = "BIRTHDAY";
-    //   ftypes[5] = "birthday";
-    // })(window.jQuery);
-    // var $mcj = window.jQuery.noConflict(true);
-    // /* eslint-enable */
-  }
-};
-</script>

@@ -68,10 +68,10 @@ export default {
       this.$axios.get(process.env.CMS_URL).then(res => {
         this.$store.commit('setContent', res.data.data);
         this.loaded = true;
-        const vm = this;
-        setInterval(() => {
-          vm.checkIfEventIsRunning();
-        }, 1000);
+        // const vm = this;
+        // setInterval(() => {
+        //   vm.checkIfEventIsRunning();
+        // }, 1000);
       });
     },
     checkIfEventIsRunning() {

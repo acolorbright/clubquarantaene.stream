@@ -34,10 +34,10 @@ export default {
   },
   methods: {
     startCountdown() {
-      const vm = this;
-      vm.interval = setInterval(() => {
-        vm.countdown -= 1;
-      }, 1000);
+      // const vm = this;
+      // vm.interval = setInterval(() => {
+      //   vm.countdown -= 1;
+      // }, 1000);
     }
   }
 };

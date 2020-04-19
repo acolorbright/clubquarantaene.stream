@@ -4,7 +4,7 @@
     <div class="livestream-controls">
       <button @click="playVideo">play</button>
       <button @click="pauseVideo">pause</button>
-      <button @click="panVideo">pan</button>
+      <button @click="resetCamera">reset camera</button>
     </div>
   </div>
 </template>
@@ -28,7 +28,9 @@ export default {
         rel: 0,
         showinfo: 0
       },
-      videoId: process.env.YOUTUBE_VIDEO_ID
+      videoId: process.env.YOUTUBE_VIDEO_ID,
+      cameraIsAnimating: false,
+      cameraInitialTime: null
     };
   },
   mounted() {
@@ -98,6 +100,63 @@ export default {
         yaw,
         pitch
       });
+    },
+    resetCamera() {
+      this.animatedVideoPan(0, 0);
+    },
+    animatedVideoPan(targetYaw, targetPitch) {
+      const springConstant = -0.8;
+
+      const panCamera = () => {
+        const currentSetting = this.player.getSphericalProperties();
+        const currentYaw = currentSetting.yaw;
+        const currentPitch = currentSetting.pitch;
+        const currentTime = performance.now();
+
+        if (!this.cameraInitialTime) {
+          if (currentSetting.yaw !== null) {
+            this.cameraInitialTime = currentTime;
+            this.cameraIsAnimating = true;
+          }
+        }
+
+        if (this.cameraIsAnimating) {
+          let yawDiff = targetYaw - currentYaw;
+          if (yawDiff > 180) {
+            yawDiff -= 360;
+          } else if (yawDiff < -180) {
+            yawDiff += 360;
+          }
+          const pitchDiff = targetPitch - currentPitch;
+
+          if (Math.max(Math.abs(yawDiff), Math.abs(pitchDiff)) < 1) {
+            this.cameraIsAnimating = false;
+          }
+
+          const deltaTime = (currentTime - this.cameraInitialTime) / 1000;
+
+          let newYaw =
+            targetYaw - yawDiff * Math.exp(springConstant * deltaTime);
+          newYaw = ((newYaw % 360) + 360) % 360;
+
+          const newPitch =
+            targetPitch - pitchDiff * Math.exp(springConstant * deltaTime);
+
+          this.player.setSphericalProperties({
+            yaw: newYaw,
+            pitch: newPitch,
+            enableOrientationSensor: false
+          });
+        }
+
+        if (this.cameraIsAnimating) {
+          requestAnimationFrame(panCamera);
+        } else {
+          this.cameraInitialTime = null;
+        }
+      };
+
+      panCamera();
     }
   }
 };

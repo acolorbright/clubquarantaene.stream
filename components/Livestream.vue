@@ -47,10 +47,10 @@ export default {
             onPlaybackQualityChange: this.onPlaybackQualityChange,
             onError: this.onError
           },
-          height: '360',
+          height: '180',
           playerVars: this.playerVars,
           videoId: this.videoId,
-          width: '640'
+          width: '320'
         });
       }
     },
@@ -65,14 +65,15 @@ export default {
     onReady() {
       console.log('onReady');
     },
-    onStateChange() {
+    onStateChange(playerState) {
       // -1 (UNSTARTED)
       // 0 (ENDED) YT.PlayerState.ENDED
       // 1 (PLAYING) YT.PlayerState.PLAYING
       // 2 (PAUSED) YT.PlayerState.PAUSED
       // 3 (BUFFERING) YT.PlayerState.BUFFERING
       // 5 (CUED) YT.PlayerState.CUED
-      console.log('onStateChange');
+      console.log('onStateChange', playerState.data);
+      this.player.setVolume(0);
     },
     onPlaybackQualityChange() {},
     onError() {
@@ -87,47 +88,32 @@ export default {
     onPlaying() {
       console.log('onPlaying');
     },
-    panVideo() {
-      const rotationDuration = 20; // 20 seconds per rotation
-      const yaw = ((performance.now() / 1000 / rotationDuration) * 360) % 360;
-
-      const cyclesPerRotation = 2; // 2 up-down cycle per rotation
-      const pitch =
-        rotationDuration *
-        Math.sin(((cyclesPerRotation * yaw) / 360) * 2 * Math.PI);
-
-      this.player.setSphericalProperties({
-        yaw,
-        pitch
-      });
-    },
     resetCamera() {
-      this.animatedVideoPan(0, 0);
+      this.animatedCameraPan(0, 0);
     },
-    animatedVideoPan(targetYaw, targetPitch) {
+    animatedCameraPan(targetYaw, targetPitch) {
       const springConstant = -0.8;
 
       const panCamera = () => {
-        const currentSetting = this.player.getSphericalProperties();
-        const currentYaw = currentSetting.yaw;
-        const currentPitch = currentSetting.pitch;
+        const currentSphericalProperties = this.player.getSphericalProperties();
+        const { yaw, pitch } = currentSphericalProperties;
         const currentTime = performance.now();
 
         if (!this.cameraInitialTime) {
-          if (currentSetting.yaw !== null) {
+          if (yaw !== null) {
             this.cameraInitialTime = currentTime;
             this.cameraIsAnimating = true;
           }
         }
 
         if (this.cameraIsAnimating) {
-          let yawDiff = targetYaw - currentYaw;
+          let yawDiff = targetYaw - yaw;
           if (yawDiff > 180) {
             yawDiff -= 360;
           } else if (yawDiff < -180) {
             yawDiff += 360;
           }
-          const pitchDiff = targetPitch - currentPitch;
+          const pitchDiff = targetPitch - pitch;
 
           if (Math.max(Math.abs(yawDiff), Math.abs(pitchDiff)) < 1) {
             this.cameraIsAnimating = false;

@@ -45,10 +45,10 @@ export default {
     }
   },
   beforeMount() {
-    const vm = this;
-    setInterval(() => {
-      vm.currentTime = moment().tz('Europe/Berlin');
-    }, 1000);
+    // const vm = this;
+    // setInterval(() => {
+    //   vm.currentTime = moment().tz('Europe/Berlin');
+    // }, 1000);
   }
 };
 </script>

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h3 v-if="!showCountdown">{{ data.title }} ({{ data.type }})</h3>
+    <h3 v-if="!showCountdown" class="start-gradient">
+      {{ data.title }} ({{ data.type }})
+    </h3>
     <QueueCountdown v-else />
   </div>
 </template>

@@ -6,9 +6,9 @@
         <Menu v-if="showMenu" />
       </transition>
       <transition name="fade" mode="out-in">
-        <FooterMenu v-if="showFooterMenu" />
+        <FooterMenu v-if="isMainfloor" />
       </transition>
-      <Livestream v-if="granted" />
+      <Livestream v-if="showLivestream" />
       <nuxt />
       <transition name="fade">
         <Timetable v-if="$store.state.oldState.showTimetable" />
@@ -55,8 +55,11 @@ export default {
         this.$route.path !== '/bouncer'
       );
     },
-    showFooterMenu() {
+    isMainfloor() {
       return this.$route.path === '/mainfloor';
+    },
+    showLivestream() {
+      return this.granted && this.isMainfloor;
     }
   },
   mounted() {

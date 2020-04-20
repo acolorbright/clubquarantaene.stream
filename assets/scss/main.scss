@@ -10,7 +10,8 @@
 @import 'transitions';
 
 // components
-@import 'components/queue';
+@import 'components/queue/index.scss';
+@import 'components/queue/start.scss';
 @import 'components/chatroom';
 @import 'components/livestream';
 @import 'components/logo';

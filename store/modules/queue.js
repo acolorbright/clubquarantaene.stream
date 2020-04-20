@@ -2,32 +2,37 @@ const state = () => ({
   activeStepIndex: 0,
   steps: [
     {
-      title: 'Start',
+      title: 'You are in line.',
       type: 'start',
       isValidated: false
     },
     {
-      title: 'Info 1',
+      title: 'How this works',
+      text: 'Text text text',
       type: 'info',
       isValidated: false
     },
     {
-      title: 'Info 2',
+      title: 'House rules',
+      text: 'Text text text',
       type: 'info',
       isValidated: false
     },
     {
-      title: 'Question 1',
+      title: 'Do you know who’s playing tonight',
+      text: 'Text text text',
       type: 'question',
       isValidated: false
     },
     {
-      title: 'Question 2',
+      title: 'Do you accept cookies?',
+      text: 'Text text text',
       type: 'question',
       isValidated: false
     },
     {
       title: 'Decision',
+      text: 'Text text text',
       type: 'decision',
       isValidated: false
     }

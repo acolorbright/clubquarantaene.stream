@@ -1,14 +1,22 @@
 <template>
-  <div class="step step-decision">
-    decision
+  <div>
+    <h3>{{ title }} ({{ type }})</h3>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    stepIndex: {
-      type: Number,
+    active: {
+      type: Boolean,
+      default: false
+    },
+    title: {
+      type: String,
+      default: ''
+    },
+    type: {
+      type: String,
       default: null
     }
   }

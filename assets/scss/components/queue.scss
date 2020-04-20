@@ -1,4 +1,8 @@
 .queue {
+    &-step {
+        border: 2px solid red;
+    }
+
     .wizard {
         border: 2px solid red;
 
@@ -8,12 +12,13 @@
             display: none;
         }
         &-card-footer {
-            border: 2px solid red;
             display: flex;
             justify-content: center;
         }
-        &-navigation {
-            border: 2px solid red;
+        &-tab {
+            &-content {}
+            &-container {}
+            &-component {}
         }
     }
 }

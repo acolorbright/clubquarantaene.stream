@@ -1,6 +1,6 @@
 <template>
   <div class="queue">
-    <div>{{ activeStepIndex }} / {{ steps.length }}</div>
+    <div>{{ activeStepIndex + 1 }} / {{ steps.length }}</div>
 
     <form-wizard
       ref="formWizard"
@@ -21,7 +21,6 @@
       <tab-content
         v-for="(step, stepIndex) in steps"
         :key="step.title"
-        :title="step.title"
         :before-change="beforeChangeTab"
       >
         <transition name="fade" mode="out-in">
@@ -29,9 +28,10 @@
             :is="step.type"
             v-if="stepIndex === activeStepIndex"
             :active="stepIndex === activeStepIndex"
-            :step-index="stepIndex"
-            :form="$refs.formWizard"
-            class="wizard-tab-component"
+            :title="step.title"
+            :type="step.type"
+            class="queue-step wizard-tab-component"
+            :class="`queue-step--${step.type}`"
           />
         </transition>
       </tab-content>

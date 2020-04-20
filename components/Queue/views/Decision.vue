@@ -1,6 +1,7 @@
 <template>
   <div>
     <h3>{{ data.title }} ({{ data.type }})</h3>
+    <p>{{ data.text }}</p>
   </div>
 </template>
 

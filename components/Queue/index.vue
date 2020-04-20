@@ -33,6 +33,7 @@
             :step-index="stepIndex"
             class="queue-step wizard-tab-component"
             :class="`queue-step--${step.type}`"
+            :form="$refs.formWizard"
           />
         </transition>
       </tab-content>

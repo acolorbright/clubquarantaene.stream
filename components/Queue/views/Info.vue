@@ -1,10 +1,13 @@
 <template>
   <div>
     <h3>{{ data.title }} ({{ data.type }})</h3>
+    <p>{{ data.text }}</p>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   props: {
     active: {
@@ -19,6 +22,19 @@ export default {
       type: Object,
       default: null
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.setStepIsValid({
+        index: this.stepIndex,
+        isValidated: true
+      });
+    }, 1500);
+  },
+  methods: {
+    ...mapActions({
+      setStepIsValid: 'setStepIsValid'
+    })
   }
 };
 </script>

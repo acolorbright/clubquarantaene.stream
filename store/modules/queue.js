@@ -2,7 +2,7 @@ const state = () => ({
   activeStepIndex: 0,
   steps: [
     {
-      title: 'You are in line.',
+      title: 'Club Quarantäne',
       type: 'start',
       isValidated: false
     },

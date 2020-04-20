@@ -1,21 +1,16 @@
 <template>
   <div>
-    <Logo v-if="!data.isValidated" />
-    <div v-else>
-      <h3>{{ data.title }} ({{ data.type }})</h3>
-      <QueueCountdown />
-    </div>
+    <h3 v-if="!showCountdown">{{ data.title }} ({{ data.type }})</h3>
+    <QueueCountdown v-else />
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 import QueueCountdown from '../QueueCountdown.vue';
-import Logo from '~/components/Logo.vue';
 
 export default {
   components: {
-    Logo,
     QueueCountdown
   },
   props: {
@@ -30,20 +25,36 @@ export default {
     data: {
       type: Object,
       default: null
+    },
+    form: {
+      type: Object,
+      default: null
     }
   },
+  data() {
+    return {
+      showCountdown: false
+    };
+  },
   mounted() {
+    setTimeout(() => {
+      this.showCountdown = true;
+    }, 1500);
+
     setTimeout(() => {
       this.setStepIsValid({
         index: this.stepIndex,
         isValidated: true
       });
-    }, 1000);
+    }, 3000);
   },
   methods: {
     ...mapActions({
       setStepIsValid: 'setStepIsValid'
-    })
+    }),
+    goToNextTab() {
+      this.form.nextTab();
+    }
   }
 };
 </script>

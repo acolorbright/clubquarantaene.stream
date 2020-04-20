@@ -1,5 +1,8 @@
 <template>
-  <div>:{{ countdown }}</div>
+  <div>
+    You are in line.
+    <div>:{{ countdown }}</div>
+  </div>
 </template>
 
 <script>

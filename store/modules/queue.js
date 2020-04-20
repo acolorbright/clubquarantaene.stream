@@ -1,10 +1,34 @@
 const state = () => ({
-  activeStep: 0,
+  activeStepIndex: 0,
   steps: [
     {
-      component: 'Start',
       title: 'Start',
-      key: 'start-step',
+      type: 'start',
+      isValidated: false
+    },
+    {
+      title: 'Info 1',
+      type: 'info',
+      isValidated: false
+    },
+    {
+      title: 'Info 2',
+      type: 'info',
+      isValidated: false
+    },
+    {
+      title: 'Question 1',
+      type: 'question',
+      isValidated: false
+    },
+    {
+      title: 'Question 2',
+      type: 'question',
+      isValidated: false
+    },
+    {
+      title: 'Decision',
+      type: 'decision',
       isValidated: false
     }
   ]
@@ -12,7 +36,7 @@ const state = () => ({
 
 const mutations = {
   setActiveIndex(state, index) {
-    state.activeIndex = index;
+    state.activeStepIndex = index;
   },
   setStepIsValid(state, { index, isValidated }) {
     state.steps[index].isValidated = isValidated;

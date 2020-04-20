@@ -1,6 +1,7 @@
 <template>
   <div>
-    steps
+    {{ activeStepIndex }}
+
     <form-wizard
       ref="formWizard"
       title=""
@@ -19,18 +20,18 @@
       @on-validate="onValidate"
     >
       <tab-content
-        v-for="(tab, tabIndex) in steps"
-        :key="tab.title"
-        :title="tab.title"
+        v-for="(step, stepIndex) in steps"
+        :key="step.title"
+        :title="step.title"
         :before-change="beforeChangeTab"
       >
         <transition name="fade-short" mode="out-in">
           <component
-            :is="tab.component"
-            v-show="tabIndex === activeStepIndex"
+            :is="step.type"
+            v-show="stepIndex === activeStepIndex"
             class="wizard-tab-component"
-            :active="tabIndex === activeStepIndex"
-            :step-index="tabIndex"
+            :active="stepIndex === activeStepIndex"
+            :step-index="stepIndex"
             :form="$refs.formWizard"
           />
         </transition>
@@ -42,10 +43,16 @@
 <script>
 import { mapActions } from 'vuex';
 import Start from './steps/Start.vue';
+import Info from './steps/Info.vue';
+import Question from './steps/Question.vue';
+import Decision from './steps/Decision.vue';
 
 export default {
   components: {
-    Start
+    Start,
+    Info,
+    Question,
+    Decision
   },
   computed: {
     nextButtonText() {
@@ -69,26 +76,23 @@ export default {
     handleTabChange(indexFrom, indexTo) {
       if (indexTo >= 0) {
         this.setActiveStepIndex(indexTo);
-        this.setSessionStorage();
       }
     },
     beforeChangeTab() {
-      const allowNext = this.isValidated;
-      return this.validateAsync(allowNext);
+      // const allowNext = this.isValidated;
+      return this.validateAsync(true);
     },
     onChangeTab(indexFrom, indexTo) {
       this.handleTabChange(indexFrom, indexTo);
     },
-    onComplete() {
-      this.resetSessionStorage();
-    },
+    onComplete() {},
     onError(error) {
       if (error) {
         console.log(error);
       }
     },
     onLoading() {},
-    onValidate(isValid, tabIndex) {},
+    onValidate(isValid, stepIndex) {},
     handleRefillStepsFromSessionStorage() {
       const storeData = this.getSessionStorage();
       const stepsShouldBeRefilled =
@@ -107,11 +111,8 @@ export default {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve(allowNext);
-
-          if (this.activeStepIndex === 4) {
-            this.$nuxt.$loading.finish();
-          }
-        }, 750);
+          this.$nuxt.$loading.finish();
+        }, 50);
       });
     }
   }

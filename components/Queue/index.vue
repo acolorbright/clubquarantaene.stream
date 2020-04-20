@@ -6,7 +6,7 @@
       ref="formWizard"
       title=""
       subtitle=""
-      :next-button-text="nextButtonText"
+      next-button-text="next"
       back-button-text="back"
       finish-button-text="finish"
       color=""
@@ -55,9 +55,6 @@ export default {
     Decision
   },
   computed: {
-    nextButtonText() {
-      return 'next button';
-    },
     steps() {
       return this.$store.state.queue.steps;
     },

@@ -1,4 +1,12 @@
 const state = () => ({
+  countdown: {
+    isRunning: false,
+    value: 30
+  },
+  answers: {
+    knowsWhosPlaying: null,
+    cookiesAccepted: null
+  },
   activeStepIndex: 0,
   steps: [
     {

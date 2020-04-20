@@ -1,10 +1,6 @@
 const state = () => ({
   answers: [],
   color: '#000000',
-  countdown: {
-    isRunning: false,
-    value: 30
-  },
   currentLocation: {
     name: 'Dancefloor', // dancefloor, cloakroom, bar, bathroom
     key: 'dancefloor'

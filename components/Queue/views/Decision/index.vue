@@ -2,8 +2,8 @@
   <div>
     <h3>{{ data.title }} ({{ data.type }})</h3>
 
-    <Enjoy v-if="allowEntry" />
-    <TryAgain v-else />
+    <Enjoy />
+    <TryAgain />
   </div>
 </template>
 

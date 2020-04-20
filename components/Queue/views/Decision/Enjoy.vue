@@ -1,5 +1,5 @@
 <template>
   <div>
-    enjoy
+    Okay, enjoy and pick your color.
   </div>
 </template>

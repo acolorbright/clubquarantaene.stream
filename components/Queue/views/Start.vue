@@ -41,14 +41,14 @@ export default {
   mounted() {
     setTimeout(() => {
       this.showCountdown = true;
-    }, 1500);
+    }, 500);
 
     setTimeout(() => {
       this.setStepIsValid({
         index: this.stepIndex,
         isValidated: true
       });
-    }, 3000);
+    }, 1000);
   },
   methods: {
     ...mapActions({

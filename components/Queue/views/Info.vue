@@ -29,7 +29,7 @@ export default {
         index: this.stepIndex,
         isValidated: true
       });
-    }, 1500);
+    }, 500);
   },
   methods: {
     ...mapActions({

@@ -1,6 +1,6 @@
 <template>
   <div class="text-page bar-page">
-    <h1>{{ $store.state.bar.headline }}</h1>
+    <h1>{{ $store.state.bar.title }}</h1>
     <div class="donations">
       <div
         v-for="(service, index) in $store.state.bar.services"

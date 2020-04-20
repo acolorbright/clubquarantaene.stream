@@ -2,7 +2,7 @@
   <div class="text-page cloakroom-page">
     <h1>
       <a :href="$store.state.cloakroom.link" target="_blank">
-        {{ $store.state.cloakroom.headline }}
+        {{ $store.state.cloakroom.title }}
       </a>
     </h1>
     <BackgroundVideo :src="$store.state.cloakroom.backgroundVideo" />

@@ -1,5 +1,5 @@
 const state = () => ({
-  headline: 'Cloakroom↗',
+  title: 'Cloakroom↗',
   link: 'http://shop.clubquarantaene.stream/',
   backgroundVideo: '/assets/videos/cloakroom.mp4'
 });

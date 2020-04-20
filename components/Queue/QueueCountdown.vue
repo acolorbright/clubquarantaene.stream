@@ -1,16 +1,13 @@
 <template>
-  <div>
-    Queue countdown
-  </div>
+  <div>:{{ countdown }}</div>
 </template>
 
 <script>
 export default {
-  props: {
-    stepIndex: {
-      type: Number,
-      default: null
-    }
+  data() {
+    return {
+      countdown: 30
+    };
   }
 };
 </script>

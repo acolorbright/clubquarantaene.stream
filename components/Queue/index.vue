@@ -10,6 +10,7 @@
       back-button-text="back"
       finish-button-text="finish"
       color=""
+      :class="{ isValidated }"
       :start-index="0"
       :validate-on-back="false"
       @on-change="onChangeTab"
@@ -28,8 +29,8 @@
             :is="step.type"
             v-if="stepIndex === activeStepIndex"
             :active="stepIndex === activeStepIndex"
-            :title="step.title"
-            :type="step.type"
+            :data="step"
+            :step-index="stepIndex"
             class="queue-step wizard-tab-component"
             :class="`queue-step--${step.type}`"
           />
@@ -73,8 +74,8 @@ export default {
       setActiveStepIndex: 'setActiveStepIndex'
     }),
     beforeChangeTab() {
-      // const allowNext = this.isValidated;
-      return this.validateAsync(true);
+      const allowNext = this.isValidated;
+      return this.validateAsync(allowNext);
     },
     onChangeTab(indexFrom, indexTo) {
       this.handleTabChange(indexFrom, indexTo);

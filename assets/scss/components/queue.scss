@@ -3,22 +3,33 @@
         border: 2px solid red;
     }
 
-    .wizard {
-        border: 2px solid red;
+    .vue-form-wizard {
+        .wizard {
+            border: 2px solid red;
+    
+            &-header,
+            &-progress-with-circle,
+            &-nav {
+                display: none;
+            }
+            &-card-footer {
+                display: flex;
+                justify-content: center;
+                opacity: 0.5;
+            }
+            &-tab {
+                &-content {}
+                &-container {}
+                &-component {}
+            }
+        }
 
-        &-header,
-        &-progress-with-circle,
-        &-nav {
-            display: none;
-        }
-        &-card-footer {
-            display: flex;
-            justify-content: center;
-        }
-        &-tab {
-            &-content {}
-            &-container {}
-            &-component {}
+        &.isValidated {
+            .wizard {
+                &-card-footer {
+                    opacity: 1;
+                }
+            }
         }
     }
 }

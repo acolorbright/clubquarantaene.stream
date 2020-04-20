@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ title }} ({{ type }})</h3>
+    <h3>{{ data.title }} ({{ data.type }})</h3>
   </div>
 </template>
 
@@ -11,12 +11,12 @@ export default {
       type: Boolean,
       default: false
     },
-    title: {
-      type: String,
-      default: ''
+    stepIndex: {
+      type: Number,
+      default: null
     },
-    type: {
-      type: String,
+    data: {
+      type: Object,
       default: null
     }
   }

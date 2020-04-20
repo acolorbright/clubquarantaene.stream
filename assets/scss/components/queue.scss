@@ -1,0 +1,19 @@
+.queue {
+    .wizard {
+        border: 2px solid red;
+
+        &-header,
+        &-progress-with-circle,
+        &-nav {
+            display: none;
+        }
+        &-card-footer {
+            border: 2px solid red;
+            display: flex;
+            justify-content: center;
+        }
+        &-navigation {
+            border: 2px solid red;
+        }
+    }
+}

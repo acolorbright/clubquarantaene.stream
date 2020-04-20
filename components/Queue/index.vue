@@ -1,6 +1,6 @@
 <template>
-  <div>
-    {{ activeStepIndex }}
+  <div class="queue">
+    <div>{{ activeStepIndex }} / {{ steps.length }}</div>
 
     <form-wizard
       ref="formWizard"
@@ -24,14 +24,14 @@
         :title="step.title"
         :before-change="beforeChangeTab"
       >
-        <transition name="fade-short" mode="out-in">
+        <transition name="fade" mode="out-in">
           <component
             :is="step.type"
-            v-show="stepIndex === activeStepIndex"
-            class="wizard-tab-component"
+            v-if="stepIndex === activeStepIndex"
             :active="stepIndex === activeStepIndex"
             :step-index="stepIndex"
             :form="$refs.formWizard"
+            class="wizard-tab-component"
           />
         </transition>
       </tab-content>
@@ -41,10 +41,10 @@
 
 <script>
 import { mapActions } from 'vuex';
-import Start from './steps/Start.vue';
-import Info from './steps/Info.vue';
-import Question from './steps/Question.vue';
-import Decision from './steps/Decision.vue';
+import Start from './views/Start.vue';
+import Info from './views/Info.vue';
+import Question from './views/Question.vue';
+import Decision from './views/Decision.vue';
 
 export default {
   components: {

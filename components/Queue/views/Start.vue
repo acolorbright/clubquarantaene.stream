@@ -49,6 +49,10 @@ export default {
         isValidated: true
       });
     }, 1000);
+
+    setTimeout(() => {
+      this.goToNextTab();
+    }, 1500);
   },
   methods: {
     ...mapActions({

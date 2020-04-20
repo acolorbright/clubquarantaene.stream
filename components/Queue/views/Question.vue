@@ -25,6 +25,10 @@ export default {
     data: {
       type: Object,
       default: null
+    },
+    form: {
+      type: Object,
+      default: null
     }
   },
   methods: {
@@ -36,6 +40,11 @@ export default {
         index: this.stepIndex,
         isValidated: true
       });
+
+      this.goToNextTab();
+    },
+    goToNextTab() {
+      this.form.nextTab();
     },
     ...mapActions({
       setStepIsValid: 'setStepIsValid'

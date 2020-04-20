@@ -2,6 +2,8 @@
   <div>
     <h3>{{ data.title }} ({{ data.type }})</h3>
     <p>{{ data.text }}</p>
+
+    <button @click="goToNextTab">understood</button>
   </div>
 </template>
 
@@ -16,6 +18,10 @@ export default {
     },
     stepIndex: {
       type: Number,
+      default: null
+    },
+    form: {
+      type: Object,
       default: null
     },
     data: {
@@ -34,7 +40,10 @@ export default {
   methods: {
     ...mapActions({
       setStepIsValid: 'setStepIsValid'
-    })
+    }),
+    goToNextTab() {
+      this.form.nextTab();
+    }
   }
 };
 </script>

@@ -9,13 +9,9 @@
     
             &-header,
             &-progress-with-circle,
-            &-nav {
-                display: none;
-            }
+            &-nav,
             &-card-footer {
-                display: flex;
-                justify-content: center;
-                opacity: 0.5;
+                display: none;
             }
             &-tab {
                 &-content {}
@@ -24,12 +20,6 @@
             }
         }
 
-        &.isValidated {
-            .wizard {
-                &-card-footer {
-                    opacity: 1;
-                }
-            }
-        }
+        &.isValidated {}
     }
 }

@@ -8,13 +8,15 @@ const state = () => ({
     },
     {
       title: 'How this works',
-      text: 'Text text text',
+      text:
+        'Once you’re let in, you’ll be allowed to pick a color of your choice. It will be your avatar and the way to reach you. So chose wisely, as each color exists only once. First come, first serve.',
       type: 'info',
       isValidated: false
     },
     {
       title: 'House rules',
-      text: 'Text text text',
+      text:
+        'Racism, homophobia, transphobia and sexism are not acceptable in any club and will not be allowed as part of this virtual experience. No hate speech, bullying, trolling or hostility. Please respect each other.',
       type: 'info',
       isValidated: false
     },

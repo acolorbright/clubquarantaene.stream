@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="homepage" :style="bgStyleObj">
+    <!-- <div class="homepage" :style="bgStyleObj">
       <Logo />
       <Countdown v-if="showCountdown" />
       <Newsletter v-if="$store.state.content.data.settings.showNewsletter" />
@@ -9,14 +9,15 @@
         class="splashpage-text"
         v-html="$store.state.content.data.content.text"
       />
-    </div>
+    </div> -->
+    Index page
   </div>
 </template>
 
 <script>
-import Countdown from '~/components/Countdown';
-import Logo from '~/components/Logo';
-import Newsletter from '~/components/Newsletter';
+// import Countdown from '~/components/Countdown';
+// import Logo from '~/components/Logo';
+// import Newsletter from '~/components/Newsletter';
 
 export default {
   transition: {
@@ -24,9 +25,9 @@ export default {
     mode: 'out-in'
   },
   components: {
-    Logo,
-    Countdown,
-    Newsletter
+    // Logo,
+    // Countdown,
+    // Newsletter
   },
   computed: {
     showCountdown() {

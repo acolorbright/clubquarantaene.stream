@@ -1,8 +1,4 @@
 .offworld-buttons {
-  // position: fixed;
-  // top: 50%;
-  // transform: translateY(-50%);
-  // left: .8em;
   .overlay-info {
     position: fixed;
     bottom: 4em;
@@ -31,7 +27,6 @@
   z-index: 99;
   .offworld-buttons-wrapper {
     display: flex;
-    // flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -88,12 +83,11 @@
     }
   }
 }
+
 .live-interaction {
   position: fixed;
-  // border: 1px solid blue;
   z-index: 999;
   pointer-events: none;
-  // opacity: 0.5
   @media (min-width: 600px) {
     display: block;
     bottom: 2em;

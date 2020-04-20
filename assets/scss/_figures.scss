@@ -2,6 +2,7 @@ figure {
   margin: 0;
   padding: 0;
 }
+
 img,
 video,
 video[poster] {
@@ -13,6 +14,7 @@ img.lazyload {
   opacity: 0;
   transition: opacity $baseTransitionSpeed;
 }
+
 img.lazyload[lazy="loaded"] {
   opacity: 1;
 }

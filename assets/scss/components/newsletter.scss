@@ -42,6 +42,7 @@
     -webkit-appearance: none;
     color: $colorDark;
   }
+
   input[type="submit"] {
     border: 0.1em solid $colorDark;
     width: auto;
@@ -53,14 +54,17 @@
     -o-transition: background-color 200ms ease, color 200ms ease;
     transition: background-color 200ms ease, color 200ms ease;
   }
+
   input[type="submit"]:hover {
     background-color: $colorDark;
     color: $colorPrimary;
     cursor: pointer;
   }
+
   input::placeholder {
     color: $colorDarkTransparent;
   }
+
   .no-bg {
     input[type="submit"] {
       border-color: $colorLight;
@@ -78,10 +82,9 @@
     }
   }
 
-
   #mc_embed_signup div.mce_inline_error {
     background: none !important;
-    color: red !important;
+    color: $colorError !important;
     font-size: 0.4em !important;
     margin: 0 auto !important;
     text-align: center !important;

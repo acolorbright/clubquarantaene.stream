@@ -8,54 +8,23 @@ nav {
   box-sizing: border-box;
   padding: .75em 1em;
   flex-direction: row;
-  @media screen and (min-width: 813px) {
-    font-size: $mediumFontSize;
-  }
-  @media screen and (max-width: 600px) {
-    flex-direction: column;
-    font-size: inherit;
-    justify-content: space-between;
-  }
-  // color: $colorPrimary;
-  text-shadow: 0px 0px 8px rgba(0,0,0,.5);
-  text-transform: uppercase;
-  // mix-blend-mode: difference;
-  .right-menu {
-    margin-left: auto;
-    @media screen and (max-width: 600px) {
-      margin-top: .33em;
-      margin-left: inherit;
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-  .left-menu {
-    @media (max-width: 600px) {
-      text-align: center;
-    }
-  }
-  .center-menu {
-    display: none;
-    position: absolute;
-    left: 50%;
-    transform: translateX(calc(-50% - 1.5em));
-    @media screen and (min-width: 600px) {
-      display: block;
-    }
-  }
+
   a {
-    color: white;
+    color: $colorLight;
     text-decoration: none;
     transition: color 400ms ease;
+
     &:hover, &.nuxt-link-exact-active {
       color: $colorPrimary;
     }
   }
 }
+
 .live-icon {
   color: $colorPrimary;
   animation: live 5s infinite;
 }
+
 @keyframes live {
   0% {
     opacity: 0;
@@ -70,6 +39,7 @@ nav {
     opacity: 0;
   }
 }
+
 nav.footer {
   position: fixed;
   bottom: 0;
@@ -79,15 +49,7 @@ nav.footer {
   display: none;
   align-items: center;
   justify-content: center;
-  @media (min-width: 600px) {
-    display: flex;
-  }
-  .left-menu {
-    cursor: pointer;
-  }
-  span:hover {
-    color: $colorPrimary;
-  }
+
   @media (orientation: landscape) {
     // text-align: center;
     align-items: flex-end;

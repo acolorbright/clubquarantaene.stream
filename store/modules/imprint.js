@@ -1,6 +1,6 @@
 const state = () => ({
-  title: 'imprint',
-  text: ''
+  title: 'Imprint',
+  text: 'Lorem ipsum'
 });
 
 export default {

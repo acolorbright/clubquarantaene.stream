@@ -30,7 +30,7 @@ body {
   font-size: 15px;
 }
 
-.large-type {
+.large-font {
   font-size: $largeFontSize;
 }
 
@@ -41,12 +41,4 @@ body {
 
 .allcaps {
   text-transform: uppercase;
-}
-
-.green-type {
-  color: $colorPrimary;
-}
-
-.black-type {
-  color: black !important;
 }

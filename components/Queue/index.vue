@@ -10,7 +10,6 @@
       back-button-text="back"
       finish-button-text="finish"
       color=""
-      error-color="#f00"
       :start-index="0"
       :validate-on-back="false"
       @on-change="onChangeTab"
@@ -55,11 +54,14 @@ export default {
     Decision
   },
   computed: {
+    queue() {
+      return this.$store.state.queue;
+    },
     steps() {
-      return this.$store.state.queue.steps;
+      return this.queue.steps;
     },
     activeStepIndex() {
-      return this.$store.state.queue.activeStepIndex;
+      return this.queue.activeStepIndex;
     },
     isValidated() {
       return this.steps[this.activeStepIndex].isValidated;
@@ -70,11 +72,6 @@ export default {
     ...mapActions({
       setActiveStepIndex: 'setActiveStepIndex'
     }),
-    handleTabChange(indexFrom, indexTo) {
-      if (indexTo >= 0) {
-        this.setActiveStepIndex(indexTo);
-      }
-    },
     beforeChangeTab() {
       // const allowNext = this.isValidated;
       return this.validateAsync(true);
@@ -90,6 +87,11 @@ export default {
     },
     onLoading() {},
     onValidate(isValid, stepIndex) {},
+    handleTabChange(indexFrom, indexTo) {
+      if (indexTo >= 0) {
+        this.setActiveStepIndex(indexTo);
+      }
+    },
     handleRefillStepsFromSessionStorage() {
       const storeData = this.getSessionStorage();
       const stepsShouldBeRefilled =

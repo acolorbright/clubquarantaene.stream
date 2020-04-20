@@ -1,6 +1,7 @@
 import Vuex from 'vuex';
 import content from './modules/content';
 import queue from './modules/queue';
+import bar from './modules/bar';
 import timetable from './modules/timetable';
 import guest from './modules/guest';
 import livestream from './modules/livestream';
@@ -11,6 +12,7 @@ const store = () => {
     modules: {
       content,
       queue,
+      bar,
       timetable,
       guest,
       livestream,

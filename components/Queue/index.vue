@@ -46,7 +46,7 @@ import { mapActions } from 'vuex';
 import Start from './views/Start.vue';
 import Info from './views/Info.vue';
 import Question from './views/Question.vue';
-import Decision from './views/Decision.vue';
+import Decision from './views/Decision';
 
 export default {
   components: {

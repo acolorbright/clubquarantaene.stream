@@ -22,19 +22,16 @@ const state = () => ({
     },
     {
       title: 'Do you know who’s playing tonight',
-      text: 'Text text text',
       type: 'question',
       isValidated: false
     },
     {
       title: 'Do you accept cookies?',
-      text: 'Text text text',
       type: 'question',
       isValidated: false
     },
     {
       title: 'Decision',
-      text: 'Text text text',
       type: 'decision',
       isValidated: false
     }

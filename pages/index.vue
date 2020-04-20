@@ -11,6 +11,8 @@
       />
     </div> -->
     Index page
+
+    <Queue />
   </div>
 </template>
 
@@ -18,6 +20,7 @@
 // import Countdown from '~/components/Countdown';
 // import Logo from '~/components/Logo';
 // import Newsletter from '~/components/Newsletter';
+import Queue from '~/components/Queue';
 
 export default {
   transition: {
@@ -25,6 +28,7 @@ export default {
     mode: 'out-in'
   },
   components: {
+    Queue
     // Logo,
     // Countdown,
     // Newsletter

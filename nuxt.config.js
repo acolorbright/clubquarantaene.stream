@@ -86,6 +86,10 @@ export default {
     {
       src: '~/plugins/vue-socket.js',
       mode: 'client'
+    },
+    {
+      src: '~/plugins/vue-form-wizard.js',
+      mode: 'client'
     }
   ],
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/moment'],

@@ -1,5 +1,6 @@
 <template>
-  <div class="steps">
+  <div>
+    steps
     <form-wizard
       ref="formWizard"
       title=""
@@ -18,7 +19,7 @@
       @on-validate="onValidate"
     >
       <tab-content
-        v-for="(tab, tabIndex) in tabs"
+        v-for="(tab, tabIndex) in steps"
         :key="tab.title"
         :title="tab.title"
         :before-change="beforeChangeTab"
@@ -26,9 +27,9 @@
         <transition name="fade-short" mode="out-in">
           <component
             :is="tab.component"
-            v-show="tabIndex === activeIndex"
+            v-show="tabIndex === activeStepIndex"
             class="wizard-tab-component"
-            :active="tabIndex === activeIndex"
+            :active="tabIndex === activeStepIndex"
             :step-index="tabIndex"
             :form="$refs.formWizard"
           />
@@ -41,54 +42,26 @@
 <script>
 import { mapActions } from 'vuex';
 import Start from './steps/Start.vue';
-import Statements from './steps/Statements.vue';
-import Selfie from './steps/Selfie.vue';
-import PersonalData from './steps/PersonalData.vue';
-import Result from './steps/Result.vue';
-import Thanks from './steps/Thanks.vue';
-import {
-  setSessionStorage,
-  getSessionStorage,
-  resetSessionStorage
-} from '~/assets/utils/handleSessionStorage.js';
 
 export default {
   components: {
-    Start,
-    Statements,
-    Selfie,
-    PersonalData,
-    Result,
-    Thanks
-  },
-  data: () => {
-    return {
-      cameraDisabled: true
-    };
+    Start
   },
   computed: {
     nextButtonText() {
       return 'next button';
     },
-    storeData() {
-      return this.$store.state;
+    steps() {
+      return this.$store.state.queue.steps;
     },
-    tabs() {
-      return this.$store.state.steps.steps;
-    },
-    activeIndex() {
-      return this.$store.state.steps.activeIndex;
+    activeStepIndex() {
+      return this.$store.state.queue.activeStepIndex;
     },
     isValidated() {
-      return this.tabs[this.activeIndex].isValidated;
-    },
-    useInBrowserCamera() {
-      return this.$device.isDesktop;
+      return this.steps[this.activeStepIndex].isValidated;
     }
   },
-  mounted() {
-    this.handleRefillStepsFromSessionStorage();
-  },
+  mounted() {},
   methods: {
     ...mapActions({
       setActiveStepIndex: 'setActiveStepIndex'
@@ -102,16 +75,6 @@ export default {
     beforeChangeTab() {
       const allowNext = this.isValidated;
       return this.validateAsync(allowNext);
-    },
-    setSessionStorage() {
-      setSessionStorage(this.storeData);
-    },
-    getSessionStorage() {
-      const storeData = getSessionStorage();
-      return storeData;
-    },
-    resetSessionStorage() {
-      resetSessionStorage();
     },
     onChangeTab(indexFrom, indexTo) {
       this.handleTabChange(indexFrom, indexTo);
@@ -129,12 +92,12 @@ export default {
     handleRefillStepsFromSessionStorage() {
       const storeData = this.getSessionStorage();
       const stepsShouldBeRefilled =
-        storeData && storeData.steps.activeIndex > this.activeIndex;
+        storeData && storeData.steps.activeStepIndex > this.activeStepIndex;
 
       if (stepsShouldBeRefilled) {
         this.$refs.formWizard.changeTab(
-          this.activeIndex,
-          storeData.steps.activeIndex
+          this.activeStepIndex,
+          storeData.steps.activeStepIndex
         );
       }
     },
@@ -145,7 +108,7 @@ export default {
         setTimeout(() => {
           resolve(allowNext);
 
-          if (this.activeIndex === 4) {
+          if (this.activeStepIndex === 4) {
             this.$nuxt.$loading.finish();
           }
         }, 750);

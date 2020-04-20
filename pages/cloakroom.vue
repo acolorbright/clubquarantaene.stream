@@ -1,29 +1,26 @@
 <template>
-  <div class="bar cloakroom">
+  <div class="text-page cloakroom-page">
     <h1>
-      <a href="https://everpress.com/club-quarantane" target="_blank"
-        >Cloakroom↗</a
-      >
+      <a :href="$store.state.cloakroom.link" target="_blank">
+        {{ $store.state.cloakroom.headline }}
+      </a>
     </h1>
-    <div class="fullscreen-bg">
-      <video loop muted playsinline autoplay class="fullscreen-bg__video">
-        <source src="/assets/videos/cloakroom.mp4" type="video/mp4" />
-      </video>
-    </div>
+    <BackgroundVideo :src="$store.state.cloakroom.backgroundVideo" />
   </div>
 </template>
 
 <script>
+import BackgroundVideo from './../components/BackgroundVideo';
+
 export default {
+  components: {
+    BackgroundVideo
+  },
   transition: {
     name: 'fade',
     mode: 'out-in'
   },
   mounted() {
-    this.$store.commit('setFirstQuestion', true);
-    this.$store.commit('setSecondQuestion', true);
-    this.$store.commit('setThirdQuestion', true);
-    this.$store.commit('setFourthQuestion', true);
     this.$gtag.pageview({ page_path: '/cloakroom' });
   }
 };

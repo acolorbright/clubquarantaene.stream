@@ -6,3 +6,12 @@
 .fade-leave-to {
   opacity: 0;
 }
+
+.fade-step-enter-active,
+.fade-step-leave-active {
+  transition: opacity $slowTransitionSpeed;
+}
+.fade-step-enter,
+.fade-step-leave-to {
+  opacity: 0;
+}

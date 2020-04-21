@@ -21,7 +21,7 @@
         :key="step.title"
         :before-change="beforeChangeTab"
       >
-        <transition name="fade" mode="out-in">
+        <transition name="fade-step" mode="out-in">
           <component
             :is="step.type"
             v-if="stepIndex === activeStepIndex"

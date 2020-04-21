@@ -1,6 +1,6 @@
 .start {
     &-gradient {
-        animation: gradientAnimation 15s infinite alternate;
+        // animation: gradientAnimation 15s infinite alternate;
         animation-fill-mode: backwards;
         background: radial-gradient(
             50% 50% at 50% 50%,
@@ -13,7 +13,7 @@
             $colorLight 88.54%,
             $colorPrimary 95.83%
         );
-        height: 50vh;
+        height: 100%;
         width: 100%;
       
         @keyframes gradientAnimation {
@@ -27,4 +27,6 @@
             }
         }
     }
+
+
 }

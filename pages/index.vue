@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Logo />
+    <!-- <Logo /> -->
     <Queue />
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo';
+// import Logo from '~/components/Logo';
 import Queue from '~/components/Queue';
 // import Newsletter from '~/components/Newsletter';
 
@@ -16,7 +16,7 @@ export default {
     mode: 'out-in'
   },
   components: {
-    Logo,
+    // Logo,
     Queue
     // Newsletter
   },

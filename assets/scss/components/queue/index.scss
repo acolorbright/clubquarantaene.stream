@@ -1,5 +1,10 @@
-.step {
-    text-align: center;
+.queue {
+    // color: $colorPrimary;
+
+    .step {
+        height: 100vh;
+        text-align: center;
+    }
 
     .vue-form-wizard {
         .wizard {    

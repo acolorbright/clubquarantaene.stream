@@ -1,7 +1,6 @@
 <template>
-  <div class="start start-gradient">
-    Start
-    <h3 v-if="!showCountdown" class="step-title">
+  <div class="start">
+    <h3 v-if="!showCountdown" class="step-title start-gradient">
       {{ data.title }} ({{ data.type }})
     </h3>
     <QueueCountdown v-else />
@@ -28,14 +27,17 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.showCountdown = true;
-    }, 500);
+      this.handleCountdown();
+    }, 1000); // should be 5s
 
     setTimeout(() => {
       this.nextStep();
-    }, 1500);
+    }, 2000); // should be 5s
   },
   methods: {
+    handleCountdown() {
+      this.showCountdown = true;
+    },
     nextStep() {
       this.$emit('nextStep', true);
     }

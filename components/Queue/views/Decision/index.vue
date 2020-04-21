@@ -1,6 +1,7 @@
 <template>
   <div>
     <Enjoy />
+    <br />
     <TryAgain />
   </div>
 </template>

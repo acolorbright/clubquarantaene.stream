@@ -1,6 +1,6 @@
 <template>
   <div class="queue">
-    <QueueCountdown v-if="showCountdown" />
+    <QueueCountdown />
     <form-wizard
       ref="formWizard"
       title=""
@@ -32,8 +32,8 @@
             :step-index="stepIndex"
             class="step wizard-tab-component"
             :class="`step--${step.type}`"
-            @nextStep="emitNextTab"
             @enterClub="emitEnterClub"
+            @nextStep="emitNextTab"
             @tryAgain="emitTryAgain"
           />
         </transition>
@@ -58,11 +58,6 @@ export default {
     Question,
     Decision
   },
-  data() {
-    return {
-      showCountdown: false
-    };
-  },
   computed: {
     queue() {
       return this.$store.state.queue;
@@ -77,21 +72,12 @@ export default {
       return this.steps[this.activeStepIndex].isValidated;
     }
   },
-  watch: {
-    activeStepIndex(stepIndex) {
-      if (stepIndex >= 1) {
-        this.handleCountdown();
-      }
-    }
-  },
   methods: {
     ...mapActions({
       setStepIsValid: 'setStepIsValid',
-      setActiveStepIndex: 'setActiveStepIndex'
+      setActiveStepIndex: 'setActiveStepIndex',
+      resetQueue: 'resetQueue'
     }),
-    handleCountdown() {
-      this.showCountdown = true;
-    },
     beforeChangeTab() {
       const allowNext = this.isValidated;
       return this.validateAsync(allowNext);
@@ -100,11 +86,7 @@ export default {
       this.handleTabChange(indexFrom, indexTo);
     },
     onComplete() {},
-    onError(error) {
-      if (error) {
-        console.log(error);
-      }
-    },
+    onError() {},
     onLoading() {},
     onValidate(isValid, stepIndex) {},
     handleTabChange(indexFrom, indexTo) {
@@ -116,9 +98,10 @@ export default {
       this.nextTab();
     },
     emitEnterClub() {
-      alert('enter club');
+      this.$router.push('/mainfloor');
     },
     emitTryAgain() {
+      this.resetQueue();
       this.changeTab(0);
     },
     changeTab(targetIndex) {

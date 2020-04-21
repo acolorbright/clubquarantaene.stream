@@ -53,6 +53,26 @@ const mutations = {
   },
   setStepIsValid(state, { index, isValidated }) {
     state.steps[index].isValidated = isValidated;
+  },
+  unvalidateSteps(state) {
+    const newStepState = state.steps.map(step => ({
+      ...step,
+      isValidated: false
+    }));
+
+    state.steps = newStepState;
+  },
+  reduceCountdown(state) {
+    state.countdown.value -= 1;
+  },
+  resetCountdown(state) {
+    state.countdown = {
+      isRunning: false,
+      value: 30
+    };
+  },
+  setCountdownIsRunning(state, isRunning) {
+    state.countdown.isRunning = isRunning;
   }
 };
 
@@ -65,6 +85,22 @@ const actions = {
       index,
       isValidated
     });
+  },
+  unvalidateSteps({ commit }) {
+    commit('unvalidateSteps');
+  },
+  resetCountdown({ commit }) {
+    commit('resetCountdown');
+  },
+  reduceCountdown({ commit }) {
+    commit('reduceCountdown');
+  },
+  setCountdownIsRunning({ commit }, isRunning) {
+    commit('setCountdownIsRunning', isRunning);
+  },
+  resetQueue({ commit }) {
+    commit('unvalidateSteps');
+    commit('resetCountdown');
   }
 };
 

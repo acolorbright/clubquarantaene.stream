@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   props: {
     data: {
@@ -17,9 +19,13 @@ export default {
   mounted() {
     setTimeout(() => {
       this.nextStep();
+      this.setCountdownIsRunning(true);
     }, 2000); // should be 5s
   },
   methods: {
+    ...mapActions({
+      setCountdownIsRunning: 'setCountdownIsRunning'
+    }),
     nextStep() {
       this.$emit('nextStep', true);
     }

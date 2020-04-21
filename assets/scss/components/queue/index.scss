@@ -11,7 +11,12 @@
 
     .step {
         height: 100vh;
+        position: relative;
         text-align: center;
+
+        &-color {
+            width: 100%;
+        }
     }
 
     .vue-form-wizard {

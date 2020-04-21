@@ -12,7 +12,7 @@
 export default {
   methods: {
     tryAgain() {
-      alert('try again');
+      this.$emit('confirmDecision', false);
     }
   }
 };

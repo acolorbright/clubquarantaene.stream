@@ -33,6 +33,7 @@
             class="step wizard-tab-component"
             :class="`step--${step.type}`"
             @nextStep="emitNextTab"
+            @enterClub="emitEnterClub"
             @tryAgain="emitTryAgain"
           />
         </transition>
@@ -114,8 +115,14 @@ export default {
     emitNextTab() {
       this.nextTab();
     },
+    emitEnterClub() {
+      alert('enter club');
+    },
     emitTryAgain() {
-      alert('emitTryAgain');
+      this.changeTab(0);
+    },
+    changeTab(targetIndex) {
+      this.$refs.formWizard.changeTab(this.activeStepIndex, targetIndex);
     },
     nextTab() {
       this.validateCurrentStep();

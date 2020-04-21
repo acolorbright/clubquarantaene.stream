@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Enjoy />
+    <Enjoy @confirmDecision="handleConfirmDecision" />
     <br />
-    <TryAgain />
+    <TryAgain @confirmDecision="handleConfirmDecision" />
   </div>
 </template>
 
@@ -25,6 +25,15 @@ export default {
     return {
       allowEntry: true
     };
+  },
+  methods: {
+    handleConfirmDecision(accessGranted) {
+      if (accessGranted) {
+        this.$emit('enterClub');
+      } else {
+        this.$emit('tryAgain');
+      }
+    }
   }
 };
 </script>

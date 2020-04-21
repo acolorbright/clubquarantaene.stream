@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     enterClub() {
-      alert('enter club');
+      this.$emit('confirmDecision', true);
     }
   }
 };

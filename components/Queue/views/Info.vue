@@ -1,9 +1,13 @@
 <template>
   <div>
-    <h3>{{ data.title }} ({{ data.type }})</h3>
-    <p>{{ data.text }}</p>
+    <h3 class="step-title">{{ data.title }} ({{ data.type }})</h3>
+    <p class="step-text">{{ data.text }}</p>
 
-    <button @click="nextStep">understood</button>
+    <div v-if="!data.isValidated" class="step-buttons">
+      <button class="step-buttons-btn" @click="nextStep">
+        understood
+      </button>
+    </div>
   </div>
 </template>
 

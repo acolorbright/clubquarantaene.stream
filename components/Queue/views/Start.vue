@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="start start-gradient">
     Start
-    <h3 v-if="!showCountdown" class="start-gradient">
+    <h3 v-if="!showCountdown" class="step-title">
       {{ data.title }} ({{ data.type }})
     </h3>
     <QueueCountdown v-else />

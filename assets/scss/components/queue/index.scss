@@ -1,12 +1,8 @@
-.queue {
-    &-step {
-        // border: 2px solid red;
-    }
+.step {
+    text-align: center;
 
     .vue-form-wizard {
-        .wizard {
-            // border: 2px solid red;
-    
+        .wizard {    
             &-header,
             &-progress-with-circle,
             &-nav,
@@ -20,6 +16,7 @@
             }
         }
 
-        &.isValidated {}
+        &.isValidated {
+        }
     }
 }

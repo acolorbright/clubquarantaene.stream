@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h3>{{ data.title }} ({{ data.type }})</h3>
-
     <Enjoy />
     <TryAgain />
   </div>

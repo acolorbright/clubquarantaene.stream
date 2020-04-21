@@ -5,28 +5,17 @@ html {
 body {
   min-height: 100%;
 }
-.no-bg {
-  background: none !important;
-}
-.center-layout {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  text-align: center;
-}
-
 button {
   -webkit-appearance: none;
-  outline: 0;
-  border: 0.05em solid;
-  padding: 0.15em;
   background: none;
+  border-radius: 0.25em;
+  border: 0.05em solid;
   color: inherit;
+  cursor: pointer;
   font-family: inherit;
   font-size: inherit;
-  border-radius: 0.25em;
+  outline: 0;
+  padding: 0.15em;
 }
 
 .insivible {

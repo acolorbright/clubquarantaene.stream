@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h3>{{ data.title }} ({{ data.type }})</h3>
+    <h3 class="step-title">{{ data.title }} ({{ data.type }})</h3>
 
-    <div v-if="!data.isValidated">
-      <button @click="nextStep">no</button>
-      <button @click="nextStep">yes</button>
+    <div v-if="!data.isValidated" class="step-buttons">
+      <button class="step-buttons-btn" @click="nextStep">no</button>
+      <button class="step-buttons-btn" @click="nextStep">yes</button>
     </div>
   </div>
 </template>

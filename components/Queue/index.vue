@@ -1,6 +1,5 @@
 <template>
   <div class="queue">
-    <div>{{ activeStepIndex + 1 }} / {{ steps.length }}</div>
     <form-wizard
       ref="formWizard"
       title=""
@@ -30,8 +29,8 @@
             :data="step"
             :is-validated="step.isValidated"
             :step-index="stepIndex"
-            class="queue-step wizard-tab-component"
-            :class="`queue-step--${step.type}`"
+            class="step wizard-tab-component"
+            :class="`step--${step.type}`"
             @nextStep="emitNextTab"
             @tryAgain="emitTryAgain"
           />

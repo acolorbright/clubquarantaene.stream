@@ -1,8 +1,10 @@
 <template>
   <div>
-    Sorry, not today.
+    <h3 class="step-title">Sorry, not today.</h3>
 
-    <button @click="tryAgain">Try again</button>
+    <div class="step-buttons-btn">
+      <button class="step-buttons" @click="tryAgain">Try again</button>
+    </div>
   </div>
 </template>
 

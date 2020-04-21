@@ -1,5 +1,6 @@
 <template>
   <div>
+    Start
     <h3 v-if="!showCountdown" class="start-gradient">
       {{ data.title }} ({{ data.type }})
     </h3>
@@ -8,7 +9,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
 import QueueCountdown from '../QueueCountdown.vue';
 
 export default {
@@ -16,19 +16,7 @@ export default {
     QueueCountdown
   },
   props: {
-    active: {
-      type: Boolean,
-      default: false
-    },
-    stepIndex: {
-      type: Number,
-      default: null
-    },
     data: {
-      type: Object,
-      default: null
-    },
-    form: {
       type: Object,
       default: null
     }
@@ -44,22 +32,12 @@ export default {
     }, 500);
 
     setTimeout(() => {
-      this.setStepIsValid({
-        index: this.stepIndex,
-        isValidated: true
-      });
-    }, 1000);
-
-    setTimeout(() => {
-      this.goToNextTab();
+      this.nextStep();
     }, 1500);
   },
   methods: {
-    ...mapActions({
-      setStepIsValid: 'setStepIsValid'
-    }),
-    goToNextTab() {
-      this.form.nextTab();
+    nextStep() {
+      this.$emit('nextStep', true);
     }
   }
 };

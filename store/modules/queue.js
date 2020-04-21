@@ -8,6 +8,7 @@ const state = () => ({
     cookiesAccepted: null
   },
   activeStepIndex: 0,
+  form: null,
   steps: [
     {
       title: 'Club Quarantäne',

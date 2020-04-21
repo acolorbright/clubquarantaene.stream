@@ -1,7 +1,6 @@
 <template>
   <div class="queue">
     <div>{{ activeStepIndex + 1 }} / {{ steps.length }}</div>
-
     <form-wizard
       ref="formWizard"
       title=""
@@ -33,7 +32,7 @@
             :step-index="stepIndex"
             class="queue-step wizard-tab-component"
             :class="`queue-step--${step.type}`"
-            :form="$refs.formWizard"
+            @nextStep="emitNextTab"
           />
         </transition>
       </tab-content>
@@ -69,9 +68,9 @@ export default {
       return this.steps[this.activeStepIndex].isValidated;
     }
   },
-  mounted() {},
   methods: {
     ...mapActions({
+      setStepIsValid: 'setStepIsValid',
       setActiveStepIndex: 'setActiveStepIndex'
     }),
     beforeChangeTab() {
@@ -94,17 +93,18 @@ export default {
         this.setActiveStepIndex(indexTo);
       }
     },
-    handleRefillStepsFromSessionStorage() {
-      const storeData = this.getSessionStorage();
-      const stepsShouldBeRefilled =
-        storeData && storeData.steps.activeStepIndex > this.activeStepIndex;
-
-      if (stepsShouldBeRefilled) {
-        this.$refs.formWizard.changeTab(
-          this.activeStepIndex,
-          storeData.steps.activeStepIndex
-        );
-      }
+    emitNextTab() {
+      this.nextTab();
+    },
+    nextTab() {
+      this.validateCurrentStep();
+      this.$refs.formWizard.nextTab();
+    },
+    validateCurrentStep() {
+      this.setStepIsValid({
+        index: this.activeStepIndex,
+        isValidated: true
+      });
     },
     validateAsync(allowNext) {
       this.$nuxt.$loading.start();

@@ -17,14 +17,6 @@ export default {
     TryAgain
   },
   props: {
-    active: {
-      type: Boolean,
-      default: false
-    },
-    stepIndex: {
-      type: Number,
-      default: null
-    },
     data: {
       type: Object,
       default: null

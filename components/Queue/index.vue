@@ -33,6 +33,7 @@
             class="queue-step wizard-tab-component"
             :class="`queue-step--${step.type}`"
             @nextStep="emitNextTab"
+            @tryAgain="emitTryAgain"
           />
         </transition>
       </tab-content>
@@ -95,6 +96,9 @@ export default {
     },
     emitNextTab() {
       this.nextTab();
+    },
+    emitTryAgain() {
+      alert('emitTryAgain');
     },
     nextTab() {
       this.validateCurrentStep();

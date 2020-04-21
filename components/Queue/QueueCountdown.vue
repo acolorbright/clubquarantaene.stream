@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="queue-countdown">
     You are in line.
-    <div>:{{ countdown }}</div>
+    <span class="queue-countdown-value">:{{ countdown }}s</span>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
   data() {
     return {
-      countdown: 10,
+      countdown: 30,
       countdownInterval: null
     };
   },

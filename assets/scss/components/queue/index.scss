@@ -1,6 +1,14 @@
 .queue {
     // color: $colorPrimary;
 
+    &-countdown {
+        text-align: center;
+
+        &-value {
+            display: block;
+        }
+    }
+
     .step {
         height: 100vh;
         text-align: center;

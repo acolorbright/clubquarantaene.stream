@@ -1,6 +1,6 @@
 const state = () => ({
   answers: [],
-  color: '#000000',
+  color: '#0038FF',
   currentLocation: {
     name: 'Dancefloor', // dancefloor, cloakroom, bar, bathroom
     key: 'dancefloor'

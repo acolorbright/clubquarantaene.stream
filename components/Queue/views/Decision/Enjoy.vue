@@ -4,7 +4,8 @@
       Okay, enjoy and pick your color.
     </h3>
 
-    <slider-picker v-model="colors" class="step-color" />
+    <slider-picker v-model="colors" class="step-color" @input="updateColor" />
+    <div class="step-color-dot" :style="dotStyle" />
 
     <div class="step-buttons-btn">
       <button class="step-buttons" @click="enterClub">Enter club</button>
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { Slider } from 'vue-color';
 
 export default {
@@ -22,30 +24,34 @@ export default {
   data() {
     return {
       colors: {
-        hex: '#194d33',
-        hsl: {
-          h: 150,
-          s: 0.5,
-          l: 0.2,
-          a: 1
-        },
-        hsv: {
-          h: 150,
-          s: 0.66,
-          v: 0.3,
-          a: 1
-        },
-        rgba: {
-          r: 25,
-          g: 77,
-          b: 51,
-          a: 1
-        },
-        a: 1
+        hex: '#0038FF'
       }
     };
   },
+  computed: {
+    dotStyle() {
+      return {
+        background: `radial-gradient(
+          50% 50% at 50% 50%,
+          ${this.colors.hex} 0%,
+          transparent 18.23%,
+          ${this.colors.hex} 29.69%,
+          transparent 61.98%,
+          transparent 66.15%,
+          ${this.colors.hex} 79.69%,
+          transparent 88.54%,
+          ${this.colors.hex} 95.83%
+        )`
+      };
+    }
+  },
   methods: {
+    ...mapActions({
+      setColor: 'setColor'
+    }),
+    updateColor(color) {
+      this.setColor(color.hex);
+    },
     enterClub() {
       this.$emit('confirmDecision', true);
     }

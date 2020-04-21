@@ -1,6 +1,6 @@
 // transitions
 $baseTransitionSpeed: 400ms ease;
-$slowTransitionSpeed: 1250ms ease;
+$slowTransitionSpeed: 800ms ease;
 
 // colors
 $colorPrimary: #0038FF;
@@ -8,6 +8,17 @@ $colorLight: rgba(255, 255, 255, 1);
 $colorDark: rgba(0, 0, 0, 1);
 $colorDarkTransparent: rgba(0, 0, 0, 0.3);
 $colorError: red;
+$radialGradient: radial-gradient(
+    50% 50% at 50% 50%,
+    $colorPrimary 0%,
+    $colorLight 18.23%,
+    $colorPrimary 29.69%,
+    $colorLight 61.98%,
+    $colorLight 66.15%,
+    $colorPrimary 79.69%,
+    $colorLight 88.54%,
+    $colorPrimary 95.83%
+);
 
 // type sizes
 $largeFontSize: 7.6vw;

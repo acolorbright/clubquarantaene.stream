@@ -16,6 +16,26 @@
 
         &-color {
             width: 100%;
+
+            &-dot {
+                animation: gradientAnimation 15s infinite alternate;
+                animation-fill-mode: backwards;
+                border-radius: 100%;
+                height: 25vw;
+                margin: 0 auto;
+                width: 25vw;
+      
+                @keyframes gradientAnimation {
+                    0% {
+                        background-size: 100% 100%;
+                        background-position: center;
+                    }
+                    100% {
+                        background-size: 500% 500%;
+                        background-position: center;
+                    }
+                }
+            }
         }
     }
 

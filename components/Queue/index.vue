@@ -1,5 +1,6 @@
 <template>
   <div class="queue">
+    <QueueCountdown v-if="showCountdown" />
     <form-wizard
       ref="formWizard"
       title=""
@@ -42,6 +43,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import QueueCountdown from './QueueCountdown.vue';
 import Start from './views/Start.vue';
 import Info from './views/Info.vue';
 import Question from './views/Question.vue';
@@ -49,10 +51,16 @@ import Decision from './views/Decision';
 
 export default {
   components: {
+    QueueCountdown,
     Start,
     Info,
     Question,
     Decision
+  },
+  data() {
+    return {
+      showCountdown: false
+    };
   },
   computed: {
     queue() {
@@ -68,11 +76,21 @@ export default {
       return this.steps[this.activeStepIndex].isValidated;
     }
   },
+  watch: {
+    activeStepIndex(stepIndex) {
+      if (stepIndex >= 1) {
+        this.handleCountdown();
+      }
+    }
+  },
   methods: {
     ...mapActions({
       setStepIsValid: 'setStepIsValid',
       setActiveStepIndex: 'setActiveStepIndex'
     }),
+    handleCountdown() {
+      this.showCountdown = true;
+    },
     beforeChangeTab() {
       const allowNext = this.isValidated;
       return this.validateAsync(allowNext);

@@ -17,9 +17,10 @@ export default {
     }
   },
   mounted() {
+    this.setCountdownIsRunning(true);
+
     setTimeout(() => {
       this.nextStep();
-      this.setCountdownIsRunning(true);
     }, 2000); // should be 5s
   },
   methods: {

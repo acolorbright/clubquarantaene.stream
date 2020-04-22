@@ -29,7 +29,6 @@ export default {
     clearInterval(this.countdownInterval);
   },
   mounted() {
-    console.log('countdown mounted');
     this.initCountdown();
   },
   methods: {
@@ -38,8 +37,6 @@ export default {
       setCountdownIsRunning: 'setCountdownIsRunning'
     }),
     initCountdown() {
-      this.setCountdownIsRunning(true);
-
       this.countdownInterval = setInterval(() => {
         if (this.isRunning && this.countdownValue > 0) {
           this.reduceCountdown();

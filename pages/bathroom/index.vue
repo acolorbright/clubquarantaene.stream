@@ -1,6 +1,26 @@
 <template>
-  <div class="bathrooms">
-    <div class="toilet-room-container">
+  <div class="bathroom">
+    <div class="bathroom-cubicles">
+      <div
+        class="bathroom-cubicles-item"
+        v-for="(cubicle, index) in images"
+        :key="index"
+        @click="handleClick(index)"
+      >
+        <span>{{ index + 1 }}</span>
+        <figure class="bathroom-cubicles-item-hoverimage">
+          <img :src="images[index]" />
+        </figure>
+        <figure class="background-image">
+          <img src="~/assets/images/cubicle.png" />
+        </figure>
+      </div>
+      <div class="bathroom-cubicles-item bathroom-cubicles-warning">
+        Max. 8 People per Cubicle
+      </div>
+    </div>
+
+    <!-- <div class="toilet-room-container">
       <div class="toilet-cubicles">
         <div
           v-for="(toilet, index) in images"
@@ -17,10 +37,7 @@
           </figure>
         </div>
       </div>
-    </div>
-    <figure class="background-image">
-      <img src="/assets/images/cubicles.jpg" />
-    </figure>
+    </div> -->
   </div>
 </template>
 
@@ -55,36 +72,16 @@ export default {
         'https://i2-prod.mirror.co.uk/incoming/article11459936.ece/ALTERNATES/s1227b/PAY-Crazy_toilets_19.jpg',
         'https://i2-prod.mirror.co.uk/incoming/article11459925.ece/ALTERNATES/s1227b/PAY-Crazy_toilets_8.jpg',
         // 'https://homeideasmag.com/wp-content/uploads/2013/05/10-as-toilet-seat.jpg',
-        'https://img.izismile.com/img/img10/20171120/640/world_toilet_day_brings_us_best_and_worst_toilets_640_11.jpg',
-        'https://scontent-frx5-1.xx.fbcdn.net/v/t1.0-9/p960x960/44154338_1728383833955394_1039571601063936000_o.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_ohc=7jscC7FVilwAX_6vbCL&_nc_ht=scontent-frx5-1.xx&_nc_tp=6&oh=242d0eac28b6a2a77869cb5228a05f94&oe=5E9E5891',
         'https://www.nzherald.co.nz/resizer/lszki9BeSHmS4xqNI3Le9vEG6SE=/360x384/filters:quality(70)/arc-anglerfish-syd-prod-nzme.s3.amazonaws.com/public/JAOVGXSPMFA77BMTGGGFTAS5TA.jpg'
       ]
     };
   },
-  beforeMount() {
-    // if (!this.$store.state.oldState.questions.firstQuestionAnswered && this.$store.state.oldState.lockRooms) {
-    //   this.$router.push({ path: '/line' })
-    // }
-    this.$socket.client.emit('bathroom-connect');
-  },
   mounted() {
-    this.$store.commit('setFirstQuestion', true);
-    this.$store.commit('setSecondQuestion', true);
-    this.$store.commit('setThirdQuestion', true);
-    this.$store.commit('setFourthQuestion', true);
     this.$gtag.pageview({ page_path: '/bathroom' });
   },
   methods: {
     handleClick(index) {
-      if (this.$store.state.oldState.rooms[index]) {
-        return;
-      }
       this.$router.push({ path: `/bathroom/${index + 1}` });
-    }
-  },
-  sockets: {
-    bathrooms(bathrooms) {
-      this.$store.commit('setRooms', bathrooms);
     }
   }
 };

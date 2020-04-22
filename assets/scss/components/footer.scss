@@ -1,7 +1,13 @@
 .footer {
+    align-items: center;
     bottom: 0;
+    display: flex;
+    justify-content: space-between;
     position: fixed;
     left: 0;
     width: 100%;
+
+    &-chat {}
+    &-buttons {}
+    &-imprint {}
 }
-  

@@ -1,16 +1,16 @@
 <template>
   <div class="mainfloor">
     Mainfloor
-    <InteractiveButtons />
+    <Chat />
   </div>
 </template>
 
 <script>
-import InteractiveButtons from '~/components/InteractiveButtons';
+import Chat from '~/components/Chat';
 
 export default {
   components: {
-    InteractiveButtons
+    Chat
   },
   mounted() {
     this.$gtag.pageview({

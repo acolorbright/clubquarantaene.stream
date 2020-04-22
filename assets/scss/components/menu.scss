@@ -1,7 +1,4 @@
 .menu {
-  border: 2px solid red;
-  display: flex;
-  justify-content: flex-end;
   position: fixed;
   left: 0;
   top: 0;
@@ -19,11 +16,19 @@
   }
 
   &-list {
-    border: 2px solid red;
     display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
 
     &-item {
-      border: 2px solid red;
+      margin: 0;
+
+      &:last-of-type {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
     }
   }
 }

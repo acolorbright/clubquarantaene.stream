@@ -7,7 +7,8 @@ export default {
   },
   env: {
     FRONTEND_URL: isDev ? 'https://localhost:3000' : process.env.FRONTEND_URL,
-    SOCKET_URL: isDev ? 'https://localhost:4000' : process.env.SOCKET_URL
+    CMS_URL: isDev ? 'https://localhost:4000' : process.env.CMS_URL,
+    SOCKET_URL: isDev ? 'https://localhost:1337' : process.env.SOCKET_URL
   },
   head: {
     title: 'CLUB QUARANTÄNE',

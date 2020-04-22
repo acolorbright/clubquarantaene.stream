@@ -7,7 +7,12 @@
           class="chat-history-indicator"
           :style="{ 'background-color': `${userColor}` }"
         />
-        <input v-model="message" type="text" placeholder="Write a message..." />
+        <input
+          v-model="message"
+          type="text"
+          placeholder="Write a message..."
+          :maxlength="maxLength"
+        />
         <input
           type="submit"
           value="Send"
@@ -24,10 +29,19 @@ import ChatHistory from './ChatHistory';
 export default {
   name: 'Chat',
   components: { ChatHistory },
+  props: {
+    throttleTimer: {
+      type: Number,
+      default: 2000
+    },
+    maxLength: {
+      type: Number,
+      default: 300
+    }
+  },
   data() {
     return {
       message: '',
-      throttleTimer: 2000,
       locked: false,
       messages: []
     };

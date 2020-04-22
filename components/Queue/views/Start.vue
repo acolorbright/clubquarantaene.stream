@@ -1,15 +1,19 @@
 <template>
   <div class="start">
     <h3 class="step-title start-gradient">
-      {{ data.title }}
+      <Logo />
     </h3>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
+import Logo from '~/components/Logo.vue';
 
 export default {
+  components: {
+    Logo
+  },
   props: {
     data: {
       type: Object,

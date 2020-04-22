@@ -1,12 +1,12 @@
 <template>
   <div class="app">
-    <Header v-if="enteredClub" />
+    <Header v-if="!isQueue" />
     <main class="main">
       <transition name="fade" mode="out-in">
         <nuxt />
       </transition>
     </main>
-    <Footer v-if="enteredClub" />
+    <Footer v-if="!isQueue" />
   </div>
 </template>
 
@@ -32,8 +32,8 @@ export default {
   },
   fetchOnServer: false,
   computed: {
-    enteredClub() {
-      return false;
+    isQueue() {
+      return this.$nuxt.$route.path === '/';
     }
   },
   mounted() {

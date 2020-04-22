@@ -1,9 +1,10 @@
 <template>
   <nav class="menu">
-    <div class="menu-live">
+    <nuxt-link class="menu-live" to="/">
       <span class="menu-live-icon">Live</span>
       <span class="menu-live-counter">0 Guests</span>
-    </div>
+    </nuxt-link>
+
     <ul class="menu-list">
       <li class="menu-list-item">
         <nuxt-link to="/bar">Bar</nuxt-link>

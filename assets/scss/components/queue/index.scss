@@ -2,7 +2,10 @@
     // color: $colorPrimary;
 
     &-countdown {
+        position: absolute;
         text-align: center;
+        top: 0;
+        width: 100%;
 
         &-value {
             display: block;
@@ -10,7 +13,10 @@
     }
 
     .step {
+        align-items: center;
+        height: calc(100vh - var(--vh-offset, 0px));
         height: 100vh;
+        padding-top: $space2;
         position: relative;
         text-align: center;
 

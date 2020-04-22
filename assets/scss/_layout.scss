@@ -13,12 +13,12 @@ body {
 button {
   -webkit-appearance: none;
   background: none;
-  border-radius: 0.25em;
-  border: 0.05em solid;
+  border-radius: $buttonBorderRadius;
+  border: $buttonBorderWidth solid;
   color: inherit;
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
   outline: 0;
-  padding: 0.15em;
+  padding: $buttonPadding;
 }

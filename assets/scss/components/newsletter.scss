@@ -12,47 +12,44 @@
   }
 
   #mc_embed_signup_scroll {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
     -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-pack: center;
     -ms-flex-pack: center;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     position: relative;
   }
 
   input {
-    background: none;
-    outline: 0;
-    border: 0;
-    border-bottom: 0.1em solid $colorDark;
-    font-size: 1em;
-    @media (orientation: landscape) {
-      font-size: $mediumFontSize;
-    }
-    font-family: inherit;
-    width: 12em;
-    padding: 0.2em;
-    line-height: 0.8;
-    border-radius: 0;
     -webkit-appearance: none;
+    background: none;
+    border-bottom: 0.1em solid $colorDark;
+    border-radius: 0;
+    border: 0;
     color: $colorDark;
+    font-family: inherit;
+    font-size: 1em;
+    line-height: 0.8;
+    outline: 0;
+    padding: 0.2em;
+    width: 12em;
   }
 
   input[type="submit"] {
-    border: 0.1em solid $colorDark;
-    width: auto;
-    padding: 0.35em 0.5em 0.2em 0.5em;
-    margin-left: 0.5em;
+    -o-transition: background-color 200ms ease, color 200ms ease;
+    -webkit-transition: background-color 200ms ease, color 200ms ease;
     background-color: rgba(0, 0, 0, 0);
     border-radius: 3px;
-    -webkit-transition: background-color 200ms ease, color 200ms ease;
-    -o-transition: background-color 200ms ease, color 200ms ease;
+    border: 0.1em solid $colorDark;
+    margin-left: 0.5em;
+    padding: 0.35em 0.5em 0.2em 0.5em;
     transition: background-color 200ms ease, color 200ms ease;
+    width: auto;
   }
 
   input[type="submit"]:hover {

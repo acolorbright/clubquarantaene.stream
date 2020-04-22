@@ -27,16 +27,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   color: $colorLight;
-  font-size: 15px;
-}
-
-.large-font {
-  font-size: $largeFontSize;
-}
-
-.small-font {
-  font-size: .8em;
-  letter-spacing: 0.08em;
+  font-size: $fontSize;
 }
 
 .allcaps {

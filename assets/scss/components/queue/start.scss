@@ -3,7 +3,8 @@
         animation: gradientAnimation 15s infinite alternate;
         animation-fill-mode: backwards;
         background: $radialGradient;
-        height: 100%;
+        height: calc(100vh - var(--vh-offset, 0px));
+        height: 100vh;
         width: 100%;
       
         @keyframes gradientAnimation {

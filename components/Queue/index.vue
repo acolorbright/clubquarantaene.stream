@@ -1,6 +1,9 @@
 <template>
   <div class="queue">
-    <QueueCountdown />
+    <transition name="fade-step" mode="out-in">
+      <QueueCountdown v-if="showCounter" />
+    </transition>
+
     <form-wizard
       ref="formWizard"
       title=""
@@ -70,6 +73,9 @@ export default {
     },
     isValidated() {
       return this.steps[this.activeStepIndex].isValidated;
+    },
+    showCounter() {
+      return this.activeStepIndex > 0 && this.queue.countdown.value > 0;
     }
   },
   methods: {

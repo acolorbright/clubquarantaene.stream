@@ -1,31 +1,22 @@
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  z-index: 99;
-  width: 100%;
-  box-sizing: border-box;
-  padding: .75em 1em;
-  flex-direction: row;
+.menu {
+  border: 2px solid red;
 
-  a {
-    color: $colorLight;
-    text-decoration: none;
-    transition: color 400ms ease;
+  &-live {
+    &-icon {
+      animation: liveAnimation 5s infinite;
+    }
+    &-counter {}
+  }
 
-    &:hover, &.nuxt-link-exact-active {
-      color: $colorPrimary;
+  &-list {
+    border: 2px solid red;
+    &-item {
+      border: 2px solid red;
     }
   }
 }
 
-.live-icon {
-  color: $colorPrimary;
-  animation: live 5s infinite;
-}
-
-@keyframes live {
+@keyframes liveAnimation {
   0% {
     opacity: 0;
   }
@@ -37,21 +28,5 @@ nav {
   } 
   100% {
     opacity: 0;
-  }
-}
-
-nav.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  top: auto;
-  width: 100%;
-  display: none;
-  align-items: center;
-  justify-content: center;
-
-  @media (orientation: landscape) {
-    // text-align: center;
-    align-items: flex-end;
   }
 }

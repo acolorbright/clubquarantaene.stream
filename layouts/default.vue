@@ -7,6 +7,12 @@
       </transition>
     </main>
     <Footer v-if="!isQueue" />
+    <Popup
+      title="Headline"
+      text="I am a popup"
+      buttonLabel="Ok, got it"
+      video="https://player.vimeo.com/external/401375408.hd.mp4?s=bbf37b1601af62db2a1758fd0d63b6f23c5f2623&profile_id=175"
+    />
   </div>
 </template>
 
@@ -15,11 +21,13 @@ import { mapActions } from 'vuex';
 import vhCheck from 'vh-check';
 import Header from '~/components/Header';
 import Footer from '~/components/Footer';
+import Popup from '~/components/Popup';
 
 export default {
   components: {
     Header,
-    Footer
+    Footer,
+    Popup
   },
   async fetch() {
     const contentData = await this.$axios.$get(`${process.env.CMS_URL}/data`);

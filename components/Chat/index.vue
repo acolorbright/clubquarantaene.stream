@@ -5,7 +5,7 @@
       <div class="chat-input">
         <span
           class="chat-history-indicator"
-          :style="{ 'background-color': `rgb(${userColor})` }"
+          :style="{ 'background-color': `${userColor}` }"
         />
         <input v-model="message" type="text" placeholder="Write a message..." />
         <input
@@ -29,9 +29,13 @@ export default {
       message: '',
       throttleTimer: 2000,
       locked: false,
-      messages: [],
-      userColor: '255,255,0'
+      messages: []
     };
+  },
+  computed: {
+    userColor() {
+      return this.$store.state.guest.color;
+    }
   },
   mounted() {
     document.addEventListener('keypress', this.onKeyPress);

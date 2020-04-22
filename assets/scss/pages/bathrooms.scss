@@ -1,0 +1,200 @@
+.bathroom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .bathroom-cubicles {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: [cubicle] auto [warning] auto [cubicle] auto;
+    padding: 0 1rem;
+    .bathroom-cubicles-warning {
+      grid-column-start: 1;
+      grid-column-end: 11;
+      text-align: center;
+      grid-row: warning;
+      margin: 2rem 0;
+      cursor: default;
+    }
+    &-item {
+      position: relative;
+      flex: 1;
+      flex-grow: 1;
+      padding: 0 .25rem;
+      cursor: pointer;
+      &-hoverimage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 98;
+        opacity: 0;
+        transition: opacity 400ms ease;
+        // pointer-events: none;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+      &:hover {
+        .bathroom-cubicles-item-hoverimage {
+          opacity: 1 !important;
+        }
+      }
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 99;
+      }
+      .background-image {
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}
+
+
+// .bathrooms {
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   // background-image: url('/assets/images/cubicles.jpg');
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   background-size: cover;
+//   background-position: center left;
+//   overflow: hidden;
+//   figure.background-image {
+//     position: absolute;
+//     height: 100vh;
+//     width: auto;
+//     top: 0;
+//     left: 0;
+//     img {
+//       width: auto;
+//       height: 100%;
+//     }
+//   }
+//   .toilet-room-container {
+//     // border: 2px solid yellow;
+//     box-sizing: border-box;
+//     height: 0;
+//     // padding-right: 56.66%;
+//     height: 100vh;
+//     width: 187.5vh;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     z-index: 9;
+//     .toilet-cubicles {
+//       // border: 2px solid blue;
+//       position: absolute;
+//       top: 24%;
+//       left: 4.25%;
+//       width: 79.9%;
+//       height: 56%;
+//       display: flex;
+//       flex-wrap: wrap;
+//       .toilet-cuible-item {
+//         overflow: hidden;
+//         position: relative;
+//         cursor: pointer;
+//         // border: 2px solid tomato;
+//         width: 7%;
+//         margin: 0 1.04%;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         font-size: $mediumFontSize;
+//         color: $colorPrimary;
+//         transition: opacity 400ms ease;
+//         &:nth-child(n+12) {
+//           // border-color: pink;
+//           margin-top: 4%;
+//         }
+//         &.occupied {
+//           color: red;
+//           opacity: 0.5;
+//           cursor: default;
+//           .toilet-image {
+//             display: none;
+//           }
+//         }
+//         .toilet-image {
+//           position: absolute;
+//           top: 0;
+//           left: 0;
+//           width: 100%;
+//           height: 100%;
+//           z-index: -1;
+//           opacity: 0;
+//           transition: opacity 400ms ease;
+//           img {
+//             width: 100%;
+//             height: 100%;
+//             object-fit: cover;
+//             object-position: center;
+//           }
+//         }
+//         &:hover .toilet-image {
+//           opacity: 1;
+//         }
+//       }
+//     }
+//   }
+//   .bathroom-toilet {
+//     display: none;
+//     width: calc(100% / 10);
+//     height: calc(100vh / 3);
+//     position: relative;
+//     filter: brightness(1);
+//     transition: filter 400ms ease;
+//     background-size: cover;
+//     background-position: center center;
+//     cursor: pointer;
+//     &:hover span.index {
+//       color: white;
+//     }
+//     span {
+//       position: absolute;
+//       display: block;
+//       top: 50%;
+//       left: 50%;
+//       transform: translate(-50%,-50%);
+//       font-size: $mediumFontSize * 1.5;
+//       color: $colorPrimary;
+//     }
+//     span.index {
+//       transition: color 400ms ease;
+//     }
+//     span.occupied-symbol {
+//       font-size: 1.5vw;
+//       transform: translate(-50%, -50%) rotate(-20deg);
+//       color: red;
+//       z-index: 99;
+//       transition: opacity 400ms ease;
+//       opacity: 0;
+//     }
+//     &.occupied {
+//       filter: brightness(0.4);
+//       cursor: inherit;
+//       span.occupied-symbol {
+//         opacity: 1;
+//       }
+//       span.index {
+//         color: $colorPrimary;
+//       }
+//     }
+//   }
+// }

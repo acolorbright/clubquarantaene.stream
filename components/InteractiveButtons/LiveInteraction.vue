@@ -22,10 +22,10 @@ export default {
     this.startLoop();
   },
   methods: {
-    spawnPlusOne() {
+    spawn() {
       const newDiv = document.createElement('div');
       newDiv.className = `plus-one item-${
-        Math.round(Math.random() * (5 - 1)) + 1
+        Math.round(Math.random() * (3 - 1)) + 1
       }`;
       const newContent = document.createTextNode('+1');
       newDiv.appendChild(newContent);
@@ -38,7 +38,7 @@ export default {
       const rand = Math.round(Math.random() * (this.max - this.min)) + this.min;
       const vm = this;
       setTimeout(function () {
-        vm.spawnPlusOne();
+        vm.spawn();
         vm.startLoop();
       }, rand);
     }

@@ -27,7 +27,9 @@ export default {
 
     this.setContent({
       data: contentData,
-      queue: contentQueue
+      loaded: true,
+      queue: contentQueue,
+      granted: true
     });
   },
   fetchOnServer: false,

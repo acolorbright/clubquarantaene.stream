@@ -1,0 +1,17 @@
+.interactive-buttons {
+  &-item {
+    display: inline-block;
+    position: relative;
+    span.progress-bar {
+      width: 0%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      pointer-events: none;
+      background-color: white;
+      mix-blend-mode: difference;
+      border-radius: $buttonBorderRadius;
+    }
+  }
+}

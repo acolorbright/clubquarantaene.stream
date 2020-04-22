@@ -1,6 +1,7 @@
 <template>
   <div class="page imprint">
-    Imprint
+    <h1>{{ $store.state.content.imprint.title }}</h1>
+    <div class="imprint-content" v-html="$store.state.content.imprint.text" />
   </div>
 </template>
 

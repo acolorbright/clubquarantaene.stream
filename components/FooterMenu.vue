@@ -8,15 +8,15 @@
         >Timetable</span
       >
     </div>
-    <div class="right-menu">
-      <OffworldButtons />
-    </div>
+    <!-- <div class="right-menu">
+      <InteractiveButtons />
+    </div> -->
   </nav>
 </template>
 <script>
-import OffworldButtons from '../components/OffworldButtons.vue';
+// import InteractiveButtons from '../components/InteractiveButtons.vue';
 export default {
-  name: 'FooterMenu',
-  components: { OffworldButtons }
+  name: 'FooterMenu'
+  // components: { InteractiveButtons }
 };
 </script>

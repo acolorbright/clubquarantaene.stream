@@ -1,4 +1,5 @@
 import Vuex from 'vuex';
+import content from './modules/content';
 import event from './modules/event';
 import queue from './modules/queue';
 import timetable from './modules/timetable';
@@ -10,6 +11,7 @@ import interactivebuttons from './modules/interactivebuttons';
 const store = () => {
   return new Vuex.Store({
     modules: {
+      content,
       event,
       queue,
       timetable,

@@ -1,15 +1,27 @@
 .menu {
   border: 2px solid red;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
 
   &-live {
+    position: absolute;
+    left: 0;
+    top: 0;
+
     &-icon {
-      animation: liveAnimation 5s infinite;
+      animation: liveAnimation $liveAnimationDuration infinite;
     }
     &-counter {}
   }
 
   &-list {
     border: 2px solid red;
+    display: flex;
+
     &-item {
       border: 2px solid red;
     }

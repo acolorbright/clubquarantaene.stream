@@ -1,113 +1,36 @@
 <template>
-  <transition name="fade" mode="out-in">
-    <div v-if="loaded" id="quarantaene">
-      <!-- <div @click="accessDeviceMotion" style="position: fixed; top: 0px; left: 0px; padding: 1rem; background: blue; color: white; cursor:pointer;">Enable Device Motion</div> -->
+  <div class="app">
+    {{ $store.state.event.content }}
+    <nav>menu</nav>
+    <main>
       <transition name="fade" mode="out-in">
-        <Menu v-if="showMenu" />
+        <nuxt />
       </transition>
-      <transition name="fade" mode="out-in">
-        <FooterMenu v-if="isMainfloor" />
-      </transition>
-      <Livestream v-if="showLivestream" />
-      <nuxt />
-      <transition name="fade">
-        <Timetable v-if="$store.state.oldState.showTimetable" />
-      </transition>
-      <div id="imprint">
-        <nuxt-link
-          to="/imprint"
-          class="allcaps"
-          :class="{ 'black-type': $route.name == 'index' }"
-        >
-          Imprint
-        </nuxt-link>
-      </div>
-    </div>
-  </transition>
+    </main>
+    <footer>footer</footer>
+  </div>
 </template>
-<script>
-import moment from 'moment-timezone';
 
-import Menu from '../components/Menu.vue';
-import FooterMenu from '../components/FooterMenu.vue';
-import Livestream from '../components/Livestream.vue';
-import Timetable from '../components/Timetable.vue';
+<script>
+// import vhCheck from 'vh-check';
+// import Header from '~/components/Header';
+// import Footer from '~/components/Footer';
 
 export default {
-  components: {
-    Menu,
-    FooterMenu,
-    Livestream,
-    Timetable
-  },
-  data() {
-    return {
-      granted: true,
-      loaded: false
-    };
-  },
-  computed: {
-    showMenu() {
-      return (
-        this.$route.path !== '' &&
-        this.$route.path !== '/' &&
-        this.$route.path !== '/line' &&
-        this.$route.path !== '/bouncer'
-      );
-    },
-    isMainfloor() {
-      return this.$route.path === '/mainfloor';
-    },
-    showLivestream() {
-      return this.granted && this.isMainfloor;
-    }
-  },
+  // components: {
+  //   Header,
+  //   Footer
+  // },
   mounted() {
-    this.fetchData();
-    // this.accessDeviceMotion()
+    // vhCheck({
+    //   cssVarName: 'vh-offset'
+    // });
+
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start();
+      setTimeout(() => this.$nuxt.$loading.finish(), 750);
+    });
   },
-  methods: {
-    fetchData() {
-      this.$axios.get(process.env.CMS_URL).then(res => {
-        this.$store.commit('setContent', res.data.data);
-        this.loaded = true;
-        // const vm = this;
-        // setInterval(() => {
-        //   vm.checkIfEventIsRunning();
-        // }, 1000);
-      });
-    },
-    checkIfEventIsRunning() {
-      // this.$store.dispatch('content/checkIfEventIsRunning')
-      const eventIsRunning = moment()
-        .tz('Europe/Berlin')
-        .isBetween(
-          this.$store.state.content.data.event.start,
-          this.$store.state.content.data.event.end
-        );
-      if (eventIsRunning !== this.$store.state.content.eventIsRunning) {
-        this.$store.commit('setEventIsRunning', eventIsRunning);
-      }
-    },
-    accessDeviceMotion() {
-      const vm = this;
-      DeviceMotionEvent.requestPermission()
-        .then(response => {
-          if (response === 'granted') {
-            vm.granted = true;
-            console.log('DeviceMotion granted');
-          }
-        })
-        .catch(console.error);
-    }
-  },
-  sockets: {
-    userCount(userCount) {
-      this.$store.commit('setUsers', userCount);
-    },
-    getProgressBars(progressBars) {
-      this.progressBars = progressBars;
-    }
-  }
+  middleware: ['fetchContent']
 };
 </script>

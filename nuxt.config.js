@@ -7,7 +7,8 @@ export default {
   },
   env: {
     FRONTEND_URL: isDev ? 'https://localhost:3000' : process.env.FRONTEND_URL,
-    SOCKET_URL: isDev ? 'https://localhost:4000' : process.env.SOCKET_URL
+    CMS_URL: isDev ? 'https://localhost:4000' : process.env.CMS_URL,
+    SOCKET_URL: isDev ? 'https://localhost:1337' : process.env.SOCKET_URL
   },
   head: {
     title: 'CLUB QUARANTÄNE',
@@ -65,9 +66,9 @@ export default {
       {
         src: 'https://www.youtube.com/iframe_api'
       },
-      {
-        src: '//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'
-      },
+      // {
+      //   src: '//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'
+      // },
       {
         src:
           'https://storage.googleapis.com/offworld-public-assets/0.0.7/offworldPerformance.min.js'

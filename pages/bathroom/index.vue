@@ -19,25 +19,6 @@
         Max. 8 People per Cubicle
       </div>
     </div>
-
-    <!-- <div class="toilet-room-container">
-      <div class="toilet-cubicles">
-        <div
-          v-for="(toilet, index) in images"
-          :key="index"
-          :class="{
-            occupied: $store.state.oldState.rooms[index]
-          }"
-          class="toilet-cuible-item"
-          @click="handleClick(index)"
-        >
-          <span>{{ index + 1 }}</span>
-          <figure class="toilet-image">
-            <img :src="toilet" />
-          </figure>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 

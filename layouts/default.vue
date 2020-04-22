@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       granted: true,
-      loaded: false
+      loaded: true
     };
   },
   computed: {

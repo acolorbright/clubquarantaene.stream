@@ -1,11 +1,8 @@
 <template>
   <div class="text-page cloakroom-page">
-    <h1>
-      <a :href="$store.state.cloakroom.link" target="_blank">
-        {{ $store.state.cloakroom.title }}
-      </a>
-    </h1>
-    <BackgroundVideo :src="$store.state.cloakroom.backgroundVideo" />
+    <h1>{{ $store.state.content.cloakroom.title }}</h1>
+    <div v-html="$store.state.content.cloakroom.text" />
+    <BackgroundVideo :src="$store.state.content.cloakroom.text" />
   </div>
 </template>
 

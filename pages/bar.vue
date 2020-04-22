@@ -1,14 +1,14 @@
 <template>
   <div class="text-page bar-page">
-    <h1>{{ $store.state.bar.title }}</h1>
+    <h1>{{ $store.state.content.bar.title }}</h1>
     <div class="donations">
       <div
-        v-for="(service, index) in $store.state.bar.services"
+        v-for="(service, index) in $store.state.content.bar.services"
         :key="index"
         class="donations-item"
       >
         <h2 class="donations-item-headline">{{ service.title }}</h2>
-        <div class="donations-item-text">{{ service.text }}</div>
+        <div class="donations-item-text" v-html="service.text" />
         <div class="donations-item-link">
           <a
             :href="service.link"
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <BackgroundVideo :src="$store.state.bar.backgroundVideo" />
+    <BackgroundVideo :src="$store.state.content.bar.backgroundVideo" />
   </div>
 </template>
 <script>

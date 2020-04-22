@@ -1,12 +1,12 @@
 <template>
   <div class="app">
-    <Header />
+    <Header v-if="enteredClub" />
     <main class="main">
       <transition name="fade" mode="out-in">
         <nuxt />
       </transition>
     </main>
-    <Footer />
+    <Footer v-if="enteredClub" />
   </div>
 </template>
 
@@ -31,6 +31,11 @@ export default {
     });
   },
   fetchOnServer: false,
+  computed: {
+    enteredClub() {
+      return false;
+    }
+  },
   mounted() {
     vhCheck({
       cssVarName: 'vh-offset'

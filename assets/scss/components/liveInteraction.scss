@@ -1,0 +1,31 @@
+.live-interaction {
+  position: absolute;
+  z-index: 999;
+  pointer-events: none;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(calc(-50% - 0.75em), 1rem);
+  .plus-one {
+    position: absolute;
+    animation: plusOneAnimation 500ms infinite linear;
+    pointer-events: none;
+    bottom: 0;
+    &.item-1 { left: -0.5em; }
+    &.item-2 { left: 0; }
+    &.item-3 { left: 0.5em; }
+  }
+}
+
+@keyframes plusOneAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    transform: translate(0,-25px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0,-50px);
+    opacity: 0;
+  }
+}

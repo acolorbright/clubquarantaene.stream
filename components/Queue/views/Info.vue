@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="step-title">{{ data.title }} ({{ data.type }})</h3>
+    <h3 class="step-title">{{ data.title }}</h3>
     <p class="step-text">{{ data.text }}</p>
 
     <transition name="fade-step" mode="out-in">
@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-
 export default {
   props: {
     data: {
@@ -34,18 +32,8 @@ export default {
     }, 2000);
   },
   methods: {
-    ...mapActions({
-      setCountdownIsRunning: 'setCountdownIsRunning'
-    }),
     nextStep() {
       this.$emit('nextStep', true);
-      this.resumeCountdown();
-    },
-    pauseCountdown() {
-      this.setCountdownIsRunning(false);
-    },
-    resumeCountdown() {
-      this.setCountdownIsRunning(true);
     }
   }
 };

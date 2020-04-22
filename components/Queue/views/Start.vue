@@ -1,7 +1,7 @@
 <template>
   <div class="start">
     <h3 class="step-title start-gradient">
-      {{ data.title }} ({{ data.type }})
+      {{ data.title }}
     </h3>
   </div>
 </template>
@@ -17,11 +17,14 @@ export default {
     }
   },
   mounted() {
-    this.setCountdownIsRunning(true);
+    setTimeout(() => {
+      this.nextStep();
+      this.setCountdownIsRunning(true);
+    }, 2000);
 
     setTimeout(() => {
       this.nextStep();
-    }, 2000); // should be 5s
+    }, 7000);
   },
   methods: {
     ...mapActions({

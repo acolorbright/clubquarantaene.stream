@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="step-title">{{ data.title }} ({{ data.type }})</h3>
+    <h3 class="step-title">{{ data.title }}</h3>
 
     <div class="step-buttons">
       <button class="step-buttons-btn" @click="nextStep">no</button>

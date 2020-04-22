@@ -1,7 +1,5 @@
 <template>
-  <div class="countdown">
-    {{ days }}d{{ hours }}h{{ minutes }}m{{ seconds }}s
-  </div>
+  <div id="countdown">{{ countdownDisplay }}</div>
 </template>
 
 <script>
@@ -34,6 +32,9 @@ export default {
     },
     seconds() {
       return this.duration.seconds();
+    },
+    countdownDisplay() {
+      return `${this.days}d${this.hours}h${this.minutes}m${this.seconds}s`;
     },
     eventHasStarted() {
       return (

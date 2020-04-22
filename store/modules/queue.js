@@ -71,7 +71,7 @@ const mutations = {
       value: 30
     };
   },
-  setCountdownIsRunning(state, isRunning) {
+  setQueueCountdownIsRunning(state, isRunning) {
     state.countdown.isRunning = isRunning;
   }
 };
@@ -95,8 +95,8 @@ const actions = {
   reduceCountdown({ commit }) {
     commit('reduceCountdown');
   },
-  setCountdownIsRunning({ commit }, isRunning) {
-    commit('setCountdownIsRunning', isRunning);
+  setQueueCountdownIsRunning({ commit }, isRunning) {
+    commit('setQueueCountdownIsRunning', isRunning);
   },
   resetQueue({ commit }) {
     commit('unvalidateSteps');

@@ -1,18 +1,21 @@
 <template>
-  <div class="start">
-    <h3 class="step-title start-gradient">
+  <div class="start start-gradient">
+    <div class="start-content">
       <Logo />
-    </h3>
+      <!-- <Countdown /> -->
+    </div>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 import Logo from '~/components/Logo.vue';
+// import Countdown from '~/components/Countdown.vue';
 
 export default {
   components: {
     Logo
+    // Countdown
   },
   props: {
     data: {
@@ -21,18 +24,17 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
-      this.nextStep();
-      this.setCountdownIsRunning(true);
-    }, 2000);
-
-    setTimeout(() => {
-      this.nextStep();
-    }, 7000);
+    // setTimeout(() => {
+    //   this.nextStep();
+    //   this.setQueueCountdownIsRunning(true);
+    // }, 2000);
+    // setTimeout(() => {
+    //   this.nextStep();
+    // }, 7000);
   },
   methods: {
     ...mapActions({
-      setCountdownIsRunning: 'setCountdownIsRunning'
+      setQueueCountdownIsRunning: 'setQueueCountdownIsRunning'
     }),
     nextStep() {
       this.$emit('nextStep', true);

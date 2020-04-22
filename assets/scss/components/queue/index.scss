@@ -1,5 +1,6 @@
 .queue {
     // color: $colorPrimary;
+    color: red;
 
     &-countdown {
         left: 50%;
@@ -22,7 +23,8 @@
         text-align: center;
 
         &-color {
-            width: 100%;
+            margin: 0 35%;
+            width: 30%;
 
             &-dot {
                 animation: gradientAnimation 15s infinite alternate;

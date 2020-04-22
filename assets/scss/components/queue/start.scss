@@ -1,6 +1,6 @@
 .start {
     &-gradient {
-        // animation: gradientAnimation 15s infinite alternate;
+        animation: gradientAnimation 15s infinite alternate;
         animation-fill-mode: backwards;
         background: $radialGradient;
         height: 100%;

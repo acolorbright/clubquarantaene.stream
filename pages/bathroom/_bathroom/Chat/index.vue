@@ -128,7 +128,7 @@ export default {
       //   event_category: 'emoji_click',
       //   event_label: 'linkclick'
       // })
-      vm.$router.push({ path: '/mainfloor' });
+      vm.$router.push({ path: '/dancefloor' });
     },
     sendMsg(isGoodByeMessage) {
       // dont to anything when the message is empty

@@ -104,7 +104,7 @@ export default {
       this.nextTab();
     },
     emitEnterClub() {
-      this.$router.push('/mainfloor');
+      this.$router.push('/dancefloor');
     },
     emitTryAgain() {
       this.resetQueue();

@@ -49,7 +49,7 @@ export default {
     },
     throttleTimer: {
       type: Number,
-      default: 1
+      default: 3000
     },
     maxLength: {
       type: Number,
@@ -71,7 +71,8 @@ export default {
       const messagesLength = this.messages.length;
       const lastMessagePos = this.messages.length - this.maxChatHistory;
       if (this.maxChatHistory && messagesLength >= this.maxChatHistory) {
-        return this.messages.slice(lastMessagePos, messagesLength);
+        const slicedMsg = this.messages.slice(lastMessagePos, messagesLength);
+        return slicedMsg;
       } else {
         return this.messages;
       }

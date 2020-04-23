@@ -2,7 +2,7 @@
   <nav class="menu">
     <nuxt-link class="menu-live" to="/">
       <span class="menu-live-icon">Live</span>
-      <span class="menu-live-counter">0 Guests</span>
+      <span class="menu-live-counter">{{ userCount }} Guests</span>
     </nuxt-link>
 
     <ul class="menu-list">
@@ -24,3 +24,17 @@
     </ul>
   </nav>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      userCount: 1
+    };
+  },
+  sockets: {
+    'total-users'(amount) {
+      this.userCount = amount;
+    }
+  }
+};
+</script>

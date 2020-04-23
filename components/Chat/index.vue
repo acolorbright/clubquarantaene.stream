@@ -30,6 +30,10 @@ export default {
   name: 'Chat',
   components: { ChatHistory },
   props: {
+    roomName: {
+      type: String,
+      default: 'mainfloor'
+    },
     throttleTimer: {
       type: Number,
       default: 2000
@@ -50,6 +54,9 @@ export default {
     userColor() {
       return this.$store.state.guest.color;
     }
+  },
+  beforeMount() {
+    this.$socket.client.emit('new-user', this.roomName, this.userColor);
   },
   mounted() {
     document.addEventListener('keypress', this.onKeyPress);
@@ -84,12 +91,36 @@ export default {
         message: this.message
       };
       this.messages.push(msgObj);
+      this.$socket.client.emit(
+        'send-chat-message',
+        this.roomName,
+        this.message
+      );
       this.message = '';
     },
     onKeyPress(event) {
       if (event.key === 'Enter') {
-        this.sendMsg(false);
+        this.sendMsg();
       }
+    }
+  },
+  sockets: {
+    'chat-message'(msg) {
+      this.messages.push(msg);
+    },
+    'user-connected'(name) {
+      const msg = {
+        name,
+        message: `${name} entered the room.`
+      };
+      this.messages.push(msg);
+    },
+    'user-disconnected'(name) {
+      const msg = {
+        name,
+        message: `${name} left the room.`
+      };
+      this.messages.push(msg);
     }
   }
 };

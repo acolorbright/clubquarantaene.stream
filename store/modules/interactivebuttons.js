@@ -28,12 +28,12 @@ const mutations = {
       key.percent;
   },
   setLargeTextoverlay(state, key) {
-    if (key) {
+    if (state.buttons.find(button => button.reaction === key)) {
       const msg = state.buttons.find(button => button.reaction === key)
         .achievementMsg;
       state.largeTextoverlay = msg;
     } else {
-      state.largeTextoverlay = '';
+      state.largeTextoverlay = key;
     }
   }
 };

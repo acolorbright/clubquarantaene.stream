@@ -1,9 +1,14 @@
 <template>
-  <div class="start start-gradient">
+  <div
+    class="start"
+    :class="{
+      'start-gradient': showStart
+    }"
+  >
     <transition name="fade-step" mode="out-in">
       <div v-if="showStart" class="start-content">
         <Logo />
-        <div v-if="!hasStarted">
+        <div v-if="hasStarted">
           <Countdown />
           <Newsletter />
           <SocialIcons />
@@ -44,16 +49,18 @@ export default {
     };
   },
   mounted() {
-    setTimeout(() => {
-      this.showStart = true;
-    }, 1000);
+    this.showStart = true;
 
-    // if (this.hasStarted || this.isDev) {
-    //   setTimeout(() => {
-    //     this.nextStep();
-    //     this.setQueueCountdownIsRunning(true);
-    //   }, 2000);
-    // }
+    if (this.hasStarted || this.isDev) {
+      setTimeout(() => {
+        this.showStart = false;
+        this.setQueueCountdownIsRunning(true);
+      }, 3000);
+
+      setTimeout(() => {
+        this.nextStep();
+      }, 7000);
+    }
   },
   methods: {
     ...mapActions({

@@ -1,5 +1,10 @@
 <template>
-  <div class="queue-countdown">
+  <div
+    class="queue-countdown"
+    :class="{
+      'queue-countdown--small': small
+    }"
+  >
     You are in line.
     <span class="queue-countdown-value">:{{ countdownValue }}s</span>
   </div>
@@ -9,6 +14,12 @@
 import { mapActions } from 'vuex';
 
 export default {
+  props: {
+    small: {
+      type: Boolean,
+      value: false
+    }
+  },
   data() {
     return {
       countdownInterval: null

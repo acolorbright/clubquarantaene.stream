@@ -2,9 +2,20 @@
     color: $colorPrimary;
 
     &-countdown {
+        // font-size: $fontSizeLarge;
         font-size: $fontSizeNormal;
+        position: fixed;
         text-align: center;
+        transform: scale(1) translateY(calc(50vh - 50%));
+        transform-origin: top;
+        transition: transform $slowTransitionSpeed;
         width: 100%;
+        z-index: 1;
+
+        &--small {
+            // transform: scale(0.35) translateY(0);
+            transform: scale(1) translateY(0);
+        }
 
         &-value {
             display: block;
@@ -14,8 +25,11 @@
     .step {
         align-items: center;
         font-size: $fontSizeNormal;
-        position: relative;
+        position: absolute;
         text-align: center;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
 
         &--start {
             font-size: $fontSizeLarge;

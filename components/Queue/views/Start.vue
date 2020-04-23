@@ -3,7 +3,6 @@
     <transition name="fade-step" mode="out-in">
       <div v-if="showStart" class="start-content">
         <Logo />
-
         <div v-if="!hasStarted">
           <Countdown />
           <Newsletter />
@@ -40,7 +39,8 @@ export default {
   },
   data() {
     return {
-      showStart: false
+      showStart: false,
+      isDev: process.env.isDev
     };
   },
   mounted() {
@@ -48,13 +48,12 @@ export default {
       this.showStart = true;
     }, 1000);
 
-    // setTimeout(() => {
-    //   this.nextStep();
-    //   this.setQueueCountdownIsRunning(true);
-    // }, 1000);
-    // setTimeout(() => {
-    //   this.nextStep();
-    // }, 7000);
+    if (this.hasStarted || this.isDev) {
+      setTimeout(() => {
+        this.nextStep();
+        this.setQueueCountdownIsRunning(true);
+      }, 2000);
+    }
   },
   methods: {
     ...mapActions({

@@ -48,12 +48,12 @@ export default {
       this.showStart = true;
     }, 1000);
 
-    if (this.hasStarted || this.isDev) {
-      setTimeout(() => {
-        this.nextStep();
-        this.setQueueCountdownIsRunning(true);
-      }, 2000);
-    }
+    // if (this.hasStarted || this.isDev) {
+    //   setTimeout(() => {
+    //     this.nextStep();
+    //     this.setQueueCountdownIsRunning(true);
+    //   }, 2000);
+    // }
   },
   methods: {
     ...mapActions({

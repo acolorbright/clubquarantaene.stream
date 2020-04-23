@@ -2,6 +2,7 @@
     color: $colorPrimary;
 
     &-countdown {
+        font-size: $fontSizeNormal;
         text-align: center;
         width: 100%;
 
@@ -12,8 +13,13 @@
 
     .step {
         align-items: center;
+        font-size: $fontSizeNormal;
         position: relative;
         text-align: center;
+
+        &--start {
+            font-size: $fontSizeLarge;
+        }
 
         &-color {
             margin: 0 35%;

@@ -1,4 +1,5 @@
 .newsletter {
+
   .mc_embed_signup {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -32,27 +33,26 @@
     color: $colorDark;
     font-family: inherit;
     font-size: $fontSizeNormal;
-    line-height: 0.8;
     outline: 0;
     padding: 0.2em;
     width: 12em;
   }
 
   input[type="submit"] {
-    -o-transition: background-color 200ms ease, color 200ms ease;
-    -webkit-transition: background-color 200ms ease, color 200ms ease;
+    -o-transition: background-color $baseTransitionSpeed, color $baseTransitionSpeed;
+    -webkit-transition: background-color $baseTransitionSpeed, color $baseTransitionSpeed;
     background-color: rgba(0, 0, 0, 0);
     border-radius: 3px;
     border: 0.1em solid $colorDark;
     margin-left: 0.5em;
     padding: 0.35em 0.5em 0.2em 0.5em;
-    transition: background-color 200ms ease, color 200ms ease;
+    transition: background-color $baseTransitionSpeed, color $baseTransitionSpeed;
     width: auto;
   }
 
   input[type="submit"]:hover {
     background-color: $colorDark;
-    color: $colorPrimary;
+    color: $colorLight;
     cursor: pointer;
   }
 
@@ -64,6 +64,7 @@
     input[type="submit"] {
       border-color: $colorLight;
       color: $colorLight;
+
       &:hover {
         background-color: $colorLight;
         color: $colorDark;
@@ -80,7 +81,7 @@
   #mc_embed_signup div.mce_inline_error {
     background: none !important;
     color: $colorError !important;
-    font-size: 0.4em !important;
+    font-size: $fontSizeLarge !important;
     margin: 0 auto !important;
     text-align: center !important;
     font-weight: normal !important;
@@ -92,7 +93,7 @@
     top: 100%;
     left: 50%;
     transform: translate(-50%, 10%);
-    font-size: 0.4em;
+    font-size: $fontSizeLarge;
     -webkit-transform: translate(-50%, 10%);
     -moz-transform: translate(-50%, 10%);
     -ms-transform: translate(-50%, 10%);

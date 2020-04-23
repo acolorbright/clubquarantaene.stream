@@ -1,6 +1,4 @@
 .newsletter {
-  margin-top: 1em;
-
   .mc_embed_signup {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -28,12 +26,12 @@
   input {
     -webkit-appearance: none;
     background: none;
+    border: 0;
     border-bottom: 0.1em solid $colorDark;
     border-radius: 0;
-    border: 0;
     color: $colorDark;
     font-family: inherit;
-    font-size: 1em;
+    font-size: $fontSizeNormal;
     line-height: 0.8;
     outline: 0;
     padding: 0.2em;

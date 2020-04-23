@@ -10,7 +10,7 @@
         <nuxt-link to="/bar">Bar</nuxt-link>
       </li>
       <li class="menu-list-item">
-        <nuxt-link to="/mainfloor">Mainfloor</nuxt-link>
+        <nuxt-link to="/dancefloor">Dancefloor</nuxt-link>
       </li>
       <li class="menu-list-item">
         <nuxt-link to="/cloakroom">Cloakroom</nuxt-link>

@@ -1,38 +1,63 @@
 <template>
-  <div class="start">
-    <h3 class="step-title start-gradient">
-      <Logo />
-    </h3>
+  <div class="start start-gradient">
+    <transition name="fade-step" mode="out-in">
+      <div v-if="showStart" class="start-content">
+        <Logo />
+        <div v-if="!hasStarted">
+          <Countdown />
+          <Newsletter />
+          <SocialIcons />
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 import Logo from '~/components/Logo.vue';
+import Countdown from '~/components/Countdown.vue';
+import Newsletter from '~/components/Newsletter.vue';
+import SocialIcons from '~/components/SocialIcons.vue';
 
 export default {
   components: {
-    Logo
+    Logo,
+    Countdown,
+    Newsletter,
+    SocialIcons
   },
   props: {
     data: {
       type: Object,
       default: null
+    },
+    hasStarted: {
+      type: Boolean,
+      default: false
     }
+  },
+  data() {
+    return {
+      showStart: false,
+      isDev: process.env.isDev
+    };
   },
   mounted() {
     setTimeout(() => {
-      this.nextStep();
-      this.setCountdownIsRunning(true);
-    }, 2000);
+      this.showStart = true;
+    }, 1000);
 
-    setTimeout(() => {
-      this.nextStep();
-    }, 7000);
+    if (this.hasStarted || this.isDev) {
+      setTimeout(() => {
+        this.nextStep();
+        this.setQueueCountdownIsRunning(true);
+      }, 2000);
+    }
   },
   methods: {
     ...mapActions({
-      setCountdownIsRunning: 'setCountdownIsRunning'
+      setQueueCountdownIsRunning: 'setQueueCountdownIsRunning'
     }),
     nextStep() {
       this.$emit('nextStep', true);

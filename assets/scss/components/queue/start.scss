@@ -1,4 +1,7 @@
 .start {
+    color: $colorDark;
+    font-size: $fontSizeLarge;
+
     &-gradient {
         animation: gradientAnimation 15s infinite alternate;
         animation-fill-mode: backwards;
@@ -16,6 +19,21 @@
                 background-size: 500% 500%;
                 background-position: center;
             }
+        }
+    }
+
+    &-content {
+        left: 50%;
+        position: fixed;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .social-icons {
+        font-size: $fontSizeNormal;
+
+        &-link {
+            color: $colorDark;
         }
     }
 }

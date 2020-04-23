@@ -1,11 +1,23 @@
 <template>
   <footer class="footer">
-    <div class="footer-chat">Chat</div>
+    <div class="footer-chat">
+      <Chat />
+    </div>
     <div class="footer-buttons">
-      <button class="footer-buttons-btn">Grow vines</button>
-      <button class="footer-buttons-btn">Reveal artist</button>
-      <button class="footer-buttons-btn">Wow effect</button>
+      <InteractiveButtons />
     </div>
     <nuxt-link class="footer-imprint" to="/imprint">Imprint</nuxt-link>
   </footer>
 </template>
+
+<script>
+import InteractiveButtons from './InteractiveButtons';
+import Chat from '~/components/Chat';
+
+export default {
+  components: {
+    Chat,
+    InteractiveButtons
+  }
+};
+</script>

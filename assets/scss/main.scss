@@ -12,14 +12,15 @@
 // components
 @import 'components/queue/index.scss';
 @import 'components/queue/start.scss';
-@import 'components/logo';
 @import 'components/menu';
+@import 'components/logo';
 @import 'components/footer';
 @import 'components/newsletter';
+@import 'components/livestream';
 @import 'components/interactiveButtons';
 @import 'components/liveInteraction';
 
 // pages
 @import 'pages/index';
-@import 'pages/mainfloor';
+@import 'pages/dancefloor';
 @import 'pages/bathrooms';

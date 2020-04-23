@@ -2,9 +2,9 @@
   <div class="livestream">
     <div id="player" class="livestream-player" />
     <div class="livestream-controls">
-      <button @click="playVideo">play</button>
-      <button @click="pauseVideo">pause</button>
-      <button @click="resetCamera">reset camera</button>
+      <button class="livestream-controls-btn" @click="resetCamera">
+        Reset Camera
+      </button>
     </div>
   </div>
 </template>
@@ -15,12 +15,13 @@ export default {
     return {
       player: null,
       playerVars: {
-        autoplay: 0,
+        autoplay: 1,
         captions: 0,
         controls: 0,
         disablekb: 1,
         fs: 0,
         fullscreen: 0,
+        iv_load_policy: 3,
         keyboard: 0,
         modestBranding: 1,
         origin: window.location.host,
@@ -38,33 +39,27 @@ export default {
   },
   methods: {
     initPlayer() {
-      if (process.browser) {
-        const YTPlayer = window.YT.Player;
-        this.player = new YTPlayer('player', {
-          events: {
-            onReady: this.onReady,
-            onStateChange: this.onStateChange,
-            onPlaybackQualityChange: this.onPlaybackQualityChange,
-            onError: this.onError
-          },
-          height: '180',
-          playerVars: this.playerVars,
-          videoId: this.videoId,
-          width: '320'
-        });
-      }
+      const YTPlayer = window.YT.Player;
+      this.player = new YTPlayer('player', {
+        events: {
+          onReady: this.onReady,
+          onStateChange: this.onStateChange,
+          onPlaybackQualityChange: this.onPlaybackQualityChange,
+          onError: this.onError
+        },
+        playerVars: this.playerVars,
+        videoId: this.videoId
+        // height: '360',
+        // width: '640'
+      });
     },
-    playVideo() {
-      console.log('playVideo');
+    handleVideo() {
       this.player.playVideo();
     },
     pauseVideo() {
-      console.log('pauseVideo');
       this.player.pauseVideo();
     },
-    onReady() {
-      console.log('onReady');
-    },
+    onReady() {},
     onStateChange(playerState) {
       // -1 (UNSTARTED)
       // 0 (ENDED) YT.PlayerState.ENDED

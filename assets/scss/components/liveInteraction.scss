@@ -10,9 +10,11 @@
     animation: plusOneAnimation 500ms infinite linear;
     pointer-events: none;
     bottom: 0;
-    &.item-1 { left: -0.5em; }
-    &.item-2 { left: 0; }
-    &.item-3 { left: 0.5em; }
+    &.item-1 { left: -1em; }
+    &.item-2 { left: -0.5em; }
+    &.item-3 { left: 0em; }
+    &.item-4 { left: 0.5em; }
+    &.item-5 { left: 1em; }
   }
 }
 

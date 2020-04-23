@@ -5,10 +5,11 @@ $liveAnimationDuration: 5s;
 
 // colors
 $colorPrimary: #0038FF;
+$colorSecondary: #FF0000;
 $colorLight: rgba(255, 255, 255, 1);
 $colorDark: rgba(0, 0, 0, 1);
 $colorDarkTransparent: rgba(0, 0, 0, 0.3);
-$colorError: red;
+$colorError: #FF0000;
 $radialGradient: radial-gradient(
     50% 50% at 50% 50%,
     $colorPrimary 0%,

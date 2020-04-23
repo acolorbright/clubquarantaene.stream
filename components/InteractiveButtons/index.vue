@@ -50,19 +50,19 @@ export default {
       console.log('OffworlPerformance connected');
       this.connected = true;
     });
-    this.api.onStateChange(newState => {
-      switch (newState) {
-        case OffworldPerformance.PerformanceWaitingForStart:
-          console.log('Waiting for start');
-          return;
-        case OffworldPerformance.PerformanceInProgress:
-          console.log('PerformanceInProgress');
-          return;
-        case OffworldPerformance.PerformanceEnded:
-          console.log('PerformanceEnded');
-          return;
-        }
-    });
+    // this.api.onStateChange(newState => {
+    //   switch (newState) {
+    //     case OffworldPerformance.PerformanceWaitingForStart:
+    //       console.log('Waiting for start');
+    //       return;
+    //     case OffworldPerformance.PerformanceInProgress:
+    //       console.log('PerformanceInProgress');
+    //       return;
+    //     case OffworldPerformance.PerformanceEnded:
+    //       console.log('PerformanceEnded');
+    //       return;
+    //     }
+    // });
     this.api.onPercentCompleteChange((reactionName, percentComplete)=> {
       const oldVal =
         vm.buttons.find(button => button.reaction === reactionName).progress;
@@ -77,14 +77,14 @@ export default {
       if (percentComplete < oldVal) {
         console.log(`${reactionName} ACHIEVEMENT UNLOCKED`);
       }
-      console.log(`onPercentCompleteChange: ${reactionName} is ${percentComplete}`);
+      // console.log(`onPercentCompleteChange: ${reactionName} is ${percentComplete}`);
     });
     /* eslint-enable */
   },
   beforeDestroy() {
     if (this.connected) {
       this.api.disconnect();
-      console.log(this.api);
+      console.log('disconnected');
     }
   },
   methods: {

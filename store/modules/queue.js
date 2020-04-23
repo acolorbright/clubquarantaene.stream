@@ -37,6 +37,7 @@ const state = () => ({
     {
       title: 'Do you accept cookies?',
       type: 'question',
+      action: 'cookies',
       isValidated: false
     },
     {

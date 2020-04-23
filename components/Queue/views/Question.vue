@@ -3,8 +3,8 @@
     <h3 class="step-title">{{ data.title }}</h3>
 
     <div class="step-buttons">
-      <button class="step-buttons-btn" @click="nextStep">no</button>
-      <button class="step-buttons-btn" @click="nextStep">yes</button>
+      <button class="step-buttons-btn" @click="stepDeclined">no</button>
+      <button class="step-buttons-btn" @click="stepConfirmed">yes</button>
     </div>
   </div>
 </template>
@@ -17,8 +17,21 @@ export default {
       default: null
     }
   },
+  data() {
+    return {
+      isDev: process.env.isDev
+    };
+  },
   methods: {
-    nextStep() {
+    stepDeclined() {
+      this.$emit('nextStep', true);
+    },
+    stepConfirmed() {
+      const isCookieQuestion = this.data.action === 'cookies';
+      if (!this.isDev && isCookieQuestion) {
+        this.$gtag.optIn();
+      }
+
       this.$emit('nextStep', true);
     }
   }

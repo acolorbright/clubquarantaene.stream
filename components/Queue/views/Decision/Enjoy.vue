@@ -4,8 +4,8 @@
       Okay, enjoy and pick your color.
     </h3>
 
-    <slider-picker v-model="colors" class="step-color" @input="updateColor" />
     <div class="step-color-dot" :style="dotStyle" />
+    <slider-picker v-model="colors" class="step-color" @input="updateColor" />
 
     <div class="step-buttons-btn">
       <button class="step-buttons" @click="enterClub">Enter club</button>
@@ -49,7 +49,32 @@ export default {
     ...mapActions({
       setColor: 'setColor'
     }),
+    async registerUser() {
+      const { rgba } = this.colors;
+      const paddedColorValues = Object.keys(rgba).map(key => {
+        const colorValue = rgba[key];
+        return ('000' + colorValue).substr(-3, 3);
+      });
+      const rgbString = paddedColorValues.slice(0, -1).join(',');
+
+      const colorPostData = JSON.stringify({
+        rgbString,
+        timestamp: Date.now()
+      });
+      const postConfig = {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+      const colorResponse = await this.$axios.$post(
+        `${process.env.SOCKET_URL}/v1/registerUser`,
+        colorPostData,
+        postConfig
+      );
+      console.log(colorResponse);
+    },
     updateColor(color) {
+      this.registerUser();
       this.setColor(color.hex);
     },
     enterClub() {

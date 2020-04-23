@@ -27,6 +27,7 @@ export default {
   components: { LiveInteraction },
   data() {
     return {
+      storeThrottle: 3, // % of reaction progress
       api: null,
       connected: false,
       config: {
@@ -65,11 +66,16 @@ export default {
     this.api.onPercentCompleteChange((reactionName, percentComplete)=> {
       const oldVal =
         vm.buttons.find(button => button.reaction === reactionName).progress;
-      if (Math.abs(percentComplete - oldVal) > 2) {
+      // throtle the store commit a bit
+      if (Math.abs(percentComplete - oldVal) > vm.storeThrottle) {
         vm.setProgressBar({
           name: reactionName,
           percent: percentComplete
         });
+      }
+      // if old val is smaller it must mean it has achieved 100%
+      if (percentComplete < oldVal) {
+        console.log(`${reactionName} ACHIEVEMENT UNLOCKED`);
       }
       console.log(`onPercentCompleteChange: ${reactionName} is ${percentComplete}`);
     });
@@ -90,7 +96,6 @@ export default {
       if (this.connected) {
         this.api.sendReaction(name);
       }
-      console.log(`onSendReaction: ${name}`);
     }
   }
 };

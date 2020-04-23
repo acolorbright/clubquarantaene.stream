@@ -1,7 +1,18 @@
 .livestream {
+  position: relative;
   transition: opacity 1000ms ease;
 
-  &-player {}
+  &-player {
+    display: block;
+    height: calc(100vh - var(--vh-offset, 0px));
+    height: 100vh;
+    padding: $space1 0;
+    width: 100%;
+  }
   &-controls {
+    bottom: 15vh;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

@@ -4,6 +4,8 @@
       Okay, enjoy and pick your color.
     </h3>
 
+    <div v-if="colorIsOccupied">Color is occupied</div>
+
     <div class="step-color-dot" :style="dotStyle" />
     <slider-picker v-model="colors" class="step-color" @input="updateColor" />
 
@@ -24,8 +26,16 @@ export default {
   data() {
     return {
       colors: {
-        hex: '#0038FF'
-      }
+        hex: '#0038FF',
+        rgba: {
+          r: 0,
+          g: 56,
+          b: 255,
+          a: 1
+        }
+      },
+      errors: [],
+      colorIsOccupied: false
     };
   },
   computed: {
@@ -49,14 +59,17 @@ export default {
     ...mapActions({
       setColor: 'setColor'
     }),
-    async registerUser() {
+    getColorString() {
       const { rgba } = this.colors;
       const paddedColorValues = Object.keys(rgba).map(key => {
         const colorValue = rgba[key];
-        return ('000' + colorValue).substr(-3, 3);
+        const paddedValue = ('000' + colorValue).substr(-3, 3);
+        return paddedValue;
       });
-      const rgbString = paddedColorValues.slice(0, -1).join(',');
-
+      return paddedColorValues.slice(0, -1).join(',');
+    },
+    async registerUser() {
+      const rgbString = this.getColorString();
       const colorPostData = JSON.stringify({
         rgbString,
         timestamp: Date.now()
@@ -66,19 +79,33 @@ export default {
           'Content-Type': 'application/json'
         }
       };
-      const colorResponse = await this.$axios.$post(
+      const registerResponse = await this.$axios.$post(
         `${process.env.SOCKET_URL}/v1/registerUser`,
         colorPostData,
         postConfig
       );
-      console.log(colorResponse);
+      return registerResponse;
     },
     updateColor(color) {
-      this.registerUser();
+      if (this.colorIsOccupied) {
+        this.colorIsOccupied = false;
+      }
+
       this.setColor(color.hex);
     },
-    enterClub() {
-      this.$emit('confirmDecision', true);
+    async enterClub() {
+      try {
+        const registerResponse = await this.registerUser();
+        const { available } = registerResponse;
+
+        if (!available) {
+          this.$emit('confirmDecision', true);
+        } else {
+          this.colorIsOccupied = true;
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 };

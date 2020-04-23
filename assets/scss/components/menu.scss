@@ -1,6 +1,7 @@
 .menu {
   left: 0;
   position: fixed;
+  text-transform: uppercase;
   top: 0;
   width: 100%;
   z-index: 99;
@@ -13,9 +14,10 @@
     &-icon {
       animation: liveAnimation $liveAnimationDuration infinite;
       border-radius: $buttonBorderRadius;
-      border: $buttonBorderWidth solid;
+      border: 1px solid;
       color: $colorSecondary;
-      padding: $buttonPadding;
+      font-size: 0.8em;
+      padding: 0.1em 0.4em;
     }
     &-counter {}
   }

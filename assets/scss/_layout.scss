@@ -19,8 +19,10 @@ button {
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
+  line-height: 1.1em;
   outline: 0;
-  padding: $buttonPadding;
+  padding: 0.15em 0.5em 0;
+  text-transform: uppercase;
   transition: color $baseTransitionSpeed;
 
   &:hover {

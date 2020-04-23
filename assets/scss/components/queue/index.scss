@@ -8,7 +8,7 @@
         text-align: center;
         transform: scale(1) translateY(calc(50vh - 50%));
         transform-origin: top;
-        transition: transform $slowTransitionSpeed;
+        transition: transform $baseTransitionSpeed;
         width: 100%;
         z-index: 1;
 
@@ -25,13 +25,15 @@
     .step {
         align-items: center;
         font-size: $fontSizeNormal;
+        padding: $spaceL;
         position: absolute;
         text-align: center;
         top: 50%;
         transform: translateY(-50%);
         width: 100%;
 
-        &--start {
+        &--start,
+        &--question {
             font-size: $fontSizeLarge;
         }
 

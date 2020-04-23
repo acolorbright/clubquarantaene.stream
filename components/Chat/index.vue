@@ -1,6 +1,6 @@
 <template>
   <div class="chat">
-    <ChatHistory :messages="messages" />
+    <ChatHistory :messages="chatHistory" />
     <div class="chat-footer">
       <div class="chat-input">
         <span
@@ -34,6 +34,10 @@ export default {
       type: String,
       default: 'mainfloor'
     },
+    maxChatHistory: {
+      type: Number,
+      default: 0
+    },
     throttleTimer: {
       type: Number,
       default: 2000
@@ -53,6 +57,15 @@ export default {
   computed: {
     userColor() {
       return this.$store.state.guest.color;
+    },
+    chatHistory() {
+      const messagesLength = this.messages.length;
+      const lastMessagePos = this.messages.length - this.maxChatHistory;
+      if (this.maxChatHistory && messagesLength >= this.maxChatHistory) {
+        return this.messages.slice(lastMessagePos, messagesLength);
+      } else {
+        return this.messages;
+      }
     }
   },
   beforeMount() {

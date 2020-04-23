@@ -73,9 +73,13 @@ export default {
           percent: percentComplete
         });
       }
-      // if old val is smaller it must mean it has achieved 100%
-      if (percentComplete < oldVal) {
-        console.log(`${reactionName} ACHIEVEMENT UNLOCKED`);
+      // if old val is smaller it must mean it has achieved 100% but only trigger something if there is no current textoverlay
+      if (percentComplete < oldVal && !vm.$store.state.interactivebuttons.largeTextoverlay) {
+        // console.log(`${reactionName} ACHIEVEMENT UNLOCKED`);
+        vm.setLargeTextoverlay(reactionName);
+        setTimeout(() => {
+          vm.setLargeTextoverlay('');
+        }, 8000);
       }
       // console.log(`onPercentCompleteChange: ${reactionName} is ${percentComplete}`);
     });
@@ -89,7 +93,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      setProgressBar: 'setProgressBar'
+      setProgressBar: 'setProgressBar',
+      setLargeTextoverlay: 'setLargeTextoverlay'
     }),
     onSendReaction(name) {
       this.$refs[name][0].spawn();

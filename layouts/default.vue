@@ -52,6 +52,21 @@ export default {
     ...mapActions({
       setContent: 'setContent'
     })
+  },
+  sockets: {
+    'error-message'(error) {
+      switch (error.type) {
+        case 'sending-to-wrong-room':
+          alert('you‘re not allowed to send to a room you‘re not logged in to');
+          break;
+        case 'cubicle-full':
+          this.$router.push('/bathroom');
+          break;
+        default:
+          alert(`Recieved error with unknown type: ${error.type}`);
+          break;
+      }
+    }
   }
 };
 </script>

@@ -3,8 +3,11 @@
     <div class="bathroom-cubicles">
       <div
         class="bathroom-cubicles-item"
-        v-for="(cubicle, index) in images"
+        v-for="(cubicle, index) in cubicleDataArray"
         :key="index"
+        :class="{
+          occupied: cubicleDataArray[index] === 'full'
+        }"
         @click="handleClick(index)"
       >
         <span>{{ index + 1 }}</span>
@@ -30,6 +33,8 @@ export default {
   },
   data() {
     return {
+      roomName: 'toilets',
+      cubicleDataArray: [],
       images: [
         'https://www.picclickimg.com/d/w1600/pict/112368217117_/Goldene-Toilette-Exklusiv-Luxus-Gold-WC-Klo-Stand.jpg',
         'https://i.ebayimg.com/images/g/kFAAAOSwSS1chWA1/s-l640.jpg',
@@ -57,12 +62,28 @@ export default {
       ]
     };
   },
-  mounted() {
-    this.$gtag.pageview({ page_path: '/bathroom' });
-  },
   methods: {
     handleClick(index) {
       this.$router.push({ path: `/bathroom/${index + 1}` });
+    }
+  },
+  beforeMount() {
+    this.$socket.client.emit('getCubiclesStatus');
+    this.$socket.client.emit(
+      'new-user',
+      this.roomName,
+      this.$store.state.guest.color
+    );
+  },
+  mounted() {
+    this.$gtag.pageview({ page_path: '/bathroom' });
+  },
+  beforeDestroy() {
+    this.$socket.client.emit('user-leave', this.roomName);
+  },
+  sockets: {
+    cubicleStatus(cubicleDataArray) {
+      this.cubicleDataArray = cubicleDataArray;
     }
   }
 };

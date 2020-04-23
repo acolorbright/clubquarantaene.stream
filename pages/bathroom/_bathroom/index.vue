@@ -5,12 +5,12 @@
         Please be respectful!
       </div>
     </transition>
-    <Chat />
+    <Chat :roomName="roomName" />
   </div>
 </template>
 
 <script>
-import Chat from './Chat/index.vue';
+import Chat from './../../../components/Chat';
 
 export default {
   transition: {
@@ -20,14 +20,13 @@ export default {
   components: { Chat },
   data() {
     return {
-      room: null,
       showOverlay: true
     };
   },
-  beforeMount() {
-    // if (!this.$store.state.oldState.questions.firstQuestionAnswered && this.$store.state.oldState.lockRooms) {
-    //   this.$router.push({ path: '/line' })
-    // }
+  computed: {
+    roomName() {
+      return `room${this.$route.params.bathroom}`;
+    }
   },
   mounted() {
     window.addEventListener('beforeunload', this.disconnect);

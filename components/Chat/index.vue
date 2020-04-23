@@ -63,6 +63,7 @@ export default {
   },
   beforeDestroy() {
     document.removeEventListener('keypress', this.onKeyPress);
+    this.$socket.client.emit('user-leave', this.roomName);
   },
   watch: {
     locked(val) {

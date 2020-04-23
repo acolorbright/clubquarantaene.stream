@@ -1,5 +1,10 @@
 <template>
-  <div class="chat">
+  <div
+    class="chat"
+    :class="{
+      'chat-gradient': maxChatHistory && messages.length >= maxChatHistory - 5
+    }"
+  >
     <ChatHistory :messages="chatHistory" />
     <div class="chat-footer">
       <div class="chat-input">
@@ -44,7 +49,7 @@ export default {
     },
     throttleTimer: {
       type: Number,
-      default: 2000
+      default: 1
     },
     maxLength: {
       type: Number,
@@ -155,5 +160,15 @@ export default {
   height: 1em;
   border-radius: 100%;
   display: inline-block;
+}
+$gradientSteps: 8;
+.chat-gradient .chat-history-message {
+  transition: opacity 200ms ease;
+  // loop to creade the gradient
+  @for $i from 1 through $gradientSteps {
+    &:nth-child(#{$i}) {
+      opacity: #{0 + $i * 1 / $gradientSteps};
+    }
+  }
 }
 </style>

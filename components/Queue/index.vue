@@ -35,6 +35,7 @@
             :step-index="stepIndex"
             class="step wizard-tab-component"
             :class="`step--${step.type}`"
+            :has-started="eventHasStarted"
             @enterClub="emitEnterClub"
             @nextStep="emitNextTab"
             @tryAgain="emitTryAgain"
@@ -76,6 +77,12 @@ export default {
     },
     showCounter() {
       return this.activeStepIndex > 0 && this.queue.countdown.value > 0;
+    },
+    event() {
+      return this.$store.state.event;
+    },
+    eventHasStarted() {
+      return this.event.hasStarted;
     }
   },
   methods: {

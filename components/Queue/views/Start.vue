@@ -2,7 +2,11 @@
   <div class="start start-gradient">
     <div class="start-content">
       <Logo />
-      <Countdown />
+
+      <div v-if="!eventHasStarted" class="">
+        <Countdown />
+        <Newsletter />
+      </div>
     </div>
   </div>
 </template>
@@ -11,16 +15,22 @@
 import { mapActions } from 'vuex';
 import Logo from '~/components/Logo.vue';
 import Countdown from '~/components/Countdown.vue';
+import Newsletter from '~/components/Newsletter.vue';
 
 export default {
   components: {
     Logo,
-    Countdown
+    Countdown,
+    Newsletter
   },
   props: {
     data: {
       type: Object,
       default: null
+    },
+    hasStarted: {
+      type: Boolean,
+      default: false
     }
   },
   mounted() {

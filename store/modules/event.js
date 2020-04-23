@@ -30,13 +30,14 @@ const mutations = {
     const startDate = this.$moment('04-24-2020 10:00 PM', 'MM-DD-YYYY hh:mm A');
     const endDate = this.$moment('04-26-2020 10:00 AM', 'MM-DD-YYYY hh:mm A');
     const now = this.$moment(new Date());
-    const eventIsRunning = now.isBetween(startDate, endDate);
 
     const timeUntilStart = this.$moment.duration(startDate.diff(now));
     state.timeUntilStart = timeUntilStart;
 
+    const eventIsRunning = now.isBetween(startDate, endDate);
     if (eventIsRunning) {
-      console.log('event is running');
+      state.hasStarted = true;
+      state.isRunning = true;
     }
   }
 };

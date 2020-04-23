@@ -53,7 +53,7 @@ export default {
         // width: '640'
       });
     },
-    handleVideo() {
+    playVideo() {
       this.player.playVideo();
     },
     pauseVideo() {
@@ -61,28 +61,38 @@ export default {
     },
     onReady() {},
     onStateChange(playerState) {
-      // -1 (UNSTARTED)
-      // 0 (ENDED) YT.PlayerState.ENDED
-      // 1 (PLAYING) YT.PlayerState.PLAYING
-      // 2 (PAUSED) YT.PlayerState.PAUSED
-      // 3 (BUFFERING) YT.PlayerState.BUFFERING
-      // 5 (CUED) YT.PlayerState.CUED
-      console.log('onStateChange', playerState.data);
+      /**
+       * unstarted: -1
+       * ended: 0
+       * playing: 1
+       * paused: 2
+       * buffering: 3
+       * cued: 5
+       */
+      switch (playerState) {
+        case 2:
+          this.playVideo();
+          break;
+        default:
+          this.playVideo();
+          break;
+      }
+
       this.player.setVolume(0);
     },
     onPlaybackQualityChange() {},
-    onError() {
-      console.log('onError');
-    },
-    onBuffering() {
-      console.log('onBuffering');
-    },
-    onPaused() {
-      console.log('onPaused');
-    },
-    onPlaying() {
-      console.log('onPlaying');
-    },
+    // onError() {
+    //   console.log('onError');
+    // },
+    // onBuffering() {
+    //   console.log('onBuffering');
+    // },
+    // onPaused() {
+    //   console.log('onPaused');
+    // },
+    // onPlaying() {
+    //   console.log('onPlaying');
+    // },
     resetCamera() {
       this.animatedCameraPan(0, 0);
     },

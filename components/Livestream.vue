@@ -2,8 +2,8 @@
   <div class="livestream">
     <div id="player" class="livestream-player" />
     <div class="livestream-controls">
-      <button class="livestream-controls-btn" @click="resetCamera">
-        Reset Camera
+      <button class="livestream-controls-btn" @click="handleVideoPanning">
+        {{ panningEnabled ? 'Disable panning' : 'Enable panning' }}
       </button>
     </div>
   </div>
@@ -31,7 +31,8 @@ export default {
       },
       videoId: process.env.YOUTUBE_VIDEO_ID,
       cameraIsAnimating: false,
-      cameraInitialTime: null
+      cameraInitialTime: null,
+      panningEnabled: false
     };
   },
   mounted() {
@@ -148,6 +149,32 @@ export default {
       };
 
       panCamera();
+    },
+    handleVideoPanning() {
+      this.panningEnabled = !this.panningEnabled;
+      this.panVideo();
+    },
+    panVideo() {
+      const pan = () => {
+        const rotationDuration = 20;
+        const cyclesPerRotation = 2;
+
+        const yaw = ((performance.now() / 1000 / rotationDuration) * 360) % 360;
+        const pitch =
+          rotationDuration *
+          Math.sin(((cyclesPerRotation * yaw) / 360) * 2 * Math.PI);
+
+        this.player.setSphericalProperties({
+          yaw,
+          pitch
+        });
+
+        if (this.panningEnabled) {
+          requestAnimationFrame(this.panVideo);
+        }
+      };
+
+      pan();
     }
   }
 };

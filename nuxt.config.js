@@ -72,7 +72,7 @@ export default {
       },
       {
         src:
-          'https://storage.googleapis.com/offworld-public-assets/0.0.7/offworldPerformance.min.js'
+          'https://storage.googleapis.com/off-world-live-client/0.0.8/offworldPerformance.min.js'
       }
     ]
   },

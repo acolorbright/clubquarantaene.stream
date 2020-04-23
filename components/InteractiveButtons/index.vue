@@ -2,7 +2,7 @@
   <div class="interactive-buttons">
     <div
       class="interactive-buttons-item"
-      v-for="(button, index) in $store.state.interactivebuttons.buttons"
+      v-for="(button, index) in buttons"
       :key="index"
     >
       <LiveInteraction :ref="button.reaction" />
@@ -11,7 +11,7 @@
         <span
           class="progress-bar"
           :style="{
-            width: `${(button.currentClicks / button.maxClickAmount) * 100}%`
+            width: `${button.progress}%`
           }"
         />
       </button>
@@ -19,11 +19,58 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex';
 import LiveInteraction from './LiveInteraction.vue';
 
 export default {
-  name: 'OffworldButtons',
+  name: 'InteractiveButtons',
   components: { LiveInteraction },
+  data() {
+    return {
+      api: null,
+      connected: false,
+      config: {
+        performanceName: 'clubquarantaene',
+        apiRoot: 'https://performance.offworld.live',
+        clientAPIKey: 'Zeb9JD6ZcNaDmZY2ILJzdIowforpm98Gu3hzUNpr'
+      }
+    };
+  },
+  computed: {
+    buttons() {
+      return this.$store.state.interactivebuttons.buttons;
+    }
+  },
+  beforeMount() {
+    /* eslint-disable */
+    this.api = new OffworldPerformance(this.config);
+    const vm = this;
+    this.api.connect().then(() => {
+      console.log('OffworlPerformance connected');
+      vm.connected = true;
+    });
+    this.api.onStateChange(newState => {
+      switch (newState) {
+        case OffworldPerformance.PerformanceWaitingForStart:
+          console.log('Waiting for start');
+          return;
+        case OffworldPerformance.PerformanceInProgress:
+          console.log('PerformanceInProgress');
+          return;
+        case OffworldPerformance.PerformanceEnded:
+          console.log('PerformanceEnded');
+          return;
+        }
+    });
+    this.api.onPercentCompleteChange((reactionName, percentComplete)=> {
+      vm.setProgressBar({
+        name: reactionName,
+        percent: percentComplete
+      });
+      console.log(`onPercentCompleteChange: ${reactionName} is ${percentComplete}`);
+    });
+    /* eslint-enable */
+  },
   beforeDestroy() {
     if (this.connected) {
       this.api.disconnect();
@@ -31,8 +78,14 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      setProgressBar: 'setProgressBar'
+    }),
     onSendReaction(name) {
       this.$refs[name][0].spawn();
+      if (this.connected) {
+        this.api.sendReaction(name);
+      }
       console.log(`onSendReaction: ${name}`);
     }
   }

@@ -1,25 +1,38 @@
 const state = () => ({
   buttons: [
     {
-      label: 'Label',
-      reaction: 'some-string',
-      progress: 0,
-      currentClicks: 0,
-      maxClickAmount: 100
+      label: 'Grow Vines',
+      reaction: 'grow',
+      progress: 0
     },
     {
-      label: 'Second button',
-      reaction: 'some-other-string',
-      progress: 0,
-      currentClicks: 0,
-      maxClickAmount: 100
+      label: 'Reveal Artist',
+      reaction: 'artist',
+      progress: 0
+    },
+    {
+      label: 'Trip',
+      reaction: 'wow',
+      progress: 0
     }
   ]
 });
 
-const mutations = {};
+const mutations = {
+  setProgressBar(state, key) {
+    state.buttons.find(button => button.reaction === key.name).progress =
+      key.percent;
+  }
+};
+
+const actions = {
+  setProgressBar({ commit }, key) {
+    commit('setProgressBar', key);
+  }
+};
 
 export default {
   state,
-  mutations
+  mutations,
+  actions
 };

@@ -8,7 +8,14 @@
     width: 100%;
     z-index: 99;
 
-    &-chat {}
+    &-chat {
+        position: relative;
+        .chat {
+            bottom: 0;
+            position: absolute;
+            left: 0;
+        }
+    }
     &-buttons {}
     &-imprint {}
 }

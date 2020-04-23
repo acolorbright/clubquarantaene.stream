@@ -6,6 +6,7 @@
       <div v-if="!eventHasStarted" class="">
         <Countdown />
         <Newsletter />
+        <SocialIcons />
       </div>
     </div>
   </div>
@@ -16,12 +17,14 @@ import { mapActions } from 'vuex';
 import Logo from '~/components/Logo.vue';
 import Countdown from '~/components/Countdown.vue';
 import Newsletter from '~/components/Newsletter.vue';
+import SocialIcons from '~/components/SocialIcons.vue';
 
 export default {
   components: {
     Logo,
     Countdown,
-    Newsletter
+    Newsletter,
+    SocialIcons
   },
   props: {
     data: {

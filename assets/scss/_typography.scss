@@ -30,6 +30,11 @@ body {
   font-size: $fontSize;
 }
 
+a {
+  color: $colorLight;
+  text-decoration: none;
+}
+
 .allcaps {
   text-transform: uppercase;
 }

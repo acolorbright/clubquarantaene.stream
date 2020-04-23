@@ -1,5 +1,5 @@
 <template>
-  <div class="page cloakroom">
+  <div class="page page-cloakroom">
     <h1>{{ $store.state.content.cloakroom.title }}</h1>
     <div v-html="$store.state.content.cloakroom.text" />
     <BackgroundVideo :src="$store.state.content.cloakroom.text" />

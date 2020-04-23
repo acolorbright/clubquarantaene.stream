@@ -47,7 +47,7 @@ export default {
     const vm = this;
     this.api.connect().then(() => {
       console.log('OffworlPerformance connected');
-      vm.connected = true;
+      this.connected = true;
     });
     this.api.onStateChange(newState => {
       switch (newState) {
@@ -63,10 +63,14 @@ export default {
         }
     });
     this.api.onPercentCompleteChange((reactionName, percentComplete)=> {
-      vm.setProgressBar({
-        name: reactionName,
-        percent: percentComplete
-      });
+      const oldVal =
+        vm.buttons.find(button => button.reaction === reactionName).progress;
+      if (Math.abs(percentComplete - oldVal) > 2) {
+        vm.setProgressBar({
+          name: reactionName,
+          percent: percentComplete
+        });
+      }
       console.log(`onPercentCompleteChange: ${reactionName} is ${percentComplete}`);
     });
     /* eslint-enable */

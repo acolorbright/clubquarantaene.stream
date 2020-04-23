@@ -8,6 +8,7 @@
         background: $radialGradient;
         height: calc(100vh - var(--vh-offset, 0px));
         height: 100vh;
+        transform: translateZ(0);
         width: 100%;
       
         @keyframes gradientAnimation {

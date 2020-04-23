@@ -52,14 +52,16 @@
         &-color {
             margin: 0 35%;
             width: 30%;
+            backface-visibility: hidden;
 
             &-dot {
                 animation: gradientAnimation 15s infinite alternate;
                 animation-fill-mode: backwards;
                 border-radius: 100%;
-                height: 25vw;
+                height: 15vw;
                 margin: 0 auto;
-                width: 25vw;
+                transform: translateZ(0);
+                width: 15vw;
       
                 @keyframes gradientAnimation {
                     0% {

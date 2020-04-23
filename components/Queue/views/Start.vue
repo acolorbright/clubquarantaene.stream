@@ -1,14 +1,16 @@
 <template>
   <div class="start start-gradient">
-    <div class="start-content">
-      <Logo />
+    <transition name="fade-step" mode="out-in">
+      <div v-if="showStart" class="start-content">
+        <Logo />
 
-      <div v-if="!eventHasStarted" class="">
-        <Countdown />
-        <Newsletter />
-        <SocialIcons />
+        <div v-if="!hasStarted">
+          <Countdown />
+          <Newsletter />
+          <SocialIcons />
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -36,11 +38,20 @@ export default {
       default: false
     }
   },
+  data() {
+    return {
+      showStart: false
+    };
+  },
   mounted() {
+    setTimeout(() => {
+      this.showStart = true;
+    }, 1000);
+
     // setTimeout(() => {
     //   this.nextStep();
     //   this.setQueueCountdownIsRunning(true);
-    // }, 2000);
+    // }, 1000);
     // setTimeout(() => {
     //   this.nextStep();
     // }, 7000);

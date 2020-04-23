@@ -30,6 +30,10 @@ export default {
   name: 'Chat',
   components: { ChatHistory },
   props: {
+    showEnterLeaveMessage: {
+      type: Boolean,
+      default: false
+    },
     roomName: {
       type: String,
       default: 'mainfloor'
@@ -123,6 +127,9 @@ export default {
       this.messages.push(msg);
     },
     'user-connected'(name) {
+      if (!this.showEnterLeaveMessage) {
+        return;
+      }
       const msg = {
         name,
         message: `${name} entered the room.`
@@ -130,6 +137,9 @@ export default {
       this.messages.push(msg);
     },
     'user-disconnected'(name) {
+      if (!this.showEnterLeaveMessage) {
+        return;
+      }
       const msg = {
         name,
         message: `${name} left the room.`

@@ -5,7 +5,7 @@
         Please be respectful!
       </div>
     </transition>
-    <Chat :roomName="roomName" />
+    <Chat :roomName="roomName" :showEnterLeaveMessage="true" />
   </div>
 </template>
 

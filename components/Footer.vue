@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer-chat">
-      <Chat maxChatHistory="30" />
+      <Chat :maxChatHistory="30" />
     </div>
     <div class="footer-buttons">
       <InteractiveButtons />

@@ -2,12 +2,6 @@
   <div class="livestream">
     <div id="player" class="livestream-player" />
     <div class="livestream-controls">
-      <button class="livestream-controls-btn" @click="playVideo">
-        Play
-      </button>
-      <button class="livestream-controls-btn" @click="pauseVideo">
-        Pause
-      </button>
       <button class="livestream-controls-btn" @click="resetCamera">
         Reset Camera
       </button>

@@ -21,4 +21,9 @@ button {
   font-size: inherit;
   outline: 0;
   padding: $buttonPadding;
+  transition: color $baseTransitionSpeed;
+
+  &:hover {
+    color: $colorPrimary;
+  }
 }

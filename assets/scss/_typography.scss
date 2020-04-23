@@ -33,6 +33,11 @@ body {
 a {
   color: $colorLight;
   text-decoration: none;
+  transition: color $baseTransitionSpeed;
+
+  &:hover {
+    color: $colorPrimary;
+  }
 }
 
 .allcaps {

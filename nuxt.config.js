@@ -94,6 +94,9 @@ export default {
     }
   ],
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/moment'],
+  moment: {
+    defaultTimezone: 'Europe/Berlin'
+  },
   modules: ['@nuxtjs/axios', '@nuxtjs/dotenv', '@nuxtjs/device'],
   axios: {},
   build: {

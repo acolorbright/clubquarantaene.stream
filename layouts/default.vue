@@ -27,16 +27,26 @@ export default {
 
     this.setContent({
       data: contentData,
-      loaded: true,
       queue: contentQueue,
+      loaded: true,
       granted: true
     });
   },
-  fetchOnServer: false,
+  data() {
+    return {
+      eventStatusInterval: null
+    };
+  },
   computed: {
     isQueue() {
       return this.$nuxt.$route.path === '/';
     }
+  },
+  beforeMount() {
+    this.initEventStatusInterval();
+  },
+  beforeDestroy() {
+    clearInterval(this.eventStatusInterval);
   },
   mounted() {
     vhCheck({
@@ -50,8 +60,14 @@ export default {
   },
   methods: {
     ...mapActions({
-      setContent: 'setContent'
-    })
+      setContent: 'setContent',
+      checkEventStatus: 'checkEventStatus'
+    }),
+    initEventStatusInterval() {
+      this.eventStatusInterval = setInterval(() => {
+        this.checkEventStatus();
+      }, 1000);
+    }
   }
 };
 </script>

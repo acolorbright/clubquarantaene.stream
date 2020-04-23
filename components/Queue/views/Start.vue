@@ -2,7 +2,7 @@
   <div class="start start-gradient">
     <div class="start-content">
       <Logo />
-      <!-- <Countdown /> -->
+      <Countdown />
     </div>
   </div>
 </template>
@@ -10,12 +10,12 @@
 <script>
 import { mapActions } from 'vuex';
 import Logo from '~/components/Logo.vue';
-// import Countdown from '~/components/Countdown.vue';
+import Countdown from '~/components/Countdown.vue';
 
 export default {
   components: {
-    Logo
-    // Countdown
+    Logo,
+    Countdown
   },
   props: {
     data: {

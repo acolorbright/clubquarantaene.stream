@@ -81,16 +81,14 @@ const mutations = {
   }
 };
 
-// const actions = {
-//   checkIfEventIsRunning (state, commit) {
-//     const eventIsRunning = moment().tz('Europe/Berlin').isBetween(state.data.event.start, state.data.event.end)
-//     if (eventIsRunning !== state.eventIsRunning) {
-//       commit('setEventIsRunning', eventIsRunning)
-//     }
-//   }
-// }
+const actions = {
+  setContent({ commit }, data) {
+    commit('setContent', data);
+  }
+};
 
 export default {
   state,
-  mutations
+  mutations,
+  actions
 };

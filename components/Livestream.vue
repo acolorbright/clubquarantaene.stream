@@ -21,12 +21,13 @@ export default {
     return {
       player: null,
       playerVars: {
-        autoplay: 0,
+        autoplay: 1,
         captions: 0,
         controls: 0,
         disablekb: 1,
         fs: 0,
         fullscreen: 0,
+        iv_load_policy: 3,
         keyboard: 0,
         modestBranding: 1,
         origin: window.location.host,
@@ -44,21 +45,19 @@ export default {
   },
   methods: {
     initPlayer() {
-      if (process.browser) {
-        const YTPlayer = window.YT.Player;
-        this.player = new YTPlayer('player', {
-          events: {
-            onReady: this.onReady,
-            onStateChange: this.onStateChange,
-            onPlaybackQualityChange: this.onPlaybackQualityChange,
-            onError: this.onError
-          },
-          height: '360',
-          playerVars: this.playerVars,
-          videoId: this.videoId,
-          width: '640'
-        });
-      }
+      const YTPlayer = window.YT.Player;
+      this.player = new YTPlayer('player', {
+        events: {
+          onReady: this.onReady,
+          onStateChange: this.onStateChange,
+          onPlaybackQualityChange: this.onPlaybackQualityChange,
+          onError: this.onError
+        },
+        playerVars: this.playerVars,
+        videoId: this.videoId
+        // height: '360',
+        // width: '640'
+      });
     },
     handleVideo() {
       this.player.playVideo();

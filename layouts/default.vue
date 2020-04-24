@@ -2,6 +2,7 @@
   <div class="app">
     <Header v-if="!isQueue" />
     <main class="main">
+      <Livestream v-if="!isQueue" />
       <transition name="fade" mode="out-in">
         <nuxt />
       </transition>
@@ -20,12 +21,14 @@ import { mapActions } from 'vuex';
 import vhCheck from 'vh-check';
 import Header from '~/components/Header';
 import Footer from '~/components/Footer';
+import Livestream from '~/components/Livestream.vue';
 import LargeTextoverlay from '~/components/LargeTextoverlay';
 
 export default {
   components: {
     Header,
     Footer,
+    Livestream,
     LargeTextoverlay
   },
   data() {

@@ -1,14 +1,16 @@
 <template>
-  <div class="livestream">
-    <div id="player" class="livestream-player" />
-    <transition name="fade" mode="out-in">
-      <div v-if="videoIsPlaying" class="livestream-controls">
-        <button class="livestream-controls-btn" @click="handleVideoPanning">
-          {{ panningEnabled ? 'Disable panning' : 'Enable panning' }}
-        </button>
-      </div>
-    </transition>
-  </div>
+  <transition name="fade" mode="out-in">
+    <div v-show="isDancefloor" class="livestream">
+      <div id="player" class="livestream-player" />
+      <transition name="fade" mode="out-in">
+        <div v-if="videoIsPlaying" class="livestream-controls">
+          <button class="livestream-controls-btn" @click="handleVideoPanning">
+            {{ panningEnabled ? 'Disable panning' : 'Enable panning' }}
+          </button>
+        </div>
+      </transition>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -38,8 +40,19 @@ export default {
       panningEnabled: false
     };
   },
+  computed: {
+    isDancefloor() {
+      return this.$nuxt.$route.name === 'dancefloor';
+    }
+  },
   watch: {
-    '$route.params.key1'(value) {}
+    '$nuxt.$route.name'(routeName) {
+      if (this.isDancefloor) {
+        this.setVolumeMax();
+      } else {
+        this.setVolumeReduced();
+      }
+    }
   },
   mounted() {
     this.initPlayer();
@@ -64,10 +77,15 @@ export default {
       this.player.playVideo();
     },
     onReady() {
-      console.log('ready');
+      this.setVolumeMax();
+    },
+    setVolumeMax() {
+      this.player.setVolume(100);
+    },
+    setVolumeReduced() {
+      this.player.setVolume(35);
     },
     onStateChange({ data }) {
-      console.log(data);
       /**
        * unstarted: -1
        * ended: 0
@@ -88,8 +106,9 @@ export default {
           this.playVideo();
           break;
       }
-
-      this.player.setVolume(0);
+    },
+    onPlaybackQualityChange(quality) {
+      // console.log('onPlaybackQualityChange', quality);
     },
     resetCamera() {
       this.animatedCameraPan(0, 0);

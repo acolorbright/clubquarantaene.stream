@@ -7,18 +7,18 @@ const state = () => ({
     title: 'No Drinks. Only Donations.',
     services: [
       {
-        title: 'Support the CLUB QUARANTÄNE Team',
+        title: 'CLUB QUARANTÄNE Fundraiser',
+        text:
+          '<p>All donations will be distributed fairly among the following charities selected by the artists. Berlin Collective Action, BYP100, The Trussel Trust, Viva Con Agua, Casa 1 & Sea Watch. The final overview will be shared publicly via the social channels and newsletter.</p>',
+        linkText: 'Donate',
+        link: 'https://www.betterplace.me/club-quarantaene-fundraiser'
+      },
+      {
+        title: 'CLUB QUARANTÄNE Support Tickets',
         text:
           '<p>If you enjoy Club Quarantäne and would like to help make more editions possible, please consider supporting the team behind the project with a donation.</p> <p>Please note: All ticket donations purchased on RA will be distributed fairly to the team who have built the virtual club.</p>',
         linkText: 'Donate',
         link: 'https://www.residentadvisor.net/events/1407334'
-      },
-      {
-        title: 'Movement On The Ground',
-        text:
-          '<p>We are a foundation responding to a humanitarian crisis affecting innocent people forced to flee from their homes.</p>',
-        linkText: 'Donate',
-        link: 'https://movementontheground.com/donation'
       }
     ]
   },

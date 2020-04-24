@@ -28,6 +28,7 @@ body {
   -webkit-font-smoothing: antialiased;
   color: $colorLight;
   font-size: $fontSize;
+  line-height: 1.35;
 
   @include portrait-layout-mobile {
     font-size: $fontSizeMobile;

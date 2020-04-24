@@ -16,6 +16,24 @@
             left: 0;
         }
     }
-    &-buttons {}
-    &-imprint {}
+
+    &-chat,
+    &-buttons {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $slowTransitionSpeed;
+    }
+
+    &-imprint {
+    }
+
+    &.isDancefloor {
+        .footer {
+            &-chat,
+            &-buttons {
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+    }
 }

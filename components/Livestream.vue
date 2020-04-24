@@ -1,11 +1,13 @@
 <template>
   <div class="livestream">
     <div id="player" class="livestream-player" />
-    <div class="livestream-controls">
-      <button class="livestream-controls-btn" @click="handleVideoPanning">
-        {{ panningEnabled ? 'Disable panning' : 'Enable panning' }}
-      </button>
-    </div>
+    <transition name="fade" mode="out-in">
+      <div v-if="videoIsPlaying" class="livestream-controls">
+        <button class="livestream-controls-btn" @click="handleVideoPanning">
+          {{ panningEnabled ? 'Disable panning' : 'Enable panning' }}
+        </button>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -30,6 +32,7 @@ export default {
         showinfo: 0
       },
       videoId: process.env.YOUTUBE_VIDEO_ID,
+      videoIsPlaying: false,
       cameraIsAnimating: false,
       cameraInitialTime: null,
       panningEnabled: false
@@ -54,14 +57,11 @@ export default {
         // width: '640'
       });
     },
-    playVideo() {
-      this.player.playVideo();
+    onReady() {
+      console.log('ready');
     },
-    pauseVideo() {
-      this.player.pauseVideo();
-    },
-    onReady() {},
-    onStateChange(playerState) {
+    onStateChange({ data }) {
+      console.log(data);
       /**
        * unstarted: -1
        * ended: 0
@@ -70,9 +70,12 @@ export default {
        * buffering: 3
        * cued: 5
        */
-      switch (playerState) {
+      switch (data) {
+        case 1:
+          this.videoIsPlaying = true;
+          break;
         case 2:
-          this.playVideo();
+          this.videoIsPlaying = false;
           break;
         default:
           this.playVideo();
@@ -81,19 +84,6 @@ export default {
 
       this.player.setVolume(0);
     },
-    onPlaybackQualityChange() {},
-    // onError() {
-    //   console.log('onError');
-    // },
-    // onBuffering() {
-    //   console.log('onBuffering');
-    // },
-    // onPaused() {
-    //   console.log('onPaused');
-    // },
-    // onPlaying() {
-    //   console.log('onPlaying');
-    // },
     resetCamera() {
       this.animatedCameraPan(0, 0);
     },

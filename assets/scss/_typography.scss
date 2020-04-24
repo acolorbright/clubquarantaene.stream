@@ -33,10 +33,10 @@ body {
 a {
   color: $colorLight;
   text-decoration: none;
-  transition: color $baseTransitionSpeed;
+  transition: opacity $baseTransitionSpeed;
 
   &:hover {
-    color: $colorPrimary;
+    opacity: 0.5;
   }
 }
 

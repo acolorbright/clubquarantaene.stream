@@ -9,6 +9,12 @@
     height: calc(100vh - var(--vh-offset, 0px));
     padding: $spaceLivestream 0;
     width: 100%;
+    @include portrait-layout-mobile {
+      height: calc(100vh - var(--vh-offset, 0px) - 8rem);
+    }
+  }
+  @include portrait-layout-mobile {
+    top: 2rem;
   }
   &-controls {
     bottom: 15vh;

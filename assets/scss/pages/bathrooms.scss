@@ -24,6 +24,7 @@
       margin: 2rem 0;
       color: $colorError;
       cursor: default;
+      pointer-events: none;
       span {
         position: static;
         transform: none;
@@ -97,6 +98,15 @@
         grid-column-end: 6;
       }
     }
-
+  }
+  .chat {
+    position: fixed;
+    bottom: $spaceS;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    width: 50vw;
+    min-width: 300px;
+    max-width: calc(100vw - #{$spaceS * 2});
   }
 }

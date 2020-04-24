@@ -7,8 +7,15 @@
     <div class="color-wrapper">
       <div class="step-color-dot" :style="dotStyle">
         <transition name="fade" mode="out-in">
-          <div v-if="colorIsOccupied" class="step-color-error">
-            Color is occupied by another guest
+          <div
+            v-if="colorIsOccupied"
+            class="step-color-error"
+            :style="{
+              color: color.hex
+            }"
+          >
+            This color is already taken. <br />
+            Please pick another!
           </div>
         </transition>
       </div>
@@ -16,7 +23,13 @@
     </div>
 
     <div class="step-buttons-btn">
-      <button v-if="colorSelected" class="step-buttons" @click="enterClub">
+      <button
+        class="step-buttons color-btn"
+        :class="{
+          disabled: !colorSelected
+        }"
+        @click="enterClub"
+      >
         Enter
       </button>
     </div>

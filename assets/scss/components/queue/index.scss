@@ -33,6 +33,15 @@
         transform: translateY(-50%);
         width: 100%;
 
+        button {
+            transition: background $baseTransitionSpeed, color $baseTransitionSpeed;
+            &:hover {
+                background: $colorPrimary;
+                color: $colorDark;
+                opacity: 1;
+            }
+        }
+
         &--start,
         &--question {
             font-size: $fontSizeLarge;
@@ -93,13 +102,26 @@
                     }
                 }
             }
+
             &-error {
                 border: 2px solid red;
-                top: 50%;
                 left: 50%;
                 position: absolute;
+                top: 50%;
                 transform: translate(-50%, -50%);
                 white-space: nowrap;
+            }
+        }
+
+        .color-btn {
+            opacity: 1;
+            pointer-events: all;
+            transition: opacity $baseTransitionSpeed;
+
+
+            &.disabled {
+                pointer-events: none;
+                opacity: 0;
             }
         }
     }

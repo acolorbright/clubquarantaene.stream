@@ -9,10 +9,16 @@
       <transition name="fade">
         <Chat v-if="isDancefloor && showChat" :max-chat-history="17" />
       </transition>
-      <div @click="showChat = !showChat" class="chat-switch-button">
-        <span v-if="showChat">Hide Chat</span>
-        <span v-else>Show Chat</span>
-      </div>
+      <transition name="fade">
+        <div
+          v-if="isDancefloor"
+          @click="showChat = !showChat"
+          class="chat-switch-button"
+        >
+          <span v-if="showChat">Hide Chat</span>
+          <span v-else>Show Chat</span>
+        </div>
+      </transition>
       <a
         v-if="isTimetable"
         href="https://www.buymusic.club/list/club-quarantane-cq-2"

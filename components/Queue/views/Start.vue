@@ -50,8 +50,16 @@ export default {
   },
   mounted() {
     this.showStart = true;
-
-    if (this.hasStarted || this.isDev) {
+    this.startEvent();
+  },
+  methods: {
+    ...mapActions({
+      setQueueCountdownIsRunning: 'setQueueCountdownIsRunning'
+    }),
+    nextStep() {
+      this.$emit('nextStep', true);
+    },
+    startEvent() {
       setTimeout(() => {
         this.showStart = false;
         this.setQueueCountdownIsRunning(true);
@@ -60,14 +68,6 @@ export default {
       setTimeout(() => {
         this.nextStep();
       }, 9500);
-    }
-  },
-  methods: {
-    ...mapActions({
-      setQueueCountdownIsRunning: 'setQueueCountdownIsRunning'
-    }),
-    nextStep() {
-      this.$emit('nextStep', true);
     }
   }
 };

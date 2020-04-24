@@ -28,7 +28,7 @@ const mutations = {
     state.hasEnded = true;
   },
   setEventStatus(state) {
-    const startDate = this.$moment('04-24-2020 10:00 PM', 'MM-DD-YYYY hh:mm A');
+    const startDate = this.$moment('04-24-2020 09:47 PM', 'MM-DD-YYYY hh:mm A');
     const endDate = this.$moment('04-26-2020 23:59 AM', 'MM-DD-YYYY hh:mm A');
     const now = this.$moment(new Date());
 

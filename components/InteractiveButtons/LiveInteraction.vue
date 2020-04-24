@@ -12,10 +12,10 @@ export default {
   },
   computed: {
     max() {
-      return 850000 / this.$store.state.oldState.users;
+      return 850000 / this.$store.state.event.userCount;
     },
     min() {
-      return 200000 / this.$store.state.oldState.users;
+      return 200000 / this.$store.state.event.userCount;
     }
   },
   mounted() {

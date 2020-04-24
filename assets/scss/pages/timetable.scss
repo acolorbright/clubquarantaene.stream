@@ -28,8 +28,8 @@
         margin-right: $spaceS;
       }
       &.has-ended {
-        color: $colorLightTransparent;
         text-decoration: line-through;
+        opacity: 0.25;
       }
     }
   }

@@ -13,7 +13,7 @@
         target="_blank"
         class="button"
       >
-        Get tracks from BuyMusicClub↗
+        Tracks at BuyMusicClub↗
       </a>
     </div>
 

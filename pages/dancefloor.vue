@@ -1,15 +1,15 @@
 <template>
   <div class="page page-dancefloor">
-    <Livestream />
+    <!-- <Livestream /> -->
   </div>
 </template>
 
 <script>
-import Livestream from '~/components/Livestream.vue';
+// import Livestream from '~/components/Livestream.vue';
 
 export default {
   components: {
-    Livestream
+    // Livestream
   },
   mounted() {
     this.$gtag.pageview({

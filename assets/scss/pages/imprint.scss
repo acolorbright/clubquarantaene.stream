@@ -1,0 +1,16 @@
+.page-imprint {
+    padding-left: $spaceS; 
+    padding-right: $spaceS;
+    h1 {
+        margin-bottom: 1em;
+    }
+    h2 {
+        // font-size: 1rem;
+        text-transform: uppercase;
+        margin-top: $spaceM;
+    }
+
+    p {
+        max-width: 45em;
+    }
+}

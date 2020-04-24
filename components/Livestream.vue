@@ -38,6 +38,9 @@ export default {
       panningEnabled: false
     };
   },
+  watch: {
+    '$route.params.key1'(value) {}
+  },
   mounted() {
     this.initPlayer();
   },

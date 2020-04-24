@@ -60,14 +60,16 @@ export default {
       this.$emit('nextStep', true);
     },
     startEvent() {
-      setTimeout(() => {
-        this.showStart = false;
-        this.setQueueCountdownIsRunning(true);
-      }, 3500);
+      if (this.hasStarted) {
+        setTimeout(() => {
+          this.showStart = false;
+          this.setQueueCountdownIsRunning(true);
+        }, 3500);
 
-      setTimeout(() => {
-        this.nextStep();
-      }, 9500);
+        setTimeout(() => {
+          this.nextStep();
+        }, 9500);
+      }
     }
   }
 };

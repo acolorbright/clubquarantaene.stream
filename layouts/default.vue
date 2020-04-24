@@ -6,7 +6,7 @@
         <nuxt />
       </transition>
     </main>
-    <Footer v-if="!isQueue" />
+    <Footer />
   </div>
 </template>
 

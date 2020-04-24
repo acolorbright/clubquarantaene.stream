@@ -2,16 +2,21 @@
   <footer
     class="footer"
     :class="{
-      isDancefloor
+      isQueue
     }"
   >
-    <div class="footer-chat">
-      <Chat />
+    <div class="footer-section footer-section--left">
+      <Chat v-if="isDancefloor" />
+      <a v-if="isTimetable" href="/" target="_blank" class="button">
+        BuyMusicClub
+      </a>
     </div>
-    <div class="footer-buttons">
+
+    <div v-if="isDancefloor" class="footer-section footer-section--center">
       <InteractiveButtons />
     </div>
-    <nuxt-link class="footer-imprint" to="/imprint">
+
+    <nuxt-link class="footer-section footer-section--right" to="/imprint">
       Imprint
     </nuxt-link>
   </footer>
@@ -30,8 +35,14 @@ export default {
     currentRoute() {
       return this.$nuxt.$route;
     },
+    isQueue() {
+      return this.currentRoute.path === '/';
+    },
     isDancefloor() {
       return this.currentRoute.path === '/dancefloor';
+    },
+    isTimetable() {
+      return this.currentRoute.path === '/timetable';
     }
   }
 };

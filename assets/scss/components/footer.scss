@@ -1,31 +1,22 @@
 .footer {
-    bottom: 0;
+    bottom: $spaceS;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    position: fixed;
     left: 0;
+    position: fixed;
+    text-transform: uppercase;
     width: 100%;
     z-index: 99;
 
     &-section {
         &--left {
-    
-            .chat {
-                bottom: 0;
-                position: absolute;
-                left: 0;
-            }
+            .chat {}
         }
     
-        &--center {
-            left: 50%;
-            position: absolute;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
+        &--center {}
     
-        &--right {
-        }
+        &--right {}
     }
 
     &.isQueue {
@@ -33,6 +24,44 @@
 
         a {
             color: $colorPrimary;
+        }
+    }
+
+    @include portrait-layout-mobile {
+        flex-direction: column;
+        justify-content: center;
+    
+        &-live {
+          position: inherit;
+        }
+
+        &-section {
+            order: 0;
+
+            .interactive-buttons {
+                display: flex;
+
+                &-item {
+                    display: inline-flex;
+                    flex: 1;
+
+                    &:first-of-type {
+                        margin: 0 0.5em 0 0;
+                    }
+                    &:last-of-type {
+                        margin: 0 0 0 0.5em;
+                    }
+
+                    button {
+                        width: 100%;
+                    }
+                }
+            }
+
+            &--right {
+                text-align: center;
+                order: 1;
+            }
         }
     }
 }

@@ -23,7 +23,7 @@
 
     .step {
         align-items: center;
-        font-size: $fontSizeNormal;
+        font-size: $fontSizeMedium;
         padding: $spaceL;
         position: absolute;
         text-align: center;
@@ -46,7 +46,17 @@
             text-transform: uppercase;
         }
         &-text {
-            padding: $spaceM 0 $spaceS;
+            padding: $spaceM 0 0;
+        }
+
+        &-buttons {
+            margin-top: $spaceS;
+
+            &--large {
+                button {
+                    border: $largeButtonBorderWidth solid;
+                }
+            }
         }
 
         &-color {

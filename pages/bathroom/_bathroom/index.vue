@@ -1,6 +1,6 @@
 <template>
   <div class="bathroom">
-    <Chat :roomName="roomName" :showEnterLeaveMessage="true" />
+    <Chat :room-name="roomName" :show-enter-leave-message="true" />
   </div>
 </template>
 

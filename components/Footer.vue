@@ -16,9 +16,9 @@
       <InteractiveButtons />
     </div>
 
-    <nuxt-link class="footer-section footer-section--right" to="/imprint">
-      Imprint
-    </nuxt-link>
+    <div class="footer-section footer-section--right">
+      <nuxt-link to="/imprint">Imprint</nuxt-link>
+    </div>
   </footer>
 </template>
 

@@ -2,7 +2,7 @@
   <div v-if="!counterIsRunning">
     <h3 class="step-title">{{ data.title }}</h3>
 
-    <div class="step-buttons">
+    <div class="step-buttons step-buttons--large">
       <button class="step-buttons-btn" @click="stepDeclined">no</button>
       <button class="step-buttons-btn" @click="stepConfirmed">yes</button>
     </div>

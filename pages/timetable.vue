@@ -35,12 +35,6 @@ export default {
       return ('0' + this.currentTime.minutes()).slice(-2);
     }
   },
-  methods: {
-    checkIfEnded(artist, index) {
-      const formattedEndTime = this.$moment(`${artist.day} ${artist.end}`);
-      return this.currentTime.isAfter(formattedEndTime);
-    }
-  },
   mounted() {
     const vm = this;
     vm.interval = setInterval(() => {
@@ -49,6 +43,12 @@ export default {
   },
   beforeDestroy() {
     clearInterval(this.interval);
+  },
+  methods: {
+    checkIfEnded(artist, index) {
+      const formattedEndTime = this.$moment(`${artist.day} ${artist.end}`);
+      return this.currentTime.isAfter(formattedEndTime);
+    }
   }
 };
 </script>

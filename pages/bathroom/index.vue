@@ -1,10 +1,10 @@
 <template>
   <div class="bathroom">
-    <div class="bathroom-cubicles" v-if="cubicleDataArray">
+    <div v-if="cubicleDataArray" class="bathroom-cubicles">
       <div
-        class="bathroom-cubicles-item"
         v-for="(cubicle, index) in cubicleDataArray"
         :key="index"
+        class="bathroom-cubicles-item"
         :class="{
           occupied: cubicleDataArray[index] === 'full'
         }"
@@ -42,11 +42,6 @@ export default {
       return this.$store.state.content.bathroomImages;
     }
   },
-  methods: {
-    handleClick(index) {
-      this.$router.push({ path: `/bathroom/${index + 1}` });
-    }
-  },
   beforeMount() {
     this.$socket.client.emit('getCubiclesStatus');
     this.$socket.client.emit(
@@ -60,6 +55,11 @@ export default {
   },
   beforeDestroy() {
     this.$socket.client.emit('user-leave', this.roomName);
+  },
+  methods: {
+    handleClick(index) {
+      this.$router.push({ path: `/bathroom/${index + 1}` });
+    }
   },
   sockets: {
     cubicleStatus(cubicleDataArray) {

@@ -2,13 +2,13 @@
   left: 0;
   position: fixed;
   text-transform: uppercase;
-  top: 0;
+  top: $spaceS;
   width: 100%;
   z-index: 99;
 
   &-live {
     position: absolute;
-    left: 0;
+    left: $spaceS;
     top: 0;
 
     &-icon {
@@ -29,14 +29,52 @@
     width: 100%;
 
     &-item {
-      margin: 0;
+      margin: 0 $spaceXS;
 
       &:last-of-type {
         position: absolute;
-        right: 0;
+        right: $spaceS;
         top: 0;
+        margin: 0;
       }
     }
+  }
+
+  @include portrait-layout-mobile {
+    display: flex;
+    flex-direction: column;
+
+    &-live {
+      position: static;
+      top: inherit;
+      text-align: center;
+    }
+
+    &-list {
+      position: static;
+      top: inherit;
+      margin: $spaceS 0;
+      width: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      justify-content: flex-start;
+      
+      &-item {
+        margin: 0 $spaceXS;  
+        
+        &:first-of-type {
+          margin-left: $spaceS;
+        }
+
+        &:last-of-type {
+          position: static;
+          margin: 0 $spaceXS;
+          padding-right: $spaceS;
+        }
+      }
+
+    }
+
   }
 }
 

@@ -78,16 +78,6 @@ export default {
       }
     }
   },
-  beforeMount() {
-    this.$socket.client.emit('new-user', this.roomName, this.userColor);
-  },
-  mounted() {
-    document.addEventListener('keypress', this.onKeyPress);
-  },
-  beforeDestroy() {
-    document.removeEventListener('keypress', this.onKeyPress);
-    this.$socket.client.emit('user-leave', this.roomName);
-  },
   watch: {
     locked(val) {
       if (!val) {
@@ -98,6 +88,16 @@ export default {
         vm.locked = false;
       }, this.throttleTimer);
     }
+  },
+  beforeMount() {
+    this.$socket.client.emit('new-user', this.roomName, this.userColor);
+  },
+  mounted() {
+    document.addEventListener('keypress', this.onKeyPress);
+  },
+  beforeDestroy() {
+    document.removeEventListener('keypress', this.onKeyPress);
+    this.$socket.client.emit('user-leave', this.roomName);
   },
   methods: {
     sendMsg() {

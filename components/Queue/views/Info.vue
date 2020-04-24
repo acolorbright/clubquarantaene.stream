@@ -4,7 +4,7 @@
     <p class="step-text">{{ data.text }}</p>
 
     <transition name="fade-step" mode="out-in">
-      <div class="step-buttons">
+      <div class="step-buttons step-buttons--large">
         <button class="step-buttons-btn" @click="nextStep">
           Understood
         </button>

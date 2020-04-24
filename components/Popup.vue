@@ -5,11 +5,11 @@
       <source :src="video" type="video/mp4" />
     </video>
     <p>{{ text }}</p>
-    <div class="popup-buttons" v-if="buttons">
+    <div v-if="buttons" class="popup-buttons">
       <button
         v-for="button in buttons"
-        @click="button.callback"
         :key="button.label"
+        @click="button.callback"
       >
         {{ button.label }}
       </button>

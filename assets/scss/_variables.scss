@@ -22,15 +22,31 @@ $radialGradient: radial-gradient(
     $colorPrimary 95.83%
 );
 
+// font sizes mobile
+$fontSizeSmall: 10px;
+$fontSize: 14px;
+$fontSizeMedium: 5.86vw;
+$fontSizeLarge: 8.8vw;
+
+// font sizes desktop
+$fontSizeSmall: 12px;
+$fontSize: 17px;
+$fontSizeMedium: 3.2vw;
+$fontSizeLarge: 8vw;
+
 // font sizes
-$fontSize: 16px;
-$fontSizeNormal: 2vw;
-$fontSizeLarge: 7vw;
+// $fontSize: 17px;
+// $fontSizeMedium: 2vw;
+// $fontSizeLarge: 7vw;
 
 // sizes
+$spaceXS: 0.5rem;
 $spaceS: 1rem;
 $spaceM: 2.5rem;
 $spaceL: 4rem;
 
+
+// button settings
 $buttonBorderRadius: 0.25em;
-$buttonBorderWidth: 2px;
+$buttonBorderWidth: 1px;
+$largeButtonBorderWidth: 3px;

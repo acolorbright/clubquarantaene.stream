@@ -5,7 +5,7 @@ const state = () => ({
   isRunning: false,
   hasEnded: false,
   timeUntilStart: null,
-  userCount: null
+  userCount: 1
 });
 
 const mutations = {

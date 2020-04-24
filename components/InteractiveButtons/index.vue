@@ -1,9 +1,9 @@
 <template>
   <div class="interactive-buttons">
     <div
-      class="interactive-buttons-item"
       v-for="(button, index) in buttons"
       :key="index"
+      class="interactive-buttons-item"
     >
       <LiveInteraction :ref="button.reaction" />
       <button @click="onSendReaction(button.reaction)">

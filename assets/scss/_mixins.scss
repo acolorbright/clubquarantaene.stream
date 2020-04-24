@@ -1,0 +1,5 @@
+@mixin portrait-layout-mobile {
+    @media (orientation: portrait) {
+        @content;
+    }
+}

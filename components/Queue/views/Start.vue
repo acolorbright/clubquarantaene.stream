@@ -8,7 +8,7 @@
     <transition name="fade-step" mode="out-in">
       <div v-if="showStart" class="start-content">
         <Logo />
-        <div v-if="hasStarted">
+        <div v-if="!hasStarted">
           <Countdown />
           <Newsletter />
           <SocialIcons />

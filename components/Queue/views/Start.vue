@@ -8,7 +8,7 @@
     <transition name="fade-step" mode="out-in">
       <div v-if="showStart" class="start-content">
         <Logo />
-        <div v-if="!hasStarted">
+        <div>
           <Countdown />
           <Newsletter />
           <SocialIcons />
@@ -60,16 +60,14 @@ export default {
       this.$emit('nextStep', true);
     },
     startEvent() {
-      if (this.hasStarted) {
-        setTimeout(() => {
-          this.showStart = false;
-          this.setQueueCountdownIsRunning(true);
-        }, 3500);
+      setTimeout(() => {
+        this.showStart = false;
+        this.setQueueCountdownIsRunning(true);
+      }, 3500);
 
-        setTimeout(() => {
-          this.nextStep();
-        }, 9500);
-      }
+      setTimeout(() => {
+        this.nextStep();
+      }, 9500);
     }
   }
 };

@@ -57,6 +57,9 @@ export default {
         // width: '640'
       });
     },
+    playVideo() {
+      this.player.playVideo();
+    },
     onReady() {
       console.log('ready');
     },

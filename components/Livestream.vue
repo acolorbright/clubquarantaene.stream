@@ -29,7 +29,7 @@ export default {
         keyboard: 0,
         modestBranding: 1,
         origin: window.location.host,
-        playsInline: 1,
+        playsinline: 1,
         rel: 0,
         showinfo: 0
       },

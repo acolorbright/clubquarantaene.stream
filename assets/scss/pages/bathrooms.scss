@@ -4,6 +4,12 @@
   align-items: center;
   height: 100vh;
 
+  @include portrait-layout-mobile {
+    padding: $spaceL 0;
+    min-height: 100vh;
+    height: auto;
+  }
+
   .bathroom-cubicles {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -80,11 +86,14 @@
     }
 
     @include portrait-layout-mobile {
-      padding: $spaceL 0;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows:
         [cubicle] auto [cubicle] auto [warning] auto [cubicle] auto [cubicle] auto ;
+      .bathroom-cubicles-item {
+        padding: $spaceS 0;
+      }
       .bathroom-cubicles-warning {
+        padding: 0;
         grid-column-end: 6;
       }
     }

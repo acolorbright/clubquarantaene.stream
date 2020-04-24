@@ -19,7 +19,9 @@
         </figure>
       </div>
       <div class="bathroom-cubicles-item bathroom-cubicles-warning">
-        Max. 8 People per Cubicle
+        <span class="button">
+          Max. 8 People per Cubicle
+        </span>
       </div>
     </div>
   </div>

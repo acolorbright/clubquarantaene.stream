@@ -57,7 +57,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      setColor: 'setColor'
+      setColor: 'setColor',
+      setAccessGranted: 'setAccessGranted'
     }),
     getColorString() {
       const { rgba } = this.colors;
@@ -99,6 +100,7 @@ export default {
         const { available } = registerResponse;
 
         if (!available) {
+          this.setAccessGranted(true);
           this.$emit('confirmDecision', true);
         } else {
           this.colorIsOccupied = true;

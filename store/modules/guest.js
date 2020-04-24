@@ -1,4 +1,5 @@
 const state = () => ({
+  accessGranted: false,
   answers: [],
   color: '#0038FF',
   currentLocation: {
@@ -18,12 +19,18 @@ const state = () => ({
 const mutations = {
   setColor(state, color) {
     state.color = color;
+  },
+  setAccessGranted(state, isGranted) {
+    state.accessGranted = isGranted;
   }
 };
 
 const actions = {
   setColor({ commit }, color) {
     commit('setColor', color);
+  },
+  setAccessGranted({ commit }, isGranted) {
+    commit('setAccessGranted', isGranted);
   }
 };
 

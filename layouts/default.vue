@@ -65,6 +65,7 @@ export default {
       }, 1000);
     }
   },
+  middleware: ['checkPermission'],
   sockets: {
     'error-message'(error) {
       switch (error.type) {

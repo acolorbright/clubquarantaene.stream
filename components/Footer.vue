@@ -7,7 +7,11 @@
   >
     <div class="footer-section footer-section--left">
       <transition name="fade">
-        <Chat v-if="isDancefloor && showChat" :max-chat-history="17" />
+        <Chat
+          v-if="isDancefloor && showChat"
+          :max-chat-history="10"
+          :maxLength="100"
+        />
       </transition>
       <transition name="fade">
         <div

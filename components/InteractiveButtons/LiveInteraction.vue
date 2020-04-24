@@ -11,14 +11,11 @@ export default {
     };
   },
   computed: {
-    userCount() {
-      return this.$store.state.event.userCount;
-    },
     max() {
-      return 850000 / this.userCount;
+      return 850000 / this.$store.state.event.userCount;
     },
     min() {
-      return 200000 / this.userCount;
+      return 200000 / this.$store.state.event.userCount;
     }
   },
   mounted() {

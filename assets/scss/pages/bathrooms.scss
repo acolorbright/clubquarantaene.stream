@@ -108,5 +108,8 @@
     width: 50vw;
     min-width: 300px;
     max-width: calc(100vw - #{$spaceS * 2});
+    @include portrait-layout-mobile {
+      bottom: $spaceM;
+    }
   }
 }

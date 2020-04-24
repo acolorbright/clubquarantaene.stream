@@ -1,7 +1,12 @@
 const state = () => ({
   accessGranted: false,
   answers: [],
-  color: '#0038FF',
+  color: {
+    r: 0,
+    g: 0,
+    b: 0,
+    a: 1
+  },
   userData: null,
   currentLocation: {
     name: 'Dancefloor', // dancefloor, cloakroom, bar, bathroom

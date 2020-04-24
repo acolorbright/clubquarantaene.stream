@@ -10,7 +10,7 @@
             v-if="colorIsOccupied"
             class="step-color-error"
             :style="{
-              color: colors.hex
+              color: colors.rgba
             }"
           >
             This color is already taken. <br />
@@ -23,14 +23,8 @@
     </div>
 
     <div class="step-buttons-btn">
-      <button
-        class="step-buttons color-btn"
-        :class="{
-          disabled: !colorSelected
-        }"
-        @click="enterClub"
-      >
-        Enter
+      <button class="step-buttons color-btn" @click="enterClub">
+        Enter Club
       </button>
     </div>
   </div>
@@ -49,7 +43,6 @@ export default {
     return {
       colorSelected: false,
       colors: {
-        hex: '',
         rgba: {
           r: Math.floor(Math.random() * 256),
           g: Math.floor(Math.random() * 256),
@@ -63,17 +56,20 @@ export default {
   },
   computed: {
     dotStyle() {
+      const { r, g, b, a } = this.colors.rgba;
+      const rgba = `rgba(${r},${g},${b},${a})`;
+
       return {
         background: `radial-gradient(
           50% 50% at 50% 50%,
-          ${this.colors.hex} 0%,
+          ${rgba} 0%,
           transparent 18.23%,
-          ${this.colors.hex} 29.69%,
+          ${rgba} 29.69%,
           transparent 61.98%,
           transparent 66.15%,
-          ${this.colors.hex} 79.69%,
+          ${rgba} 79.69%,
           transparent 88.54%,
-          ${this.colors.hex} 95.83%
+          ${rgba} 95.83%
         )`
       };
     }
@@ -119,7 +115,7 @@ export default {
         this.colorSelected = true;
       }
 
-      this.setColor(color.hex);
+      this.setColor(color.rgba);
     },
     async enterClub() {
       try {

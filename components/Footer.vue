@@ -44,10 +44,10 @@ export default {
       return this.currentRoute.path === '/';
     },
     isDancefloor() {
-      return this.currentRoute.path === '/dancefloor';
+      return this.currentRoute.name === 'dancefloor';
     },
     isTimetable() {
-      return this.currentRoute.path === '/timetable';
+      return this.currentRoute.name === 'timetable';
     }
   }
 };

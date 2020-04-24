@@ -4,13 +4,13 @@ const state = () => ({
       label: 'Grow Vines',
       reaction: 'grow',
       progress: 0,
-      achievementMsg: 'Vines unlocked!'
+      achievementMsg: '100%!'
     },
     {
       label: 'Reveal Artist',
       reaction: 'artist',
       progress: 0,
-      achievementMsg: 'Revealation unlocked!'
+      achievementMsg: '100%'
     }
   ],
   largeTextoverlay: ''

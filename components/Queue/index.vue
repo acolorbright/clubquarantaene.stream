@@ -87,7 +87,7 @@ export default {
       return this.event.hasStarted;
     },
     countdownIsSmall() {
-      return this.activeStepIndex > 0 && this.activeStepIndex < 3;
+      return this.activeStepIndex > 0 && this.activeStepIndex < 4;
     }
   },
   methods: {

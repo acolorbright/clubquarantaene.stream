@@ -32,6 +32,13 @@ const state = () => ({
       isValidated: false
     },
     {
+      title: 'Warning',
+      text:
+        'This site may potentially trigger seizures for people with photosensitive epilepsy. Viewer discretion is advised.',
+      type: 'info',
+      isValidated: false
+    },
+    {
       title: 'Do you know who’s playing tonight',
       type: 'question',
       isValidated: false

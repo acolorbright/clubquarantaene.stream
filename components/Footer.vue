@@ -7,8 +7,13 @@
   >
     <div class="footer-section footer-section--left">
       <Chat v-if="isDancefloor" :max-chat-history="30" />
-      <a v-if="isTimetable" href="/" target="_blank" class="button">
-        BuyMusicClub
+      <a
+        v-if="isTimetable"
+        href="https://www.buymusic.club/list/club-quarantane-cq-2"
+        target="_blank"
+        class="button"
+      >
+        Get tracks from BuyMusicClub↗
       </a>
     </div>
 

@@ -1,0 +1,38 @@
+.page-timetable {
+ 
+  h1 {
+    text-align: center;
+  }
+
+  .blinking {
+    animation: liveAnimation 5s infinite;
+  }
+
+  .timetable-list {
+    margin: 0 auto;
+    font-size: $fontSizeHeadline;
+    max-width: 23em;
+    line-height: 0.95;
+    transform: translateX($spaceM);
+    
+    @include portrait-layout-mobile {
+      font-size: $fontSizeHeadlineMobile;
+      transform: none;
+    }
+
+    &-entry {
+      display: flex;
+      margin-bottom: $spaceS;
+      span.time {
+        flex-shrink: 0;
+        margin-right: $spaceS;
+      }
+      &.has-ended {
+        color: $colorLightTransparent;
+        text-decoration: line-through;
+      }
+    }
+  }
+
+
+}

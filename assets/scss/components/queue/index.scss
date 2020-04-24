@@ -6,15 +6,16 @@
         position: fixed;
         text-align: center;
         text-transform: uppercase;
+        top: 0;
         transform: scale(1) translateY(calc(50vh - 50%));
-        transform-origin: top;
+        transform: scale(1) translateY(calc(50vh - var(--vh-offset, 0px) - 50%));
+        transform-origin: center;
         transition: transform $slowTransitionSpeed;
         width: 100%;
         z-index: 1;
 
         &--small {
-            // transform: scale(0.4) translateY(10vh);
-            transform: scale(1) translateY(10vh);
+            transform: scale(0.4) translateY(10vh);
         }
 
         &-value {

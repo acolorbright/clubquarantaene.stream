@@ -4,8 +4,8 @@
 
   &-player {
     display: block;
-    height: calc(100vh - var(--vh-offset, 0px));
     height: 100vh;
+    height: calc(100vh - var(--vh-offset, 0px));
     padding: $spaceM 0;
     width: 100%;
   }

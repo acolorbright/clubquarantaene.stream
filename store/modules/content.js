@@ -67,7 +67,7 @@ const state = () => ({
       day: '2020-04-25'
     },
     {
-      name: 'ROOG UNIT [LUKE SLATER. + Ø [PHASE] ]',
+      name: 'ROOG UNIT [LUKE SLATER. + Ø [PHASE]]',
       start: '05:30',
       end: '07:00',
       day: '2020-04-25'

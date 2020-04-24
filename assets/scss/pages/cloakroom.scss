@@ -1,0 +1,9 @@
+.page-cloakroom {
+  text-align: center;
+  font-size: $fontSizeMedium;
+  
+  @include portrait-layout-mobile {
+    font-size: $fontSizeMediumMobile;
+  }
+
+}

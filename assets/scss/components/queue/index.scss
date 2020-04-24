@@ -13,7 +13,8 @@
         z-index: 1;
 
         &--small {
-            transform: scale(0.29) translateY(10vh);
+            // transform: scale(0.4) translateY(10vh);
+            transform: scale(1) translateY(10vh);
         }
 
         &-value {
@@ -24,7 +25,6 @@
     .step {
         align-items: center;
         font-size: $fontSizeMedium;
-        padding: $spaceL;
         position: absolute;
         text-align: center;
         top: 50%;

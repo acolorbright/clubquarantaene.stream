@@ -1,5 +1,5 @@
 <template>
-  <div class="page page-bar">
+  <div class="page page-bar text-page">
     <h1>{{ $store.state.content.bar.title }}</h1>
     <div class="donations">
       <div

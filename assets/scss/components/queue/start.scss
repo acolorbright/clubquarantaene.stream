@@ -6,8 +6,8 @@
         animation: gradientAnimation 15s infinite alternate;
         animation-fill-mode: backwards;
         background: $radialGradient;
-        height: calc(100vh - var(--vh-offset, 0px));
         height: 100vh;
+        height: calc(100vh - var(--vh-offset, 0px));
         transform: translateZ(0);
         width: 100%;
       

@@ -1,8 +1,8 @@
 <template>
-  <div class="page timetable">
-    <div class="current-time">
+  <div class="page page-timetable text-page">
+    <h1 class="current-time">
       {{ currentHour }}<span class="blinking">:</span>{{ currentMinute }} CEST
-    </div>
+    </h1>
     <ul class="timetable-list">
       <li
         v-for="(artist, index) in $store.state.content.timetable"

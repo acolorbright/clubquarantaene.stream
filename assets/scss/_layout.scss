@@ -29,3 +29,15 @@ button, .button {
     opacity: 0.5;
   }
 }
+
+.text-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $spaceL 0;
+
+  @include portrait-layout-mobile {
+    padding: $spaceXL $spaceS;
+  }
+
+}

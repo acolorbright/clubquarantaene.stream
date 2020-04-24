@@ -76,6 +76,7 @@ export default {
           break;
         case 2:
           this.videoIsPlaying = false;
+          this.playVideo();
           break;
         default:
           this.playVideo();

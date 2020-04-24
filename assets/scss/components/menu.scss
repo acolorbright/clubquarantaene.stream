@@ -13,11 +13,8 @@
 
     &-icon {
       animation: liveAnimation $liveAnimationDuration infinite;
-      border-radius: $buttonBorderRadius;
-      border: 1px solid;
       color: $colorSecondary;
-      font-size: 0.8em;
-      padding: 0.1em 0.4em;
+      font-size: 1em;
     }
     &-counter {}
   }

@@ -1,7 +1,7 @@
 <template>
   <nav class="menu">
     <nuxt-link class="menu-live" to="/">
-      <span class="menu-live-icon">Live</span>
+      <span class="menu-live-icon">&#xE000;</span>
       <span class="menu-live-counter">{{ userCount }} Guests</span>
     </nuxt-link>
 

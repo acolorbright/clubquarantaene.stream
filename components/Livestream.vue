@@ -150,8 +150,8 @@ export default {
     },
     panVideo() {
       const pan = () => {
-        const rotationDuration = 20;
-        const cyclesPerRotation = 2;
+        const rotationDuration = 60;
+        const cyclesPerRotation = 0;
 
         const yaw = ((performance.now() / 1000 / rotationDuration) * 360) % 360;
         const pitch =

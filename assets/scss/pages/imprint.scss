@@ -1,18 +1,17 @@
 .page-imprint {
     padding-left: $spaceS; 
     padding-right: $spaceS;
-    line-height: 1.4;
+    line-height: $lineHeightImprint;
+
     h1 {
         margin-bottom: 1em;
     }
     h2 {
-        // font-size: 1rem;
         text-transform: uppercase;
         margin-top: $spaceM;
     }
     h3 {
         text-transform: uppercase;
-        // padding-left: $spaceM;
         font-size: $fontSizeSmall;
         margin-top: 1em;
         letter-spacing: 0.08em;

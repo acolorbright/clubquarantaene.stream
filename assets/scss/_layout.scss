@@ -33,6 +33,7 @@ button, .button {
 .text-page {
   display: flex;
   flex-direction: column;
+  line-height: $lineHeightTextPage;
   justify-content: center;
   padding: $spaceL 0;
 

@@ -1,4 +1,4 @@
-const queueCountdownTime = 5;
+const queueCountdownTime = 30;
 
 const state = () => ({
   countdown: {

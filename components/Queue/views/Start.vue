@@ -55,11 +55,11 @@ export default {
       setTimeout(() => {
         this.showStart = false;
         this.setQueueCountdownIsRunning(true);
-      }, 3000);
+      }, 3500);
 
       setTimeout(() => {
         this.nextStep();
-      }, 7000);
+      }, 9500);
     }
   },
   methods: {

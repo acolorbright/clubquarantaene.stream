@@ -108,8 +108,6 @@ export default {
     onLoading() {},
     onValidate(isValid, stepIndex) {},
     handleTabChange(indexFrom, indexTo) {
-      // alert(indexTo);
-
       if (indexTo >= 0) {
         this.setActiveStepIndex(indexTo);
       }

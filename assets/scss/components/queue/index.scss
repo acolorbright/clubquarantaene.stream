@@ -71,17 +71,44 @@
         }
 
         .color-wrapper {
-            border: 2px solid red;
             position: relative;
+
+            .vc {
+                &-chrome {
+                    background: none;
+                    &-sliders {
+                        border-radius: $buttonBorderRadius;
+                        border-radius: 0;
+                    }
+                    &-fields-wrap,
+                    &-alpha-wrap,
+                    &-color-wrap {
+                        display: none;
+                    }
+                    &-hue-wrap {
+                        height: 25px;
+                        margin: 0;
+                    }
+                    &-saturation-wrap {
+                        border-radius: 3px;
+                        padding-bottom: 50px;
+                    }
+                    &-body {
+                        background: none;
+                        padding: 0;
+                    }
+                }
+                &-hue-picker {
+                    height: 27px;
+                }
+            }
         }
         &-color {
-            border: 2px solid red;
             margin: 0 35%;
             width: 30%;
             backface-visibility: hidden;
 
             &-dot {
-                border: 2px solid red;
                 animation: gradientAnimation 15s infinite alternate;
                 animation-fill-mode: backwards;
                 border-radius: 100%;
@@ -104,7 +131,6 @@
             }
 
             &-error {
-                border: 2px solid red;
                 left: 50%;
                 position: absolute;
                 top: 50%;

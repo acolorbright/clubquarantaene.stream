@@ -1,16 +1,16 @@
 const state = () => ({
   buttons: [
     {
-      label: 'Grow Vines',
-      reaction: 'grow',
+      label: 'Wow',
+      reaction: 'wow',
       progress: 0,
-      achievementMsg: '100%'
+      achievementMsg: 'Entering Room'
     },
     {
       label: 'Reveal Artist',
       reaction: 'artist',
       progress: 0,
-      achievementMsg: '100%'
+      achievementMsg: 'Artist image covering scene'
     }
   ],
   largeTextoverlay: ''

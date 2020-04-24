@@ -11,7 +11,7 @@
             v-if="colorIsOccupied"
             class="step-color-error"
             :style="{
-              color: color.hex
+              color: colors.hex
             }"
           >
             This color is already taken. <br />
@@ -19,7 +19,8 @@
           </div>
         </transition>
       </div>
-      <slider-picker v-model="colors" class="step-color" @input="updateColor" />
+      <!-- <slider-picker v-model="colors" class="step-color" @input="updateColor" /> -->
+      <chrome-picker v-model="colors" class="step-color" @input="updateColor" />
     </div>
 
     <div class="step-buttons-btn">
@@ -38,11 +39,12 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { Slider } from 'vue-color';
+import { Chrome } from 'vue-color';
 
 export default {
   components: {
-    'slider-picker': Slider
+    // 'slider-picker': Slider,
+    'chrome-picker': Chrome
   },
   data() {
     return {
@@ -80,7 +82,8 @@ export default {
   methods: {
     ...mapActions({
       setColor: 'setColor',
-      setAccessGranted: 'setAccessGranted'
+      setAccessGranted: 'setAccessGranted',
+      setUserData: 'setUserData'
     }),
     getColorString() {
       const { rgba } = this.colors;
@@ -93,6 +96,7 @@ export default {
     },
     async registerUser() {
       const rgbString = this.getColorString();
+      console.log('rgbString', rgbString);
       const colorPostData = JSON.stringify({
         rgbString,
         timestamp: Date.now()
@@ -124,7 +128,9 @@ export default {
         const registerResponse = await this.registerUser();
         const { available } = registerResponse;
 
-        if (!available) {
+        this.setUserData(registerResponse);
+
+        if (available) {
           this.setAccessGranted(true);
           this.$emit('confirmDecision', true);
         } else {

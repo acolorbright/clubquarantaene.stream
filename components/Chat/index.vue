@@ -67,6 +67,9 @@ export default {
     userColor() {
       return this.$store.state.guest.color;
     },
+    userData() {
+      return this.$store.state.guest.userData;
+    },
     chatHistory() {
       const messagesLength = this.messages.length;
       const lastMessagePos = this.messages.length - this.maxChatHistory;
@@ -79,7 +82,12 @@ export default {
     }
   },
   beforeMount() {
-    this.$socket.client.emit('new-user', this.roomName, this.userColor);
+    this.$socket.client.emit('new-user', {
+      room: this.roomName,
+      uuid: this.userData.uuid,
+      name: this.userData.userName
+    });
+    // this.$socket.client.emit('new-user', this.roomName, this.userColor);
   },
   mounted() {
     document.addEventListener('keypress', this.onKeyPress);
@@ -115,11 +123,11 @@ export default {
         message: this.message
       };
       this.messages.push(msgObj);
-      this.$socket.client.emit(
-        'send-chat-message',
-        this.roomName,
-        this.message
-      );
+      this.$socket.client.emit('send-chat-message', {
+        room: this.roomName,
+        message: this.message,
+        uuid: this.userData.uuid
+      });
       this.message = '';
     },
     onKeyPress(event) {

@@ -12,7 +12,7 @@ export default ({ store, redirect, route }) => {
   if (isInvited && isQueue && !accessGranted) {
     setTimeout(() => {
       alert('Hey friend! Thx for following our invitation. Have fun <3');
-    }, 4000);
+    }, 3000);
   }
 
   if (redirectToQueue && !isDev) {

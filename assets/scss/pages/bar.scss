@@ -1,0 +1,12 @@
+.page-bar {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .donations {
+    max-width: 45em;
+    margin: 0 auto;
+  }
+
+}

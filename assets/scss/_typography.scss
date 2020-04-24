@@ -43,3 +43,14 @@ a {
 .allcaps {
   text-transform: uppercase;
 }
+
+h1 {
+  font-size: $fontSizeMedium;
+  text-transform: uppercase;
+  margin-bottom: $spaceM;
+}
+
+h2 {
+  font-size: $fontSizeHeadline;
+  margin-bottom: $spaceS;
+}

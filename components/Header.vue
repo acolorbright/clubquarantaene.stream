@@ -6,20 +6,15 @@
     </nuxt-link>
 
     <ul class="menu-list">
-      <li class="menu-list-item">
-        <nuxt-link to="/dancefloor">Dancefloor</nuxt-link>
-      </li>
-      <li class="menu-list-item">
-        <nuxt-link to="/bar">Bar</nuxt-link>
-      </li>
-      <li class="menu-list-item">
-        <nuxt-link to="/cloakroom">Cloakroom</nuxt-link>
-      </li>
-      <li class="menu-list-item">
-        <nuxt-link to="/bathroom">Bathroom</nuxt-link>
-      </li>
-      <li class="menu-list-item">
-        <nuxt-link to="/timetable">Timetable</nuxt-link>
+      <li
+        v-for="page in pages"
+        :key="page.key"
+        class="menu-list-item"
+        :class="{
+          active: currentPath === page.to
+        }"
+      >
+        <nuxt-link :to="page.to">{{ page.title }}</nuxt-link>
       </li>
     </ul>
   </nav>
@@ -28,9 +23,43 @@
 import { mapActions } from 'vuex';
 
 export default {
+  data() {
+    return {
+      pages: [
+        {
+          title: 'Dancefloor',
+          key: 'dancefloor',
+          to: '/dancefloor'
+        },
+        {
+          title: 'Bar',
+          key: 'bar',
+          to: '/bar'
+        },
+        {
+          title: 'Cloakroom',
+          key: 'cloakroom',
+          to: '/cloakroom'
+        },
+        {
+          title: 'Bathroom',
+          key: 'bathroom',
+          to: '/bathroom'
+        },
+        {
+          title: 'Timetable',
+          key: 'timetable',
+          to: '/timetable'
+        }
+      ]
+    };
+  },
   computed: {
     userCount() {
       return this.$store.state.event.userCount;
+    },
+    currentPath() {
+      return this.$nuxt.$route.path;
     }
   },
   methods: {

@@ -11,12 +11,6 @@ const state = () => ({
       reaction: 'artist',
       progress: 0,
       achievementMsg: 'Revealation unlocked!'
-    },
-    {
-      label: 'Trip',
-      reaction: 'wow',
-      progress: 0,
-      achievementMsg: 'Get ready!'
     }
   ],
   largeTextoverlay: ''

@@ -28,17 +28,6 @@ export default {
     Footer,
     LargeTextoverlay
   },
-  async fetch() {
-    const contentData = await this.$axios.$get(`${process.env.CMS_URL}/data`);
-    const contentQueue = await this.$axios.$get(`${process.env.CMS_URL}/queue`);
-
-    this.setContent({
-      data: contentData,
-      queue: contentQueue,
-      loaded: true,
-      granted: true
-    });
-  },
   data() {
     return {
       eventStatusInterval: null

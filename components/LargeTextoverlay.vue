@@ -21,7 +21,8 @@ export default {
   align-content: center;
   text-align: center;
   justify-content: center;
-  font-size: 12.5vw;
+  font-size: 10vw;
+  line-height: 1;
   color: white;
   flex-direction: column;
   text-transform: uppercase;

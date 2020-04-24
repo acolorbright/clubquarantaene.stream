@@ -1,4 +1,4 @@
-const queueCountdownTime = 3;
+const queueCountdownTime = process.env.isDev ? 3 : 30;
 
 const state = () => ({
   countdown: {

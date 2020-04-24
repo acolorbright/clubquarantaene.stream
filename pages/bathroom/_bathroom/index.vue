@@ -37,6 +37,11 @@ export default {
     this.$gtag.pageview({
       page_path: `/bathroom/${this.$route.params.bathroom}`
     });
+  },
+  sockets: {
+    cubicleColors(colorArray) {
+      console.log(colorArray);
+    }
   }
 };
 </script>

@@ -33,12 +33,13 @@ export default {
   data() {
     return {
       decided: false,
-      decisionTime: 2500
+      decisionTime: 1500
     };
   },
   computed: {
     allowEntry() {
-      return Math.random() >= 0.3; // 70% probability to get in
+      // return Math.random() >= 0.3; // 70% probability to get in
+      return true;
     }
   },
   mounted() {

@@ -111,12 +111,13 @@
             &-dot {
                 animation: gradientAnimation 15s infinite alternate;
                 animation-fill-mode: backwards;
+                border: $buttonBorderWidth solid $colorPrimary;
                 border-radius: 100%;
-                height: 15vw;
+                height: 20vw;
                 margin: $spaceS auto;
                 position: relative;
                 transform: translateZ(0);
-                width: 15vw;
+                width: 20vw;
                 
                 @keyframes gradientAnimation {
                     0% {
@@ -146,8 +147,9 @@
 
 
             &.disabled {
+                cursor: not-allowed;
                 pointer-events: none;
-                opacity: 0;
+                opacity: 0.5;
             }
         }
     }

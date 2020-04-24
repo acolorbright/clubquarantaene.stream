@@ -7,7 +7,7 @@
     >
       <span
         class="chat-history-indicator"
-        :style="{ 'background-color': `${message.name}` }"
+        :style="{ 'background-color': `rgb(${message.name})` }"
       />
       <span>
         {{ message.message }}

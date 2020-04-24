@@ -10,7 +10,7 @@
       <div class="chat-input chat-message-box">
         <span
           class="chat-history-indicator"
-          :style="{ 'background-color': `${userColor}` }"
+          :style="{ 'background-color': `rgb(${userData.userName})` }"
         />
         <input
           v-model="message"
@@ -64,9 +64,6 @@ export default {
     };
   },
   computed: {
-    userColor() {
-      return this.$store.state.guest.color;
-    },
     userData() {
       return this.$store.state.guest.userData;
     },
@@ -87,7 +84,6 @@ export default {
       uuid: this.userData.uuid,
       name: this.userData.userName
     });
-    // this.$socket.client.emit('new-user', this.roomName, this.userColor);
   },
   mounted() {
     document.addEventListener('keypress', this.onKeyPress);
@@ -119,7 +115,7 @@ export default {
       }
       this.locked = true;
       const msgObj = {
-        name: this.userColor,
+        name: this.userData.userName,
         message: this.message
       };
       this.messages.push(msgObj);

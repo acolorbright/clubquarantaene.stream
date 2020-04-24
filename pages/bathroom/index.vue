@@ -42,15 +42,18 @@ export default {
   computed: {
     bathroomImages() {
       return this.$store.state.content.bathroomImages;
+    },
+    userData() {
+      return this.$store.state.guest.userData;
     }
   },
   beforeMount() {
     this.$socket.client.emit('getCubiclesStatus');
-    this.$socket.client.emit(
-      'new-user',
-      this.roomName,
-      this.$store.state.guest.color
-    );
+    this.$socket.client.emit('new-user', {
+      room: this.roomName,
+      uuid: this.userData.uuid,
+      name: this.userData.userName
+    });
   },
   mounted() {
     this.$gtag.pageview({ page_path: '/bathroom' });

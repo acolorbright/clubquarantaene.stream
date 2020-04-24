@@ -3,7 +3,6 @@
     <h3 class="step-title">
       Okay, enjoy and pick your color.
     </h3>
-
     <div class="color-wrapper">
       <div class="step-color-dot" :style="dotStyle">
         <transition name="fade" mode="out-in">
@@ -19,6 +18,7 @@
           </div>
         </transition>
       </div>
+      <pre>{{ colors }}</pre>
       <!-- <slider-picker v-model="colors" class="step-color" @input="updateColor" /> -->
       <chrome-picker v-model="colors" class="step-color" @input="updateColor" />
     </div>
@@ -50,13 +50,8 @@ export default {
     return {
       colorSelected: false,
       colors: {
-        hex: '#0038FF',
-        rgba: {
-          r: 0,
-          g: 56,
-          b: 255,
-          a: 1
-        }
+        hex: '',
+        rgba: {}
       },
       errors: [],
       colorIsOccupied: false
@@ -96,7 +91,6 @@ export default {
     },
     async registerUser() {
       const rgbString = this.getColorString();
-      console.log('rgbString', rgbString);
       const colorPostData = JSON.stringify({
         rgbString,
         timestamp: Date.now()

@@ -7,7 +7,7 @@
     display: block;
     height: 100vh;
     height: calc(100vh - var(--vh-offset, 0px));
-    padding: $spaceM 0;
+    padding: $spaceLivestream 0;
     width: 100%;
   }
   &-controls {

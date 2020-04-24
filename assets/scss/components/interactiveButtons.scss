@@ -18,10 +18,6 @@
     }
   }
   button {
-    transition: $fastTransitionSpeed;
-    &:active {
-      transform: scale(0.95);
-    }
     &:hover {
       opacity: 1;
     }

@@ -18,9 +18,9 @@ const state = () => ({
       isValidated: false
     },
     {
-      title: 'How this works',
+      title: 'How it works',
       text:
-        'Once you’re let in, you’ll be allowed to pick a color of your choice. It will be your avatar and the way to reach you. So chose wisely, as each color exists only once. First come, first serve.',
+        'Once you’re in, select a color. It will be your avatar––connected to you and you only. \nEach color can only be selected once and can’t be changed. Choose wisely. Have fun.',
       type: 'info',
       isValidated: false
     },

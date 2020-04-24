@@ -4,13 +4,16 @@
       Okay, enjoy and pick your color.
     </h3>
 
-    <div v-if="colorIsOccupied">Color is occupied</div>
-
-    <div class="step-color-dot" :style="dotStyle" />
-    <slider-picker v-model="colors" class="step-color" @input="updateColor" />
+    <div class="color-wrapper">
+      <div class="step-color-dot" :style="dotStyle" />
+      <div v-if="colorIsOccupied">Color is occupied</div>
+      <slider-picker v-model="colors" class="step-color" @input="updateColor" />
+    </div>
 
     <div class="step-buttons-btn">
-      <button class="step-buttons" @click="enterClub">Enter club</button>
+      <button v-if="colorSelected" class="step-buttons" @click="enterClub">
+        Enter
+      </button>
     </div>
   </div>
 </template>
@@ -25,6 +28,7 @@ export default {
   },
   data() {
     return {
+      colorSelected: false,
       colors: {
         hex: '#0038FF',
         rgba: {
@@ -90,6 +94,9 @@ export default {
     updateColor(color) {
       if (this.colorIsOccupied) {
         this.colorIsOccupied = false;
+      }
+      if (!this.colorSelected) {
+        this.colorSelected = true;
       }
 
       this.setColor(color.hex);

@@ -4,7 +4,7 @@ const state = () => ({
       label: 'Grow Vines',
       reaction: 'grow',
       progress: 0,
-      achievementMsg: '100%!'
+      achievementMsg: '100%'
     },
     {
       label: 'Reveal Artist',

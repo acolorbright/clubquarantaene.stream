@@ -1,7 +1,9 @@
+const queueCountdownTime = 5;
+
 const state = () => ({
   countdown: {
     isRunning: false,
-    value: 30
+    value: queueCountdownTime
   },
   answers: {
     knowsWhosPlaying: null,
@@ -69,7 +71,7 @@ const mutations = {
   resetCountdown(state) {
     state.countdown = {
       isRunning: false,
-      value: 30
+      value: queueCountdownTime
     };
   },
   setQueueCountdownIsRunning(state, isRunning) {

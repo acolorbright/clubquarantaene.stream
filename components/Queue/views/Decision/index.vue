@@ -1,8 +1,17 @@
 <template>
-  <div>
-    <Enjoy @confirmDecision="handleConfirmDecision" />
-    <br />
-    <TryAgain @confirmDecision="handleConfirmDecision" />
+  <div class="decision">
+    <transition name="fade-step" mode="in-out">
+      <div v-if="decided">
+        <Enjoy v-if="allowEntry" @confirmDecision="handleConfirmDecision" />
+        <TryAgain v-else @confirmDecision="handleConfirmDecision" />
+      </div>
+    </transition>
+
+    <div v-if="!decided" class="decision-loader">
+      <span class="decision-loader-dot">.</span>
+      <span class="decision-loader-dot">.</span>
+      <span class="decision-loader-dot">.</span>
+    </div>
   </div>
 </template>
 
@@ -23,10 +32,24 @@ export default {
   },
   data() {
     return {
-      allowEntry: true
+      decided: false,
+      decisionTime: 2500
     };
   },
+  computed: {
+    allowEntry() {
+      return Math.random() >= 0.3; // 70% probability to get in
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.makeDecision();
+    }, this.decisionTime);
+  },
   methods: {
+    makeDecision() {
+      this.decided = true;
+    },
     handleConfirmDecision(accessGranted) {
       if (accessGranted) {
         this.$emit('enterClub');

@@ -1,6 +1,7 @@
 .livestream {
-  position: relative;
+  position: fixed;
   transition: opacity 1000ms ease;
+  width: 100%;
 
   &-player {
     display: block;

@@ -25,15 +25,22 @@
   </nav>
 </template>
 <script>
+import { mapActions } from 'vuex';
+
 export default {
-  data() {
-    return {
-      userCount: 1
-    };
+  computed: {
+    userCount() {
+      return this.$store.state.event.userCount;
+    }
+  },
+  methods: {
+    ...mapActions({
+      setUserCount: 'setUserCount'
+    })
   },
   sockets: {
     'total-users'(amount) {
-      this.userCount = amount;
+      this.setUserCount(amount);
     }
   }
 };

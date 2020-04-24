@@ -4,7 +4,8 @@ const state = () => ({
   hasStarted: false,
   isRunning: false,
   hasEnded: false,
-  timeUntilStart: null
+  timeUntilStart: null,
+  userCount: null
 });
 
 const mutations = {
@@ -39,6 +40,9 @@ const mutations = {
       state.hasStarted = true;
       state.isRunning = true;
     }
+  },
+  setUserCount(state, count) {
+    state.userCount = count;
   }
 };
 
@@ -51,6 +55,9 @@ const actions = {
   },
   checkEventStatus({ commit }) {
     commit('setEventStatus');
+  },
+  setUserCount({ commit }, count) {
+    commit('setUserCount', count);
   }
 };
 

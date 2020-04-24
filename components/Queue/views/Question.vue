@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!counterIsRunning">
     <h3 class="step-title">{{ data.title }}</h3>
 
     <div class="step-buttons">
@@ -15,6 +15,10 @@ export default {
     data: {
       type: Object,
       default: null
+    },
+    counterIsRunning: {
+      type: Boolean,
+      default: true
     }
   },
   data() {

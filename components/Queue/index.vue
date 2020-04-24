@@ -1,7 +1,7 @@
 <template>
   <div class="queue">
     <transition name="fade" mode="out-in">
-      <QueueCountdown v-if="showQueueCounter" :small="activeStepIndex > 0" />
+      <QueueCountdown v-if="queueCounterIsRunning" :small="countdownIsSmall" />
     </transition>
 
     <form-wizard
@@ -36,6 +36,7 @@
             class="step wizard-tab-component"
             :class="`step--${step.type}`"
             :has-started="eventHasStarted"
+            :counter-is-running="queueCounterIsRunning"
             @enterClub="emitEnterClub"
             @nextStep="emitNextTab"
             @tryAgain="emitTryAgain"
@@ -75,14 +76,18 @@ export default {
     isValidated() {
       return this.steps[this.activeStepIndex].isValidated;
     },
-    showQueueCounter() {
-      return this.$store.state.queue.countdown.isRunning;
+    queueCounterIsRunning() {
+      const { isRunning, value } = this.$store.state.queue.countdown;
+      return isRunning && value > 0;
     },
     event() {
       return this.$store.state.event;
     },
     eventHasStarted() {
       return this.event.hasStarted;
+    },
+    countdownIsSmall() {
+      return this.activeStepIndex > 0 && this.activeStepIndex < 3;
     }
   },
   methods: {
@@ -103,6 +108,8 @@ export default {
     onLoading() {},
     onValidate(isValid, stepIndex) {},
     handleTabChange(indexFrom, indexTo) {
+      // alert(indexTo);
+
       if (indexTo >= 0) {
         this.setActiveStepIndex(indexTo);
       }

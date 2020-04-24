@@ -2,18 +2,18 @@
     color: $colorPrimary;
 
     &-countdown {
-        font-size: $fontSizeNormal;
+        font-size: $fontSizeLarge;
         position: fixed;
         text-align: center;
+        text-transform: uppercase;
         transform: scale(1) translateY(calc(50vh - 50%));
         transform-origin: top;
-        transition: transform $baseTransitionSpeed;
+        transition: transform $slowTransitionSpeed;
         width: 100%;
         z-index: 1;
 
         &--small {
-            transform: scale(1) translateY(5vh);
-            // transform: scale(0.35) translateY(10vh);
+            transform: scale(0.29) translateY(10vh);
         }
 
         &-value {

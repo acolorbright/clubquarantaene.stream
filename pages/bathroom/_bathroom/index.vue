@@ -1,6 +1,10 @@
 <template>
   <div class="bathroom">
-    <Chat :room-name="roomName" :show-enter-leave-message="true" />
+    <Chat
+      class="light-theme"
+      :room-name="roomName"
+      :show-enter-leave-message="true"
+    />
   </div>
 </template>
 

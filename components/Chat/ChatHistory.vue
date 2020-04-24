@@ -1,9 +1,9 @@
 <template>
-  <ul ref="chat-history">
+  <transition-group class="chat-history" name="list-complete" tag="ul">
     <li
       v-for="(message, index) in messages"
       :key="index"
-      class="chat-history-message"
+      class="list-complete-item chat-message-box chat-history-iteam"
     >
       <span
         class="chat-history-indicator"
@@ -13,7 +13,7 @@
         {{ message.message }}
       </span>
     </li>
-  </ul>
+  </transition-group>
 </template>
 <script>
 export default {

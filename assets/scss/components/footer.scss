@@ -28,7 +28,15 @@
             color: $colorPrimary;
         }
     }
-
+    .chat-switch-button {
+        cursor: pointer;
+    }
+    .chat {
+        font-size: $fontSizeSmall;
+        position: fixed;
+        left: $spaceS;
+        bottom: $spaceL;
+    }
     @include portrait-layout-mobile {
         flex-direction: column;
         justify-content: center;

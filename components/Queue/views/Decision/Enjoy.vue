@@ -5,8 +5,13 @@
     </h3>
 
     <div class="color-wrapper">
-      <div class="step-color-dot" :style="dotStyle" />
-      <div v-if="colorIsOccupied">Color is occupied</div>
+      <div class="step-color-dot" :style="dotStyle">
+        <transition name="fade" mode="out-in">
+          <div v-if="colorIsOccupied" class="step-color-error">
+            Color is occupied by another guest
+          </div>
+        </transition>
+      </div>
       <slider-picker v-model="colors" class="step-color" @input="updateColor" />
     </div>
 

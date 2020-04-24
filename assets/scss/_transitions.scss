@@ -15,3 +15,15 @@
 .fade-step-leave-to {
   opacity: 0;
 }
+
+
+.list-complete-item {
+  transition: all $fastTransitionSpeed;
+  display: block;
+}
+.list-complete-enter, .list-complete-leave-to {
+  opacity: 0;
+}
+.list-complete-leave-active {
+  position: absolute;
+}

@@ -1,0 +1,89 @@
+$gradientSteps: 8;
+
+.chat {
+  text-transform: none;
+  &-message-box {
+    border-radius: $buttonBorderRadius;
+    background-color: $colorDarkTransparent;
+    padding: 0.66em 0.66em 0.66em 1.75em;
+    margin-bottom: 0.5em;
+    position: relative;
+  }
+
+  .chat-history {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    &-indicator {
+      width: .9em;
+      height: .9em;
+      border-radius: 100%;
+      display: inline-block;
+      position: absolute;
+      top: 1.15em;
+      left: 0.5em;
+      transform: translateY(-50%);
+    }
+
+    
+
+  }
+
+  .chat-history-item {
+    display: inline-block;
+  }
+
+  // &.chat-gradient .chat-message-box {
+  //   transition: opacity 200ms ease;
+
+  //   @for $i from 1 through $gradientSteps {
+
+  //     &:nth-child(#{$i}) {
+  //       opacity: #{0 + $i * 1 / $gradientSteps};
+  //     }
+
+  //   }
+  // }
+
+  .chat-input {
+    border: $buttonBorderWidth solid $colorLightTransparent;
+    display: flex;
+    input {
+      background: none;
+      outline: 0;
+      color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+      border: 0;
+      height: 1em;
+      transition: opacity $fastTransitionSpeed;
+      &::placeholder {
+        color: $colorLightTransparent;
+      }
+      &[type="text"] {
+        width: 100%;
+      }
+      &[type="submit"] {
+        cursor: pointer;
+        margin-left: auto;
+      }
+      &:disabled {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  /* Light theme */
+  &.light-theme {
+    color: $colorDark;
+    .chat-message-box {
+      background-color: $colorLightTransparent;
+    }
+    .chat-footer .chat-message-box {
+      background-color: $colorDarkTransparent;
+      color: $colorLightTransparent;
+    }
+  }
+  
+}

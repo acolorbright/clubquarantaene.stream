@@ -7,7 +7,7 @@
   >
     <ChatHistory :messages="chatHistory" />
     <div class="chat-footer">
-      <div class="chat-input">
+      <div class="chat-input chat-message-box">
         <span
           class="chat-history-indicator"
           :style="{ 'background-color': `${userColor}` }"
@@ -78,6 +78,16 @@ export default {
       }
     }
   },
+  beforeMount() {
+    this.$socket.client.emit('new-user', this.roomName, this.userColor);
+  },
+  mounted() {
+    document.addEventListener('keypress', this.onKeyPress);
+  },
+  beforeDestroy() {
+    document.removeEventListener('keypress', this.onKeyPress);
+    this.$socket.client.emit('user-leave', this.roomName);
+  },
   watch: {
     locked(val) {
       if (!val) {
@@ -88,16 +98,6 @@ export default {
         vm.locked = false;
       }, this.throttleTimer);
     }
-  },
-  beforeMount() {
-    this.$socket.client.emit('new-user', this.roomName, this.userColor);
-  },
-  mounted() {
-    document.addEventListener('keypress', this.onKeyPress);
-  },
-  beforeDestroy() {
-    document.removeEventListener('keypress', this.onKeyPress);
-    this.$socket.client.emit('user-leave', this.roomName);
   },
   methods: {
     sendMsg() {
@@ -155,21 +155,3 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-.chat-history-indicator {
-  width: 1em;
-  height: 1em;
-  border-radius: 100%;
-  display: inline-block;
-}
-$gradientSteps: 8;
-.chat-gradient .chat-history-message {
-  transition: opacity 200ms ease;
-  // loop to creade the gradient
-  @for $i from 1 through $gradientSteps {
-    &:nth-child(#{$i}) {
-      opacity: #{0 + $i * 1 / $gradientSteps};
-    }
-  }
-}
-</style>

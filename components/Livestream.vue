@@ -2,13 +2,13 @@
   <transition name="fade" mode="out-in">
     <div v-show="isDancefloor" class="livestream">
       <div id="player" class="livestream-player" />
-      <transition name="fade" mode="out-in">
+      <!-- <transition name="fade" mode="out-in">
         <div v-if="videoIsPlaying" class="livestream-controls">
           <button class="livestream-controls-btn" @click="handleVideoPanning">
             {{ panningEnabled ? 'Disable panning' : 'Enable panning' }}
           </button>
         </div>
-      </transition>
+      </transition> -->
     </div>
   </transition>
 </template>

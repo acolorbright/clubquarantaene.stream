@@ -1,6 +1,11 @@
 <template>
-  <div class="chat">
-    <ChatHistory :messages="messages" />
+  <div
+    class="chat"
+    :class="{
+      'chat-gradient': maxChatHistory && messages.length >= maxChatHistory - 5
+    }"
+  >
+    <ChatHistory :messages="chatHistory" />
     <div class="chat-footer">
       <div class="chat-input">
         <span
@@ -30,13 +35,21 @@ export default {
   name: 'Chat',
   components: { ChatHistory },
   props: {
+    showEnterLeaveMessage: {
+      type: Boolean,
+      default: false
+    },
     roomName: {
       type: String,
       default: 'mainfloor'
     },
+    maxChatHistory: {
+      type: Number,
+      default: 0
+    },
     throttleTimer: {
       type: Number,
-      default: 2000
+      default: 3000
     },
     maxLength: {
       type: Number,
@@ -53,6 +66,16 @@ export default {
   computed: {
     userColor() {
       return this.$store.state.guest.color;
+    },
+    chatHistory() {
+      const messagesLength = this.messages.length;
+      const lastMessagePos = this.messages.length - this.maxChatHistory;
+      if (this.maxChatHistory && messagesLength >= this.maxChatHistory) {
+        const slicedMsg = this.messages.slice(lastMessagePos, messagesLength);
+        return slicedMsg;
+      } else {
+        return this.messages;
+      }
     }
   },
   beforeMount() {
@@ -110,6 +133,9 @@ export default {
       this.messages.push(msg);
     },
     'user-connected'(name) {
+      if (!this.showEnterLeaveMessage) {
+        return;
+      }
       const msg = {
         name,
         message: `${name} entered the room.`
@@ -117,6 +143,9 @@ export default {
       this.messages.push(msg);
     },
     'user-disconnected'(name) {
+      if (!this.showEnterLeaveMessage) {
+        return;
+      }
       const msg = {
         name,
         message: `${name} left the room.`
@@ -132,5 +161,15 @@ export default {
   height: 1em;
   border-radius: 100%;
   display: inline-block;
+}
+$gradientSteps: 8;
+.chat-gradient .chat-history-message {
+  transition: opacity 200ms ease;
+  // loop to creade the gradient
+  @for $i from 1 through $gradientSteps {
+    &:nth-child(#{$i}) {
+      opacity: #{0 + $i * 1 / $gradientSteps};
+    }
+  }
 }
 </style>

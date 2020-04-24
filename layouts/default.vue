@@ -6,7 +6,12 @@
         <nuxt />
       </transition>
     </main>
-    <Footer />
+    <transition name="fade" mode="out-in">
+      <LargeTextoverlay
+        v-if="$store.state.interactivebuttons.largeTextoverlay"
+      />
+    </transition>
+    <Footer v-if="!isQueue" />
   </div>
 </template>
 
@@ -15,11 +20,13 @@ import { mapActions } from 'vuex';
 import vhCheck from 'vh-check';
 import Header from '~/components/Header';
 import Footer from '~/components/Footer';
+import LargeTextoverlay from '~/components/LargeTextoverlay';
 
 export default {
   components: {
     Header,
-    Footer
+    Footer,
+    LargeTextoverlay
   },
   async fetch() {
     const contentData = await this.$axios.$get(`${process.env.CMS_URL}/data`);

@@ -1,25 +1,54 @@
 const state = () => ({
   buttons: [
     {
-      label: 'Label',
-      reaction: 'some-string',
+      label: 'Grow Vines',
+      reaction: 'grow',
       progress: 0,
-      currentClicks: 0,
-      maxClickAmount: 100
+      achievementMsg: 'Vines unlocked!'
     },
     {
-      label: 'Second button',
-      reaction: 'some-other-string',
+      label: 'Reveal Artist',
+      reaction: 'artist',
       progress: 0,
-      currentClicks: 0,
-      maxClickAmount: 100
+      achievementMsg: 'Revealation unlocked!'
+    },
+    {
+      label: 'Trip',
+      reaction: 'wow',
+      progress: 0,
+      achievementMsg: 'Get ready!'
     }
-  ]
+  ],
+  largeTextoverlay: ''
 });
 
-const mutations = {};
+const mutations = {
+  setProgressBar(state, key) {
+    state.buttons.find(button => button.reaction === key.name).progress =
+      key.percent;
+  },
+  setLargeTextoverlay(state, key) {
+    if (state.buttons.find(button => button.reaction === key)) {
+      const msg = state.buttons.find(button => button.reaction === key)
+        .achievementMsg;
+      state.largeTextoverlay = msg;
+    } else {
+      state.largeTextoverlay = key;
+    }
+  }
+};
+
+const actions = {
+  setProgressBar({ commit }, key) {
+    commit('setProgressBar', key);
+  },
+  setLargeTextoverlay({ commit }, key) {
+    commit('setLargeTextoverlay', key);
+  }
+};
 
 export default {
   state,
-  mutations
+  mutations,
+  actions
 };

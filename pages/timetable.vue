@@ -19,13 +19,11 @@
   </div>
 </template>
 <script>
-import moment from 'moment-timezone';
-
 export default {
   name: 'Timetable',
   data() {
     return {
-      currentTime: moment.tz('Europe/Berlin'),
+      currentTime: this.$moment(),
       interval: null
     };
   },
@@ -39,17 +37,14 @@ export default {
   },
   methods: {
     checkIfEnded(artist, index) {
-      const formattedEndTime = moment.tz(
-        `${artist.day} ${artist.end}`,
-        'Europe/Berlin'
-      );
+      const formattedEndTime = this.$moment(`${artist.day} ${artist.end}`);
       return this.currentTime.isAfter(formattedEndTime);
     }
   },
   mounted() {
     const vm = this;
     vm.interval = setInterval(() => {
-      vm.currentTime = moment.tz('Europe/Berlin');
+      vm.currentTime = vm.$moment();
     }, 30000);
   },
   beforeDestroy() {

@@ -6,7 +6,7 @@
     }"
   >
     <div class="footer-section footer-section--left">
-      <Chat v-if="isDancefloor" />
+      <Chat v-if="isDancefloor" :max-chat-history="30" />
       <a v-if="isTimetable" href="/" target="_blank" class="button">
         BuyMusicClub
       </a>

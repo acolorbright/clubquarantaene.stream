@@ -12,10 +12,10 @@ export default {
   },
   computed: {
     max() {
-      return 600000 / this.$store.state.oldState.users;
+      return 850000 / this.$store.state.oldState.users;
     },
     min() {
-      return 50000 / this.$store.state.oldState.users;
+      return 200000 / this.$store.state.oldState.users;
     }
   },
   mounted() {
@@ -25,7 +25,7 @@ export default {
     spawn() {
       const newDiv = document.createElement('div');
       newDiv.className = `plus-one item-${
-        Math.round(Math.random() * (3 - 1)) + 1
+        Math.round(Math.random() * (5 - 1)) + 1
       }`;
       const newContent = document.createTextNode('+1');
       newDiv.appendChild(newContent);
@@ -36,10 +36,9 @@ export default {
     },
     startLoop() {
       const rand = Math.round(Math.random() * (this.max - this.min)) + this.min;
-      const vm = this;
-      setTimeout(function () {
-        vm.spawn();
-        vm.startLoop();
+      setTimeout(() => {
+        this.spawn();
+        this.startLoop();
       }, rand);
     }
   }

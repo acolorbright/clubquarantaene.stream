@@ -69,6 +69,7 @@ export default {
   },
   sockets: {
     'total-users'(amount) {
+      // console.log(amount);
       this.setUserCount(amount);
     }
   }

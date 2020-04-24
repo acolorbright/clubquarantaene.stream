@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       decided: false,
-      decisionTime: 1500
+      decisionTime: 1000
     };
   },
   computed: {

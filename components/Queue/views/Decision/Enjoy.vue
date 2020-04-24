@@ -13,8 +13,7 @@
               color: colors.rgba
             }"
           >
-            This color is already taken. <br />
-            Please pick another!
+            This color is already taken!
           </div>
         </transition>
       </div>

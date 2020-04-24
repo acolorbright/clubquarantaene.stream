@@ -18,7 +18,6 @@
           </div>
         </transition>
       </div>
-      <pre>{{ colors }}</pre>
       <!-- <slider-picker v-model="colors" class="step-color" @input="updateColor" /> -->
       <chrome-picker v-model="colors" class="step-color" @input="updateColor" />
     </div>
@@ -51,7 +50,12 @@ export default {
       colorSelected: false,
       colors: {
         hex: '',
-        rgba: {}
+        rgba: {
+          r: Math.floor(Math.random() * 256),
+          g: Math.floor(Math.random() * 256),
+          b: Math.floor(Math.random() * 256),
+          a: 1
+        }
       },
       errors: [],
       colorIsOccupied: false
@@ -131,7 +135,7 @@ export default {
           this.colorIsOccupied = true;
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     }
   }

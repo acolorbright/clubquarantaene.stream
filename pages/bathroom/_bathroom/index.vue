@@ -40,7 +40,7 @@ export default {
   },
   sockets: {
     cubicleColors(colorArray) {
-      console.log(colorArray);
+      // console.log(colorArray);
     }
   }
 };

@@ -47,7 +47,7 @@ export default {
     this.api = new OffworldPerformance(this.config);
     const vm = this;
     this.api.connect().then(() => {
-      console.log('OffworlPerformance connected');
+      // console.log('OffworlPerformance connected');
       this.connected = true;
     });
     // this.api.onStateChange(newState => {
@@ -88,7 +88,7 @@ export default {
   beforeDestroy() {
     if (this.connected) {
       this.api.disconnect();
-      console.log('disconnected');
+      // console.log('disconnected');
     }
   },
   methods: {

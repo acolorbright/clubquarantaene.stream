@@ -5,19 +5,26 @@
       :room-name="roomName"
       :show-enter-leave-message="true"
     />
+    <ChatBubbles :colorArray="colorArray" />
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 import Chat from './../../../components/Chat';
+import ChatBubbles from './../../../components/Chat/ChatBubbles';
 
 export default {
   transition: {
     name: 'fade',
     mode: 'out-in'
   },
-  components: { Chat },
+  components: { Chat, ChatBubbles },
+  data() {
+    return {
+      colorArray: null
+    };
+  },
   computed: {
     roomName() {
       return `room${this.$route.params.bathroom}`;
@@ -40,7 +47,7 @@ export default {
   },
   sockets: {
     cubicleColors(colorArray) {
-      // console.log(colorArray);
+      this.colorArray = colorArray;
     }
   }
 };

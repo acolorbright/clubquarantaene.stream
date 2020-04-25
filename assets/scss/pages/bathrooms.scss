@@ -110,6 +110,7 @@
     max-width: calc(100vw - #{$spaceS * 2});
     @include portrait-layout-mobile {
       bottom: $spaceM;
+      width: 100%;
     }
   }
 }

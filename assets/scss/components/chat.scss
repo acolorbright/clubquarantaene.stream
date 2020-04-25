@@ -2,10 +2,11 @@ $gradientSteps: 8;
 
 .chat {
   text-transform: none;
+  text-align: left;
   &-message-box {
     border-radius: $buttonBorderRadius;
     background-color: $colorDarkTransparent;
-    padding: 0.66em 0.66em 0.66em 1.75em;
+    padding: 0.66em 0.66em 0.55em 1.75em;
     margin-bottom: 0.5em;
     position: relative;
   }
@@ -16,13 +17,13 @@ $gradientSteps: 8;
     justify-content: flex-end;
 
     &-indicator {
-      width: .9em;
-      height: .9em;
+      width: 1em;
+      height: 1em;
       border-radius: 100%;
       display: inline-block;
       position: absolute;
-      top: 1.2em;
-      left: 0.5em;
+      top: 1.1em;
+      left: 0.4em;
       transform: translateY(-50%);
     }
 
@@ -50,13 +51,19 @@ $gradientSteps: 8;
     border: $buttonBorderWidth solid $colorLightTransparent;
     display: flex;
     input {
+      margin: 0;
+      padding: 0;
+      border:none;
+      background-image:none;
+      background-color:transparent;
+      box-shadow: none;
       background: none;
       outline: 0;
       color: inherit;
       font-family: inherit;
       font-size: inherit;
       border: 0;
-      height: 1em;
+      height: 100%;
       transition: opacity $fastTransitionSpeed;
       &::placeholder {
         color: $colorLightTransparent;

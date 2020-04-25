@@ -65,7 +65,7 @@
 
         &-section {
             order: 0;
-            margin-top: $spaceS;
+            margin-top: #{$spaceS * 1.5};
 
             &--center {
                 position: static;
@@ -76,7 +76,7 @@
                     &-item {
                         display: inline-flex;
                         flex: 1;
-                        width: calc(50vw - #{$spaceS * 2});
+                        width: calc(50vw - #{$spaceS * 1.5});
                         height: 3em;
     
                         &:first-of-type {
@@ -95,8 +95,8 @@
 
             &--left {
                 position: static;
-                padding: $spaceS 0;
-                text-align: center;
+                padding: $spaceS 0 0 0;
+                align-self: flex-start;
                 order: 0;
                 .chat {
                     bottom: 10rem;

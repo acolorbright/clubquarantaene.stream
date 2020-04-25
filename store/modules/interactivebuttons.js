@@ -7,7 +7,7 @@ const state = () => ({
       achievementMsg: ''
     },
     {
-      label: 'Reveal Artist',
+      label: 'Reveal Logo',
       reaction: 'artist',
       progress: 0,
       achievementMsg: ''

@@ -9,7 +9,7 @@
         class="chat-history-indicator"
         :style="{ 'background-color': `rgb(${message.name})` }"
       />
-      <span>
+      <span class="force-select">
         {{ message.message }}
       </span>
     </li>

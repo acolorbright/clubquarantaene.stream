@@ -3,6 +3,7 @@ $gradientSteps: 5;
 .chat {
   text-transform: none;
   text-align: left;
+
   &-message-box {
     border-radius: $buttonBorderRadius;
     background-color: $colorDarkTransparent;

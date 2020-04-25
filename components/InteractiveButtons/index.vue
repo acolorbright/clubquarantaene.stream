@@ -1,5 +1,5 @@
 <template>
-  <div class="interactive-buttons">
+  <div class="interactive-buttons" v-if="connected">
     <div
       v-for="(button, index) in buttons"
       :key="index"

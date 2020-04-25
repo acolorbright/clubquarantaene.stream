@@ -1,21 +1,24 @@
 export default ({ store, redirect, route }) => {
   const isDev = process.env.isDev;
+
   const guestState = store.state.guest;
   const { accessGranted } = guestState;
   const isQueue = route.name === 'index';
-  const redirectToQueue = !accessGranted && !isQueue;
+  const shouldRedirectToQueue = !accessGranted && !isQueue;
 
   const { personalinvitationfrom } = route.query;
   const isInvited =
-    personalinvitationfrom && personalinvitationfrom === 'ungroup';
+    personalinvitationfrom && personalinvitationfrom === 'clubquarantaene';
 
   if (isInvited && isQueue && !accessGranted) {
     setTimeout(() => {
-      alert('Hey friend! Thx for following our invitation. Have fun <3');
+      alert(
+        'Hey friend of clubquarantäne, thank you for following our invitation. Have fun! <3'
+      );
     }, 3000);
   }
 
-  if (redirectToQueue && !isDev) {
+  if (shouldRedirectToQueue && !isDev) {
     return redirect('/');
   }
 };

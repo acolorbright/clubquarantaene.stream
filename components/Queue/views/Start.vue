@@ -8,11 +8,11 @@
     <transition name="fade-step" mode="out-in">
       <div v-if="showStart" class="start-content">
         <Logo />
-        <div>
+        <!-- <div>
           <Countdown />
           <Newsletter />
           <SocialIcons />
-        </div>
+        </div> -->
       </div>
     </transition>
   </div>
@@ -21,16 +21,16 @@
 <script>
 import { mapActions } from 'vuex';
 import Logo from '~/components/Logo.vue';
-import Countdown from '~/components/Countdown.vue';
-import Newsletter from '~/components/Newsletter.vue';
-import SocialIcons from '~/components/SocialIcons.vue';
+// import Countdown from '~/components/Countdown.vue';
+// import Newsletter from '~/components/Newsletter.vue';
+// import SocialIcons from '~/components/SocialIcons.vue';
 
 export default {
   components: {
-    Logo,
-    Countdown,
-    Newsletter,
-    SocialIcons
+    Logo
+    // Countdown,
+    // Newsletter,
+    // SocialIcons
   },
   props: {
     data: {
@@ -60,14 +60,17 @@ export default {
       this.$emit('nextStep', true);
     },
     startEvent() {
+      const firstStartTimeout = this.isDev ? 1000 : 3500;
+      const secondStartTimeout = this.isDev ? 2000 : 9500;
+
       setTimeout(() => {
         this.showStart = false;
         this.setQueueCountdownIsRunning(true);
-      }, 3500);
+      }, firstStartTimeout);
 
       setTimeout(() => {
         this.nextStep();
-      }, 9500);
+      }, secondStartTimeout);
     }
   }
 };

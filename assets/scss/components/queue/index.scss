@@ -110,7 +110,7 @@
             backface-visibility: hidden;
 
             &-dot {
-                animation: gradientAnimation 5s infinite alternate;
+                animation: gradientAnimation 10s infinite alternate;
                 animation-fill-mode: backwards;
                 border: $buttonBorderWidth solid $colorPrimary;
                 border-radius: 100%;

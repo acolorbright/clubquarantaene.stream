@@ -8,7 +8,10 @@ export default {
     afterPartyId: process.env.YOUTUBE_VIDEO_ID_ENDED,
     FRONTEND_URL: process.env.FRONTEND_URL,
     CMS_URL: process.env.CMS_URL,
-    SOCKET_URL: process.env.SOCKET_URL
+    SOCKET_URL: process.env.SOCKET_URL,
+    startEventDate: '04-24-2020 21:59 PM',
+    endEventDate: '04-24-2020 22:31 PM',
+    closedEventDate: '04-26-2020 23:59 AM'
   },
   head: {
     title: 'CLUB QUARANTÄNE',

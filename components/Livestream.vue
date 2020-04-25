@@ -47,7 +47,7 @@ export default {
         rel: 0,
         showinfo: 0
       },
-      videoId: process.env.YOUTUBE_VIDEO_ID,
+      videoId: '',
       videoIsPlaying: false,
       cameraIsAnimating: false,
       cameraInitialTime: null,
@@ -84,8 +84,12 @@ export default {
         this.setVolumeReduced();
       }
     },
-    eventHasEnded(ended) {
-      console.log('ended', ended);
+    eventHasEnded(newValue, oldValue) {
+      if (newValue && newValue !== oldValue) {
+        setTimeout(() => {
+          this.loadVideo(process.env.YOUTUBE_VIDEO_ID_ENDED);
+        }, 1000);
+      }
     }
   },
   mounted() {
@@ -112,6 +116,11 @@ export default {
     },
     onReady() {
       process.env.isDev ? this.muteVideo() : this.setVolumeMax();
+      const currentId = this.eventHasEnded
+        ? process.env.YOUTUBE_VIDEO_ID_ENDED
+        : process.env.YOUTUBE_VIDEO_ID;
+
+      this.loadVideo(currentId);
     },
     muteVideo() {
       this.player.setVolume(0);

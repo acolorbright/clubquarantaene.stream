@@ -110,7 +110,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.showPopup(this.donationPopup.duration, this.donationPopup.interval);
-    }, 5000);
+    }, this.donationPopup.interval);
   },
   sockets: {
     'total-users'(amount) {

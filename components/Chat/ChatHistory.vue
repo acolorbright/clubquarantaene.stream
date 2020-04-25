@@ -3,7 +3,7 @@
     <li
       v-for="(message, index) in messages"
       :key="index"
-      class="list-complete-item chat-message-box chat-history-iteam"
+      class="list-complete-item chat-message-box chat-history-item"
     >
       <span
         class="chat-history-indicator"

@@ -20,14 +20,26 @@
         }"
       >
         <nuxt-link :to="page.to">{{ page.title }}</nuxt-link>
+        <transition name="fade">
+          <Popup
+            :text="donationPopup.message"
+            v-if="
+              donationPopup.show &&
+              page.title === 'Bar' &&
+              $nuxt.$route.name !== 'bar'
+            "
+          />
+        </transition>
       </li>
     </ul>
   </nav>
 </template>
 <script>
 import { mapActions } from 'vuex';
+import Popup from './../components/Popup';
 
 export default {
+  components: { Popup },
   data() {
     return {
       pages: [
@@ -56,7 +68,14 @@ export default {
           key: 'timetable',
           to: '/timetable'
         }
-      ]
+      ],
+      donationPopup: {
+        message: 'Do not forget to donate :-)',
+        show: true,
+        duration: 5000, // 5s
+        // interval: 600000 // 10min (10 x 60000)
+        interval: 10000 // 10min (10 x 60000)
+      }
     };
   },
   computed: {
@@ -76,7 +95,21 @@ export default {
   methods: {
     ...mapActions({
       setUserCount: 'setUserCount'
-    })
+    }),
+    showPopup(duration, interval) {
+      this.donationPopup.show = true;
+      setTimeout(() => {
+        this.donationPopup.show = false;
+      }, duration);
+      if (interval) {
+        setTimeout(() => {
+          this.showPopup(duration, interval);
+        }, interval);
+      }
+    }
+  },
+  mounted() {
+    this.showPopup(this.donationPopup.duration, this.donationPopup.interval);
   },
   sockets: {
     'total-users'(amount) {

@@ -9,7 +9,10 @@
     </main>
     <transition name="fade" mode="out-in">
       <LargeTextoverlay
-        v-if="$store.state.interactivebuttons.largeTextoverlay"
+        v-if="
+          $store.state.interactivebuttons.largeTextoverlay &&
+          this.$nuxt.$route.name === 'dancefloor'
+        "
       />
     </transition>
     <Footer v-if="!isQueue" />

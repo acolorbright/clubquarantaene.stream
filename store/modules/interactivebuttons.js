@@ -4,13 +4,13 @@ const state = () => ({
       label: 'Wow',
       reaction: 'wow',
       progress: 0,
-      achievementMsg: 'Entering Room'
+      achievementMsg: ''
     },
     {
       label: 'Reveal Artist',
       reaction: 'artist',
       progress: 0,
-      achievementMsg: 'Artist image covering scene'
+      achievementMsg: ''
     }
   ],
   largeTextoverlay: ''

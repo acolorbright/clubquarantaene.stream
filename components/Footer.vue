@@ -34,7 +34,10 @@
       </a>
     </div>
 
-    <div v-if="isDancefloor" class="footer-section footer-section--center">
+    <div
+      v-if="isDancefloor && !hasEnded"
+      class="footer-section footer-section--center"
+    >
       <InteractiveButtons />
     </div>
 
@@ -70,6 +73,9 @@ export default {
     },
     isTimetable() {
       return this.currentRoute.name === 'timetable';
+    },
+    hasEnded() {
+      return this.$store.state.event.hasEnded;
     }
   }
 };

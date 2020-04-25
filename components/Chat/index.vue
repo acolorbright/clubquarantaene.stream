@@ -76,6 +76,20 @@ export default {
       } else {
         return this.messages;
       }
+    },
+    isDev() {
+      return process.env.isDev;
+    }
+  },
+  watch: {
+    locked(val) {
+      if (!val) {
+        return;
+      }
+      const vm = this;
+      setTimeout(() => {
+        vm.locked = false;
+      }, this.throttleTimer);
     }
   },
   beforeMount() {
@@ -90,18 +104,8 @@ export default {
   },
   beforeDestroy() {
     document.removeEventListener('keypress', this.onKeyPress);
+
     this.$socket.client.emit('user-leave', this.roomName);
-  },
-  watch: {
-    locked(val) {
-      if (!val) {
-        return;
-      }
-      const vm = this;
-      setTimeout(() => {
-        vm.locked = false;
-      }, this.throttleTimer);
-    }
   },
   methods: {
     sendMsg() {

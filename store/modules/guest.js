@@ -7,7 +7,11 @@ const state = () => ({
     b: 0,
     a: 1
   },
-  userData: null,
+  userData: {
+    room: '',
+    uuid: '',
+    name: ''
+  },
   currentLocation: {
     name: 'Dancefloor', // dancefloor, cloakroom, bar, bathroom
     key: 'dancefloor'

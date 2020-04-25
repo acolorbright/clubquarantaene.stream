@@ -18,6 +18,7 @@
     }
   }
   button {
+    touch-action: manipulation;
     &:hover {
       opacity: 1;
     }

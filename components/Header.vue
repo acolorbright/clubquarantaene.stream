@@ -71,7 +71,7 @@ export default {
       ],
       donationPopup: {
         message: 'Do not forget to donate :-)',
-        show: true,
+        show: false,
         duration: 5000, // 5s
         interval: 600000 // 10min (10 x 60000)
       }

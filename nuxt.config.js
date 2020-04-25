@@ -5,6 +5,7 @@ export default {
   },
   env: {
     isDev: process.env.NODE_ENV !== 'production',
+    afterPartyId: process.env.YOUTUBE_VIDEO_ID_ENDED,
     FRONTEND_URL: process.env.FRONTEND_URL,
     CMS_URL: process.env.CMS_URL,
     SOCKET_URL: process.env.SOCKET_URL

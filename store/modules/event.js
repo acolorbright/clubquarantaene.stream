@@ -36,9 +36,15 @@ const mutations = {
     state.timeUntilStart = timeUntilStart;
 
     const eventIsRunning = now.isBetween(startDate, endDate);
-    if (eventIsRunning) {
+    const eventHasEnded = now.isAfter(endDate);
+
+    console.log('is running', eventIsRunning, 'has ended', eventHasEnded);
+
+    if (eventIsRunning && !eventHasEnded) {
       state.hasStarted = true;
       state.isRunning = true;
+    } else if (eventHasEnded) {
+      state.hasEnded = true;
     }
   },
   setUserCount(state, count) {

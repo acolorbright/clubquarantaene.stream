@@ -6,7 +6,7 @@
     }"
   >
     <div class="menu-live">
-      <span class="menu-live-icon">&#xE000;</span>
+      <span v-if="eventIsRunning" class="menu-live-icon">&#xE000;</span>
       <span class="menu-live-counter">{{ userCount }} Guests</span>
     </div>
 
@@ -62,6 +62,9 @@ export default {
   computed: {
     userCount() {
       return this.$store.state.event.userCount;
+    },
+    eventIsRunning() {
+      return this.$store.state.event.isRunning;
     },
     currentPath() {
       return this.$nuxt.$route.path;

@@ -3,6 +3,11 @@
   transition: opacity 1000ms ease;
   width: 100%;
 
+  &.disabled {
+    pointer-events: none;
+    z-index: -1;
+  }
+
   &-player {
     display: block;
     height: 100vh;

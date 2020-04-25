@@ -32,9 +32,7 @@
         top: 50%;
         transform: translateY(-50%);
         width: 100%;
-        @include portrait-layout-mobile {
-            font-size: $fontSizeMediumMobile;
-        }
+
         button {
             transition: background $baseTransitionSpeed, color $baseTransitionSpeed;
             &:hover {
@@ -124,7 +122,7 @@
                 position: relative;
                 transform: translateZ(0);
                 width: 20vw;
-                
+
                 @keyframes gradientAnimation {
                     0% {
                         background-size: 100% 100%;
@@ -177,5 +175,20 @@
 
         &.isValidated {
         }
+    }
+    
+    @include portrait-layout-mobile {
+        .step {
+            font-size: $fontSizeMediumMobile;
+            &-color {
+                width: 80%;
+                margin: 0 10%;
+                &-dot {
+                    width: 50vw;
+                    height: 50vw;
+                }
+            }
+        }
+        
     }
 }

@@ -1,7 +1,7 @@
 const state = () => ({
   buttons: [
     {
-      label: 'Wow',
+      label: 'Trip',
       reaction: 'wow',
       progress: 0,
       achievementMsg: ''

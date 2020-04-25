@@ -2,7 +2,8 @@
   <footer
     class="footer"
     :class="{
-      isQueue
+      isQueue,
+      'footer--gradient': isTimetable
     }"
   >
     <div class="footer-section footer-section--left">
@@ -10,14 +11,14 @@
         <Chat
           v-if="isDancefloor && showChat"
           :max-chat-history="10"
-          :maxLength="100"
+          :max-length="100"
         />
       </transition>
       <transition name="fade">
         <div
           v-if="isDancefloor"
-          @click="showChat = !showChat"
           class="chat-switch-button"
+          @click="showChat = !showChat"
         >
           <span v-if="showChat">Hide Chat</span>
           <span v-else>Show Chat</span>

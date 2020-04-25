@@ -1,15 +1,25 @@
 .menu {
   left: 0;
+  padding: $spaceS 0 $spaceXS;
   position: fixed;
   text-transform: uppercase;
-  top: $spaceS;
+  top: 0;
   width: 100%;
   z-index: 99;
+
+  &--gradient {
+    background: rgb(0,0,0);
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,1) 75%,
+      rgba(255,255,255,0) 100%
+    );
+  }
 
   &-live {
     position: absolute;
     left: $spaceS;
-    top: 0;
+    top: $spaceS;
 
     &-icon {
       animation: liveAnimation $liveAnimationDuration infinite;
@@ -31,7 +41,6 @@
       &:last-of-type {
         position: absolute;
         right: $spaceS;
-        top: 0;
         margin: 0;
       }
 

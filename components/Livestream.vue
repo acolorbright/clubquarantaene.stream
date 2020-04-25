@@ -2,13 +2,21 @@
   <transition name="fade" mode="out-in">
     <div v-show="isDancefloor" class="livestream">
       <div id="player" class="livestream-player" />
-      <!-- <transition name="fade" mode="out-in">
-        <div v-if="videoIsPlaying" class="livestream-controls">
-          <button class="livestream-controls-btn" @click="handleVideoPanning">
+
+      <transition name="fade" mode="out-in">
+        <div v-if="isDev" class="livestream-controls">
+          <button
+            v-if="panningEnabled"
+            class="livestream-controls-btn"
+            @click="handleVideoPanning"
+          >
             {{ panningEnabled ? 'Disable panning' : 'Enable panning' }}
           </button>
+          <button class="livestream-controls-btn" @click="handleMuted">
+            {{ muted ? 'mute' : 'unmute' }}
+          </button>
         </div>
-      </transition> -->
+      </transition>
     </div>
   </transition>
 </template>
@@ -37,16 +45,24 @@ export default {
       videoIsPlaying: false,
       cameraIsAnimating: false,
       cameraInitialTime: null,
-      panningEnabled: false
+      panningEnabled: false,
+      muted: false
     };
   },
   computed: {
     isDancefloor() {
       return this.$nuxt.$route.name === 'dancefloor';
+    },
+    isDev() {
+      return process.env.isDev;
     }
   },
   watch: {
     '$nuxt.$route.name'(routeName) {
+      if (this.isDev) {
+        return;
+      }
+
       if (this.isDancefloor) {
         this.setVolumeMax();
       } else {
@@ -83,14 +99,10 @@ export default {
       this.player.setVolume(0);
     },
     setVolumeMax() {
-      if (!process.env.isDev) {
-        this.player.setVolume(100);
-      }
+      this.player.setVolume(100);
     },
     setVolumeReduced() {
-      if (!process.env.isDev) {
-        this.player.setVolume(35);
-      }
+      this.player.setVolume(35);
     },
     onStateChange({ data }) {
       /**
@@ -176,6 +188,19 @@ export default {
     handleVideoPanning() {
       this.panningEnabled = !this.panningEnabled;
       this.panVideo();
+    },
+    handleMuted() {
+      if (!this.isDev) {
+        return;
+      }
+
+      this.muted = !this.muted;
+
+      if (this.muted) {
+        this.setVolumeMax();
+      } else {
+        this.muteVideo();
+      }
     },
     panVideo() {
       const pan = () => {

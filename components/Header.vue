@@ -1,5 +1,10 @@
 <template>
-  <nav class="menu">
+  <nav
+    class="menu"
+    :class="{
+      'menu--gradient': isTimetable
+    }"
+  >
     <div class="menu-live">
       <span class="menu-live-icon">&#xE000;</span>
       <span class="menu-live-counter">{{ userCount }} Guests</span>
@@ -60,6 +65,9 @@ export default {
     },
     currentPath() {
       return this.$nuxt.$route.path;
+    },
+    isTimetable() {
+      return this.$nuxt.$route.name === 'timetable';
     }
   },
   methods: {
@@ -69,7 +77,6 @@ export default {
   },
   sockets: {
     'total-users'(amount) {
-      // console.log(amount);
       this.setUserCount(amount);
     }
   }

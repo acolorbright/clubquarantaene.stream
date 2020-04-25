@@ -54,6 +54,10 @@ export default {
     maxLength: {
       type: Number,
       default: 300
+    },
+    fullSize: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

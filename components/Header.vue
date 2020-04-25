@@ -2,7 +2,7 @@
   <nav
     class="menu"
     :class="{
-      'menu--gradient': isTimetable
+      'menu--gradient': isTimetable || isBathroomChat
     }"
   >
     <div class="menu-live">
@@ -71,6 +71,9 @@ export default {
     },
     isTimetable() {
       return this.$nuxt.$route.name === 'timetable';
+    },
+    isBathroomChat() {
+      return this.$nuxt.$route.name === 'bathroom-bathroom';
     }
   },
   methods: {

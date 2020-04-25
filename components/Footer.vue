@@ -10,7 +10,7 @@
       <transition name="fade">
         <Chat
           v-if="isDancefloor && showChat"
-          :max-chat-history="10"
+          :max-chat-history="15"
           :max-length="100"
         />
       </transition>

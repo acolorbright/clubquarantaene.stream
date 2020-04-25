@@ -2,7 +2,7 @@
   <div
     class="chat"
     :class="{
-      'chat-gradient': maxChatHistory && messages.length >= maxChatHistory - 5
+      'chat-gradient': maxChatHistory && messages.length >= maxChatHistory
     }"
   >
     <ChatHistory :messages="chatHistory" />
@@ -54,6 +54,10 @@ export default {
     maxLength: {
       type: Number,
       default: 300
+    },
+    fullSize: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -76,6 +80,20 @@ export default {
       } else {
         return this.messages;
       }
+    },
+    isDev() {
+      return process.env.isDev;
+    }
+  },
+  watch: {
+    locked(val) {
+      if (!val) {
+        return;
+      }
+      const vm = this;
+      setTimeout(() => {
+        vm.locked = false;
+      }, this.throttleTimer);
     }
   },
   beforeMount() {
@@ -90,18 +108,8 @@ export default {
   },
   beforeDestroy() {
     document.removeEventListener('keypress', this.onKeyPress);
+
     this.$socket.client.emit('user-leave', this.roomName);
-  },
-  watch: {
-    locked(val) {
-      if (!val) {
-        return;
-      }
-      const vm = this;
-      setTimeout(() => {
-        vm.locked = false;
-      }, this.throttleTimer);
-    }
   },
   methods: {
     sendMsg() {

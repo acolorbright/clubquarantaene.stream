@@ -1,6 +1,12 @@
 <template>
   <transition name="fade" mode="out-in">
-    <div v-show="isDancefloor" class="livestream">
+    <div
+      v-show="isDancefloor || isTimetable"
+      class="livestream"
+      :class="{
+        disabled: isTimetable
+      }"
+    >
       <div id="player" class="livestream-player" />
 
       <transition name="fade" mode="out-in">
@@ -14,6 +20,7 @@
           </button>
           <button class="livestream-controls-btn" @click="handleMuted">
             {{ muted ? 'mute' : 'unmute' }}
+            {{ eventHasEnded }}
           </button>
         </div>
       </transition>
@@ -41,7 +48,7 @@ export default {
         rel: 0,
         showinfo: 0
       },
-      videoId: process.env.YOUTUBE_VIDEO_ID,
+      videoId: '',
       videoIsPlaying: false,
       cameraIsAnimating: false,
       cameraInitialTime: null,
@@ -53,8 +60,17 @@ export default {
     isDancefloor() {
       return this.$nuxt.$route.name === 'dancefloor';
     },
+    isTimetable() {
+      return this.$nuxt.$route.name === 'timetable';
+    },
     isDev() {
       return process.env.isDev;
+    },
+    eventIsRunning() {
+      return this.$store.state.event.isRunning;
+    },
+    eventHasEnded() {
+      return this.$store.state.event.hasEnded;
     }
   },
   watch: {
@@ -67,6 +83,13 @@ export default {
         this.setVolumeMax();
       } else {
         this.setVolumeReduced();
+      }
+    },
+    eventHasEnded(newValue, oldValue) {
+      if (newValue && newValue !== oldValue) {
+        setTimeout(() => {
+          this.loadVideo(process.env.YOUTUBE_VIDEO_ID_ENDED);
+        }, 1500);
       }
     }
   },
@@ -94,6 +117,11 @@ export default {
     },
     onReady() {
       process.env.isDev ? this.muteVideo() : this.setVolumeMax();
+      const currentId = this.eventHasEnded
+        ? process.env.YOUTUBE_VIDEO_ID_ENDED
+        : process.env.YOUTUBE_VIDEO_ID;
+
+      this.loadVideo(currentId);
     },
     muteVideo() {
       this.player.setVolume(0);
@@ -103,6 +131,9 @@ export default {
     },
     setVolumeReduced() {
       this.player.setVolume(35);
+    },
+    loadVideo(videoId) {
+      this.player.loadVideoById(videoId);
     },
     onStateChange({ data }) {
       /**

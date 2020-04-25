@@ -2,11 +2,11 @@
   <nav
     class="menu"
     :class="{
-      'menu--gradient': isTimetable
+      'menu--gradient': isTimetable || isBathroomChat
     }"
   >
     <div class="menu-live">
-      <span class="menu-live-icon">&#xE000;</span>
+      <span v-if="eventIsRunning" class="menu-live-icon">&#xE000;</span>
       <span class="menu-live-counter">{{ userCount }} Guests</span>
     </div>
 
@@ -84,11 +84,17 @@ export default {
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     },
+    eventIsRunning() {
+      return this.$store.state.event.isRunning;
+    },
     currentPath() {
       return this.$nuxt.$route.path;
     },
     isTimetable() {
       return this.$nuxt.$route.name === 'timetable';
+    },
+    isBathroomChat() {
+      return this.$nuxt.$route.name === 'bathroom-bathroom';
     }
   },
   methods: {

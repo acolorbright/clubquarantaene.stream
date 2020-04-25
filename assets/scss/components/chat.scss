@@ -1,4 +1,4 @@
-$gradientSteps: 8;
+$gradientSteps: 5;
 
 .chat {
   text-transform: none;
@@ -12,6 +12,7 @@ $gradientSteps: 8;
   }
 
   .chat-history {
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -26,26 +27,17 @@ $gradientSteps: 8;
       left: 0.4em;
       transform: translateY(-50%);
     }
-
-    
-
   }
 
-  .chat-history-item {
-    display: inline-block;
+  &.chat-gradient {
+    .chat-history .chat-message-box {
+      @for $i from 1 through $gradientSteps {
+        &:nth-child(#{$i}) {
+          opacity: #{0 + $i * 1 / $gradientSteps};
+        }
+      }
+    }
   }
-
-  // &.chat-gradient .chat-message-box {
-  //   transition: opacity 200ms ease;
-
-  //   @for $i from 1 through $gradientSteps {
-
-  //     &:nth-child(#{$i}) {
-  //       opacity: #{0 + $i * 1 / $gradientSteps};
-  //     }
-
-  //   }
-  // }
 
   .chat-input {
     border: $buttonBorderWidth solid $colorLightTransparent;

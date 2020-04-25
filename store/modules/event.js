@@ -4,6 +4,7 @@ const state = () => ({
   hasStarted: false,
   isRunning: false,
   hasEnded: false,
+  isClosed: false,
   timeUntilStart: null,
   userCount: 1
 });
@@ -24,21 +25,39 @@ const mutations = {
   setEventHasEnded(state) {
     state.hasEnded = true;
   },
+  seEventIsClosed(state) {
+    state.isClosed = true;
+  },
   setTimeUntilStart(state, time) {
     state.hasEnded = true;
   },
   setEventStatus(state) {
-    const startDate = this.$moment('04-24-2020 21:50 PM', 'MM-DD-YYYY hh:mm A');
-    const endDate = this.$moment('04-26-2020 23:59 AM', 'MM-DD-YYYY hh:mm A');
+    const start = process.env.startEventDate;
+    const end = process.env.endEventDate;
+    const closed = process.env.closedEventDate;
+
+    const startDate = this.$moment(start, 'MM-DD-YYYY hh:mm A');
+    const endDate = this.$moment(end, 'MM-DD-YYYY hh:mm A');
+    const closingDate = this.$moment(closed, 'MM-DD-YYYY hh:mm A');
+
     const now = this.$moment(new Date());
 
     const timeUntilStart = this.$moment.duration(startDate.diff(now));
     state.timeUntilStart = timeUntilStart;
 
     const eventIsRunning = now.isBetween(startDate, endDate);
-    if (eventIsRunning) {
+    const eventHasEnded = now.isAfter(endDate);
+    const clubIsClosed = now.isAfter(closingDate);
+
+    if (eventIsRunning && !eventHasEnded) {
       state.hasStarted = true;
       state.isRunning = true;
+    } else if (eventHasEnded) {
+      state.hasEnded = true;
+    }
+
+    if (clubIsClosed) {
+      this.$router.push('/');
     }
   },
   setUserCount(state, count) {
@@ -58,6 +77,9 @@ const actions = {
   },
   setUserCount({ commit }, count) {
     commit('setUserCount', count);
+  },
+  setEventHasEnded({ commit }) {
+    commit('setEventHasEnded');
   }
 };
 

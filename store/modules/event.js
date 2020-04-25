@@ -32,9 +32,9 @@ const mutations = {
     state.hasEnded = true;
   },
   setEventStatus(state) {
-    const start = '04-24-2020 21:59 PM';
-    const end = '04-24-2020 22:31 PM';
-    const closed = '04-26-2020 23:59 AM';
+    const start = process.env.startEventDate;
+    const end = process.env.endEventDate;
+    const closed = process.env.closedEventDate;
 
     const startDate = this.$moment(start, 'MM-DD-YYYY hh:mm A');
     const endDate = this.$moment(end, 'MM-DD-YYYY hh:mm A');

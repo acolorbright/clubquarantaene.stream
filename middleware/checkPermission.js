@@ -1,4 +1,8 @@
 export default ({ store, redirect, route }) => {
+  if (process.env.hasEnded) {
+    return redirect('/');
+  }
+
   const isDev = process.env.isDev;
 
   const guestState = store.state.guest;

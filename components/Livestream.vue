@@ -20,6 +20,7 @@
           </button>
           <button class="livestream-controls-btn" @click="handleMuted">
             {{ muted ? 'mute' : 'unmute' }}
+            {{ eventHasEnded }}
           </button>
         </div>
       </transition>
@@ -88,7 +89,7 @@ export default {
       if (newValue && newValue !== oldValue) {
         setTimeout(() => {
           this.loadVideo(process.env.YOUTUBE_VIDEO_ID_ENDED);
-        }, 1000);
+        }, 1500);
       }
     }
   },

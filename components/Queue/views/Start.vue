@@ -75,7 +75,7 @@ export default {
 
     if (!this.clubIsClosed) {
       if (this.eventHasEnded) {
-        this.setEventHasEnded();
+        // this.setEventHasEnded();
       }
 
       this.startEvent();

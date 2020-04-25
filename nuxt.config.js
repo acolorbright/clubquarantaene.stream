@@ -24,6 +24,26 @@ export default {
         content: 'width=device-width, initial-scale=1, maximum-scale=1'
       },
       {
+        name: 'http-equiv',
+        content: 'no-cache, must-revalidate, post-check=0, pre-check=0'
+      },
+      {
+        name: 'cache-control',
+        content: 'max-age=0'
+      },
+      {
+        name: 'expires',
+        content: '0'
+      },
+      {
+        name: 'expires',
+        content: 'Tue, 01 Jan 1980 1:00:00 GMT'
+      },
+      {
+        name: 'pragma',
+        content: 'no-cache'
+      },
+      {
         hid: 'description',
         name: 'description',
         content: 'Club Quarantäne'

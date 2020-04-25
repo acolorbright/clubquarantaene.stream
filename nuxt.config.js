@@ -11,7 +11,9 @@ export default {
     SOCKET_URL: process.env.SOCKET_URL,
     startEventDate: '04-24-2020 21:59 PM',
     endEventDate: '04-26-2020 22:32 PM',
-    closedEventDate: '04-26-2020 23:59 AM'
+    closedEventDate: '04-26-2020 23:59 AM',
+    YOUTUBE_VIDEO_ID: 'bZeZ9KD4RvQ',
+    YOUTUBE_VIDEO_ID_ENDED: 'grhFTe071VA'
   },
   head: {
     title: 'CLUB QUARANTÄNE',

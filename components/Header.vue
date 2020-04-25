@@ -61,7 +61,10 @@ export default {
   },
   computed: {
     userCount() {
-      return this.$store.state.event.userCount;
+      // use thousand separators
+      return this.$store.state.event.userCount
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     },
     currentPath() {
       return this.$nuxt.$route.path;

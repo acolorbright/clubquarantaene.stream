@@ -1,9 +1,9 @@
 <template>
   <nav class="menu">
-    <nuxt-link class="menu-live" to="/">
+    <div class="menu-live">
       <span class="menu-live-icon">&#xE000;</span>
       <span class="menu-live-counter">{{ userCount }} Guests</span>
-    </nuxt-link>
+    </div>
 
     <ul class="menu-list">
       <li

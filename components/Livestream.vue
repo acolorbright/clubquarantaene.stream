@@ -77,13 +77,20 @@ export default {
       this.player.playVideo();
     },
     onReady() {
-      this.setVolumeMax();
+      process.env.isDev ? this.muteVideo() : this.setVolumeMax();
+    },
+    muteVideo() {
+      this.player.setVolume(0);
     },
     setVolumeMax() {
-      this.player.setVolume(100);
+      if (!process.env.isDev) {
+        this.player.setVolume(100);
+      }
     },
     setVolumeReduced() {
-      this.player.setVolume(35);
+      if (!process.env.isDev) {
+        this.player.setVolume(35);
+      }
     },
     onStateChange({ data }) {
       /**

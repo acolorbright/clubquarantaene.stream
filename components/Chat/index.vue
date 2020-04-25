@@ -2,7 +2,7 @@
   <div
     class="chat"
     :class="{
-      'chat-gradient': maxChatHistory && messages.length >= maxChatHistory - 5
+      'chat-gradient': maxChatHistory && messages.length >= maxChatHistory
     }"
   >
     <ChatHistory :messages="chatHistory" />

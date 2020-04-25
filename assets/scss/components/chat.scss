@@ -1,4 +1,4 @@
-$gradientSteps: 7;
+$gradientSteps: 5;
 
 .chat {
   text-transform: none;
@@ -28,13 +28,15 @@ $gradientSteps: 7;
     }
   }
 
-  // .chat-history .chat-message-box {
-  //   @for $i from 1 through $gradientSteps {
-  //     &:nth-child(#{$i}) {
-  //       opacity: #{0 + $i * 1 / $gradientSteps};
-  //     }
-  //   }
-  // }
+  &.chat-gradient {
+    .chat-history .chat-message-box {
+      @for $i from 1 through $gradientSteps {
+        &:nth-child(#{$i}) {
+          opacity: #{0 + $i * 1 / $gradientSteps};
+        }
+      }
+    }
+  }
 
   .chat-input {
     border: $buttonBorderWidth solid $colorLightTransparent;
@@ -63,8 +65,6 @@ $gradientSteps: 7;
       }
     }
   }
-
-  &.full-size
 
   /* Light theme */
   &.light-theme {

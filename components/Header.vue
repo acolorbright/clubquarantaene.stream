@@ -73,8 +73,7 @@ export default {
         message: 'Do not forget to donate :-)',
         show: true,
         duration: 5000, // 5s
-        // interval: 600000 // 10min (10 x 60000)
-        interval: 10000 // 10min (10 x 60000)
+        interval: 600000 // 10min (10 x 60000)
       }
     };
   },
@@ -109,7 +108,9 @@ export default {
     }
   },
   mounted() {
-    this.showPopup(this.donationPopup.duration, this.donationPopup.interval);
+    setTimeout(() => {
+      this.showPopup(this.donationPopup.duration, this.donationPopup.interval);
+    }, 5000);
   },
   sockets: {
     'total-users'(amount) {

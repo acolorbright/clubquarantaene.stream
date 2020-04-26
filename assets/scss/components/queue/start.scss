@@ -31,11 +31,16 @@
     }
 
     .social-icons {
-        font-size: $fontSizeMedium;
-        margin-top: $spaceS;
+        font-size: $fontSize;
+        margin-top: $spaceXS;
 
         &-link {
             color: $colorDark;
+        }
+    }
+    @include portrait-layout-mobile {
+        .social-icons {
+            font-size: $fontSizeMobile;
         }
     }
 }

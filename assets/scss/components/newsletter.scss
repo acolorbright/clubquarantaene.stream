@@ -32,10 +32,13 @@
     border-radius: 0;
     color: $colorDark;
     font-family: inherit;
-    font-size: $fontSizeMedium;
+    font-size: $fontSize;
     outline: 0;
     padding: 0.2em;
     width: 12em;
+    @include portrait-layout-mobile {
+      font-size: $fontSizeMobile;
+    }
   }
 
   input[type="submit"] {

@@ -16,8 +16,20 @@
       YouTube
     </a>
     •
-    <a class="social-icons-link" href="http://ra.co/sos" target="_blank">
-      SOS
+    <a
+      class="social-icons-link"
+      href="https://www.betterplace.me/club-quarantaene-fundraiser"
+      target="_blank"
+    >
+      Fundraiser
+    </a>
+    •
+    <a
+      class="social-icons-link"
+      href="https://shop.clubquarantaene.stream"
+      target="_blank"
+    >
+      Shop
     </a>
   </div>
 </template>

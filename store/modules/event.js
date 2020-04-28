@@ -55,10 +55,6 @@ const mutations = {
     } else if (eventHasEnded) {
       state.hasEnded = true;
     }
-
-    if (clubIsClosed) {
-      this.$router.push('/');
-    }
   },
   setUserCount(state, count) {
     state.userCount = count;

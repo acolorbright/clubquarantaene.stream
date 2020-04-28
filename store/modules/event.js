@@ -34,11 +34,9 @@ const mutations = {
   setEventStatus(state) {
     const start = process.env.startEventDate;
     const end = process.env.endEventDate;
-    const closed = process.env.closedEventDate;
 
     const startDate = this.$moment(start, 'MM-DD-YYYY hh:mm A');
     const endDate = this.$moment(end, 'MM-DD-YYYY hh:mm A');
-    const closingDate = this.$moment(closed, 'MM-DD-YYYY hh:mm A');
 
     const now = this.$moment(new Date());
 

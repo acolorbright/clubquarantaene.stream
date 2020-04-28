@@ -47,7 +47,6 @@ const mutations = {
 
     const eventIsRunning = now.isBetween(startDate, endDate);
     const eventHasEnded = now.isAfter(endDate);
-    const clubIsClosed = now.isAfter(closingDate);
 
     if (eventIsRunning && !eventHasEnded) {
       state.hasStarted = true;

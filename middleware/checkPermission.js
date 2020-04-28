@@ -23,7 +23,7 @@ export default ({ store, redirect, route }) => {
     }, 3000);
   }
 
-  if (shouldRedirectToQueue && !isDev) {
+  if (shouldRedirectToQueue && !isDev && !isAllowed) {
     return redirect('/');
   }
 };

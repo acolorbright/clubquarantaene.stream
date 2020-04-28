@@ -3,6 +3,7 @@
     class="footer"
     :class="{
       isQueue,
+      eventHasEnded,
       'footer--gradient': isTimetable
     }"
   >
@@ -67,6 +68,9 @@ export default {
     },
     isQueue() {
       return this.currentRoute.path === '/';
+    },
+    eventHasEnded() {
+      return !this.$store.state.event.eventHasEnded;
     },
     isDancefloor() {
       return this.currentRoute.name === 'dancefloor';

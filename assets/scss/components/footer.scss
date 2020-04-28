@@ -54,6 +54,9 @@
             color: $colorPrimary;
         }
     }
+    &.eventHasEnded a {
+        color: $colorDark;
+    }
     
     @include portrait-layout-mobile {
         flex-direction: column;

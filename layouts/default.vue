@@ -15,7 +15,7 @@
         "
       />
     </transition>
-    <Footer v-if="!isQueue" />
+    <Footer v-if="!isQueue || $store.state.event.hasEnded" />
   </div>
 </template>
 

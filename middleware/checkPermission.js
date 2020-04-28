@@ -1,5 +1,6 @@
 export default ({ store, redirect, route }) => {
-  if (process.env.hasEnded) {
+  const isAllowed = route.name === 'index' || route.name === 'imprint';
+  if (!isAllowed) {
     return redirect('/');
   }
 

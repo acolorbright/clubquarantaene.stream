@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <Header v-if="!isQueue" />
+    <Header v-if="!isQueue && $nuxt.$route.name === 'imprint'" />
     <main class="main">
       <Livestream v-if="!isQueue" />
       <transition name="fade" mode="out-in">

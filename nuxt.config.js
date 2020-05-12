@@ -54,7 +54,7 @@ export default {
       },
       {
         property: 'og:url',
-        content: `${process.env.FRONTEND_URL}/`
+        content: `https://clubquarantaene.stream/`
       },
       {
         property: 'og:title',
@@ -66,7 +66,7 @@ export default {
       },
       {
         property: 'og:image',
-        content: `${process.env.FRONTEND_URL}/og_image.jpg`
+        content: `https://clubquarantaene.stream/og_image.jpg`
       },
       {
         property: 'twitter:card',
@@ -74,7 +74,7 @@ export default {
       },
       {
         property: 'twitter:url',
-        content: `${process.env.FRONTEND_URL}/`
+        content: `https://clubquarantaene.stream/`
       },
       {
         property: 'twitter:title',
@@ -86,7 +86,7 @@ export default {
       },
       {
         property: 'twitter:image',
-        content: `${process.env.FRONTEND_URL}/og_image.jpg`
+        content: `https://clubquarantaene.stream/og_image.jpg`
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=2' }],

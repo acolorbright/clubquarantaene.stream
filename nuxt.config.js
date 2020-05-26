@@ -9,9 +9,9 @@ export default {
     FRONTEND_URL: process.env.FRONTEND_URL,
     CMS_URL: process.env.CMS_URL,
     SOCKET_URL: process.env.SOCKET_URL,
-    startEventDate: '04-24-2020 21:59 PM',
-    endEventDate: '04-26-2020 11:59 AM',
-    closedEventDate: '04-26-2020 11:59 AM',
+    startEventDate: '06-12-2020 21:59 PM',
+    endEventDate: '06-14-2020 14:59 AM',
+    closedEventDate: '06-14-2020 16:59 AM',
     YOUTUBE_VIDEO_ID: 'bZeZ9KD4RvQ',
     YOUTUBE_VIDEO_ID_ENDED: 'grhFTe071VA'
   },

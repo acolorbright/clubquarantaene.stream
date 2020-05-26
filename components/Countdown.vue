@@ -1,7 +1,9 @@
 <template>
-  <div v-if="duration" id="countdown">
-    {{ days }}d{{ hours }}h{{ minutes }}m{{ seconds }}s
-  </div>
+  <transition name="fade">
+    <div v-if="duration" id="countdown">
+      {{ days }}d{{ hours }}h{{ minutes }}m{{ seconds }}s
+    </div>
+  </transition>
 </template>
 
 <script>

@@ -51,11 +51,16 @@ export default {
   computed: {
     clubIsClosed() {
       const now = this.$moment(new Date());
+      const openingDate = this.$moment(
+        process.env.startEventDate,
+        'MM-DD-YYYY hh:mm A'
+      );
       const closingDate = this.$moment(
         process.env.closedEventDate,
         'MM-DD-YYYY hh:mm A'
       );
-      const clubIsClosed = now.isAfter(closingDate);
+      const clubIsClosed =
+        now.isBefore(openingDate) || now.isAfter(closingDate);
 
       return clubIsClosed;
     },

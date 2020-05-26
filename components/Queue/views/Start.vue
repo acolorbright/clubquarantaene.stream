@@ -9,7 +9,7 @@
       <div v-if="showStart" class="start-content">
         <Logo />
         <div v-if="clubIsClosed">
-          <!-- <Countdown /> -->
+          <Countdown />
           <Newsletter />
           <SocialIcons />
         </div>
@@ -21,14 +21,14 @@
 <script>
 import { mapActions } from 'vuex';
 import Logo from '~/components/Logo.vue';
-// import Countdown from '~/components/Countdown.vue';
+import Countdown from '~/components/Countdown.vue';
 import Newsletter from '~/components/Newsletter.vue';
 import SocialIcons from '~/components/SocialIcons.vue';
 
 export default {
   components: {
     Logo,
-    // Countdown,
+    Countdown,
     Newsletter,
     SocialIcons
   },

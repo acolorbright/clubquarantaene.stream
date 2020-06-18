@@ -23,7 +23,7 @@ export default {
   },
   data() {
     return {
-      isDev: process.env.isDev
+      isDebugMode: process.env.debugMode
     };
   },
   methods: {
@@ -32,7 +32,7 @@ export default {
     },
     stepConfirmed() {
       const isCookieQuestion = this.data.action === 'cookies';
-      if (!this.isDev && isCookieQuestion) {
+      if (!this.isDebugMode && isCookieQuestion) {
         this.$gtag.optIn();
       }
 

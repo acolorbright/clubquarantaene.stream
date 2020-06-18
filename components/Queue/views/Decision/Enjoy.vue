@@ -98,7 +98,7 @@ export default {
         }
       };
       const registerResponse = await this.$axios.$post(
-        `${process.env.SOCKET_URL}/v1/registerUser`,
+        `${process.env.socketUrl}/v1/registerUser`,
         colorPostData,
         postConfig
       );

@@ -10,7 +10,7 @@
       <div id="player" class="livestream-player" />
 
       <transition name="fade" mode="out-in">
-        <div v-if="isDev" class="livestream-controls">
+        <div v-if="isDebugMode" class="livestream-controls">
           <button
             v-if="panningEnabled"
             class="livestream-controls-btn"
@@ -63,8 +63,8 @@ export default {
     isTimetable() {
       return this.$nuxt.$route.name === 'timetable';
     },
-    isDev() {
-      return process.env.isDev;
+    isDebugMode() {
+      return process.env.debugMode;
     },
     eventIsRunning() {
       return this.$store.state.event.isRunning;
@@ -75,7 +75,7 @@ export default {
   },
   watch: {
     '$nuxt.$route.name'(routeName) {
-      if (this.isDev) {
+      if (this.isDebugMode) {
         return;
       }
 
@@ -88,7 +88,7 @@ export default {
     eventHasEnded(newValue, oldValue) {
       if (newValue && newValue !== oldValue) {
         setTimeout(() => {
-          this.loadVideo(process.env.YOUTUBE_VIDEO_ID_ENDED);
+          this.loadVideo(process.env.youtubeVideoIdEnded);
         }, 1500);
       }
     }
@@ -116,10 +116,10 @@ export default {
       this.player.playVideo();
     },
     onReady() {
-      process.env.isDev ? this.muteVideo() : this.setVolumeMax();
+      process.env.debugMode ? this.muteVideo() : this.setVolumeMax();
       const currentId = this.eventHasEnded
-        ? process.env.YOUTUBE_VIDEO_ID_ENDED
-        : process.env.YOUTUBE_VIDEO_ID;
+        ? process.env.youtubeVideoIdEnded
+        : process.env.youtubeVideoId;
 
       this.loadVideo(currentId);
     },
@@ -221,7 +221,7 @@ export default {
       this.panVideo();
     },
     handleMuted() {
-      if (!this.isDev) {
+      if (!this.isDebugMode) {
         return;
       }
 

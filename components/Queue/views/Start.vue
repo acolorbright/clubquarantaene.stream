@@ -8,7 +8,8 @@
     <transition name="fade-step" mode="out-in">
       <div v-if="showStart" class="start-content">
         <Logo />
-        <div v-if="clubIsClosed">
+
+        <div v-if="clubIsClosed || !isDebugMode">
           <Countdown />
           <Newsletter />
           <SocialIcons />
@@ -45,7 +46,7 @@ export default {
   data() {
     return {
       showStart: false,
-      isDev: process.env.isDev
+      isDebugMode: process.env.debugMode
     };
   },
   computed: {
@@ -78,7 +79,7 @@ export default {
   mounted() {
     this.showStart = true;
 
-    if (!this.clubIsClosed) {
+    if (!this.clubIsClosed || process.env.debugMode) {
       if (this.eventHasEnded) {
         // this.setEventHasEnded();
       }
@@ -95,8 +96,8 @@ export default {
       this.$emit('nextStep', true);
     },
     startEvent() {
-      const firstStartTimeout = this.isDev ? 1000 : 3500;
-      const secondStartTimeout = this.isDev ? 2000 : 9500;
+      const firstStartTimeout = process.env.debugMode ? 1000 : 3500;
+      const secondStartTimeout = process.env.debugMode ? 2000 : 9500;
 
       setTimeout(() => {
         this.showStart = false;

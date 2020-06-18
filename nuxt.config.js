@@ -5,14 +5,16 @@ export default {
   },
   env: {
     isDev: process.env.NODE_ENV !== 'production',
-    FRONTEND_URL: 'https://cms.clubquarantaene.stream',
-    CMS_URL: 'https://cms.clubquarantaene.stream',
-    SOCKET_URL: 'https://socket.clubquarantaene.stream',
+    frontendUrl: 'https://clubquarantaene.stream',
+    cmsUrl: 'https://cms.clubquarantaene.stream',
+    socketUrl: 'https://socket.clubquarantaene.stream',
     startEventDate: '06-26-2020 21:59 PM',
     endEventDate: '06-28-2020 14:59 AM',
     closedEventDate: '06-28-2020 16:59 AM',
-    YOUTUBE_VIDEO_ID: 'JtYa0rb_jGQ',
-    YOUTUBE_VIDEO_ID_ENDED: 'grhFTe071VA'
+    youtubeVideoId: 'JtYa0rb_jGQ',
+    youtubeVideoIdEnded: 'grhFTe071VA',
+    googleAnalyticsId: 'UA-161932716-1',
+    debugMode: true && process.env.NODE_ENV !== 'production'
   },
   head: {
     title: 'CLUB QUARANTÄNE',

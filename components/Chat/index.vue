@@ -81,8 +81,8 @@ export default {
         return this.messages;
       }
     },
-    isDev() {
-      return process.env.isDev;
+    isDebugMode() {
+      return process.env.debugMode;
     }
   },
   watch: {

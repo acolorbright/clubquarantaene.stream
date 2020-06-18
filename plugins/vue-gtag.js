@@ -3,7 +3,7 @@ import VueGtag from 'vue-gtag';
 
 Vue.use(VueGtag, {
   config: {
-    id: 'UA-161932716-1'
+    id: process.env.googleAnalyticsId
   },
   enabled: false
 });

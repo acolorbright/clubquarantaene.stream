@@ -1,7 +1,7 @@
 export default ({ store, redirect, route }) => {
-  const isDev = process.env.isDev;
+  const isDebugMode = process.env.debugMode;
   const isProtectedRoute =
-    (route.name !== 'index' || route.name !== 'imprint') && !isDev;
+    (route.name !== 'index' || route.name !== 'imprint') && !isDebugMode;
 
   if (isProtectedRoute) {
     return redirect('/');
@@ -24,7 +24,7 @@ export default ({ store, redirect, route }) => {
     }, 3000);
   }
 
-  if (shouldRedirectToQueue && !isDev && isProtectedRoute) {
+  if (shouldRedirectToQueue && !isDebugMode && isProtectedRoute) {
     return redirect('/');
   }
 };

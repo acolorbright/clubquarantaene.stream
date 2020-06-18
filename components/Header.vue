@@ -22,7 +22,7 @@
         <nuxt-link v-if="page.key != 'gallery'" :to="page.to">
           {{ page.title }}
         </nuxt-link>
-        <a v-else :href="page.to" target="_blank">{{ page.title }}</a>
+        <a v-else :href="page.to" target="_blank">{{ page.title }}&nearr;</a>
         <transition name="fade">
           <Popup
             v-if="

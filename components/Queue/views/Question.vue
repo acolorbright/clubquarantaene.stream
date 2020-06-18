@@ -23,7 +23,7 @@ export default {
   },
   data() {
     return {
-      isDebugMode: process.env.debugMode
+      isDebugMode: process.env.isDebugMode
     };
   },
   methods: {

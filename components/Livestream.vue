@@ -64,7 +64,7 @@ export default {
       return this.$nuxt.$route.name === 'timetable';
     },
     isDebugMode() {
-      return process.env.debugMode;
+      return process.env.isDebugMode;
     },
     eventIsRunning() {
       return this.$store.state.event.isRunning;
@@ -116,7 +116,7 @@ export default {
       this.player.playVideo();
     },
     onReady() {
-      process.env.debugMode ? this.muteVideo() : this.setVolumeMax();
+      process.env.isDebugMode ? this.muteVideo() : this.setVolumeMax();
       const currentId = this.eventHasEnded
         ? process.env.youtubeVideoIdEnded
         : process.env.youtubeVideoId;

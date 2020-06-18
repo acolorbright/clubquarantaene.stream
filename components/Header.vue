@@ -6,7 +6,7 @@
     }"
   >
     <div class="menu-live">
-      <span v-if="eventIsRunning" class="menu-live-icon">&#xE000;</span>
+      <span class="menu-live-icon">&#xE000;</span>
       <span class="menu-live-counter">{{ userCount }} Guests</span>
     </div>
 

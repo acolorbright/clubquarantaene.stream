@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       showStart: false,
-      isDebugMode: process.env.debugMode
+      isDebugMode: process.env.isDebugMode
     };
   },
   computed: {
@@ -79,7 +79,7 @@ export default {
   mounted() {
     this.showStart = true;
 
-    if (!this.clubIsClosed || process.env.debugMode) {
+    if (!this.clubIsClosed || process.env.isDebugMode) {
       if (this.eventHasEnded) {
         // this.setEventHasEnded();
       }
@@ -96,8 +96,8 @@ export default {
       this.$emit('nextStep', true);
     },
     startEvent() {
-      const firstStartTimeout = process.env.debugMode ? 1000 : 3500;
-      const secondStartTimeout = process.env.debugMode ? 2000 : 9500;
+      const firstStartTimeout = process.env.isDebugMode ? 1000 : 3500;
+      const secondStartTimeout = process.env.isDebugMode ? 2000 : 9500;
 
       setTimeout(() => {
         this.showStart = false;

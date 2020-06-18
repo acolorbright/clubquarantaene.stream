@@ -82,7 +82,7 @@ export default {
       }
     },
     isDebugMode() {
-      return process.env.debugMode;
+      return process.env.isDebugMode;
     }
   },
   watch: {

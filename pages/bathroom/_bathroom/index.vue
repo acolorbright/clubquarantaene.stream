@@ -5,7 +5,7 @@
       :room-name="roomName"
       :show-enter-leave-message="true"
     />
-    <ChatBubbles :colorArray="colorArray" />
+    <ChatBubbles :color-array="colorArray" />
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="chat-bubbles" v-if="colorArray">
+  <div v-if="colorArray" class="chat-bubbles">
     <transition-group name="fade" mode="out-in">
       <div
         v-for="bubble in colorArray.colors"

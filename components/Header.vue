@@ -19,15 +19,18 @@
           active: currentPath === page.to
         }"
       >
-        <nuxt-link :to="page.to">{{ page.title }}</nuxt-link>
+        <nuxt-link v-if="page.key != 'gallery'" :to="page.to">
+          {{ page.title }}
+        </nuxt-link>
+        <a v-else :href="page.to" target="_blank">{{ page.title }}</a>
         <transition name="fade">
           <Popup
-            :text="donationPopup.message"
             v-if="
               donationPopup.show &&
               page.title === 'Bar' &&
               $nuxt.$route.name !== 'bar'
             "
+            :text="donationPopup.message"
           />
         </transition>
       </li>
@@ -62,6 +65,11 @@ export default {
           title: 'Bathroom',
           key: 'bathroom',
           to: '/bathroom'
+        },
+        {
+          title: 'Gallery',
+          key: 'gallery',
+          to: 'https://implied.gallery/'
         },
         {
           title: 'Timetable',

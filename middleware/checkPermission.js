@@ -1,10 +1,11 @@
 export default ({ store, redirect, route }) => {
-  const isAllowed = route.name === 'index' || route.name === 'imprint';
-  if (!isAllowed) {
+  const isDev = process.env.isDev;
+  const isProtectedRoute =
+    (route.name !== 'index' || route.name !== 'imprint') && !isDev;
+
+  if (isProtectedRoute) {
     return redirect('/');
   }
-
-  const isDev = process.env.isDev;
 
   const guestState = store.state.guest;
   const { accessGranted } = guestState;
@@ -23,7 +24,7 @@ export default ({ store, redirect, route }) => {
     }, 3000);
   }
 
-  if (shouldRedirectToQueue && !isDev && !isAllowed) {
+  if (shouldRedirectToQueue && !isDev && isProtectedRoute) {
     return redirect('/');
   }
 };

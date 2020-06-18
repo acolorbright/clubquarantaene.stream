@@ -3,7 +3,6 @@
     class="footer"
     :class="{
       isQueue,
-      eventHasEnded,
       'footer--gradient': isTimetable
     }"
   >

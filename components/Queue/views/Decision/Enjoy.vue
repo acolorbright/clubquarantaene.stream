@@ -17,7 +17,6 @@
           </div>
         </transition>
       </div>
-      <!-- <slider-picker v-model="colors" class="step-color" @input="updateColor" /> -->
       <chrome-picker v-model="colors" class="step-color" @input="updateColor" />
     </div>
 
@@ -35,7 +34,6 @@ import { Chrome } from 'vue-color';
 
 export default {
   components: {
-    // 'slider-picker': Slider,
     'chrome-picker': Chrome
   },
   data() {

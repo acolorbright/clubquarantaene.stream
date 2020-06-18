@@ -31,5 +31,9 @@
     >
       Shop
     </a>
+    •
+    <nuxt-link class="social-icons-link" to="imprint">
+      Imprint
+    </nuxt-link>
   </div>
 </template>

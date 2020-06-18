@@ -3,7 +3,7 @@ import moment from 'moment-timezone';
 const state = () => ({
   bar: {
     backgroundVideo:
-      'https://player.vimeo.com/external/411056008.hd.mp4?s=0cfa8b49a17feaef1c5ea908929143374520eba6&profile_id=175',
+      'https://player.vimeo.com/external/430377636.hd.mp4?s=e88934ea5aac9b2f726bd289220249d915df3ca7&profile_id=175',
     title: 'No Drinks. Only Donations.',
     services: [
       {
@@ -24,7 +24,7 @@ const state = () => ({
   },
   cloakroom: {
     backgroundVideo:
-      'https://player.vimeo.com/external/411367973.hd.mp4?s=2cb99f97ef210922d06f6d6a54524c363fe32ac3&profile_id=175',
+      'https://player.vimeo.com/external/430377928.hd.mp4?s=70eb589c5c83f31d5522b8ff2a68adb9315b2450&profile_id=175',
     title: 'Cloakroom',
     text:
       '<p><a href="https://shop.clubquarantaene.stream/" rel="noopener noreferrer" target="_blank">Cloakroom↗</a></p>'

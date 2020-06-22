@@ -1,16 +1,16 @@
-export function setSessionStorage(data) {
-  window.sessionStorage.setItem('cq-color', JSON.stringify(data));
+export function setLocalStorage(data) {
+  window.localStorage.setItem('cq-v2', JSON.stringify(data));
 }
-export function getSessionStorage() {
-  const storeData = window.sessionStorage.getItem('cq-color');
+export function getLocalStorage() {
+  const storeData = window.localStorage.getItem('cq-v2');
   return JSON.parse(storeData);
 }
-export function resetSessionStorage() {
-  setSessionStorage(null);
+export function resetLocalStorage() {
+  setLocalStorage(null);
 }
 
 export default {
-  setSessionStorage,
-  getSessionStorage,
-  resetSessionStorage
+  setLocalStorage,
+  getLocalStorage,
+  resetLocalStorage
 };

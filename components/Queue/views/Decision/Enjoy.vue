@@ -1,7 +1,11 @@
 <template>
   <div>
     <h3 class="step-title">
-      Okay, enjoy and pick your color.
+      {{
+        isFirstVisit
+          ? 'Okay, enjoy and pick your color.'
+          : 'Welcome back, pick a color.'
+      }}
     </h3>
     <div class="color-wrapper">
       <div class="step-color-dot" :style="dotStyle">
@@ -31,6 +35,10 @@
 <script>
 import { mapActions } from 'vuex';
 import { Chrome } from 'vue-color';
+import {
+  setLocalStorage,
+  getLocalStorage
+} from '~/assets/js/handleLocalStorage.js';
 
 export default {
   components: {
@@ -48,7 +56,8 @@ export default {
         }
       },
       errors: [],
-      colorIsOccupied: false
+      colorIsOccupied: false,
+      isFirstVisit: true
     };
   },
   computed: {
@@ -69,6 +78,14 @@ export default {
           ${rgba} 95.83%
         )`
       };
+    }
+  },
+  beforeMounted() {
+    const localStorageData = getLocalStorage();
+
+    if (localStorageData && localStorageData.color) {
+      // this.setColor(localStorageData.color);
+      this.isFirstVisit = false;
     }
   },
   methods: {
@@ -104,6 +121,12 @@ export default {
       );
       return registerResponse;
     },
+    setLocalStorageColor(userColor) {
+      const localStorage = getLocalStorage();
+      const updatedLocalStorage = { ...localStorage, color: userColor };
+
+      setLocalStorage(updatedLocalStorage);
+    },
     updateColor(color) {
       if (this.colorIsOccupied) {
         this.colorIsOccupied = false;
@@ -122,6 +145,8 @@ export default {
         this.setUserData(registerResponse);
 
         if (available) {
+          this.setLocalStorageColor(this.store.state.guest.color);
+
           this.setAccessGranted(true);
           this.$emit('confirmDecision', true);
         } else {

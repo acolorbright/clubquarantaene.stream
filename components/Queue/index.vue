@@ -4,10 +4,10 @@
       <QueueCountdown v-if="queueCounterIsRunning" :small="countdownIsSmall" />
     </transition>
 
-    <button @click="setStorage">set storage</button>
+    <!-- <button @click="setStorage">set storage</button>
     <button @click="resetStorage">reset storage</button>
     <button @click="getStorage">get storage</button>
-    <div>Active step index: {{ activeStepIndex }}</div>
+    <div>Active step index: {{ activeStepIndex }}</div> -->
 
     <form-wizard
       ref="formWizard"
@@ -111,7 +111,8 @@ export default {
     ...mapActions({
       setStepIsValid: 'setStepIsValid',
       setActiveStepIndex: 'setActiveStepIndex',
-      resetQueue: 'resetQueue'
+      resetQueue: 'resetQueue',
+      clearCountdown: 'clearCountdown'
     }),
     beforeChangeTab() {
       const allowNext = this.isValidated;
@@ -163,12 +164,13 @@ export default {
       });
     },
     skipQueue() {
+      this.clearCountdown();
       this.changeTab(6); // Go to color picker step
     },
     setStorage() {
       setLocalStorage({
         acceptedCookies: false,
-        color: null,
+        color: '0,0,0',
         donated: false
       });
     },

@@ -80,11 +80,11 @@ export default {
       };
     }
   },
-  beforeMounted() {
+  mounted() {
     const localStorageData = getLocalStorage();
 
     if (localStorageData && localStorageData.color) {
-      // this.setColor(localStorageData.color);
+      this.setColor(localStorageData.color);
       this.isFirstVisit = false;
     }
   },

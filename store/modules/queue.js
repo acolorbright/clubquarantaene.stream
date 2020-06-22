@@ -81,6 +81,12 @@ const mutations = {
       value: queueCountdownTime
     };
   },
+  clearCountdown(state) {
+    state.countdown = {
+      isRunning: false,
+      value: 0
+    };
+  },
   setQueueCountdownIsRunning(state, isRunning) {
     state.countdown.isRunning = isRunning;
   }
@@ -101,6 +107,9 @@ const actions = {
   },
   resetCountdown({ commit }) {
     commit('resetCountdown');
+  },
+  clearCountdown({ commit }) {
+    commit('clearCountdown');
   },
   reduceCountdown({ commit }) {
     commit('reduceCountdown');

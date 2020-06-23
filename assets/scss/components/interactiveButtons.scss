@@ -22,5 +22,10 @@
     &:hover {
       opacity: 1;
     }
+
+    &:disabled {
+      cursor: progress;
+      opacity: 0.5;
+    }
   }
 }

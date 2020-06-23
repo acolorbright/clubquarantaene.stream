@@ -6,7 +6,10 @@
       class="interactive-buttons-item"
     >
       <LiveInteraction :ref="button.reaction" />
-      <button @click="onSendReaction(button.reaction)">
+      <button
+        :disabled="button.isBlocked"
+        @click="onSendReaction(button.reaction)"
+      >
         <span>{{ button.label }}</span>
         <span
           class="progress-bar"
@@ -18,6 +21,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { mapActions } from 'vuex';
 import LiveInteraction from './LiveInteraction.vue';
@@ -46,26 +50,30 @@ export default {
   beforeMount() {
     /* eslint-disable */
     this.api = new OffWorldLiveStream(this.config);
-    const vm = this;
+
     this.api.connect().then(() => {
       console.log('OffworldPerformance connected');
       this.connected = true;
     });
-    this.api.onPercentCompleteChange((reactionName, percentComplete)=> {
-      console.log(reactionName, percentComplete);
-      vm.setProgressBar({
+
+    this.api.onPercentCompleteChange((reactionName, percentComplete) => {
+      this.setProgressBar({
         name: reactionName,
         percent: percentComplete
       });
     });
 
     this.api.onViewerCountChange((viewerCount)=> {
+      // console.log('viewerCount', viewerCount);
     });
  
     // Sometimes, after a reaction is triggered there is a cooling-off
     // period when clicks to that reaction will have no effec
     this.api.onCoolDownChange((reactionName, isCoolingDown) => {
-      console.log('onCoolDownChange', reactionName, isCoolingDown);
+      this.setButtonIsBlocked({
+        key: reactionName,
+        isBlocked: isCoolingDown
+      });
     });
     /* eslint-enable */
   },
@@ -78,7 +86,8 @@ export default {
   methods: {
     ...mapActions({
       setProgressBar: 'setProgressBar',
-      setLargeTextoverlay: 'setLargeTextoverlay'
+      setLargeTextoverlay: 'setLargeTextoverlay',
+      setButtonIsBlocked: 'setButtonIsBlocked'
     }),
     onSendReaction(name) {
       this.$refs[name][0].spawn();

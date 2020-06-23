@@ -2,15 +2,17 @@ const state = () => ({
   buttons: [
     {
       label: 'Change Camera',
-      reaction: 'artist',
+      reaction: 'camchange',
       progress: 0,
-      achievementMsg: ''
+      achievementMsg: '',
+      isBlocked: false
     },
     {
       label: 'Trip',
       reaction: 'trip',
       progress: 0,
-      achievementMsg: ''
+      achievementMsg: '',
+      isBlocked: false
     }
   ],
   largeTextoverlay: ''
@@ -18,8 +20,12 @@ const state = () => ({
 
 const mutations = {
   setProgressBar(state, key) {
-    state.buttons.find(button => button.reaction === key.name).progress =
-      key.percent;
+    const reactionButton = state.buttons.find(
+      button => button.reaction === key.name
+    );
+    if (reactionButton) {
+      reactionButton.progress = key.percent;
+    }
   },
   setLargeTextoverlay(state, key) {
     if (state.buttons.find(button => button.reaction === key)) {
@@ -28,6 +34,14 @@ const mutations = {
       state.largeTextoverlay = msg;
     } else {
       state.largeTextoverlay = key;
+    }
+  },
+  setButtonIsBlocked(state, { key, isBlocked }) {
+    const reactionButton = state.buttons.find(
+      button => button.reaction === key
+    );
+    if (reactionButton) {
+      reactionButton.isBlocked = isBlocked;
     }
   }
 };
@@ -38,6 +52,9 @@ const actions = {
   },
   setLargeTextoverlay({ commit }, key) {
     commit('setLargeTextoverlay', key);
+  },
+  setButtonIsBlocked({ commit }, data) {
+    commit('setButtonIsBlocked', data);
   }
 };
 

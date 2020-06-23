@@ -19,7 +19,7 @@
           active: currentPath === page.to
         }"
       >
-        <nuxt-link v-if="page.key != 'gallery'" :to="page.to">
+        <nuxt-link v-if="!page.to.startsWith('http')" :to="page.to">
           {{ page.title }}
         </nuxt-link>
         <a v-else :href="page.to" target="_blank">{{ page.title }}&nearr;</a>
@@ -59,7 +59,7 @@ export default {
         {
           title: 'Cloakroom',
           key: 'cloakroom',
-          to: '/cloakroom'
+          to: 'https://shop.clubquarantaene.stream/'
         },
         {
           title: 'Bathroom',
@@ -70,6 +70,11 @@ export default {
           title: 'Gallery',
           key: 'gallery',
           to: 'https://implied.gallery/'
+        },
+        {
+          title: 'CQ×UB',
+          key: 'cqxub',
+          to: 'http://undergroundblack.clubquarantaene.stream/'
         },
         {
           title: 'Timetable',

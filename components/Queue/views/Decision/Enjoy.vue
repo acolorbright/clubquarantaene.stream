@@ -143,11 +143,9 @@ export default {
       this.showEntryAnimation = true;
     },
     handleOnStarted() {
-      console.log('handleOnStarted');
       this.entryAnimationStarted = true;
     },
     handleOnEnded() {
-      console.log('handleOnEnded');
       this.$emit('confirmDecision', true);
     },
     async enterClub() {

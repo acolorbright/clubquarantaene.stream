@@ -24,13 +24,6 @@ const state = () => ({
       }
     ]
   },
-  cloakroom: {
-    backgroundVideo:
-      'https://player.vimeo.com/external/430377928.hd.mp4?s=70eb589c5c83f31d5522b8ff2a68adb9315b2450&profile_id=175',
-    title: 'Cloakroom',
-    text:
-      '<p><a href="https://shop.clubquarantaene.stream/" rel="noopener noreferrer" target="_blank">Cloakroom↗</a></p>'
-  },
   imprint: {
     backgroundVideo: null,
     title: 'Imprint',

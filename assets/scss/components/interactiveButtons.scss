@@ -3,14 +3,16 @@
     display: inline-block;
     position: relative;
     margin: 0 0.5em;
-    span.progress-bar {
+
+    .progress-bar {
+      display: block;
       width: 0%;
       height: 100%;
       position: absolute;
       left: 0;
       top: 0;
       pointer-events: none;
-      background-color: white;
+      background-color: yellow;
       mix-blend-mode: difference;
       border-radius: $buttonBorderRadius;
       border: $buttonBorderWidth solid black;

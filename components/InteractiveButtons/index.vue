@@ -5,7 +5,7 @@
       :key="index"
       class="interactive-buttons-item"
     >
-      <LiveInteraction :ref="button.reaction" />
+      <LiveInteraction :ref="button.reaction" :is-active="!button.isBlocked" />
       <button
         :disabled="button.isBlocked"
         @click="onSendReaction(button.reaction)"

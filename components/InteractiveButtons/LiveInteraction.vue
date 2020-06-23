@@ -1,9 +1,14 @@
 <template>
-  <div ref="liveInteraction" class="live-interaction" />
+  <div>
+    <div ref="liveInteraction" class="live-interaction" />
+  </div>
 </template>
 <script>
 export default {
   name: 'FakeLiveInteraction',
+  props: {
+    isActive: Boolean
+  },
   data() {
     return {
       interaction: null,
@@ -37,7 +42,10 @@ export default {
     startLoop() {
       const rand = Math.round(Math.random() * (this.max - this.min)) + this.min;
       setTimeout(() => {
-        this.spawn();
+        if (this.isActive) {
+          this.spawn();
+        }
+
         this.startLoop();
       }, rand);
     }

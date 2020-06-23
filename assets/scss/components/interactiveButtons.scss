@@ -5,18 +5,18 @@
     margin: 0 0.5em;
 
     .progress-bar {
-      display: block;
-      width: 0%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      pointer-events: none;
-      background-color: yellow;
-      mix-blend-mode: difference;
+      background-color: white;
       border-radius: $buttonBorderRadius;
       border: $buttonBorderWidth solid black;
+      display: block;
+      height: 100%;
+      left: 0;
+      mix-blend-mode: difference;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
       transition: $fastTransitionSpeed;
+      width: 0%;
     }
   }
   button {

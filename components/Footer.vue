@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import InteractiveButtons from './InteractiveButtons';
+import InteractiveButtons from './interactiveButtons';
 import Chat from '~/components/Chat';
 
 export default {

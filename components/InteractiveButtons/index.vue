@@ -31,9 +31,10 @@ export default {
       api: null,
       connected: false,
       config: {
-        performanceName: 'clubquarantaene',
-        apiRoot: 'https://performance.offworld.live',
-        clientAPIKey: 'Zeb9JD6ZcNaDmZY2ILJzdIowforpm98Gu3hzUNpr'
+        liveStreamSlug: 'cq3-dev-livestream',
+        apiRoot: 'https://api.offworld.live',
+        clientAPIKey: 'rBCTty6nR7z8INqWAzVu9iJ1R3FtAm',
+        reactionThrottleTime: 1000
       }
     };
   },
@@ -44,44 +45,27 @@ export default {
   },
   beforeMount() {
     /* eslint-disable */
-    this.api = new OffworldPerformance(this.config);
+    this.api = new OffWorldLiveStream(this.config);
     const vm = this;
     this.api.connect().then(() => {
-      // console.log('OffworlPerformance connected');
+      console.log('OffworldPerformance connected');
       this.connected = true;
     });
-    // this.api.onStateChange(newState => {
-    //   switch (newState) {
-    //     case OffworldPerformance.PerformanceWaitingForStart:
-    //       console.log('Waiting for start');
-    //       return;
-    //     case OffworldPerformance.PerformanceInProgress:
-    //       console.log('PerformanceInProgress');
-    //       return;
-    //     case OffworldPerformance.PerformanceEnded:
-    //       console.log('PerformanceEnded');
-    //       return;
-    //     }
-    // });
     this.api.onPercentCompleteChange((reactionName, percentComplete)=> {
-      const oldVal =
-        vm.buttons.find(button => button.reaction === reactionName).progress;
-      // throtle the store commit a bit
-      if (Math.abs(percentComplete - oldVal) > vm.storeThrottle) {
-        vm.setProgressBar({
-          name: reactionName,
-          percent: percentComplete
-        });
-      }
-      // if old val is smaller it must mean it has achieved 100% but only trigger something if there is no current textoverlay
-      if (percentComplete < oldVal && !vm.$store.state.interactivebuttons.largeTextoverlay) {
-        // console.log(`${reactionName} ACHIEVEMENT UNLOCKED`);
-        vm.setLargeTextoverlay(reactionName);
-        setTimeout(() => {
-          vm.setLargeTextoverlay('');
-        }, 8000);
-      }
-      // console.log(`onPercentCompleteChange: ${reactionName} is ${percentComplete}`);
+      console.log(reactionName, percentComplete);
+      vm.setProgressBar({
+        name: reactionName,
+        percent: percentComplete
+      });
+    });
+
+    this.api.onViewerCountChange((viewerCount)=> {
+    });
+ 
+    // Sometimes, after a reaction is triggered there is a cooling-off
+    // period when clicks to that reaction will have no effec
+    this.api.onCoolDownChange((reactionName, isCoolingDown) => {
+      console.log('onCoolDownChange', reactionName, isCoolingDown);
     });
     /* eslint-enable */
   },

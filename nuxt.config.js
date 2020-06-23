@@ -11,7 +11,7 @@ export default {
     startEventDate: '06-26-2020 21:59 PM',
     endEventDate: '06-28-2020 14:59 AM',
     closedEventDate: '06-28-2020 16:59 AM',
-    youtubeVideoId: 'JtYa0rb_jGQ',
+    youtubeVideoId: 'Iygrehyufjk',
     youtubeVideoIdEnded: 'grhFTe071VA',
     googleAnalyticsId: 'UA-161932716-1',
     isDebugMode: true
@@ -99,8 +99,7 @@ export default {
         src: '//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'
       },
       {
-        src:
-          'https://storage.googleapis.com/off-world-live-client/0.0.8/offworldPerformance.min.js'
+        src: 'https://code.offworld.live/v0.1.5/offWorldLiveStreamClient.js'
       }
     ]
   },

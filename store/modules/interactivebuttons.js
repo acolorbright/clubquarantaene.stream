@@ -1,14 +1,14 @@
 const state = () => ({
   buttons: [
     {
-      label: 'Trip',
-      reaction: 'wow',
+      label: 'Change Camera',
+      reaction: 'artist',
       progress: 0,
       achievementMsg: ''
     },
     {
-      label: 'Reveal Logo',
-      reaction: 'artist',
+      label: 'Trip',
+      reaction: 'trip',
       progress: 0,
       achievementMsg: ''
     }

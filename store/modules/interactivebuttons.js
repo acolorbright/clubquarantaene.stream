@@ -1,14 +1,14 @@
 const state = () => ({
   buttons: [
     {
-      label: 'Change Camera',
+      label: 'Change 🎥',
       reaction: 'camchange',
       progress: 0,
       achievementMsg: '',
       isBlocked: false
     },
     {
-      label: 'Trip',
+      label: 'Drip 🥑',
       reaction: 'trip',
       progress: 0,
       achievementMsg: '',

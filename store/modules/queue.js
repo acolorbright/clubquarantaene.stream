@@ -11,6 +11,8 @@ const state = () => ({
   },
   activeStepIndex: 0,
   form: null,
+  entryVideo:
+    'https://player.vimeo.com/external/430377978.hd.mp4?s=fd126088557a2769e6555de9688ab521c1b2968b&profile_id=175',
   steps: [
     {
       title: 'Club Quarantäne',

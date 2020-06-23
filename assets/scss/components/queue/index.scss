@@ -53,6 +53,14 @@
             }
         }
 
+        &--decision {
+            align-items: center;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            overflow: visible;
+        }
+
         &-title {
             text-transform: uppercase;
         }

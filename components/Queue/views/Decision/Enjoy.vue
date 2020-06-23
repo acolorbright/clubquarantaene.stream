@@ -1,40 +1,63 @@
 <template>
   <div>
-    <h3 class="step-title">
-      Okay, enjoy and pick your color.
-    </h3>
-    <div class="color-wrapper">
-      <div class="step-color-dot" :style="dotStyle">
-        <transition name="fade" mode="out-in">
-          <div
-            v-if="colorIsOccupied"
-            class="step-color-error"
-            :style="{
-              color: colors.rgba
-            }"
-          >
-            This color is already taken!
+    <transition name="fade-step" mode="out-in">
+      <div v-if="!showEntryAnimation">
+        <h3 class="step-title">
+          Okay, enjoy and pick your color.
+        </h3>
+        <div class="color-wrapper">
+          <div class="step-color-dot" :style="dotStyle">
+            <transition name="fade" mode="out-in">
+              <div
+                v-if="colorIsOccupied"
+                class="step-color-error"
+                :style="{
+                  color: colors.rgba
+                }"
+              >
+                This color is already taken!
+              </div>
+            </transition>
           </div>
-        </transition>
-      </div>
-      <chrome-picker v-model="colors" class="step-color" @input="updateColor" />
-    </div>
+          <chrome-picker
+            v-model="colors"
+            class="step-color"
+            @input="updateColor"
+          />
+        </div>
 
-    <div class="step-buttons-btn">
-      <button class="step-buttons color-btn" @click="enterClub">
-        Enter Club
-      </button>
-    </div>
+        <div class="step-buttons-btn">
+          <button class="step-buttons color-btn" @click="enterClub">
+            Enter Club
+          </button>
+        </div>
+      </div>
+    </transition>
+
+    <transition name="fade" mode="out-in">
+      <BackgroundVideo
+        v-if="showEntryAnimation"
+        :class="{
+          hidden: !entryAnimationStarted
+        }"
+        :src="$store.state.queue.entryVideo"
+        :loop="false"
+        :on-started="handleOnStarted"
+        :on-ended="handleOnEnded"
+      />
+    </transition>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 import { Chrome } from 'vue-color';
+import BackgroundVideo from '~/components/BackgroundVideo';
 
 export default {
   components: {
-    'chrome-picker': Chrome
+    'chrome-picker': Chrome,
+    BackgroundVideo
   },
   data() {
     return {
@@ -48,7 +71,9 @@ export default {
         }
       },
       errors: [],
-      colorIsOccupied: false
+      colorIsOccupied: false,
+      showEntryAnimation: false,
+      entryAnimationStarted: false
     };
   },
   computed: {
@@ -114,7 +139,23 @@ export default {
 
       this.setColor(color.rgba);
     },
+    startEntryAnimation() {
+      this.showEntryAnimation = true;
+    },
+    handleOnStarted() {
+      console.log('handleOnStarted');
+      this.entryAnimationStarted = true;
+    },
+    handleOnEnded() {
+      console.log('handleOnEnded');
+      this.$emit('confirmDecision', true);
+    },
     async enterClub() {
+      if (process.env.isDebugMode) {
+        this.startEntryAnimation();
+        return;
+      }
+
       try {
         const registerResponse = await this.registerUser();
         const { available } = registerResponse;

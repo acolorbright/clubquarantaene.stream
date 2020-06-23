@@ -116,7 +116,7 @@ export default {
       this.nextTab();
     },
     emitEnterClub() {
-      this.$router.push('/bar');
+      this.$router.push('/dancefloor');
     },
     emitTryAgain() {
       this.resetQueue();

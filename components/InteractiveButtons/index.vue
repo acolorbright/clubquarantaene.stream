@@ -34,6 +34,8 @@ export default {
       storeThrottle: 3, // % of reaction progress
       api: null,
       connected: false,
+      overlayTextDuration: 8000, // in ms
+      timeoutHandle: null,
       config: {
         liveStreamSlug: 'cq3-dev-livestream',
         apiRoot: 'https://api.offworld.live',
@@ -70,6 +72,14 @@ export default {
     // Sometimes, after a reaction is triggered there is a cooling-off
     // period when clicks to that reaction will have no effec
     this.api.onCoolDownChange((reactionName, isCoolingDown) => {
+      if (isCoolingDown) {
+        this.setLargeTextoverlay(reactionName);
+        const vm = this;
+        clearTimeout(this.timeoutHandle);
+        this.timeoutHandle = setTimeout(() => {
+          vm.setLargeTextoverlay('');
+        }, this.overlayTextDuration);
+      }
       this.setButtonIsBlocked({
         key: reactionName,
         isBlocked: isCoolingDown

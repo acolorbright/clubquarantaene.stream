@@ -38,7 +38,9 @@
       v-if="isDancefloor && !hasEnded"
       class="footer-section footer-section--center"
     >
-      <InteractiveButtons />
+      <transition name="fade">
+        <InteractiveButtons />
+      </transition>
     </div>
 
     <div class="footer-section footer-section--right">

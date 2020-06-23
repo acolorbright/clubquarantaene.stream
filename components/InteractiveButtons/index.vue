@@ -52,7 +52,7 @@ export default {
     this.api = new OffWorldLiveStream(this.config);
 
     this.api.connect().then(() => {
-      console.log('OffworldPerformance connected');
+      // console.log('OffworldPerformance connected');
       this.connected = true;
     });
 

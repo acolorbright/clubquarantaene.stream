@@ -59,7 +59,7 @@ export default {
         {
           title: 'Cloakroom',
           key: 'cloakroom',
-          to: '/cloakroom'
+          to: 'https://shop.clubquarantaene.stream/'
         },
         {
           title: 'Bathroom',

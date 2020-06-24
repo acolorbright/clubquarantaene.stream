@@ -66,8 +66,7 @@
         &-section {
             order: 0;
             margin-top: #{$spaceS * 1.5};
-
-            &--center, &--left {
+            &--center, .chat-switch-button {
                 display: none;
             }
             &--right {

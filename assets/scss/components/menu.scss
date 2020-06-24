@@ -38,6 +38,7 @@
     &-item {
       margin: 0 $spaceXS;
       position: relative;
+      white-space: nowrap;
 
       &:last-of-type {
         position: absolute;

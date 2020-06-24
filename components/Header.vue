@@ -57,14 +57,14 @@ export default {
           to: '/dancefloor'
         },
         {
-          title: 'Cloakroom',
-          key: 'cloakroom',
-          to: 'https://shop.clubquarantaene.stream/'
-        },
-        {
           title: 'Bathroom',
           key: 'bathroom',
           to: '/bathroom'
+        },
+        {
+          title: 'Cloakroom',
+          key: 'cloakroom',
+          to: 'https://shop.clubquarantaene.stream/'
         },
         {
           title: 'Gallery',

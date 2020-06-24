@@ -41,7 +41,8 @@ export default {
         apiRoot: 'https://api.offworld.live',
         clientAPIKey: 'rBCTty6nR7z8INqWAzVu9iJ1R3FtAm',
         reactionThrottleTime: 1000
-      }
+      },
+      reactionTextEnabled: false
     };
   },
   computed: {
@@ -54,11 +55,15 @@ export default {
     this.api = new OffWorldLiveStream(this.config);
 
     this.api.connect().then(() => {
-      // console.log('OffworldPerformance connected');
+      console.log('OffworldPerformance connected');
       this.connected = true;
     });
 
     this.api.onPercentCompleteChange((reactionName, percentComplete) => {
+      if (!this.reactionTextEnabled) {
+        this.reactionTextEnabled = true
+      }
+ 
       this.setProgressBar({
         name: reactionName,
         percent: percentComplete
@@ -72,7 +77,9 @@ export default {
     // Sometimes, after a reaction is triggered there is a cooling-off
     // period when clicks to that reaction will have no effec
     this.api.onCoolDownChange((reactionName, isCoolingDown) => {
-      if (isCoolingDown) {
+      console.log('onCoolDownChange', isCoolingDown);
+
+      if (isCoolingDown && this.reactionTextEnabled) {
         if (reactionName === 'dj') {
           this.setCurrentArtistName();
         } else {
@@ -84,6 +91,7 @@ export default {
           this.setLargeTextoverlay('');
         }, this.overlayTextDuration);
       }
+
       this.setButtonIsBlocked({
         key: reactionName,
         isBlocked: isCoolingDown

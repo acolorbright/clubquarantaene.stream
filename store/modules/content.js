@@ -146,7 +146,7 @@ const state = () => ({
       day: '2020-06-28'
     },
     {
-      name: 'Hector Oaks',
+      name: 'Héctor Oaks',
       start: '03:00',
       end: '04:30',
       day: '2020-06-28'

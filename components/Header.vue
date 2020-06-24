@@ -77,6 +77,12 @@ export default {
           to: 'http://undergroundblack.clubquarantaene.stream/'
         },
         {
+          title: 'Support CQ',
+          key: 'supporter',
+          to:
+            'https://steadyhq.com/en/clubquarantaene?utm_source=clubquarantaene&utm_medium=steady_hoverbutton'
+        },
+        {
           title: 'Timetable',
           key: 'timetable',
           to: '/timetable'

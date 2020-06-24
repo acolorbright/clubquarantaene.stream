@@ -4,9 +4,7 @@
       <div v-if="!showEntryAnimation">
         <h3 class="step-title">
           {{
-            isFirstVisit
-              ? 'Okay, enjoy and pick your color.'
-              : 'Welcome back, pick a color.'
+            isFirstVisit ? 'Okay, enjoy and pick your color.' : 'Welcome back!'
           }}
         </h3>
         <div class="color-wrapper">
@@ -24,6 +22,7 @@
             </transition>
           </div>
           <chrome-picker
+            v-if="isFirstVisit"
             v-model="colors"
             class="step-color"
             @input="updateColor"
@@ -109,6 +108,7 @@ export default {
     const localStorageData = getLocalStorage();
 
     if (localStorageData && localStorageData.color) {
+      this.colors.rgba = localStorageData.color;
       this.setColor(localStorageData.color);
       this.isFirstVisit = false;
     }
@@ -132,7 +132,8 @@ export default {
       const rgbString = this.getColorString();
       const colorPostData = JSON.stringify({
         rgbString,
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        force: !this.isFirstVisit
       });
       const postConfig = {
         headers: {
@@ -166,11 +167,9 @@ export default {
       this.showEntryAnimation = true;
     },
     handleOnStarted() {
-      console.log('handleOnStarted');
       this.entryAnimationStarted = true;
     },
     handleOnEnded() {
-      console.log('handleOnEnded');
       this.$emit('confirmDecision', true);
     },
     async enterClub() {
@@ -181,7 +180,7 @@ export default {
         this.setUserData(registerResponse);
 
         if (available) {
-          // this.setLocalStorageColor(this.store.state.guest.color);
+          this.setLocalStorageColor(this.$store.state.guest.color);
           this.setAccessGranted(true);
           this.startEntryAnimation();
         } else {

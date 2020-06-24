@@ -4,11 +4,6 @@
       <QueueCountdown v-if="queueCounterIsRunning" :small="countdownIsSmall" />
     </transition>
 
-    <!-- <button @click="setStorage">set storage</button>
-    <button @click="resetStorage">reset storage</button>
-    <button @click="getStorage">get storage</button>
-    <div>Active step index: {{ activeStepIndex }}</div> -->
-
     <form-wizard
       ref="formWizard"
       title=""
@@ -59,11 +54,7 @@ import Start from './views/Start.vue';
 import Info from './views/Info.vue';
 import Question from './views/Question.vue';
 import Decision from './views/Decision';
-import {
-  setLocalStorage,
-  getLocalStorage,
-  resetLocalStorage
-} from '~/assets/js/handleLocalStorage.js';
+import { getLocalStorage } from '~/assets/js/handleLocalStorage.js';
 
 export default {
   components: {
@@ -165,21 +156,7 @@ export default {
     },
     skipQueue() {
       this.clearCountdown();
-      this.changeTab(6); // Go to color picker step
-    },
-    setStorage() {
-      setLocalStorage({
-        acceptedCookies: false,
-        color: '0,0,0',
-        donated: false
-      });
-    },
-    resetStorage() {
-      resetLocalStorage();
-    },
-    getStorage() {
-      const localStorage = getLocalStorage();
-      console.log(localStorage);
+      this.changeTab(7); // Go to color picker step
     }
   }
 };

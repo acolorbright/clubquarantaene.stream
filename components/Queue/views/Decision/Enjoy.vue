@@ -172,11 +172,6 @@ export default {
       this.$emit('confirmDecision', true);
     },
     async enterClub() {
-      if (process.env.isDebugMode) {
-        this.startEntryAnimation();
-        return;
-      }
-
       try {
         const registerResponse = await this.registerUser();
         const { available } = registerResponse;
@@ -187,7 +182,7 @@ export default {
           this.setLocalStorageColor(this.store.state.guest.color);
 
           this.setAccessGranted(true);
-          this.$emit('confirmDecision', true);
+          this.startEntryAnimation();
         } else {
           this.colorIsOccupied = true;
         }

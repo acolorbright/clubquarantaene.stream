@@ -119,16 +119,32 @@ export default {
       }
     },
     setCurrentArtistName() {
-      this.$axios
-        .$get('http://149.255.59.164:8186/currentsong?sid=1')
-        .then(currentArtistName => {
-          this.setCustomTextoverlay(currentArtistName);
-        })
-        .catch(error => {
-          if (error) {
-            this.setCustomTextoverlay('No artist found.');
-          }
-        });
+      const activeTimetableEntry = this.$store.state.content.timetable.find(
+        entry => {
+          const formattedStartTime = this.$moment(
+            `${entry.day} ${entry.start}`
+          );
+          const formattedEndTime = this.$moment(`${entry.day} ${entry.end}`);
+          return this.$moment().isBetween(formattedStartTime, formattedEndTime);
+        }
+      );
+
+      if (activeTimetableEntry) {
+        this.setCustomTextoverlay(activeTimetableEntry.name);
+      } else {
+        this.setCustomTextoverlay('No artist found');
+      }
+
+      // this.$axios
+      //   .$get('http://149.255.59.164:8186/currentsong?sid=1')
+      //   .then(currentArtistName => {
+      //     this.setCustomTextoverlay(currentArtistName);
+      //   })
+      //   .catch(error => {
+      //     if (error) {
+      //       this.setCustomTextoverlay('No artist found.');
+      //     }
+      //   });
     }
   }
 };

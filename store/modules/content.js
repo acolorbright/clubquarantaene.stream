@@ -169,7 +169,7 @@ const state = () => ({
       start: '03:00',
       end: '04:30',
       day: '2020-06-28',
-      img: 'xxx.jpg'
+      img: 'CQ_Hector_Oaks.jpg'
     },
     {
       name: 'Aurora Halal',

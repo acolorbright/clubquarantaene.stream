@@ -47,14 +47,14 @@ export default {
     return {
       pages: [
         {
-          title: 'Bar',
-          key: 'bar',
-          to: '/bar'
-        },
-        {
           title: 'Dancefloor',
           key: 'dancefloor',
           to: '/dancefloor'
+        },
+        {
+          title: 'Bar',
+          key: 'bar',
+          to: '/bar'
         },
         {
           title: 'Bathroom',

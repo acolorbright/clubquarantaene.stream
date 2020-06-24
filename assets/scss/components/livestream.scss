@@ -19,7 +19,7 @@
     }
   }
   @include portrait-layout-mobile {
-    top: 2rem;
+    opacity: 0 !important;
   }
   &-controls {
     bottom: 15vh;

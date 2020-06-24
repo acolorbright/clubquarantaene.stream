@@ -166,17 +166,14 @@ export default {
       this.showEntryAnimation = true;
     },
     handleOnStarted() {
+      console.log('handleOnStarted');
       this.entryAnimationStarted = true;
     },
     handleOnEnded() {
+      console.log('handleOnEnded');
       this.$emit('confirmDecision', true);
     },
     async enterClub() {
-      if (process.env.isDebugMode) {
-        this.startEntryAnimation();
-        return;
-      }
-
       try {
         const registerResponse = await this.registerUser();
         const { available } = registerResponse;
@@ -184,10 +181,9 @@ export default {
         this.setUserData(registerResponse);
 
         if (available) {
-          this.setLocalStorageColor(this.store.state.guest.color);
-
+          // this.setLocalStorageColor(this.store.state.guest.color);
           this.setAccessGranted(true);
-          this.$emit('confirmDecision', true);
+          this.startEntryAnimation();
         } else {
           this.colorIsOccupied = true;
         }

@@ -55,7 +55,7 @@ export default {
     this.api = new OffWorldLiveStream(this.config);
 
     this.api.connect().then(() => {
-      console.log('OffworldPerformance connected');
+      // console.log('OffworldPerformance connected');
       this.connected = true;
     });
 
@@ -77,7 +77,7 @@ export default {
     // Sometimes, after a reaction is triggered there is a cooling-off
     // period when clicks to that reaction will have no effec
     this.api.onCoolDownChange((reactionName, isCoolingDown) => {
-      console.log('onCoolDownChange', isCoolingDown);
+      // console.log('onCoolDownChange', isCoolingDown);
 
       if (isCoolingDown && this.reactionTextEnabled) {
         if (reactionName === 'dj') {

@@ -67,41 +67,8 @@
             order: 0;
             margin-top: #{$spaceS * 1.5};
 
-            &--center {
-                position: static;
-                transform: none;
-                .interactive-buttons {
-                    display: flex;
-    
-                    &-item {
-                        display: inline-flex;
-                        flex: 1;
-                        width: calc(50vw - #{$spaceS * 1.5});
-                        height: 3em;
-    
-                        &:first-of-type {
-                            margin: 0 0.5em 0 0;
-                        }
-                        &:last-of-type {
-                            margin: 0 0 0 0.5em;
-                        }
-    
-                        button {
-                            width: 100%;
-                        }
-                    }
-                }
-            }
-
-            &--left {
-                position: static;
-                padding: $spaceS 0 0 0;
-                align-self: flex-start;
-                order: 0;
-                .chat {
-                    bottom: 10rem;
-                    width: calc(100vw - #{$spaceS * 2});
-                }
+            &--center, &--left {
+                display: none;
             }
             &--right {
                 order: 2;

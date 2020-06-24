@@ -46,6 +46,12 @@ const state = () => ({
       isValidated: false
     },
     {
+      title: 'Are you already a supporter?',
+      type: 'question',
+      action: 'supporter',
+      isValidated: false
+    },
+    {
       title: 'Do you accept cookies?',
       type: 'question',
       action: 'cookies',

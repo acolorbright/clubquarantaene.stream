@@ -28,6 +28,12 @@ export default {
   },
   methods: {
     stepDeclined() {
+      const isSupporterAction = this.data.action === 'supporter';
+      if (isSupporterAction) {
+        const url = 'https://steadyhq.com/en/clubquarantaene';
+        const win = window.open(url, '_blank');
+        win.focus();
+      }
       this.$emit('nextStep', true);
     },
     stepConfirmed() {
@@ -35,7 +41,6 @@ export default {
       if (!this.isDebugMode && isCookieQuestion) {
         this.$gtag.optIn();
       }
-
       this.$emit('nextStep', true);
     }
   }

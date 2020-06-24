@@ -38,8 +38,7 @@ export default {
   },
   computed: {
     allowEntry() {
-      // return Math.random() >= 0.3; // 70% probability to get in
-      return true;
+      return process.env.isDebugMode || Math.random() >= 0.3; // 70% probability to get in
     }
   },
   mounted() {

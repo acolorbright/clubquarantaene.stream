@@ -4,6 +4,11 @@
       <QueueCountdown v-if="queueCounterIsRunning" :small="countdownIsSmall" />
     </transition>
 
+    <!-- <button @click="setStorage">set storage</button>
+    <button @click="resetStorage">reset storage</button>
+    <button @click="getStorage">get storage</button>
+    <div>Active step index: {{ activeStepIndex }}</div> -->
+
     <form-wizard
       ref="formWizard"
       title=""
@@ -54,6 +59,11 @@ import Start from './views/Start.vue';
 import Info from './views/Info.vue';
 import Question from './views/Question.vue';
 import Decision from './views/Decision';
+import {
+  setLocalStorage,
+  getLocalStorage,
+  resetLocalStorage
+} from '~/assets/js/handleLocalStorage.js';
 
 export default {
   components: {
@@ -90,11 +100,19 @@ export default {
       return this.activeStepIndex > 0 && this.activeStepIndex < 4;
     }
   },
+  mounted() {
+    const localStorageData = getLocalStorage();
+
+    if (localStorageData && localStorageData.color) {
+      this.skipQueue();
+    }
+  },
   methods: {
     ...mapActions({
       setStepIsValid: 'setStepIsValid',
       setActiveStepIndex: 'setActiveStepIndex',
-      resetQueue: 'resetQueue'
+      resetQueue: 'resetQueue',
+      clearCountdown: 'clearCountdown'
     }),
     beforeChangeTab() {
       const allowNext = this.isValidated;
@@ -144,6 +162,24 @@ export default {
           this.$nuxt.$loading.finish();
         }, 50);
       });
+    },
+    skipQueue() {
+      this.clearCountdown();
+      this.changeTab(6); // Go to color picker step
+    },
+    setStorage() {
+      setLocalStorage({
+        acceptedCookies: false,
+        color: '0,0,0',
+        donated: false
+      });
+    },
+    resetStorage() {
+      resetLocalStorage();
+    },
+    getStorage() {
+      const localStorage = getLocalStorage();
+      console.log(localStorage);
     }
   }
 };

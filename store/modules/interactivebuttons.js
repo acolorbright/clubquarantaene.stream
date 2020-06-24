@@ -13,6 +13,13 @@ const state = () => ({
       progress: 0,
       achievementMsg: 'Trip begins shortly',
       isBlocked: false
+    },
+    {
+      label: 'Show DJ 🎧',
+      reaction: 'dj',
+      progress: 0,
+      achievementMsg: 'Cool DJ showing here',
+      isBlocked: false
     }
   ],
   largeTextoverlay: ''
@@ -36,6 +43,9 @@ const mutations = {
       state.largeTextoverlay = key;
     }
   },
+  setCustomTextoverlay(state, text) {
+    state.largeTextoverlay = text;
+  },
   setButtonIsBlocked(state, { key, isBlocked }) {
     const reactionButton = state.buttons.find(
       button => button.reaction === key
@@ -52,6 +62,9 @@ const actions = {
   },
   setLargeTextoverlay({ commit }, key) {
     commit('setLargeTextoverlay', key);
+  },
+  setCustomTextoverlay({ commit }, key) {
+    commit('setCustomTextoverlay', key);
   },
   setButtonIsBlocked({ commit }, data) {
     commit('setButtonIsBlocked', data);

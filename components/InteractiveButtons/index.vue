@@ -73,11 +73,15 @@ export default {
     // period when clicks to that reaction will have no effec
     this.api.onCoolDownChange((reactionName, isCoolingDown) => {
       if (isCoolingDown) {
-        this.setLargeTextoverlay(reactionName);
-        const vm = this;
+        if (reactionName === 'dj') {
+          this.setCurrentArtistName();
+        } else {
+          this.setLargeTextoverlay(reactionName);
+        }
+
         clearTimeout(this.timeoutHandle);
         this.timeoutHandle = setTimeout(() => {
-          vm.setLargeTextoverlay('');
+          this.setLargeTextoverlay('');
         }, this.overlayTextDuration);
       }
       this.setButtonIsBlocked({
@@ -97,6 +101,7 @@ export default {
     ...mapActions({
       setProgressBar: 'setProgressBar',
       setLargeTextoverlay: 'setLargeTextoverlay',
+      setCustomTextoverlay: 'setCustomTextoverlay',
       setButtonIsBlocked: 'setButtonIsBlocked'
     }),
     onSendReaction(name) {
@@ -104,6 +109,18 @@ export default {
       if (this.connected) {
         this.api.sendReaction(name);
       }
+    },
+    setCurrentArtistName() {
+      this.$axios
+        .$get('http://149.255.59.164:8186/currentsong?sid=1')
+        .then(currentArtistName => {
+          this.setCustomTextoverlay(currentArtistName);
+        })
+        .catch(error => {
+          if (error) {
+            this.setCustomTextoverlay('No artist found.');
+          }
+        });
     }
   }
 };

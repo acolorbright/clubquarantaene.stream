@@ -4,14 +4,14 @@ const state = () => ({
       label: 'Change 🎥',
       reaction: 'camchange',
       progress: 0,
-      achievementMsg: 'Changing camera shortly',
+      achievementMsg: 'Switching camera ...',
       isBlocked: false
     },
     {
       label: 'Drip 🥑',
       reaction: 'trip',
       progress: 0,
-      achievementMsg: 'Trip begins shortly',
+      achievementMsg: 'Transporting …',
       isBlocked: false
     },
     {

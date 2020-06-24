@@ -166,9 +166,11 @@ export default {
       this.showEntryAnimation = true;
     },
     handleOnStarted() {
+      console.log('handleOnStarted');
       this.entryAnimationStarted = true;
     },
     handleOnEnded() {
+      console.log('handleOnEnded');
       this.$emit('confirmDecision', true);
     },
     async enterClub() {
@@ -179,8 +181,7 @@ export default {
         this.setUserData(registerResponse);
 
         if (available) {
-          this.setLocalStorageColor(this.store.state.guest.color);
-
+          // this.setLocalStorageColor(this.store.state.guest.color);
           this.setAccessGranted(true);
           this.startEntryAnimation();
         } else {

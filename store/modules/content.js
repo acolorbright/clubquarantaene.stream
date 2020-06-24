@@ -140,7 +140,7 @@ const state = () => ({
       day: '2020-06-28'
     },
     {
-      name: 'Rodhad',
+      name: 'Rødhåd',
       start: '01:30',
       end: '03:00',
       day: '2020-06-28'

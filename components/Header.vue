@@ -57,14 +57,14 @@ export default {
           to: '/dancefloor'
         },
         {
-          title: 'Cloakroom',
-          key: 'cloakroom',
-          to: 'https://shop.clubquarantaene.stream/'
-        },
-        {
           title: 'Bathroom',
           key: 'bathroom',
           to: '/bathroom'
+        },
+        {
+          title: 'Cloakroom',
+          key: 'cloakroom',
+          to: 'https://shop.clubquarantaene.stream/'
         },
         {
           title: 'Gallery',
@@ -75,6 +75,12 @@ export default {
           title: 'CQ×UB',
           key: 'cqxub',
           to: 'http://undergroundblack.clubquarantaene.stream/'
+        },
+        {
+          title: 'Support CQ',
+          key: 'supporter',
+          to:
+            'https://steadyhq.com/en/clubquarantaene?utm_source=clubquarantaene&utm_medium=steady_hoverbutton'
         },
         {
           title: 'Timetable',

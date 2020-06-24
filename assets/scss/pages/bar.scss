@@ -1,6 +1,10 @@
 .page-bar {
   text-align: center;
 
+  h1, .donations {
+    z-index: 1;
+  }
+
   .donations {
     max-width: 41em;
     margin: 0 auto;

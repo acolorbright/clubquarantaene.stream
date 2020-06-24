@@ -100,6 +100,10 @@ export default {
       },
       {
         src: 'https://code.offworld.live/v0.1.5/offWorldLiveStreamClient.js'
+      },
+      {
+        src:
+          'https://steadyhq.com/widget_loader/28582f7d-12d3-499a-bc8c-3721a5bcbe4a'
       }
     ]
   },

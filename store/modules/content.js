@@ -35,145 +35,169 @@ const state = () => ({
       name: 'I$A',
       start: '22:00',
       end: '23:00',
-      day: '2020-06-26'
+      day: '2020-06-26',
+      img: 'CQ_ISA.jpg'
     },
     {
       name: 'Stenny',
       start: '23:30',
       end: '01:00',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_Stenny.jpg'
     },
     {
       name: 'Lucy',
       start: '01:00',
       end: '02:30',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_Lucy.jpg'
     },
     {
       name: 'KI/KI ',
       start: '02:30',
       end: '04:00',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_KI_KI.jpg'
     },
     {
       name: 'Somewhen ',
       start: '04:00',
       end: '05:30',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_Somewhen.jpg'
     },
     {
       name: 'Peach',
       start: '05:30',
       end: '07:00',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_Peach.jpg'
     },
     {
       name: 'THC',
       start: '07:00',
       end: '08:30',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_THC.jpg'
     },
     {
       name: 'Analog Soul',
       start: '08:30',
       end: '10:00',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_analogsoul.jpg'
     },
     {
       name: 'DEBONAIR',
       start: '10:00',
       end: '11:30',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_DEBONAIR.jpg'
     },
     {
       name: 'Bergsonist ',
       start: '11:30',
       end: '13:00',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_BergSonist.jpg'
     },
     {
       name: 'Upsammy B2B Oceanic',
       start: '13:00',
       end: '14:30',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_Upsammy_b2b_Oceanic.jpg'
     },
     {
       name: 'Russell E.L. Butler',
       start: '14:30',
       end: '16:00',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_Russel_EL_Butler.jpg'
     },
     {
       name: 'Hodge',
       start: '16:00',
       end: '17:30',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_Hodge.jpg'
     },
     {
       name: 'Dixon',
       start: '17:30',
       end: '19:00',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_Dixon.jpg'
     },
     {
       name: 'rRoxymore',
       start: '19:30',
       end: '21:00',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_rRoxymore.jpg'
     },
     {
       name: 'Nazira',
       start: '21:00',
       end: '22:30',
-      day: '2020-06-27'
+      day: '2020-06-27',
+      img: 'CQ_Nazira.jpg'
     },
     {
       name: 'Freddy K',
       start: '22:30',
       end: '00:00',
-      day: '2020-06-28'
+      day: '2020-06-28',
+      img: 'CQ_Freddy_K.jpg'
     },
     {
       name: 'Rifts',
       start: '00:00',
       end: '01:30',
-      day: '2020-06-28'
+      day: '2020-06-28',
+      img: 'CQ_Rifts.jpg'
     },
     {
       name: 'Rødhåd',
       start: '01:30',
       end: '03:00',
-      day: '2020-06-28'
+      day: '2020-06-28',
+      img: 'CQ_Rodhad.jpg'
     },
     {
       name: 'Héctor Oaks',
       start: '03:00',
       end: '04:30',
-      day: '2020-06-28'
+      day: '2020-06-28',
+      img: 'xxx.jpg'
     },
     {
       name: 'Aurora Halal',
       start: '04:30',
       end: '06:00',
-      day: '2020-06-28'
+      day: '2020-06-28',
+      img: 'CQ_Aurora_Halal.jpg'
     },
     {
-      name: 'Paal',
+      name: 'Paál',
       start: '06:00',
       end: '07:30',
-      day: '2020-06-28'
+      day: '2020-06-28',
+      img: 'CQ_Paal.jpg'
     },
     {
       name: 'IMOGEN',
       start: '07:30',
       end: '09:00',
-      day: '2020-06-28'
+      day: '2020-06-28',
+      img: 'CQ_IMOGEN.jpg'
     },
     {
       name: 'Palms Trax',
       start: '09:00',
       end: '11:30',
-      day: '2020-06-28'
+      day: '2020-06-28',
+      img: 'CQ_Palms_Trax.jpg'
     }
   ],
   bathroomImages: [

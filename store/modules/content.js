@@ -33,16 +33,16 @@ const state = () => ({
   timetable: [
     {
       name: 'I$A',
-      start: '22:00',
-      end: '23:00',
-      day: '2020-06-26',
+      start: '18:00',
+      end: '18:15',
+      day: '2020-06-24',
       img: 'CQ_ISA.jpg'
     },
     {
       name: 'Stenny',
-      start: '23:30',
-      end: '01:00',
-      day: '2020-06-27',
+      start: '18:15',
+      end: '20:00',
+      day: '2020-06-24',
       img: 'CQ_Stenny.jpg'
     },
     {

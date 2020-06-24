@@ -1,6 +1,6 @@
 <template>
   <div class="large-textoverlay">
-    <span>{{ $store.state.interactivebuttons.largeTextoverlay }}</span>
+    <span v-html="$store.state.interactivebuttons.largeTextoverlay" />
   </div>
 </template>
 <script>

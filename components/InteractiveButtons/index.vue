@@ -130,21 +130,12 @@ export default {
       );
 
       if (activeTimetableEntry) {
-        this.setCustomTextoverlay(activeTimetableEntry.name);
+        this.setCustomTextoverlay(
+          `<img src="/assets/images/djs/${activeTimetableEntry.img}">`
+        );
       } else {
         this.setCustomTextoverlay('No artist found');
       }
-
-      // this.$axios
-      //   .$get('http://149.255.59.164:8186/currentsong?sid=1')
-      //   .then(currentArtistName => {
-      //     this.setCustomTextoverlay(currentArtistName);
-      //   })
-      //   .catch(error => {
-      //     if (error) {
-      //       this.setCustomTextoverlay('No artist found.');
-      //     }
-      //   });
     }
   }
 };

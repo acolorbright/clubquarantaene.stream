@@ -17,4 +17,13 @@
     text-transform: uppercase;
     box-sizing: border-box;
     padding: 0.25em;
+
+    img {
+        width: 33vw;
+        height: auto;
+    }
+
+    @include portrait-layout-mobile {
+        display: none !important;
+    }
   }

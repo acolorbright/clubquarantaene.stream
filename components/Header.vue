@@ -19,7 +19,7 @@
           active: currentPath === page.to
         }"
       >
-        <nuxt-link v-if="!page.to.startsWith('http')" to="/">
+        <nuxt-link v-if="!page.to.startsWith('http')" :to="page.to">
           {{ page.title }}
         </nuxt-link>
         <a v-else :href="page.to" target="_blank">{{ page.title }}&nearr;</a>

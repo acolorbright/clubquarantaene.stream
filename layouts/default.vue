@@ -1,6 +1,10 @@
 <template>
   <div class="app">
-    <Header v-if="!isQueue && eventIsRunning" />
+    <Header
+      v-if="
+        (!isQueue && eventIsRunning) || this.$nuxt.$route.name === 'dancefloor'
+      "
+    />
     <main class="main">
       <transition name="fade" mode="out-in">
         <Livestream v-if="!isQueue" />

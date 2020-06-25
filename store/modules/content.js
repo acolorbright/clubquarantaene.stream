@@ -12,7 +12,7 @@ const state = () => ({
           '<p>Fundraising for an organisation that rescues refugees in the Mediterranean.</p>',
         linkText: 'Donate',
         link:
-          'https://www.betterplace.org/en/donate/platform/projects/46298-sea-watch-moonbird-hilfe-aus-der-luft-bei-suche-nach-booten-in-seenot'
+          'https://www.betterplace.org/en/projects/36808-sea-watch-3-mission-for-sea-rescue-in-the-mediterranean-sea'
       },
       {
         title:

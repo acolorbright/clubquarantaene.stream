@@ -134,7 +134,7 @@ export default {
           `<img src="/assets/images/djs/${activeTimetableEntry.img}">`
         );
       } else {
-        this.setCustomTextoverlay('No artist found');
+        this.setCustomTextoverlay('');
       }
     }
   }

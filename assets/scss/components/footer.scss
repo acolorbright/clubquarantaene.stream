@@ -35,7 +35,6 @@
             transform: translateX(-50%);
         }
     
-        &--right {}
     }
 
     &.isQueue {
@@ -57,7 +56,7 @@
         &-section {
             order: 0;
             margin-top: #{$spaceS * 1.5};
-            &--center, .chat-switch-button {
+            &--left, &--center, .chat-switch-button {
                 display: none;
             }
             &--right {

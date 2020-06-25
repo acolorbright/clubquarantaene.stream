@@ -3,9 +3,10 @@
   position: fixed;
   transition: opacity 1000ms ease;
   width: 100%;
-  z-index: 1;
+
   &.isVisible {
     opacity: 1 !important;
+    z-index: 1;
   }
 
   &.disabled {

@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div v-if="duration" id="countdown">
+    <div v-if="duration > 0" id="countdown">
       {{ days }}d{{ hours }}h{{ minutes }}m{{ seconds }}s
     </div>
   </transition>

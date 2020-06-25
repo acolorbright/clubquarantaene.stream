@@ -10,17 +10,40 @@ const state = () => ({
         title: 'SEAWATCH',
         text:
           '<p>Fundraising for an organisation that rescues refugees in the Mediterranean.</p>',
-        linkText: 'Donate',
-        link:
-          'https://www.betterplace.org/en/projects/36808-sea-watch-3-mission-for-sea-rescue-in-the-mediterranean-sea'
+        links: [
+          {
+            linkText: 'Donate',
+            link:
+              'https://www.betterplace.org/en/projects/36808-sea-watch-3-mission-for-sea-rescue-in-the-mediterranean-sea'
+          }
+        ]
       },
       {
         title:
           'ACT BLUE BAIL, MUTUAL AID, AND RACIAL JUSTICE ORGANIZATION FUNDS',
         text:
           '<p>Splits a donation to bail funds, mutual aid funds, and activist organizations listed on the page or allocate specific amounts to individual groups.</p>',
-        linkText: 'Donate',
-        link: 'https://secure.actblue.com/donate/ab_mn'
+        links: [
+          {
+            linkText: 'Donate',
+            link: 'https://secure.actblue.com/donate/ab_mn'
+          }
+        ]
+      },
+      {
+        title: 'SUPPORT CLUB QUARANTÄNE',
+        text:
+          '<p>We are bunch of creative friends using our skills and network to create this event. Here you can help us to run further partys.</p>',
+        links: [
+          {
+            linkText: 'Buy a ticket',
+            link: 'https://www.residentadvisor.net/events/1408846'
+          },
+          {
+            linkText: 'Become supporter',
+            link: 'https://steadyhq.com/en/clubquarantaene'
+          }
+        ]
       }
     ]
   },

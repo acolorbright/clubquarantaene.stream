@@ -9,15 +9,21 @@
       >
         <h2 class="donations-item-headline">{{ service.title }}</h2>
         <div class="donations-item-text" v-html="service.text" />
-        <div class="donations-item-link">
-          <a
-            :href="service.link"
-            target="_blank"
-            class="button"
-            @click="trackExternalLink(service.title)"
+        <div class="donations-item-links">
+          <div
+            v-for="(link, num) in service.links"
+            :key="num"
+            class="donations-item-link"
           >
-            {{ service.linkText }}
-          </a>
+            <a
+              :href="link.link"
+              target="_blank"
+              class="button"
+              @click="trackExternalLink(link.title)"
+            >
+              {{ link.linkText }}
+            </a>
+          </div>
         </div>
       </div>
     </div>

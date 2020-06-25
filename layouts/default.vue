@@ -2,7 +2,9 @@
   <div class="app">
     <Header v-if="!isQueue" />
     <main class="main">
-      <Livestream v-if="!isQueue" />
+      <transition name="fade" mode="out-in">
+        <Livestream v-if="!isQueue" />
+      </transition>
       <transition name="fade" mode="out-in">
         <nuxt />
       </transition>

@@ -1,24 +1,22 @@
 <template>
-  <transition name="fade" mode="out-in">
-    <div
-      v-show="isDancefloor || isTimetable"
-      class="livestream"
-      :class="{
-        disabled: isTimetable,
-        isPlaying: videoIsPlaying
-      }"
-    >
-      <div id="player" class="livestream-player" />
+  <div
+    v-show="isDancefloor || isTimetable"
+    class="livestream"
+    :class="{
+      disabled: isTimetable,
+      isPlaying: videoIsPlaying
+    }"
+  >
+    <div id="player" class="livestream-player" />
 
-      <transition name="fade" mode="out-in">
-        <div v-if="isDebugMode" class="livestream-controls">
-          <button class="livestream-controls-btn" @click="handleMuted">
-            {{ muted ? 'mute' : 'unmute' }}
-          </button>
-        </div>
-      </transition>
-    </div>
-  </transition>
+    <transition name="fade" mode="out-in">
+      <div v-if="isDebugMode" class="livestream-controls">
+        <button class="livestream-controls-btn" @click="handleMuted">
+          {{ muted ? 'mute' : 'unmute' }}
+        </button>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>

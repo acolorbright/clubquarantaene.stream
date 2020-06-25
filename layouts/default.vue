@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <Header v-if="(!isQueue && eventIsRunning) || isDebugMode" />
+    <Header v-if="!isQueue && eventIsRunning" />
     <main class="main">
       <transition name="fade" mode="out-in">
         <Livestream v-if="!isQueue" />
@@ -55,9 +55,6 @@ export default {
         'MM-DD-YYYY hh:mm A'
       );
       return this.$moment().isBetween(openingDate, closingDate);
-    },
-    isDebugMode() {
-      return process.env.isDebugMode;
     }
   },
   beforeMount() {

@@ -26,7 +26,7 @@
       </transition>
       <a
         v-if="isTimetable"
-        href="https://www.buymusic.club/list/club-quarantane-cq-2"
+        href="https://www.buymusic.club/list/clubquarantaene-cq-3"
         target="_blank"
         class="button"
       >

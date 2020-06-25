@@ -10,7 +10,7 @@ export default {
     cmsUrl: 'https://cms.clubquarantaene.stream',
     socketUrl: 'https://socket.clubquarantaene.stream',
     // startEventDate: '06-26-2020 21:59 PM',
-    startEventDate: '06-25-2020 11:10 AM',
+    startEventDate: '06-25-2020 11:22 AM',
     endEventDate: '06-28-2020 14:59 AM',
     closedEventDate: '06-28-2020 16:59 AM',
     youtubeVideoId: 'Iygrehyufjk',

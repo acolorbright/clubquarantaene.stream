@@ -92,7 +92,17 @@ export default {
     }
   },
   mounted() {
-    if (this.$store.state.event.isRunning) {
+    const openingDate = this.$moment(
+      process.env.startEventDate,
+      'MM-DD-YYYY hh:mm A'
+    );
+    const closingDate = this.$moment(
+      process.env.endEventDate,
+      'MM-DD-YYYY hh:mm A'
+    );
+    const eventIsRunning = this.$moment().isBetween(openingDate, closingDate);
+
+    if (eventIsRunning) {
       const localStorageData = getLocalStorage();
       if (localStorageData && localStorageData.color) {
         this.skipQueue();

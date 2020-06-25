@@ -61,40 +61,37 @@ export default {
         'MM-DD-YYYY hh:mm A'
       );
       const closingDate = this.$moment(
-        process.env.closedEventDate,
+        process.env.endEventDate,
         'MM-DD-YYYY hh:mm A'
       );
       const clubIsClosed =
         now.isBefore(openingDate) || now.isAfter(closingDate);
 
       return clubIsClosed;
-    },
-    eventHasEnded() {
-      const now = this.$moment(new Date());
-      const endTime = this.$moment(
-        process.env.endEventDate,
-        'MM-DD-YYYY hh:mm A'
-      );
-      const eventHasEnded = now.isAfter(endTime);
-
-      return eventHasEnded;
     }
   },
   watch: {
     countdownUntilEventStarts(val) {
-      if (val <= 0) {
+      const now = this.$moment(new Date());
+      const openingDate = this.$moment(
+        process.env.startEventDate,
+        'MM-DD-YYYY hh:mm A'
+      );
+      const closingDate = this.$moment(
+        process.env.endEventDate,
+        'MM-DD-YYYY hh:mm A'
+      );
+      const clubIsClosed =
+        now.isBefore(openingDate) || now.isAfter(closingDate);
+
+      if (!clubIsClosed && val <= 0) {
         this.startEvent();
       }
     }
   },
   mounted() {
     this.showStart = true;
-
     if (!this.clubIsClosed || process.env.isDebugMode) {
-      if (this.eventHasEnded) {
-        // this.setEventHasEnded();
-      }
-
       this.startEvent();
     }
   },

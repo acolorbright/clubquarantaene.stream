@@ -8,14 +8,13 @@ export default {
     frontendUrl: 'https://clubquarantaene.stream',
     cmsUrl: 'https://cms.clubquarantaene.stream',
     socketUrl: 'https://socket.clubquarantaene.stream',
-    startEventDate: '06-26-2020 21:59 PM',
-    endEventDate: '06-28-2020 14:59 AM',
-    closedEventDate: '06-28-2020 16:59 AM',
+    startEventDate: '06-25-2020 14:02 PM',
+    endEventDate: '06-25-2020 14:04 PM',
     youtubeVideoId: 'Iygrehyufjk',
     youtubeVideoIdEnded: 'grhFTe071VA',
     youtubeVideoIdDev: 'rG4jSz_2HDY',
     googleAnalyticsId: 'UA-161932716-1',
-    isDebugMode: true
+    isDebugMode: false
   },
   head: {
     title: 'CLUB QUARANTÄNE',

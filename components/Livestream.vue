@@ -12,13 +12,6 @@
 
       <transition name="fade" mode="out-in">
         <div v-if="isDebugMode" class="livestream-controls">
-          <button
-            v-if="panningEnabled"
-            class="livestream-controls-btn"
-            @click="handleVideoPanning"
-          >
-            {{ panningEnabled ? 'Disable panning' : 'Enable panning' }}
-          </button>
           <button class="livestream-controls-btn" @click="handleMuted">
             {{ muted ? 'mute' : 'unmute' }}
             {{ eventHasEnded }}
@@ -53,7 +46,6 @@ export default {
       videoIsPlaying: false,
       cameraIsAnimating: false,
       cameraInitialTime: null,
-      panningEnabled: false,
       muted: false
     };
   },
@@ -163,66 +155,6 @@ export default {
     onPlaybackQualityChange(quality) {
       // console.log('onPlaybackQualityChange', quality);
     },
-    resetCamera() {
-      this.animatedCameraPan(0, 0);
-    },
-    animatedCameraPan(targetYaw, targetPitch) {
-      const springConstant = -0.8;
-
-      const panCamera = () => {
-        const currentSphericalProperties = this.player.getSphericalProperties();
-        const { yaw, pitch } = currentSphericalProperties;
-        const currentTime = performance.now();
-
-        if (!this.cameraInitialTime) {
-          if (yaw !== null) {
-            this.cameraInitialTime = currentTime;
-            this.cameraIsAnimating = true;
-          }
-        }
-
-        if (this.cameraIsAnimating) {
-          let yawDiff = targetYaw - yaw;
-          if (yawDiff > 180) {
-            yawDiff -= 360;
-          } else if (yawDiff < -180) {
-            yawDiff += 360;
-          }
-          const pitchDiff = targetPitch - pitch;
-
-          if (Math.max(Math.abs(yawDiff), Math.abs(pitchDiff)) < 1) {
-            this.cameraIsAnimating = false;
-          }
-
-          const deltaTime = (currentTime - this.cameraInitialTime) / 1000;
-
-          let newYaw =
-            targetYaw - yawDiff * Math.exp(springConstant * deltaTime);
-          newYaw = ((newYaw % 360) + 360) % 360;
-
-          const newPitch =
-            targetPitch - pitchDiff * Math.exp(springConstant * deltaTime);
-
-          this.player.setSphericalProperties({
-            yaw: newYaw,
-            pitch: newPitch,
-            enableOrientationSensor: false
-          });
-        }
-
-        if (this.cameraIsAnimating) {
-          requestAnimationFrame(panCamera);
-        } else {
-          this.cameraInitialTime = null;
-        }
-      };
-
-      panCamera();
-    },
-    handleVideoPanning() {
-      this.panningEnabled = !this.panningEnabled;
-      this.panVideo();
-    },
     handleMuted() {
       if (!this.isDebugMode) {
         return;
@@ -235,28 +167,6 @@ export default {
       } else {
         this.muteVideo();
       }
-    },
-    panVideo() {
-      const pan = () => {
-        const rotationDuration = 60;
-        const cyclesPerRotation = 0;
-
-        const yaw = ((performance.now() / 1000 / rotationDuration) * 360) % 360;
-        const pitch =
-          rotationDuration *
-          Math.sin(((cyclesPerRotation * yaw) / 360) * 2 * Math.PI);
-
-        this.player.setSphericalProperties({
-          yaw,
-          pitch
-        });
-
-        if (this.panningEnabled) {
-          requestAnimationFrame(this.panVideo);
-        }
-      };
-
-      pan();
     }
   }
 };

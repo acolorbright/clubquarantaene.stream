@@ -24,9 +24,6 @@
       height: calc(100vh - var(--vh-offset, 0px) - 8rem);
     }
   }
-  @include portrait-layout-mobile {
-    opacity: 0 !important;
-  }
   &-controls {
     bottom: 15vh;
     position: absolute;

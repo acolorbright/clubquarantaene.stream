@@ -13,6 +13,7 @@ export default {
     closedEventDate: '06-28-2020 16:59 AM',
     youtubeVideoId: 'Iygrehyufjk',
     youtubeVideoIdEnded: 'grhFTe071VA',
+    youtubeVideoIdDev: 'rG4jSz_2HDY',
     googleAnalyticsId: 'UA-161932716-1',
     isDebugMode: true
   },

@@ -4,7 +4,8 @@
       v-show="isDancefloor || isTimetable"
       class="livestream"
       :class="{
-        disabled: isTimetable
+        disabled: isTimetable,
+        isPlaying: videoIsPlaying
       }"
     >
       <div id="player" class="livestream-player" />

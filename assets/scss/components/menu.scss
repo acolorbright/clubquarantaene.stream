@@ -54,7 +54,9 @@
     }
   }
 
-  @include portrait-layout-mobile {
+  // @include portrait-layout-mobile {
+  // Manually changed to 1100px because of CQ 3 where we had a lot of menu items
+  @media (max-width: 1100px) {
     display: flex;
     flex-direction: column;
 

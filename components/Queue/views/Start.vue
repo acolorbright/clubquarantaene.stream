@@ -46,10 +46,14 @@ export default {
   data() {
     return {
       showStart: false,
-      isDebugMode: process.env.isDebugMode
+      isDebugMode: process.env.isDebugMode,
+      eventStartTriggered: false
     };
   },
   computed: {
+    countdownUntilEventStarts() {
+      return this.$store.state.event.timeUntilStart;
+    },
     clubIsClosed() {
       const now = this.$moment(new Date());
       const openingDate = this.$moment(
@@ -76,6 +80,13 @@ export default {
       return eventHasEnded;
     }
   },
+  watch: {
+    countdownUntilEventStarts(val) {
+      if (val <= 0) {
+        this.startEvent();
+      }
+    }
+  },
   mounted() {
     this.showStart = true;
 
@@ -96,6 +107,10 @@ export default {
       this.$emit('nextStep', true);
     },
     startEvent() {
+      if (this.eventStartTriggered) {
+        return;
+      }
+      this.eventStartTriggered = true;
       const firstStartTimeout = process.env.isDebugMode ? 1000 : 3500;
       const secondStartTimeout = process.env.isDebugMode ? 2000 : 9500;
 

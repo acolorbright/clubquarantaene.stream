@@ -1,5 +1,5 @@
 <template>
-  <div class="bathroom">
+  <div class="page page-bathroom bathroom">
     <div v-if="cubicleDataArray" class="bathroom-cubicles">
       <div
         v-for="(cubicle, index) in cubicleDataArray"

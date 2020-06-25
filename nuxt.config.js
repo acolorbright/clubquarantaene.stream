@@ -14,7 +14,7 @@ export default {
     youtubeVideoIdEnded: 'grhFTe071VA',
     youtubeVideoIdDev: 'rG4jSz_2HDY',
     googleAnalyticsId: 'UA-161932716-1',
-    isDebugMode: false
+    isDebugMode: true
   },
   head: {
     title: 'CLUB QUARANTÄNE',

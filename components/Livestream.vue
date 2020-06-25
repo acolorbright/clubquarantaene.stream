@@ -14,7 +14,6 @@
         <div v-if="isDebugMode" class="livestream-controls">
           <button class="livestream-controls-btn" @click="handleMuted">
             {{ muted ? 'mute' : 'unmute' }}
-            {{ eventHasEnded }}
           </button>
         </div>
       </transition>
@@ -58,12 +57,6 @@ export default {
     },
     isDebugMode() {
       return process.env.isDebugMode;
-    },
-    eventIsRunning() {
-      return this.$store.state.event.isRunning;
-    },
-    eventHasEnded() {
-      return this.$store.state.event.hasEnded;
     }
   },
   watch: {
@@ -76,13 +69,6 @@ export default {
         this.setVolumeMax();
       } else {
         this.setVolumeReduced();
-      }
-    },
-    eventHasEnded(newValue, oldValue) {
-      if (newValue && newValue !== oldValue) {
-        setTimeout(() => {
-          this.loadVideo(process.env.youtubeVideoIdEnded);
-        }, 1500);
       }
     }
   },
@@ -101,8 +87,6 @@ export default {
         },
         playerVars: this.playerVars,
         videoId: this.videoId
-        // height: '360',
-        // width: '640'
       });
     },
     playVideo() {

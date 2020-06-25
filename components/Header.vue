@@ -19,7 +19,7 @@
           active: currentPath === page.to
         }"
       >
-        <nuxt-link v-if="!page.to.startsWith('http')" :to="page.to">
+        <nuxt-link v-if="!page.to.startsWith('http')" to="/">
           {{ page.title }}
         </nuxt-link>
         <a v-else :href="page.to" target="_blank">{{ page.title }}&nearr;</a>
@@ -93,7 +93,8 @@ export default {
         show: false,
         duration: 5000, // 5s
         interval: 600000 // 10min (10 x 60000)
-      }
+      },
+      endEventTimeout: null
     };
   },
   computed: {
@@ -116,6 +117,18 @@ export default {
       return this.$nuxt.$route.name === 'bathroom-bathroom';
     }
   },
+  mounted() {
+    setTimeout(() => {
+      this.showPopup(this.donationPopup.duration, this.donationPopup.interval);
+    }, this.donationPopup.interval);
+
+    this.setEndEventTimeout();
+  },
+  sockets: {
+    'total-users'(amount) {
+      this.setUserCount(amount);
+    }
+  },
   methods: {
     ...mapActions({
       setUserCount: 'setUserCount'
@@ -130,16 +143,18 @@ export default {
           this.showPopup(duration, interval);
         }, interval);
       }
-    }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.showPopup(this.donationPopup.duration, this.donationPopup.interval);
-    }, this.donationPopup.interval);
-  },
-  sockets: {
-    'total-users'(amount) {
-      this.setUserCount(amount);
+    },
+    setEndEventTimeout() {
+      const closingDate = this.$moment(
+        process.env.endEventDate,
+        'MM-DD-YYYY hh:mm A'
+      );
+      const timeUntilEnd = closingDate.diff(Date.now());
+      if (timeUntilEnd >= 0) {
+        this.endEventTimeout = setTimeout(() => {
+          this.$router.push('/');
+        }, timeUntilEnd);
+      }
     }
   }
 };

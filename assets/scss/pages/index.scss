@@ -2,4 +2,5 @@
     min-height: 100vh;
     min-height: calc(100vh - var(--vh-offset, 0px));
     position: relative;
+    z-index: 1;
 }

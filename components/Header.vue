@@ -104,9 +104,6 @@ export default {
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     },
-    eventIsRunning() {
-      return this.$store.state.event.isRunning;
-    },
     currentPath() {
       return this.$nuxt.$route.path;
     },

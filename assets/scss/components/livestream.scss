@@ -10,6 +10,7 @@
 
   &.disabled {
     pointer-events: none;
+    z-index: 0;
   }
 
   &-player {

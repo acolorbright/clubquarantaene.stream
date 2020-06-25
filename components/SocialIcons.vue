@@ -18,10 +18,10 @@
     •
     <a
       class="social-icons-link"
-      href="https://www.betterplace.me/club-quarantaene-fundraiser"
+      href="https://steadyhq.com/en/clubquarantaene"
       target="_blank"
     >
-      Fundraiser
+      Steady
     </a>
     •
     <a

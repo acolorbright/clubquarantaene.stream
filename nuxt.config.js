@@ -104,7 +104,7 @@ export default {
     ]
   },
   loading: {
-    color: '#fff'
+    color: '#FF00C8'
   },
   css: ['@/assets/scss/main.scss'],
   plugins: [

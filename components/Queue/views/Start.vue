@@ -110,7 +110,6 @@ export default {
       if (this.eventStartTriggered) {
         return;
       }
-      console.log('redirect yo');
       this.eventStartTriggered = true;
       const firstStartTimeout = process.env.isDebugMode ? 1000 : 3500;
       const secondStartTimeout = process.env.isDebugMode ? 2000 : 9500;

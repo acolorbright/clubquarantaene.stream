@@ -1,10 +1,10 @@
 <template>
   <div
-    v-show="isDancefloor || isTimetable"
     class="livestream"
     :class="{
       disabled: isTimetable,
-      isPlaying: videoIsPlaying
+      isPlaying: videoIsPlaying,
+      isVisible: isDancefloor || isTimetable
     }"
   >
     <div id="player" class="livestream-player" />

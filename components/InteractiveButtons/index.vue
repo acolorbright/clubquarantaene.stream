@@ -34,7 +34,7 @@ export default {
       storeThrottle: 3, // % of reaction progress
       api: null,
       connected: false,
-      overlayTextDuration: 10000, // in ms
+      overlayTextDuration: 12000, // in ms
       timeoutHandle: null,
       config: {
         liveStreamSlug: 'cq3-dev-livestream',

@@ -18,6 +18,7 @@
 <script>
 import Enjoy from './Enjoy.vue';
 import TryAgain from './TryAgain.vue';
+import { getLocalStorage } from '~/assets/js/handleLocalStorage.js';
 
 export default {
   components: {
@@ -33,14 +34,19 @@ export default {
   data() {
     return {
       decided: false,
-      decisionTime: 1000
+      decisionTime: 1000,
+      isFirstVisit: true
     };
   },
   computed: {
     allowEntry() {
-      return process.env.isDebugMode || Math.random() >= 0.3; // 70% probability to get in
+      if (!this.isFirstVisit || process.env.isDebugMode) {
+        return true;
+      }
+      return Math.random() >= 0.3; // 70% probability to get in
     }
   },
+
   mounted() {
     setTimeout(() => {
       this.makeDecision();
@@ -48,6 +54,11 @@ export default {
   },
   methods: {
     makeDecision() {
+      const localStorageData = getLocalStorage();
+      if (localStorageData && localStorageData.color) {
+        this.isFirstVisit = false;
+      }
+
       this.decided = true;
     },
     handleConfirmDecision(accessGranted) {

@@ -1,10 +1,6 @@
 <template>
   <div class="app">
-    <Header
-      v-if="
-        (!isQueue && eventIsRunning) || this.$nuxt.$route.name === 'dancefloor'
-      "
-    />
+    <Header v-if="(!isQueue && eventIsRunning) || isDebugMode" />
     <main class="main">
       <transition name="fade" mode="out-in">
         <Livestream v-if="!isQueue" />
@@ -42,7 +38,8 @@ export default {
   },
   data() {
     return {
-      eventStatusInterval: null
+      eventStatusInterval: null,
+      isDebugMode: process.env.isDebugMode
     };
   },
   computed: {

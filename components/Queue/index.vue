@@ -92,10 +92,11 @@ export default {
     }
   },
   mounted() {
-    const localStorageData = getLocalStorage();
-
-    if (localStorageData && localStorageData.color) {
-      this.skipQueue();
+    if (this.$store.state.event.isRunning) {
+      const localStorageData = getLocalStorage();
+      if (localStorageData && localStorageData.color) {
+        this.skipQueue();
+      }
     }
   },
   methods: {

@@ -121,7 +121,9 @@ export default {
         ? process.env.youtubeVideoIdEnded
         : process.env.youtubeVideoId;
 
-      this.loadVideo(currentId);
+      this.loadVideo(
+        this.isDebugMode ? process.env.youtubeVideoIdDev : currentId
+      );
     },
     muteVideo() {
       this.player.setVolume(0);

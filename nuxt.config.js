@@ -4,20 +4,17 @@ export default {
     host: '0.0.0.0'
   },
   env: {
-    // isDev: process.env.NODE_ENV !== 'production',
-    isDev: false,
+    isDev: process.env.NODE_ENV !== 'production',
     frontendUrl: 'https://clubquarantaene.stream',
     cmsUrl: 'https://cms.clubquarantaene.stream',
     socketUrl: 'https://socket.clubquarantaene.stream',
-    // startEventDate: '06-26-2020 21:59 PM',
-    startEventDate: '06-25-2020 11:22 AM',
+    startEventDate: '06-26-2020 21:59 PM',
     endEventDate: '06-28-2020 14:59 AM',
     closedEventDate: '06-28-2020 16:59 AM',
     youtubeVideoId: 'Iygrehyufjk',
     youtubeVideoIdEnded: 'grhFTe071VA',
     googleAnalyticsId: 'UA-161932716-1',
-    // isDebugMode: true
-    isDebugMode: false
+    isDebugMode: true
   },
   head: {
     title: 'CLUB QUARANTÄNE',

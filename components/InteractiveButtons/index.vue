@@ -122,9 +122,9 @@ export default {
       const activeTimetableEntry = this.$store.state.content.timetable.find(
         entry => {
           const formattedStartTime = this.$moment(
-            `${entry.day} ${entry.start}`
+            `${entry.startDay} ${entry.start}`
           );
-          const formattedEndTime = this.$moment(`${entry.day} ${entry.end}`);
+          const formattedEndTime = this.$moment(`${entry.endDay} ${entry.end}`);
           return this.$moment().isBetween(formattedStartTime, formattedEndTime);
         }
       );

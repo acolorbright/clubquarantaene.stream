@@ -35,168 +35,192 @@ const state = () => ({
       name: 'I$A',
       start: '22:00',
       end: '23:30',
-      day: '2020-06-26',
+      startDay: '2020-06-26',
+      endDay: '2020-06-26',
       img: 'cq_isa.jpg'
     },
     {
       name: 'Stenny',
       start: '23:30',
       end: '01:00',
-      day: '2020-06-27',
+      startDay: '2020-06-26',
+      endDay: '2020-06-27',
       img: 'cq_stenny.jpg'
     },
     {
       name: 'Lucy',
       start: '01:00',
       end: '02:30',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_lucy.jpg'
     },
     {
       name: 'KI/KI ',
       start: '02:30',
       end: '04:00',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_ki_ki.jpg'
     },
     {
       name: 'Somewhen ',
       start: '04:00',
       end: '05:30',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_somewhen.jpg'
     },
     {
       name: 'Peach',
       start: '05:30',
       end: '07:00',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_peach.jpg'
     },
     {
       name: 'THC',
       start: '07:00',
       end: '08:30',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_thc.jpg'
     },
     {
       name: 'Analog Soul',
       start: '08:30',
       end: '10:00',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_analogsoul.jpg'
     },
     {
       name: 'DEBONAIR',
       start: '10:00',
       end: '11:30',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_debonair.jpg'
     },
     {
       name: 'Bergsonist ',
       start: '11:30',
       end: '13:00',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_bergsonist.jpg'
     },
     {
       name: 'Upsammy B2B Oceanic',
       start: '13:00',
       end: '14:30',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_upsammy_b2b_oceanic.jpg'
     },
     {
       name: 'Russell E.L. Butler',
       start: '14:30',
       end: '16:00',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_russel_el_butler.jpg'
     },
     {
       name: 'Hodge',
       start: '16:00',
       end: '17:30',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_hodge.jpg'
     },
     {
       name: 'Dixon',
       start: '17:30',
       end: '19:00',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_dixon.jpg'
     },
     {
       name: 'rRoxymore',
       start: '19:30',
       end: '20:30',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_rroxymore.jpg'
     },
     {
       name: 'Nazira',
       start: '20:30',
       end: '22:00',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_nazira.jpg'
     },
     {
       name: 'Freddy K',
       start: '22:30',
       end: '23:30',
-      day: '2020-06-27',
+      startDay: '2020-06-27',
+      endDay: '2020-06-27',
       img: 'cq_freddy_k.jpg'
     },
     {
       name: 'Rifts',
       start: '23:30',
       end: '01:00',
-      day: '2020-06-28',
+      startDay: '2020-06-27',
+      endDay: '2020-06-28',
       img: 'cq_rifts.jpg'
     },
     {
       name: 'Rødhåd',
       start: '01:00',
       end: '02:30',
-      day: '2020-06-28',
+      startDay: '2020-06-28',
+      endDay: '2020-06-28',
       img: 'cq_rodhad.jpg'
     },
     {
       name: 'Héctor Oaks',
       start: '02:30',
       end: '04:00',
-      day: '2020-06-28',
+      startDay: '2020-06-28',
+      endDay: '2020-06-28',
       img: 'cq_hector_oaks.jpg'
     },
     {
       name: 'Aurora Halal',
       start: '04:00',
       end: '05:30',
-      day: '2020-06-28',
+      startDay: '2020-06-28',
+      endDay: '2020-06-28',
       img: 'cq_aurora_halal.jpg'
     },
     {
       name: 'Paál',
       start: '05:30',
       end: '07:00',
-      day: '2020-06-28',
+      startDay: '2020-06-28',
+      endDay: '2020-06-28',
       img: 'cq_paal.jpg'
     },
     {
       name: 'IMOGEN',
       start: '07:00',
       end: '08:30',
-      day: '2020-06-28',
+      startDay: '2020-06-28',
+      endDay: '2020-06-28',
       img: 'cq_imogen.jpg'
     },
     {
       name: 'Palms Trax',
       start: '08:30',
       end: '11:00',
-      day: '2020-06-28',
+      startDay: '2020-06-28',
+      endDay: '2020-06-28',
       img: 'cq_palms_trax.jpg'
     }
   ],

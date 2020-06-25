@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     checkIfEnded(artist, index) {
-      const formattedEndTime = this.$moment(`${artist.day} ${artist.end}`);
+      const formattedEndTime = this.$moment(`${artist.endDay} ${artist.end}`);
       return this.currentTime.isAfter(formattedEndTime);
     }
   }

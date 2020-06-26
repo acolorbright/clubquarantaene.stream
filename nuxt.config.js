@@ -67,7 +67,7 @@ export default {
       },
       {
         property: 'og:image',
-        content: `https://clubquarantaene.stream/og_image.jpg`
+        content: `https://clubquarantaene.stream/og_image.png`
       },
       {
         property: 'twitter:card',
@@ -87,7 +87,7 @@ export default {
       },
       {
         property: 'twitter:image',
-        content: `https://clubquarantaene.stream/og_image.jpg`
+        content: `https://clubquarantaene.stream/og_image.png`
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=2' }],

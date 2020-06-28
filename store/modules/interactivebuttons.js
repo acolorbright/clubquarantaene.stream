@@ -11,7 +11,7 @@ const state = () => ({
       label: 'Drip 🥑',
       reaction: 'trip',
       progress: 0,
-      achievementMsg: 'Woooow in ~20s',
+      achievementMsg: 'Drip in ~20s',
       isBlocked: false
     },
     {
